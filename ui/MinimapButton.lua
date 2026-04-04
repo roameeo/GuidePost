@@ -62,8 +62,8 @@ function MB.Initialize()
     local icon = button:CreateTexture(nil, "ARTWORK")
     icon:SetSize(20, 20)
     icon:SetPoint("CENTER")
-    icon:SetTexture("Interface\\AchievementFrame\\UI-Achievement-TitleBar")
-    icon:SetTexCoord(0, 0.5, 0, 0.25)
+    icon:SetTexture("Interface\\AddOns\\GuidePost\\Media\\icon")
+    icon:SetTexCoord(0, 1, 0, 1)
 
     -- Highlight ring on hover
     local hl = button:CreateTexture(nil, "HIGHLIGHT")
