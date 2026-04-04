@@ -20,27 +20,51 @@ MF.SelectedID = nil
 -- ─── Frame Creation ──────────────────────────────────────────────────────────
 
 -- ─── Layout constants (panels recompute from these on resize) ────────────────
-local LIST_WIDTH   = 175   -- fixed width of the left list panel
-local PANEL_GAP    =   8   -- gap between list and detail panels
+local PANEL_GAP    =   6   -- gap / divider width
 local MARGIN_L     =  10   -- left margin from frame edge
 local MARGIN_R     =  10   -- right margin from frame edge
 local MARGIN_TOP   =  30   -- top margin (below title bar)
-local MARGIN_BOT   =  24   -- bottom margin (above zone label / resize grip)
+local MARGIN_BOT   =  24   -- bottom margin
 local MIN_W        = 380   -- minimum frame width
 local MIN_H        = 300   -- minimum frame height
+local MIN_LIST_W   =  80   -- minimum list panel width
+local MIN_DETAIL_W =  80   -- minimum detail panel width
 
--- Recompute panel sizes whenever the frame is resized
+-- Current list width — persisted in SavedVars
+local function GetListWidth()
+    GuidePostDB = GuidePostDB or {}
+    return GuidePostDB.listWidth or 175
+end
+local function SetListWidth(w)
+    GuidePostDB = GuidePostDB or {}
+    GuidePostDB.listWidth = w
+end
+
+-- Recompute panel sizes
 local function LayoutPanels(f)
-    local fw = f:GetWidth()
-    local fh = f:GetHeight()
+    local fw      = f:GetWidth()
+    local fh      = f:GetHeight()
+    local panelH  = fh - MARGIN_TOP - MARGIN_BOT
+    local listW   = math.max(MIN_LIST_W, math.min(GetListWidth(),
+                        fw - MARGIN_L - MARGIN_R - PANEL_GAP - MIN_DETAIL_W))
+    local detailW = fw - MARGIN_L - listW - PANEL_GAP - MARGIN_R
 
-    local panelH     = fh - MARGIN_TOP - MARGIN_BOT
-    local detailW    = fw - MARGIN_L - LIST_WIDTH - PANEL_GAP - MARGIN_R
+    f.ListPanel:SetSize(listW, panelH)
+    f.DetailPanel:SetSize(math.max(detailW, MIN_DETAIL_W), panelH)
 
-    f.ListPanel:SetSize(LIST_WIDTH, panelH)
-    f.DetailPanel:SetSize(math.max(detailW, 60), panelH)
+    -- Reposition divider
+    if f.Divider then
+        f.Divider:SetHeight(panelH)
+        f.Divider:ClearAllPoints()
+        f.Divider:SetPoint("TOPLEFT", f, "TOPLEFT", MARGIN_L + listW, -MARGIN_TOP)
+    end
 
-    -- Reflow the progress bar to match detail panel width
+    -- Reflow list content width
+    if f.ListContent then
+        f.ListContent:SetWidth(listW - 25)
+    end
+
+    -- Reflow progress bar
     if f.ProgressBar then
         f.ProgressBar:SetWidth(math.max(detailW - 20, 40))
     end
@@ -115,7 +139,7 @@ local function CreateMainFrame()
 
     -- ── Left panel: achievement list ─────────────────────────────────────────
     local listPanel = CreateFrame("Frame", nil, f, "InsetFrameTemplate")
-    listPanel:SetSize(LIST_WIDTH, 420)
+    listPanel:SetSize(GetListWidth(), 420)
     listPanel:SetPoint("TOPLEFT", f, "TOPLEFT", MARGIN_L, -MARGIN_TOP)
     f.ListPanel = listPanel
 
@@ -129,15 +153,65 @@ local function CreateMainFrame()
     scroll:SetPoint("BOTTOMRIGHT", -25, 5)
 
     local listContent = CreateFrame("Frame", nil, scroll)
-    listContent:SetSize(145, 1)
+    listContent:SetSize(GetListWidth() - 25, 1)
     scroll:SetScrollChild(listContent)
 
     f.ListContent = listContent
 
+    -- ── Draggable divider ─────────────────────────────────────────────────────
+    local divider = CreateFrame("Button", nil, f)
+    divider:SetSize(PANEL_GAP, 420)
+    divider:SetPoint("TOPLEFT", listPanel, "TOPRIGHT", 0, 0)
+
+    -- Visual bar in the center of the divider
+    local divBar = divider:CreateTexture(nil, "ARTWORK")
+    divBar:SetSize(2, 420)
+    divBar:SetPoint("CENTER")
+    divBar:SetColorTexture(0.35, 0.35, 0.35, 0.8)
+
+    -- Highlight on hover
+    divider:SetScript("OnEnter", function(self)
+        divBar:SetColorTexture(0.6, 0.8, 1.0, 0.9)
+        -- Show a resize cursor hint via tooltip
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText("Drag to resize panels", 0.8, 0.8, 0.8)
+        GameTooltip:Show()
+    end)
+    divider:SetScript("OnLeave", function(self)
+        divBar:SetColorTexture(0.35, 0.35, 0.35, 0.8)
+        GameTooltip:Hide()
+    end)
+
+    -- Drag logic: track mouse X movement and resize list panel
+    divider:RegisterForDrag("LeftButton")
+    divider:SetScript("OnDragStart", function(self)
+        self.dragging = true
+        self.startX   = select(1, GetCursorPosition()) / UIParent:GetEffectiveScale()
+        self.startW   = f.ListPanel:GetWidth()
+    end)
+    divider:SetScript("OnUpdate", function(self)
+        if not self.dragging then return end
+        local curX = select(1, GetCursorPosition()) / UIParent:GetEffectiveScale()
+        local delta = curX - self.startX
+        local fw    = f:GetWidth()
+        local newW  = math.max(MIN_LIST_W,
+                        math.min(self.startW + delta,
+                            fw - MARGIN_L - MARGIN_R - PANEL_GAP - MIN_DETAIL_W))
+        SetListWidth(newW)
+        LayoutPanels(f)
+    end)
+    divider:SetScript("OnDragStop", function(self)
+        self.dragging = false
+        -- Save final width
+        SetListWidth(f.ListPanel:GetWidth())
+    end)
+
+    f.Divider = divider
+
     -- ── Right panel: step details ─────────────────────────────────────────────
     local detailPanel = CreateFrame("Frame", nil, f, "InsetFrameTemplate")
     detailPanel:SetSize(255, 420)
-    detailPanel:SetPoint("TOPLEFT", listPanel, "TOPRIGHT", PANEL_GAP, 0)
+    detailPanel:SetPoint("TOPLEFT", divider, "TOPRIGHT", 0, 0)
     f.DetailPanel = detailPanel
 
     -- Achievement name at top of detail panel
@@ -178,35 +252,51 @@ end
 
 -- ─── List Population ─────────────────────────────────────────────────────────
 
-local function MakeListButton(parent, id, yOffset)
+-- Tracks which zone groups are collapsed. Persisted in SavedVars.
+local function GetCollapsed()
+    GuidePostDB = GuidePostDB or {}
+    GuidePostDB.collapsedZones = GuidePostDB.collapsedZones or {}
+    return GuidePostDB.collapsedZones
+end
+
+local function MakeListButton(parent, id, yOffset, width)
     local ach = GP.Data.Achievements[id]
-    if not ach then return end
+    if not ach then return nil, 0 end
+    width = width or 140
 
     local btn = CreateFrame("Button", nil, parent)
-    btn:SetSize(140, 34)
+    btn:SetSize(width, 34)
     btn:SetPoint("TOPLEFT", 0, -yOffset)
 
-    -- Background highlight
     local bg = btn:CreateTexture(nil, "BACKGROUND")
     bg:SetAllPoints()
     bg:SetColorTexture(0.15, 0.15, 0.15, 0.6)
 
+    -- Completed checkmark or name
+    local isComplete = GP.AchievementData.IsCompleted(id)
     local nameText = btn:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     nameText:SetPoint("TOPLEFT", 4, -4)
-    nameText:SetWidth(132)
+    nameText:SetWidth(width - 32)
     nameText:SetWordWrap(true)
     nameText:SetJustifyH("LEFT")
-    nameText:SetText(ach.name)
+    if isComplete then
+        nameText:SetText("|cff888888" .. ach.name .. "|r")
+    else
+        nameText:SetText(ach.name)
+    end
 
-    -- Tiny progress fraction
+    -- Progress fraction (bottom right)
     local done, total = GP.AchievementData.GetCriteriaProgress(id)
     if total > 0 then
         local prog = btn:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         prog:SetPoint("BOTTOMRIGHT", -4, 4)
-        prog:SetText(string.format("|cffaaaaaa%d/%d|r", done, total))
+        if isComplete then
+            prog:SetText("|cff00ff00✓|r")
+        else
+            prog:SetText(string.format("|cffaaaaaa%d/%d|r", done, total))
+        end
     end
 
-    -- Selected highlight
     btn:SetScript("OnEnter", function(self)
         bg:SetColorTexture(0.25, 0.25, 0.45, 0.8)
     end)
@@ -217,66 +307,129 @@ local function MakeListButton(parent, id, yOffset)
             bg:SetColorTexture(0.15, 0.15, 0.15, 0.6)
         end
     end)
-
     btn:SetScript("OnClick", function()
         MF.SelectAchievement(id)
-        -- Re-colour all buttons (deselect old, select new)
         for _, child in ipairs({parent:GetChildren()}) do
-            child:GetScript("OnLeave")(child)  -- reset colour
+            if child:GetScript("OnLeave") then
+                child:GetScript("OnLeave")(child)
+            end
         end
         bg:SetColorTexture(0.2, 0.4, 0.6, 0.8)
     end)
 
-    return btn
+    return btn, 36
+end
+
+-- Creates a clickable zone group header that toggles collapse
+local function MakeZoneHeader(parent, zoneName, yOffset, width, onToggle)
+    width = width or 140
+    local collapsed = GetCollapsed()[zoneName]
+
+    local btn = CreateFrame("Button", nil, parent)
+    btn:SetSize(width, 20)
+    btn:SetPoint("TOPLEFT", 0, -yOffset)
+
+    local bg = btn:CreateTexture(nil, "BACKGROUND")
+    bg:SetAllPoints()
+    bg:SetColorTexture(0.08, 0.08, 0.12, 0.9)
+
+    -- Arrow indicator ▶ collapsed / ▼ expanded
+    local arrow = btn:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    arrow:SetPoint("LEFT", 3, 0)
+    arrow:SetText(collapsed and "|cffaaaaaa▶|r" or "|cffaaaaaa▼|r")
+
+    local label = btn:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    label:SetPoint("LEFT", 16, 0)
+    label:SetWidth(width - 20)
+    label:SetJustifyH("LEFT")
+    label:SetText("|cffffcc00" .. zoneName .. "|r")
+
+    btn:SetScript("OnEnter", function()
+        bg:SetColorTexture(0.15, 0.15, 0.25, 0.9)
+    end)
+    btn:SetScript("OnLeave", function()
+        bg:SetColorTexture(0.08, 0.08, 0.12, 0.9)
+    end)
+    btn:SetScript("OnClick", function()
+        GetCollapsed()[zoneName] = not GetCollapsed()[zoneName]
+        if onToggle then onToggle() end
+    end)
+
+    return btn, 22
 end
 
 local function PopulateList(frame)
-    -- Clear existing buttons
+    -- Clear existing content
     for _, child in ipairs({frame.ListContent:GetChildren()}) do
         child:Hide()
         child:SetParent(nil)
     end
+    for _, region in ipairs({frame.ListContent:GetRegions()}) do
+        region:Hide()
+    end
 
+    local listWidth = frame.ListContent:GetWidth() or 145
     local yOff = 0
-    local totalHeight = 0
 
-    -- Tracked achievements first
+    -- ── Tracked section ───────────────────────────────────────────────────────
     local tracked = GP.Progress.GetTrackedList()
     if #tracked > 0 then
-        local header = frame.ListContent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-        header:SetPoint("TOPLEFT", 0, -yOff)
-        header:SetText("|cff00ff88Tracked|r")
-        yOff = yOff + 16
+        local hdr = frame.ListContent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        hdr:SetPoint("TOPLEFT", 2, -yOff)
+        hdr:SetText("|cff00ff88Tracked|r")
+        yOff = yOff + 18
 
         for _, id in ipairs(tracked) do
-            MakeListButton(frame.ListContent, id, yOff)
-            yOff = yOff + 36
+            local _, h = MakeListButton(frame.ListContent, id, yOff, listWidth)
+            yOff = yOff + h + 2
         end
+        yOff = yOff + 4
     end
 
-    -- Zone suggestions
+    -- ── In This Zone section ──────────────────────────────────────────────────
     local suggestions = GP.AchievementData.CurrentZoneSuggestions
     if #suggestions > 0 then
-        local header = frame.ListContent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-        header:SetPoint("TOPLEFT", 0, -yOff)
-        header:SetText("|cffffcc00In This Zone|r")
-        yOff = yOff + 16
+        local hdr = frame.ListContent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        hdr:SetPoint("TOPLEFT", 2, -yOff)
+        hdr:SetText("|cff00ccffIn This Zone|r")
+        yOff = yOff + 18
 
         for _, id in ipairs(suggestions) do
-            MakeListButton(frame.ListContent, id, yOff)
-            yOff = yOff + 36
+            local _, h = MakeListButton(frame.ListContent, id, yOff, listWidth)
+            yOff = yOff + h + 2
         end
+        yOff = yOff + 4
     end
 
-    -- All others
-    local header2 = frame.ListContent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    header2:SetPoint("TOPLEFT", 0, -yOff)
-    header2:SetText("|cffaaaaaaAll|r")
-    yOff = yOff + 16
-
+    -- ── All achievements grouped by zone ─────────────────────────────────────
+    -- Build zone → [ids] map sorted by zone name
+    local zoneMap = {}
+    local zoneNames = {}
     for _, id in ipairs(GP.AchievementData.GetAll()) do
-        MakeListButton(frame.ListContent, id, yOff)
-        yOff = yOff + 36
+        local ach = GP.Data.Achievements[id]
+        local zone = (ach and ach.zone) or "Unknown"
+        if not zoneMap[zone] then
+            zoneMap[zone] = {}
+            table.insert(zoneNames, zone)
+        end
+        table.insert(zoneMap[zone], id)
+    end
+    table.sort(zoneNames)
+
+    local function Repopulate() PopulateList(frame) end
+
+    for _, zone in ipairs(zoneNames) do
+        local ids = zoneMap[zone]
+        local _, hh = MakeZoneHeader(frame.ListContent, zone, yOff, listWidth, Repopulate)
+        yOff = yOff + hh
+
+        if not GetCollapsed()[zone] then
+            for _, id in ipairs(ids) do
+                local _, h = MakeListButton(frame.ListContent, id, yOff, listWidth)
+                yOff = yOff + h + 2
+            end
+        end
+        yOff = yOff + 4
     end
 
     frame.ListContent:SetHeight(yOff + 10)

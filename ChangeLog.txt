@@ -3,6 +3,20 @@
 ================================================================================
 
 --------------------------------------------------------------------------------
+ v1.0.2 — 2026-04-04
+--------------------------------------------------------------------------------
+
+BUG FIXES
+---------
+- Fixed critical crash where GetAchievementCriteriaInfo would throw an error
+  for achievements with no Blizzard-registered criteria (e.g. skyriding races),
+  silently preventing the main window from opening. All three call sites in
+  AchievementData.lua and MainFrame.lua are now wrapped in pcall.
+- Set all unverified criteriaIndex values to nil in Achievements.lua. The
+  skyriding achievements had criteriaIndex = 1 which caused the crash — these
+  must be verified in-game with /gp criteria before being set.
+
+--------------------------------------------------------------------------------
  v1.0.1 — 2026-04-04
 --------------------------------------------------------------------------------
 
