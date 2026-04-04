@@ -3,6 +3,53 @@
 ================================================================================
 
 --------------------------------------------------------------------------------
+ v1.0.3 — 2026-04-04
+--------------------------------------------------------------------------------
+
+BUG FIXES
+---------
+- Fixed MakeListButton returning nil height when an achievement ID is not found,
+  causing arithmetic crash and preventing the main window from opening.
+- Fixed Horrific Vision achievements showing under Stormwind City zone group —
+  corrected to Dornogal (entry point in The War Within).
+
+NEW FEATURES
+------------
+- Draggable divider between the achievement list and detail panels. Drag left
+  or right to resize. Width is saved to GuidePostDB.listWidth between sessions.
+
+UI IMPROVEMENTS
+---------------
+- Achievement list now groups by zone with collapsible headers. Click any zone
+  header to collapse/expand it. Collapsed state persists between sessions.
+- Completed achievements show in grey with a checkmark in the list.
+- List panel width now dynamically adjusts when the divider is dragged.
+
+ACHIEVEMENT DATA — EASTERN KINGDOMS (complete)
+----------------------------------------------
+Added all Eastern Kingdoms character achievements across 27 zones:
+  Arathi Highlands, Badlands, Blasted Lands, Burning Steppes, Deadwind Pass,
+  Dun Morogh, Duskwood, Eastern Plaguelands, Elwynn Forest, Eversong Woods,
+  Hillsbrad Foothills, Hinterlands, Isle of Quel'Danas, Loch Modan, Northern
+  Stranglethorn, Cape of Stranglethorn, Redridge Mountains, Silvermoon City,
+  Silverpine Forest, Stormwind City, Swamp of Sorrows, Tirisfal Glades,
+  Twilight Highlands, Western Plaguelands, Wetlands, Zul'Aman, and more.
+Includes Exploration, Quests, Dungeons & Raids, Skyriding, Argent Tournament,
+  Professions, Feats of Strength, and World Events categories.
+Total: 102 achievements across all categories.
+
+ACHIEVEMENT DATA — WORLD EVENTS
+---------------------------------
+- Added dedicated "World Events" zone group for holiday achievements.
+- Added full Noblegarden achievement set (8 achievements + meta):
+    I Found One!, Chocoholic, Noble Garden, Hard Boiled, Desert Rose,
+    Spring Fling, Shake Your Bunny-Maker, Noble Gardener (meta).
+- Each achievement includes proper step-by-step guidance with waypoints
+  to all relevant Alliance locations.
+- All future holiday achievements will use zone = "World Events" to group
+  together in the collapsible list.
+
+--------------------------------------------------------------------------------
  v1.0.2 — 2026-04-04
 --------------------------------------------------------------------------------
 
