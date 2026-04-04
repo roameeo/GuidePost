@@ -317,8 +317,8 @@ function MF.SelectAchievement(id)
         -- Check if this step's criteria is complete
         local done = false
         if step.criteriaIndex then
-            local _, _, completed = GetAchievementCriteriaInfo(id, step.criteriaIndex)
-            done = completed
+            local ok, _, _, completed = pcall(GetAchievementCriteriaInfo, id, step.criteriaIndex)
+            done = ok and completed or false
         end
 
         -- Step container

@@ -60,9 +60,8 @@ function AD.GetPercent(id)
 
     for _, step in ipairs(ach.steps) do
         if step.criteriaIndex then
-            -- Use index-based lookup (works for all criteria, even those with criteriaID=0)
-            local _, _, completed = GetAchievementCriteriaInfo(id, step.criteriaIndex)
-            if completed then done = done + 1 end
+            local ok, _, _, completed = pcall(GetAchievementCriteriaInfo, id, step.criteriaIndex)
+            if ok and completed then done = done + 1 end
         end
     end
 
@@ -79,8 +78,8 @@ function AD.GetCriteriaProgress(id)
     for _, step in ipairs(ach.steps) do
         if step.criteriaIndex then
             total = total + 1
-            local _, _, completed = GetAchievementCriteriaInfo(id, step.criteriaIndex)
-            if completed then done = done + 1 end
+            local ok, _, _, completed = pcall(GetAchievementCriteriaInfo, id, step.criteriaIndex)
+            if ok and completed then done = done + 1 end
         end
     end
     return done, total
@@ -114,11 +113,9 @@ function AD.GetNextStep(id)
 
     for _, step in ipairs(ach.steps) do
         if step.criteriaIndex then
-            local _, _, completed = GetAchievementCriteriaInfo(id, step.criteriaIndex)
-            if not completed then return step end
+            local ok, _, _, completed = pcall(GetAchievementCriteriaInfo, id, step.criteriaIndex)
+            if not ok or not completed then return step end
         else
-            -- Steps without a criteriaIndex are always "pending"
-            -- (e.g. travel steps — we can't auto-detect them)
             return step
         end
     end

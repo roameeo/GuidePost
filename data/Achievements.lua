@@ -250,7 +250,7 @@ GP.Data.Achievements = {
                 npc           = "Elwynn Forest Flash Race",
                 coords        = { x = 64.18, y = 48.73 },
                 mapID         = nil,
-                criteriaIndex = 1,
+                criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
     },
@@ -268,7 +268,7 @@ GP.Data.Achievements = {
                 npc           = "Elwynn Forest Flash Race",
                 coords        = { x = 64.18, y = 48.73 },
                 mapID         = nil,
-                criteriaIndex = 1,
+                criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
     },
@@ -286,7 +286,7 @@ GP.Data.Achievements = {
                 npc           = "Elwynn Forest Flash Race",
                 coords        = { x = 64.18, y = 48.73 },
                 mapID         = nil,
-                criteriaIndex = 1,
+                criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
     },
@@ -304,7 +304,7 @@ GP.Data.Achievements = {
                 npc           = "Elwynn Forest Flash Race",
                 coords        = { x = 64.18, y = 48.73 },
                 mapID         = nil,
-                criteriaIndex = 1,
+                criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
     },
@@ -322,7 +322,7 @@ GP.Data.Achievements = {
                 npc           = "Elwynn Forest Flash Race",
                 coords        = { x = 64.18, y = 48.73 },
                 mapID         = nil,
-                criteriaIndex = 1,
+                criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
     },
@@ -340,7 +340,7 @@ GP.Data.Achievements = {
                 npc           = "Elwynn Forest Flash Race",
                 coords        = { x = 64.18, y = 48.73 },
                 mapID         = nil,
-                criteriaIndex = 1,
+                criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
     },
@@ -358,7 +358,7 @@ GP.Data.Achievements = {
                 npc           = "Elwynn Forest Flash Race",
                 coords        = { x = 64.18, y = 48.73 },
                 mapID         = nil,
-                criteriaIndex = 1,
+                criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
     },
@@ -376,7 +376,7 @@ GP.Data.Achievements = {
                 npc           = "Elwynn Forest Flash Race",
                 coords        = { x = 64.18, y = 48.73 },
                 mapID         = nil,
-                criteriaIndex = 1,
+                criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
     },
@@ -394,7 +394,7 @@ GP.Data.Achievements = {
                 npc           = "Elwynn Forest Flash Race",
                 coords        = { x = 64.18, y = 48.73 },
                 mapID         = nil,
-                criteriaIndex = 1,
+                criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
     },
@@ -523,7 +523,7 @@ GP.Data.Achievements = {
                 npc           = "Eva's Enchanted Journal",
                 coords        = { x = 57.0, y = 85.0 },
                 mapID         = nil,
-                criteriaIndex = 1,   -- single criteria: perform the ritual
+                criteriaIndex = nil,  -- verify with /gp criteria 18368
             },
         },
     },
