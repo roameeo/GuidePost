@@ -58,11 +58,11 @@ function MB.Initialize()
     bg:SetAllPoints()
     bg:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
 
-    -- Achievement icon
+    -- Custom GuidePost icon
     local icon = button:CreateTexture(nil, "ARTWORK")
-    icon:SetSize(20, 20)
+    icon:SetSize(32, 32)
     icon:SetPoint("CENTER")
-    icon:SetTexture("Interface\\AddOns\\GuidePost\\Media\\icon")
+    icon:SetTexture("Interface\\AddOns\\GuidePost\\Media\\icon.png")
     icon:SetTexCoord(0, 1, 0, 1)
 
     -- Highlight ring on hover
