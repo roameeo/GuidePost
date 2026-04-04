@@ -150,9 +150,10 @@ local function CreateMainFrame()
     achName:SetText("Select an achievement")
     f.AchName = achName
 
-    -- Progress bar below the name — width is set by LayoutPanels on resize
+    -- Progress bar below the name — anchored left and right so it fills the panel
     local bar = GP.UI.ProgressBar.New(detailPanel, 235, 14)
-    bar:SetPoint("TOPLEFT", achName, "BOTTOMLEFT", 0, -6)
+    bar:SetPoint("TOPLEFT",  achName, "BOTTOMLEFT",  0, -6)
+    bar:SetPoint("TOPRIGHT", detailPanel, "TOPRIGHT", -8, -(achName:GetHeight() + 14))
     bar:SetProgress(0)
     f.ProgressBar = bar
 
@@ -292,7 +293,14 @@ function MF.SelectAchievement(id)
     if not ach then return end
 
     frame.AchName:SetText(ach.name)
-    frame.ProgressBar:SetProgress(GP.AchievementData.GetPercent(id))
+
+    if GP.AchievementData.IsCompleted(id) then
+        frame.ProgressBar:SetProgress(100)
+        frame.ProgressBar:SetLabel("|cff00ff00Completed!|r")
+    else
+        local pct = GP.AchievementData.GetPercent(id)
+        frame.ProgressBar:SetProgress(pct)
+    end
 
     -- Clear old step rows
     for _, child in ipairs({frame.StepsContent:GetChildren()}) do
@@ -308,8 +316,8 @@ function MF.SelectAchievement(id)
     for _, step in ipairs(ach.steps) do
         -- Check if this step's criteria is complete
         local done = false
-        if step.criteria then
-            local _, _, completed = GetAchievementCriteriaInfoByID(id, step.criteria)
+        if step.criteriaIndex then
+            local _, _, completed = GetAchievementCriteriaInfo(id, step.criteriaIndex)
             done = completed
         end
 
@@ -331,20 +339,23 @@ function MF.SelectAchievement(id)
         badge:SetPoint("TOPLEFT", 4, -6)
         badge:SetText(done and "|cff00ff00✓|r" or ("|cffaaaaaa" .. step.index .. ".|r"))
 
-        -- Description text
+        -- Description text — width leaves room for the waypoint button
         local desc = row:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
         desc:SetPoint("TOPLEFT", 20, -6)
-        desc:SetWidth(148)
+        desc:SetPoint("TOPRIGHT", row, "TOPRIGHT", -36, -6)  -- stretches, leaves room for W button
         desc:SetWordWrap(true)
         desc:SetJustifyH("LEFT")
         desc:SetText(done and ("|cff888888" .. step.desc .. "|r") or step.desc)
 
-        -- NPC label (if any)
+        -- NPC label (if any) — pinned below the desc with a small gap
+        local rowHeight = 52   -- minimum row height
         if step.npc then
             local npcLabel = row:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-            npcLabel:SetPoint("BOTTOMLEFT", 20, 4)
+            npcLabel:SetPoint("TOPLEFT", desc, "BOTTOMLEFT", 0, -2)
             npcLabel:SetText("|cffffcc00" .. step.npc .. "|r")
+            rowHeight = 68
         end
+        row:SetHeight(rowHeight)
 
         -- Waypoint button (only on steps that have coords and aren't done)
         if step.coords and not done then
@@ -358,16 +369,18 @@ function MF.SelectAchievement(id)
                 GameTooltip:Show()
             end)
             wpBtn:SetScript("OnLeave", function() GameTooltip:Hide() end)
-            wpBtn:SetScript("OnClick", function()
+            wpBtn:SetScript("OnClick", function(self)
+                if self.clicked then return end   -- guard against double-fire
+                self.clicked = true
+                C_Timer.After(0.5, function() self.clicked = false end)
                 GP.TomTom.SetWaypoint(id, step)
-                -- Also track this achievement if not already
                 if not GP.Progress.IsTracked(id) then
                     GP.Progress.Track(id)
                 end
             end)
         end
 
-        yOff = yOff + 52
+        yOff = yOff + rowHeight + 4
     end
 
     frame.StepsContent:SetHeight(yOff + 10)

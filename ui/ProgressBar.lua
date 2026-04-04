@@ -50,9 +50,16 @@ function PB.New(parent, width, height)
     -- percent: 0-100 integer
     function container:SetProgress(percent)
         percent = math.max(0, math.min(100, percent or 0))
-        local fillWidth = math.max(1, math.floor((width - 2) * percent / 100))
+        -- Use GetWidth() so the fill scales correctly even after the bar is resized
+        local currentWidth = container:GetWidth()
+        local fillWidth = math.max(1, math.floor((currentWidth - 2) * percent / 100))
         fill:SetWidth(fillWidth)
-        label:SetText(percent .. "%")
+
+        if percent >= 100 then
+            label:SetText("Completed!")
+        else
+            label:SetText(percent .. "%")
+        end
 
         -- Colour shifts: red → yellow → green
         if percent < 33 then
@@ -64,6 +71,7 @@ function PB.New(parent, width, height)
         end
     end
 
+    -- Override the label text after calling SetProgress (e.g. "Completed!")
     function container:SetLabel(text)
         label:SetText(text)
     end

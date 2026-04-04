@@ -55,13 +55,13 @@ function AD.GetPercent(id)
     local ach = GP.Data.Achievements[id]
     if not ach then return 0 end
 
-    local total    = #ach.steps
-    local done     = 0
+    local total = #ach.steps
+    local done  = 0
 
     for _, step in ipairs(ach.steps) do
-        if step.criteria then
-            -- Ask Blizzard whether this specific criteria is completed
-            local _, _, completed = GetAchievementCriteriaInfoByID(id, step.criteria)
+        if step.criteriaIndex then
+            -- Use index-based lookup (works for all criteria, even those with criteriaID=0)
+            local _, _, completed = GetAchievementCriteriaInfo(id, step.criteriaIndex)
             if completed then done = done + 1 end
         end
     end
@@ -77,9 +77,9 @@ function AD.GetCriteriaProgress(id)
 
     local total, done = 0, 0
     for _, step in ipairs(ach.steps) do
-        if step.criteria then
+        if step.criteriaIndex then
             total = total + 1
-            local _, _, completed = GetAchievementCriteriaInfoByID(id, step.criteria)
+            local _, _, completed = GetAchievementCriteriaInfo(id, step.criteriaIndex)
             if completed then done = done + 1 end
         end
     end
@@ -113,14 +113,115 @@ function AD.GetNextStep(id)
     if not ach then return nil end
 
     for _, step in ipairs(ach.steps) do
-        if step.criteria then
-            local _, _, completed = GetAchievementCriteriaInfoByID(id, step.criteria)
+        if step.criteriaIndex then
+            local _, _, completed = GetAchievementCriteriaInfo(id, step.criteriaIndex)
             if not completed then return step end
         else
-            -- Steps without a criteria ID are always "pending"
+            -- Steps without a criteriaIndex are always "pending"
             -- (e.g. travel steps — we can't auto-detect them)
             return step
         end
     end
     return nil  -- all steps done
+end
+
+-- =============================================================================
+-- Zone Scanner
+-- =============================================================================
+-- Scans Blizzard achievement IDs in batches so the game doesn't freeze.
+-- Prints any achievement whose name or description contains the current zone,
+-- flagging ones already in the GuidePost database.
+--
+-- Usage: GP.AchievementData.ScanZone()        -- scans for current zone
+--        GP.AchievementData.ScanZone("Durotar") -- scans for a specific zone
+-- =============================================================================
+
+local SCAN_BATCH_SIZE = 200   -- IDs checked per frame — raise if you want faster
+local SCAN_ID_MAX     = 20000 -- highest ID to scan (Blizzard's range as of TWW)
+
+AD.ScanActive = false  -- true while a scan is running (prevents double-scans)
+
+function AD.ScanZone(overrideZone)
+    if AD.ScanActive then
+        GP.Print("Scan already in progress — please wait.")
+        return
+    end
+
+    local zone = overrideZone or GetZoneText()
+    if not zone or zone == "" then
+        GP.Print("Could not determine zone. Try: /gp scan <zone name>")
+        return
+    end
+
+    local zoneLower = zone:lower()
+    GP.Print(string.format("Scanning for achievements in |cff00ccff%s|r ... (this may take a moment)", zone))
+
+    AD.ScanActive  = true
+    local currentID = 1
+    local results   = {}   -- { id, name, category, alreadyInDB }
+
+    -- We use a repeating ticker so each batch runs in its own frame,
+    -- keeping the game responsive throughout the scan.
+    local ticker
+    ticker = C_Timer.NewTicker(0, function()
+
+        local batchEnd = math.min(currentID + SCAN_BATCH_SIZE - 1, SCAN_ID_MAX)
+
+        for id = currentID, batchEnd do
+            -- GetAchievementInfo returns nil for invalid IDs
+            local _, name, _, completed, _, _, _, desc, _, _, _, isGuild = GetAchievementInfo(id)
+
+            if name and not isGuild then
+                local nameLower = name:lower()
+                local descLower = (desc or ""):lower()
+
+                -- Match if the zone name appears in the achievement name or description
+                if nameLower:find(zoneLower, 1, true) or descLower:find(zoneLower, 1, true) then
+                    table.insert(results, {
+                        id          = id,
+                        name        = name,
+                        completed   = completed,
+                        inDB        = GP.Data.Achievements[id] ~= nil,
+                    })
+                end
+            end
+        end
+
+        currentID = batchEnd + 1
+
+        -- Scan complete
+        if currentID > SCAN_ID_MAX then
+            ticker:Cancel()
+            AD.ScanActive = false
+            AD.PrintScanResults(zone, results)
+        end
+    end)
+end
+
+function AD.PrintScanResults(zone, results)
+    if #results == 0 then
+        GP.Print(string.format("No achievements found matching |cff00ccff%s|r.", zone))
+        return
+    end
+
+    GP.Print(string.format(
+        "Found |cff00ccff%d|r achievement(s) matching |cff00ccff%s|r:", #results, zone))
+
+    for _, r in ipairs(results) do
+        local tags = {}
+
+        if r.completed then
+            table.insert(tags, "|cff00ff00DONE|r")
+        end
+        if r.inDB then
+            table.insert(tags, "|cff00ccffIN DB|r")
+        else
+            table.insert(tags, "|cffffcc00ADD ME|r")
+        end
+
+        local tagStr = table.concat(tags, " ")
+        GP.Print(string.format("  [%d] %s  %s", r.id, r.name, tagStr))
+    end
+
+    GP.Print("Copy any |cffffcc00ADD ME|r IDs into data/Achievements.lua!")
 end

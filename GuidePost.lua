@@ -5,14 +5,13 @@
 -- has already set up its module table inside GuidePostNS.
 --
 -- Responsibilities:
---   1. Create the global namespace table (referenced by all other files)
---   2. Register slash commands
---   3. Provide the GP.Print helper
+--   1. Register slash commands
+--   2. Provide the GP.Print helper
+-- NOTE: GuidePostNS is created in data/Achievements.lua (the first file loaded)
 -- =============================================================================
 
--- Create the global namespace.  Every other file does:
---   local GP = GuidePostNS
--- to get a local reference.
+-- Namespace was already created in data/Achievements.lua
+-- The 'or {}' here is just a safety net
 GuidePostNS = GuidePostNS or {}
 local GP = GuidePostNS
 
@@ -34,7 +33,8 @@ SLASH_GUIDEPOST1 = "/gp"
 SLASH_GUIDEPOST2 = "/guidepost"
 
 SlashCmdList["GUIDEPOST"] = function(input)
-    input = input and input:trim() or ""
+    input = input and input:match("^%s*(.-)%s*$") or ""
+    input = input:lower()  -- make all commands case-insensitive
 
     if input == "" then
         GP.UI.MainFrame.Toggle()
@@ -72,7 +72,52 @@ SlashCmdList["GUIDEPOST"] = function(input)
             end
         end
 
+    elseif input == "mapid" then
+        -- Print the UiMapID for your current zone — use this to fill in mapID fields
+        local mapID   = C_Map.GetBestMapForUnit("player")
+        local mapInfo = C_Map.GetMapInfo(mapID)
+        local name    = mapInfo and mapInfo.name or "Unknown"
+        GP.Print(string.format("Current zone: |cff00ccff%s|r  mapID = |cffffcc00%d|r", name, mapID))
+        GP.Print("Use this mapID in data/Achievements.lua for steps in this zone.")
+
+    elseif input:match("^criteria %d+$") then
+        local achID = tonumber(input:match("%d+"))
+        local _, achName = GetAchievementInfo(achID)
+        if not achName then
+            GP.Print("Unknown achievement ID: " .. achID)
+        else
+            GP.Print(string.format("Criteria for [%d] %s:", achID, achName))
+            GP.Print("Use the |cffffcc00index number|r as criteriaIndex in Achievements.lua")
+            local i = 1
+            while true do
+                local criteriaStr, _, completed = GetAchievementCriteriaInfo(achID, i)
+                if not criteriaStr then break end
+                local status = completed and "|cff00ff00DONE|r" or "|cffaaaaaa    |r"
+                GP.Print(string.format("  criteriaIndex=|cffffcc00%d|r  %s  %s",
+                    i, status, criteriaStr))
+                i = i + 1
+            end
+        end
+
+    elseif input == "scan" then
+        -- Scan the current zone for achievement IDs
+        GP.AchievementData.ScanZone()
+
+    elseif input:match("^scan .+$") then
+        -- Scan a specific zone: /gp scan Durotar
+        local zoneName = input:match("^scan (.+)$")
+        GP.AchievementData.ScanZone(zoneName)
+
     else
-        GP.Print("Commands: /ag | /ag list | /ag track <id> | /ag untrack <id> | /ag zone")
+        GP.Print("Commands:")
+        GP.Print("  /gp                    - Open / close window")
+        GP.Print("  /gp list               - List all known achievements")
+        GP.Print("  /gp track <id>         - Track an achievement")
+        GP.Print("  /gp untrack <id>       - Stop tracking")
+        GP.Print("  /gp zone               - Suggestions for current zone")
+        GP.Print("  /gp mapid              - Print UiMapID for your current zone")
+        GP.Print("  /gp criteria <achID>   - Dump criteria IDs for an achievement")
+        GP.Print("  /gp scan               - Scan current zone for achievement IDs")
+        GP.Print("  /gp scan <zone>        - Scan a specific zone by name")
     end
 end

@@ -3,6 +3,7 @@
 Step-by-step achievement guidance with TomTom waypoints, progress tracking, and zone-based suggestions.
 
 ## Features
+
 - 📋 Step-by-step guidance for each achievement
 - 🗺️ TomTom waypoint integration (click any step to drop a waypoint arrow)
 - 📊 Live progress bars per achievement
@@ -12,14 +13,16 @@ Step-by-step achievement guidance with TomTom waypoints, progress tracking, and 
 - ⌨️ Slash commands for quick access
 
 ## Installation
+
 1. Copy the `GuidePost/` folder into:
    ```
    World of Warcraft/_retail_/Interface/AddOns/
    ```
 2. Make sure **TomTom** is also installed and enabled.
-3. Log in — type `/gp` to open the window.
+3. Log in and type `/gp` to open the window.
 
 ## Slash Commands
+
 | Command | Effect |
 |---|---|
 | `/gp` | Open / close the main window |
@@ -29,6 +32,7 @@ Step-by-step achievement guidance with TomTom waypoints, progress tracking, and 
 | `/gp zone` | List achievements for your current zone |
 
 ## Adding Achievements
+
 Open `data/Achievements.lua` and follow the template at the bottom of the file.
 
 1. Find the achievement ID on [Wowhead](https://www.wowhead.com) (it's in the URL).
@@ -36,14 +40,16 @@ Open `data/Achievements.lua` and follow the template at the bottom of the file.
 3. Criteria IDs can be found on the Wowhead achievement page under "Criteria".
 
 ## Requirements
-- World of Warcraft: The War Within (Interface 110002+)
+
+- World of Warcraft: The War Within Season 2 (Interface 120001+)
 - [TomTom](https://www.curseforge.com/wow/addons/tomtom)
 
 ## Folder Structure
+
 ```
 GuidePost/
-├── GuidePost.toc       # Addon manifest
-├── GuidePost.lua       # Entry point + slash commands
+├── GuidePost.toc              # Addon manifest
+├── GuidePost.lua              # Entry point + slash commands
 ├── data/
 │   └── Achievements.lua       # Achievement database (edit this to add more!)
 ├── core/

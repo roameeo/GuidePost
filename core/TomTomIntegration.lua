@@ -40,10 +40,14 @@ function TT.SetWaypoint(achID, step)
     local ach   = GP.AchievementData.Get(achID)
     local mapID = step.mapID or (ach and ach.mapID) or nil
 
+    -- If no mapID is stored, fall back to the player's current map.
+    -- This won't be right for steps in other zones, but beats a hard error.
     if not mapID then
-        GP.Print("No map ID for this step — cannot place waypoint.")
-        return
+        mapID = C_Map.GetBestMapForUnit("player")
+        GP.Print("|cffffcc00No mapID for this step — using your current map. " ..
+                 "Use /gp mapid to get the correct ID and update Achievements.lua.|r")
     end
+
     if not step.coords then
         GP.Print("No coordinates for this step.")
         return
@@ -54,11 +58,11 @@ function TT.SetWaypoint(achID, step)
 
     -- TomTom.AddWaypoint(mapID, x, y, opts) – returns a UID we save for later removal
     TT.CurrentWaypoint = TomTom:AddWaypoint(mapID, x, y, {
-        title    = label,
-        from     = "GuidePost",
-        persistent = false,   -- disappears when you close the game
-        minimap  = true,
-        world    = true,
+        title      = label,
+        from       = "GuidePost",
+        persistent = false,
+        minimap    = true,
+        world      = true,
     })
 
     GP.Print(string.format("Waypoint set: |cff00ccff%s|r (%.1f, %.1f)", label, step.coords.x, step.coords.y))
