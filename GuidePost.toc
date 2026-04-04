@@ -1,0 +1,27 @@
+## Interface: 110002
+## Interface-Retail: 110002
+## Title: |cff00ccffGuidePost|r
+## Notes: Step-by-step achievement guidance with TomTom waypoints, progress tracking, and zone suggestions.
+## Author: YourNameHere
+## Version: 1.0.0
+## Dependencies: TomTom
+## SavedVariables: GuidePostDB
+## SavedVariablesPerCharacter: GuidePostCharDB
+
+# Data (loaded first so everything else can reference it)
+data\Achievements.lua
+
+# Core systems
+core\Events.lua
+core\AchievementData.lua
+core\TomTomIntegration.lua
+core\Progress.lua
+
+# UI (loaded last, depends on core systems)
+ui\MinimapButton.lua
+ui\ProgressBar.lua
+ui\Tooltip.lua
+ui\MainFrame.lua
+
+# Main entry point
+GuidePost.lua
