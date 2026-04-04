@@ -1,0 +1,43 @@
+**Bug Fixes**
+- Fixed `GuidePostNS` namespace not being available to other files — moved creation to `data/Achievements.lua` (first file loaded) instead of `GuidePost.lua` (last)
+- Fixed invalid escape sequences in texture paths (`\C`, `\U`) in `MinimapButton.lua` and `Tooltip.lua`
+- Fixed slash command input parsing — replaced unreliable `input:trim()` with native Lua pattern match, added case-insensitivity
+- Fixed `criteria` → `criteriaIndex` system — switched from `GetAchievementCriteriaInfoByID` to index-based `GetAchievementCriteriaInfo` which works correctly for all achievement types
+- Fixed duplicate Pest Control entry (`[1159]` was a leftover with wrong ID and bad data — removed)
+- Fixed waypoint button firing multiple times — added click guard with 0.5s cooldown
+- Fixed progress bar only filling halfway — anchored to both `TOPLEFT` and `TOPRIGHT`, switched to dynamic `GetWidth()` calculation
+- Updated Interface version from `110002` to `120001` (The War Within Season 2)
+
+**New Features**
+- `/gp mapid` — prints the correct `UiMapID` for your current zone
+- `/gp criteria <id>` — dumps all criteria with their index numbers for any achievement
+- `/gp scan <zone>` — async zone scanner that finds achievement IDs matching a zone name
+- All commands made case-insensitive
+
+**UI Improvements**
+- Step description text now word wraps correctly — fixed with `TOPRIGHT` anchor instead of fixed width
+- Row height is now dynamic based on content
+- Progress bar shows "Completed!" at 100% instead of "100%"
+- Progress bar stretches full width of the detail panel
+
+**Minimap Button**
+- Button now orbits the minimap edge on drag instead of free-moving
+- Drag angle saved to `GuidePostDB` and restored between sessions
+- Radius calculated dynamically from `Minimap:GetWidth()` so it works at any minimap size
+- `OnSizeChanged` hook added so button repositions automatically when minimap is resized in Edit Mode
+
+**TomTom Integration**
+- Switched to modern `C_Map` API (`C_Map.GetBestMapForUnit`) for mapID resolution
+- Falls back to player's current map if no mapID is set, with a helpful warning message
+
+**Achievement Data**
+- Fixed all achievement IDs and data (Pest Control was incorrectly assigned ID `1159`, corrected to `2556`)
+- All 18 Pest Control critters added with verified `criteriaIndex` values
+- Added Memory of Scholomance (`18368`) with full 11-step ritual guide
+- Added all 9 Elwynn Forest Flash skyriding achievements (`18444`–`18452`)
+- Removed fake "Going to Need a Bigger Bag" Darkmoon fishing entry (wrong ID)
+
+**Developer Tools**
+- Added `.luacheckrc` with all WoW API globals defined
+- `README.md` fixed for MD022 markdownlint compliance
+- All slash commands documented in updated help text
