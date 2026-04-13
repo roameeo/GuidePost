@@ -57,9 +57,4 @@ On("ACHIEVEMENT_EARNED", function(id, alreadyEarned)
     end
 end)
 
--- Called when the player's map changes (used to update TomTom waypoints)
-On("WORLD_MAP_UPDATE", function()
-    -- intentionally light — real work is done when the user clicks a step
-end)
-
 GP.Events.Frame = eventFrame
