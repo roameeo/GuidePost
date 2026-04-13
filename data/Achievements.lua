@@ -10,6 +10,9 @@
 --
 -- COORDINATES: Use the 0-100 scale shown on the world map.
 --   Hover the in-game map, or use "/way" in TomTom to find coords.
+--
+-- FACTION: Set to "Alliance" or "Horde" for faction-specific achievements.
+--   Leave blank (or omit) for neutral/cross-faction achievements.
 -- =============================================================================
 
 -- Create the global namespace here since this file loads first (see .toc).
@@ -189,6 +192,7 @@ GP.Data.Achievements = {
         name     = "Explore Durotar",
         category = "Exploration",
         zone     = "Durotar",
+        faction  = "Horde",
         mapID    = nil,  -- use /gp mapid while in Durotar
         steps = {
             {
@@ -222,6 +226,408 @@ GP.Data.Achievements = {
         },
     },
 
+    -- =========================================================================
+    -- HORDE ACHIEVEMENTS
+    -- =========================================================================
+
+    -- -------------------------------------------------------------------------
+    -- "Explore Orgrimmar" (ID 1012)
+    -- Explore all districts of Orgrimmar.
+    -- -------------------------------------------------------------------------
+    [1012] = {
+        id       = 1012,
+        name     = "Explore Orgrimmar",
+        category = "Exploration",
+        zone     = "Orgrimmar",
+        faction  = "Horde",
+        mapID    = 1454,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Discover The Valley of Spirits.",
+                npc           = nil,
+                coords        = { x = 37.0, y = 87.0 },
+                mapID         = 1454,
+                criteriaIndex = 1,
+            },
+            {
+                index         = 2,
+                desc          = "Discover The Valley of Strength (main city center with bank).",
+                npc           = nil,
+                coords        = { x = 51.0, y = 76.0 },
+                mapID         = 1454,
+                criteriaIndex = 2,
+            },
+            {
+                index         = 3,
+                desc          = "Discover The Valley of Wisdom (Grommash Hold area).",
+                npc           = nil,
+                coords        = { x = 48.0, y = 71.0 },
+                mapID         = 1454,
+                criteriaIndex = 3,
+            },
+            {
+                index         = 4,
+                desc          = "Discover The Valley of Honor (auction house district).",
+                npc           = nil,
+                coords        = { x = 51.0, y = 38.0 },
+                mapID         = 1454,
+                criteriaIndex = 4,
+            },
+            {
+                index         = 5,
+                desc          = "Discover The Drag (zeppelin tower and profession trainers).",
+                npc           = nil,
+                coords        = { x = 55.0, y = 63.0 },
+                mapID         = 1454,
+                criteriaIndex = 5,
+            },
+            {
+                index         = 6,
+                desc          = "Discover The Cleft of Shadow (rogue/warlock area).",
+                npc           = nil,
+                coords        = { x = 47.0, y = 59.0 },
+                mapID         = 1454,
+                criteriaIndex = 6,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Champion of Orgrimmar" (ID 2783)
+    -- Earn the right to represent Orgrimmar at the Argent Tournament.
+    -- -------------------------------------------------------------------------
+    [2783] = {
+        id       = 2783,
+        name     = "Champion of Orgrimmar",
+        category = "Argent Tournament",
+        zone     = "Icecrown",
+        faction  = "Horde",
+        mapID    = nil,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Travel to the Argent Tournament Grounds in Icecrown (far northeast).",
+                npc           = nil,
+                coords        = { x = 74.0, y = 20.0 },
+                mapID         = nil,
+                criteriaIndex = nil,
+            },
+            {
+                index         = 2,
+                desc          = "Speak with the Orgrimmar Valiant and complete the daily jousting quests to earn 25 Champion's Seals. Then complete The Valiant's Challenge to become Champion.",
+                npc           = "Orgrimmar Valiant",
+                coords        = { x = 74.0, y = 20.0 },
+                mapID         = nil,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Exalted Champion of Orgrimmar" (ID 2765)
+    -- Reach Exalted with Orgrimmar AND earn Champion status at the Tournament.
+    -- -------------------------------------------------------------------------
+    [2765] = {
+        id       = 2765,
+        name     = "Exalted Champion of Orgrimmar",
+        category = "Argent Tournament",
+        zone     = "Icecrown",
+        faction  = "Horde",
+        mapID    = nil,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Reach Exalted reputation with Orgrimmar. Do Orgrimmar quests, Horde battle quests, or buy Orgrimmar rep tokens from the Darkmoon Faire.",
+                npc           = nil,
+                coords        = nil,
+                mapID         = nil,
+                criteriaIndex = 1,
+            },
+            {
+                index         = 2,
+                desc          = "Earn Champion of Orgrimmar at the Argent Tournament (complete The Valiant's Challenge for the Orc faction).",
+                npc           = "Orgrimmar Valiant",
+                coords        = { x = 74.0, y = 20.0 },
+                mapID         = nil,
+                criteriaIndex = 2,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Let's Do Lunch: Orgrimmar" (ID 5475)
+    -- Purchase and eat 5 specific foods from vendors around Orgrimmar.
+    -- -------------------------------------------------------------------------
+    [5475] = {
+        id       = 5475,
+        name     = "Let's Do Lunch: Orgrimmar",
+        category = "Exploration",
+        zone     = "Orgrimmar",
+        faction  = "Horde",
+        mapID    = 1454,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Buy and eat Grilled Crab from a food vendor in the Valley of Strength.",
+                npc           = "Food Vendor",
+                coords        = { x = 51.0, y = 76.0 },
+                mapID         = 1454,
+                criteriaIndex = 1,
+            },
+            {
+                index         = 2,
+                desc          = "Buy and eat Delicious Chocolate Cake from a vendor in the Valley of Spirits.",
+                npc           = "Food Vendor",
+                coords        = { x = 37.0, y = 87.0 },
+                mapID         = 1454,
+                criteriaIndex = 2,
+            },
+            {
+                index         = 3,
+                desc          = "Buy and eat Kaldorei Spider Kabob from a vendor in the Valley of Honor.",
+                npc           = "Food Vendor",
+                coords        = { x = 51.0, y = 38.0 },
+                mapID         = 1454,
+                criteriaIndex = 3,
+            },
+            {
+                index         = 4,
+                desc          = "Buy and eat Crunchy Frog from a vendor near Grommash Hold.",
+                npc           = "Food Vendor",
+                coords        = { x = 48.0, y = 71.0 },
+                mapID         = 1454,
+                criteriaIndex = 4,
+            },
+            {
+                index         = 5,
+                desc          = "Buy and eat Roasted Boar Meat from a vendor in The Drag.",
+                npc           = "Food Vendor",
+                coords        = { x = 55.0, y = 63.0 },
+                mapID         = 1454,
+                criteriaIndex = 5,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Fish or Cut Bait: Orgrimmar" (ID 5477)
+    -- Complete fishing daily quests in Orgrimmar.
+    -- Pick up dailies from Razgar on the river docks.
+    -- -------------------------------------------------------------------------
+    [5477] = {
+        id       = 5477,
+        name     = "Fish or Cut Bait: Orgrimmar",
+        category = "Professions",
+        zone     = "Orgrimmar",
+        faction  = "Horde",
+        mapID    = 1454,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the daily fishing quest 'Clammy Hands' from Razgar in Orgrimmar.",
+                npc           = "Razgar",
+                coords        = { x = 70.0, y = 29.0 },
+                mapID         = 1454,
+                criteriaIndex = 1,
+            },
+            {
+                index         = 2,
+                desc          = "Complete the daily fishing quest 'No Dumping!' from Razgar.",
+                npc           = "Razgar",
+                coords        = { x = 70.0, y = 29.0 },
+                mapID         = 1454,
+                criteriaIndex = 2,
+            },
+            {
+                index         = 3,
+                desc          = "Complete the daily fishing quest 'A Golden Opportunity' from Razgar.",
+                npc           = "Razgar",
+                coords        = { x = 70.0, y = 29.0 },
+                mapID         = 1454,
+                criteriaIndex = 3,
+            },
+            {
+                index         = 4,
+                desc          = "Complete the daily fishing quest 'Tadpole Terror' from Razgar.",
+                npc           = "Razgar",
+                coords        = { x = 70.0, y = 29.0 },
+                mapID         = 1454,
+                criteriaIndex = 4,
+            },
+            {
+                index         = 5,
+                desc          = "Complete the daily fishing quest 'Like Pike?' from Razgar.",
+                npc           = "Razgar",
+                coords        = { x = 70.0, y = 29.0 },
+                mapID         = 1454,
+                criteriaIndex = 5,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Explore Mulgore" (ID 736)
+    -- Explore all areas of Mulgore, the Tauren starting zone.
+    -- -------------------------------------------------------------------------
+    [736] = {
+        id       = 736,
+        name     = "Explore Mulgore",
+        category = "Exploration",
+        zone     = "Mulgore",
+        faction  = "Horde",
+        mapID    = 7,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Discover Red Cloud Mesa (Tauren starting area).",
+                npc           = nil,
+                coords        = { x = 52.0, y = 80.0 },
+                mapID         = 7,
+                criteriaIndex = 1,
+            },
+            {
+                index         = 2,
+                desc          = "Discover Bloodhoof Village.",
+                npc           = nil,
+                coords        = { x = 47.0, y = 59.0 },
+                mapID         = 7,
+                criteriaIndex = 2,
+            },
+            {
+                index         = 3,
+                desc          = "Discover Thunderhorn Water Well.",
+                npc           = nil,
+                coords        = { x = 44.0, y = 45.0 },
+                mapID         = 7,
+                criteriaIndex = 3,
+            },
+            {
+                index         = 4,
+                desc          = "Discover Bael'dun Digsite.",
+                npc           = nil,
+                coords        = { x = 31.0, y = 49.0 },
+                mapID         = 7,
+                criteriaIndex = 4,
+            },
+            {
+                index         = 5,
+                desc          = "Discover Ravaged Caravan.",
+                npc           = nil,
+                coords        = { x = 53.0, y = 48.0 },
+                mapID         = 7,
+                criteriaIndex = 5,
+            },
+            {
+                index         = 6,
+                desc          = "Discover Red Rocks.",
+                npc           = nil,
+                coords        = { x = 59.0, y = 50.0 },
+                mapID         = 7,
+                criteriaIndex = 6,
+            },
+            {
+                index         = 7,
+                desc          = "Discover The Rolling Plains.",
+                npc           = nil,
+                coords        = { x = 62.0, y = 62.0 },
+                mapID         = 7,
+                criteriaIndex = 7,
+            },
+            {
+                index         = 8,
+                desc          = "Discover The Venture Co. Mine.",
+                npc           = nil,
+                coords        = { x = 62.0, y = 46.0 },
+                mapID         = 7,
+                criteriaIndex = 8,
+            },
+            {
+                index         = 9,
+                desc          = "Discover Palemane Rock.",
+                npc           = nil,
+                coords        = { x = 54.0, y = 48.0 },
+                mapID         = 7,
+                criteriaIndex = 9,
+            },
+            {
+                index         = 10,
+                desc          = "Discover Windfury Ridge.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 23.0 },
+                mapID         = 7,
+                criteriaIndex = 10,
+            },
+            {
+                index         = 11,
+                desc          = "Discover The Golden Plains.",
+                npc           = nil,
+                coords        = { x = 54.0, y = 63.0 },
+                mapID         = 7,
+                criteriaIndex = 11,
+            },
+            {
+                index         = 12,
+                desc          = "Discover Wildmane Water Well.",
+                npc           = nil,
+                coords        = { x = 43.0, y = 15.0 },
+                mapID         = 7,
+                criteriaIndex = 12,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Explore Thunder Bluff" (ID 1003)
+    -- Explore all platforms of Thunder Bluff.
+    -- -------------------------------------------------------------------------
+    [1003] = {
+        id       = 1003,
+        name     = "Explore Thunder Bluff",
+        category = "Exploration",
+        zone     = "Thunder Bluff",
+        faction  = "Horde",
+        mapID    = 1638,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Discover The High Rise (central platform).",
+                npc           = nil,
+                coords        = { x = 46.0, y = 50.0 },
+                mapID         = 1638,
+                criteriaIndex = 1,
+            },
+            {
+                index         = 2,
+                desc          = "Discover The Hunter's Rise (northeast platform).",
+                npc           = nil,
+                coords        = { x = 59.0, y = 51.0 },
+                mapID         = 1638,
+                criteriaIndex = 2,
+            },
+            {
+                index         = 3,
+                desc          = "Discover The Spirit Rise (southeast platform with druid area).",
+                npc           = nil,
+                coords        = { x = 45.0, y = 65.0 },
+                mapID         = 1638,
+                criteriaIndex = 3,
+            },
+            {
+                index         = 4,
+                desc          = "Discover The Elder Rise (northwest platform with inn).",
+                npc           = nil,
+                coords        = { x = 28.0, y = 29.0 },
+                mapID         = 1638,
+                criteriaIndex = 4,
+            },
+        },
+    },
+
+    -- =========================================================================
+    -- END HORDE SECTION
+    -- =========================================================================
+
     -- -------------------------------------------------------------------------
     -- Elwynn Forest Flash — Skyriding Race (Normal)
     -- Eastern Kingdoms Cup event. Start NPC at coords 64.18, 48.73.
@@ -234,6 +640,7 @@ GP.Data.Achievements = {
         name     = "Elwynn Forest Flash: Bronze",
         category = "Skyriding",
         zone     = "Elwynn Forest",
+        faction  = "Alliance",
         mapID    = nil,   -- use /gp mapid in Elwynn Forest
         steps = {
             {
@@ -260,6 +667,7 @@ GP.Data.Achievements = {
         name     = "Elwynn Forest Flash: Silver",
         category = "Skyriding",
         zone     = "Elwynn Forest",
+        faction  = "Alliance",
         mapID    = nil,
         steps = {
             {
@@ -278,6 +686,7 @@ GP.Data.Achievements = {
         name     = "Elwynn Forest Flash: Gold",
         category = "Skyriding",
         zone     = "Elwynn Forest",
+        faction  = "Alliance",
         mapID    = nil,
         steps = {
             {
@@ -296,6 +705,7 @@ GP.Data.Achievements = {
         name     = "Elwynn Forest Flash Advanced: Bronze",
         category = "Skyriding",
         zone     = "Elwynn Forest",
+        faction  = "Alliance",
         mapID    = nil,
         steps = {
             {
@@ -409,6 +819,7 @@ GP.Data.Achievements = {
         name     = "Explore Elwynn Forest",
         category = "Exploration",
         zone     = "Elwynn Forest",
+        faction  = "Alliance",
         mapID    = 37,
         steps = {
             {
@@ -541,6 +952,7 @@ GP.Data.Achievements = {
         name     = "Stormwind Stockade",
         category = "Dungeons & Raids",
         zone     = "Stormwind City",
+        faction  = "Alliance",
         mapID    = 84,
         steps = {
             {
@@ -563,6 +975,7 @@ GP.Data.Achievements = {
         name     = "Champion of Stormwind",
         category = "Argent Tournament",
         zone     = "Icecrown",
+        faction  = "Alliance",
         mapID    = nil,   -- /gp mapid while in Icecrown
         steps = {
             {
@@ -593,6 +1006,7 @@ GP.Data.Achievements = {
         name     = "Exalted Champion of Stormwind",
         category = "Argent Tournament",
         zone     = "Icecrown",
+        faction  = "Alliance",
         mapID    = nil,
         steps = {
             {
@@ -623,6 +1037,7 @@ GP.Data.Achievements = {
         name     = "Let's Do Lunch: Stormwind",
         category = "Exploration",
         zone     = "Stormwind City",
+        faction  = "Alliance",
         mapID    = 84,
         steps = {
             {
@@ -678,6 +1093,7 @@ GP.Data.Achievements = {
         name     = "Fish or Cut Bait: Stormwind",
         category = "Professions",
         zone     = "Stormwind City",
+        faction  = "Alliance",
         mapID    = 84,
         steps = {
             {

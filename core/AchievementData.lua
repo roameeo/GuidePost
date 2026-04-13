@@ -10,6 +10,33 @@ local GP = GuidePostNS
 GP.AchievementData = {}
 local AD = GP.AchievementData   -- short alias used throughout this file
 
+-- ─── Faction Detection ──────────────────────────────────────────────────────
+
+-- Returns "Alliance", "Horde", or "Neutral" based on the player's faction
+function AD.GetPlayerFaction()
+    local englishFaction, localizedFaction = UnitFactionGroup("player")
+    -- englishFaction is "Alliance", "Horde", or "Neutral" (for Pandaren before choosing)
+    return englishFaction or "Neutral"
+end
+
+-- Returns true if the achievement is available for the player's faction
+-- faction field can be: "Alliance", "Horde", or nil (meaning Neutral/Both)
+function AD.IsAvailableForPlayerFaction(id)
+    local ach = GP.Data.Achievements[id]
+    if not ach then return false end
+    
+    -- If no faction specified, achievement is available to all
+    if not ach.faction then return true end
+    
+    local playerFaction = AD.GetPlayerFaction()
+    
+    -- Neutral players (pre-choice Pandaren) see everything
+    if playerFaction == "Neutral" then return true end
+    
+    -- Otherwise, must match the faction field
+    return ach.faction == playerFaction
+end
+
 -- ─── Initialisation ──────────────────────────────────────────────────────────
 
 function AD.Initialize()
@@ -35,7 +62,8 @@ function AD.RefreshZoneSuggestions()
     local zone = GetZoneText()
     if GP.Data.ByZone[zone] then
         for _, id in ipairs(GP.Data.ByZone[zone]) do
-            if not AD.IsCompleted(id) then
+            -- Only suggest achievements that match player's faction and aren't completed
+            if AD.IsAvailableForPlayerFaction(id) and not AD.IsCompleted(id) then
                 table.insert(AD.CurrentZoneSuggestions, id)
             end
         end
@@ -93,10 +121,14 @@ function AD.Get(id)
 end
 
 -- Returns a sorted list of all achievement IDs (sorted by name)
+-- Only returns achievements available to the player's faction
 function AD.GetAll()
     local list = {}
     for id in pairs(GP.Data.Achievements) do
-        table.insert(list, id)
+        -- Filter by faction
+        if AD.IsAvailableForPlayerFaction(id) then
+            table.insert(list, id)
+        end
     end
     table.sort(list, function(a, b)
         local na = GP.Data.Achievements[a].name or ""
