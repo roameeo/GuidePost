@@ -17,6 +17,9 @@ local MF = GP.UI.MainFrame
 -- The ID of the achievement currently selected in the list (nil = none)
 MF.SelectedID = nil
 
+-- Search filter text (lowercase for case-insensitive matching)
+MF.SearchFilter = ""
+
 -- ─── Frame Creation ──────────────────────────────────────────────────────────
 
 -- ─── Layout constants (panels recompute from these on resize) ────────────────
@@ -137,6 +140,40 @@ local function CreateMainFrame()
         f:Hide()
     end)
 
+    -- Minimize/Maximize button — positioned to the left of the close button
+    local minBtn = CreateFrame("Button", nil, f)
+    minBtn:SetSize(24, 24)
+    minBtn:SetPoint("RIGHT", f.CloseButton, "LEFT", -2, 0)
+    minBtn:SetNormalTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Up")
+    minBtn:SetHighlightTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Highlight")
+    minBtn:SetPushedTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Down")
+    minBtn:SetScript("OnClick", function()
+        MF.ToggleMinimize()
+    end)
+    minBtn:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        if f.isMinimized then
+            GameTooltip:SetText("Maximize")
+        else
+            GameTooltip:SetText("Minimize to title bar")
+        end
+        GameTooltip:Show()
+    end)
+    minBtn:SetScript("OnLeave", function()
+        GameTooltip:Hide()
+    end)
+    f.MinimizeButton = minBtn
+
+    -- Summary text shown when minimized
+    local summaryText = f:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    summaryText:SetPoint("LEFT", f.TitleText, "RIGHT", 10, 0)
+    summaryText:SetJustifyH("LEFT")
+    summaryText:Hide()
+    f.SummaryText = summaryText
+
+    -- Track minimized state
+    f.isMinimized = false
+
     -- ── Left panel: achievement list ─────────────────────────────────────────
     local listPanel = CreateFrame("Frame", nil, f, "InsetFrameTemplate")
     listPanel:SetSize(GetListWidth(), 420)
@@ -147,9 +184,55 @@ local function CreateMainFrame()
     listLabel:SetPoint("TOPLEFT", 5, -5)
     listLabel:SetText("|cffaaaaaaAchievements|r")
 
-    -- ScrollFrame for the list
+    -- Search box
+    local searchBox = CreateFrame("EditBox", nil, listPanel, "InputBoxTemplate")
+    searchBox:SetSize(GetListWidth() - 15, 20)
+    searchBox:SetPoint("TOPLEFT", 8, -22)
+    searchBox:SetAutoFocus(false)
+    searchBox:SetMaxLetters(50)
+    searchBox:SetFontObject(GameFontHighlightSmall)
+    searchBox:SetScript("OnEscapePressed", function(self)
+        self:ClearFocus()
+    end)
+    searchBox:SetScript("OnTextChanged", function(self)
+        -- Filter achievements as user types
+        MF.SearchFilter = self:GetText():lower()
+        PopulateList(f)
+    end)
+    searchBox:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText("Search achievements by name")
+        GameTooltip:Show()
+    end)
+    searchBox:SetScript("OnLeave", function()
+        GameTooltip:Hide()
+    end)
+    f.SearchBox = searchBox
+
+    -- Search clear button (X)
+    local clearBtn = CreateFrame("Button", nil, listPanel)
+    clearBtn:SetSize(16, 16)
+    clearBtn:SetPoint("RIGHT", searchBox, "RIGHT", -4, 0)
+    clearBtn:SetNormalTexture("Interface\\FriendsFrame\\ClearBroadcastIcon")
+    clearBtn:SetScript("OnClick", function()
+        searchBox:SetText("")
+        searchBox:ClearFocus()
+        MF.SearchFilter = ""
+        PopulateList(f)
+    end)
+    clearBtn:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText("Clear search")
+        GameTooltip:Show()
+    end)
+    clearBtn:SetScript("OnLeave", function()
+        GameTooltip:Hide()
+    end)
+    f.SearchClearBtn = clearBtn
+
+    -- ScrollFrame for the list (adjusted for search box)
     local scroll = CreateFrame("ScrollFrame", nil, listPanel, "UIPanelScrollFrameTemplate")
-    scroll:SetPoint("TOPLEFT",     5, -20)
+    scroll:SetPoint("TOPLEFT",     5, -47)
     scroll:SetPoint("BOTTOMRIGHT", -25, 5)
 
     local listContent = CreateFrame("Frame", nil, scroll)
@@ -251,6 +334,23 @@ local function CreateMainFrame()
 end
 
 -- ─── List Population ─────────────────────────────────────────────────────────
+
+-- Check if an achievement matches the current search filter
+local function MatchesFilter(id)
+    if not MF.SearchFilter or MF.SearchFilter == "" then
+        return true
+    end
+    local ach = GP.Data.Achievements[id]
+    if not ach then return false end
+    
+    local name = (ach.name or ""):lower()
+    local category = (ach.category or ""):lower()
+    local zone = (ach.zone or ""):lower()
+    
+    return name:find(MF.SearchFilter, 1, true) or 
+           category:find(MF.SearchFilter, 1, true) or 
+           zone:find(MF.SearchFilter, 1, true)
+end
 
 -- Tracks which zone groups are collapsed. Persisted in SavedVars.
 local function GetCollapsed()
@@ -373,13 +473,20 @@ local function PopulateList(frame)
 
     -- ── Tracked section ───────────────────────────────────────────────────────
     local tracked = GP.Progress.GetTrackedList()
-    if #tracked > 0 then
+    local filteredTracked = {}
+    for _, id in ipairs(tracked) do
+        if MatchesFilter(id) then
+            table.insert(filteredTracked, id)
+        end
+    end
+
+    if #filteredTracked > 0 then
         local hdr = frame.ListContent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         hdr:SetPoint("TOPLEFT", 2, -yOff)
         hdr:SetText("|cff00ff88Tracked|r")
         yOff = yOff + 18
 
-        for _, id in ipairs(tracked) do
+        for _, id in ipairs(filteredTracked) do
             local _, h = MakeListButton(frame.ListContent, id, yOff, listWidth)
             yOff = yOff + h + 2
         end
@@ -388,13 +495,20 @@ local function PopulateList(frame)
 
     -- ── In This Zone section ──────────────────────────────────────────────────
     local suggestions = GP.AchievementData.CurrentZoneSuggestions
-    if #suggestions > 0 then
+    local filteredSuggestions = {}
+    for _, id in ipairs(suggestions) do
+        if MatchesFilter(id) then
+            table.insert(filteredSuggestions, id)
+        end
+    end
+
+    if #filteredSuggestions > 0 then
         local hdr = frame.ListContent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         hdr:SetPoint("TOPLEFT", 2, -yOff)
         hdr:SetText("|cff00ccffIn This Zone|r")
         yOff = yOff + 18
 
-        for _, id in ipairs(suggestions) do
+        for _, id in ipairs(filteredSuggestions) do
             local _, h = MakeListButton(frame.ListContent, id, yOff, listWidth)
             yOff = yOff + h + 2
         end
@@ -406,13 +520,15 @@ local function PopulateList(frame)
     local zoneMap = {}
     local zoneNames = {}
     for _, id in ipairs(GP.AchievementData.GetAll()) do
-        local ach = GP.Data.Achievements[id]
-        local zone = (ach and ach.zone) or "Unknown"
-        if not zoneMap[zone] then
-            zoneMap[zone] = {}
-            table.insert(zoneNames, zone)
+        if MatchesFilter(id) then
+            local ach = GP.Data.Achievements[id]
+            local zone = (ach and ach.zone) or "Unknown"
+            if not zoneMap[zone] then
+                zoneMap[zone] = {}
+                table.insert(zoneNames, zone)
+            end
+            table.insert(zoneMap[zone], id)
         end
-        table.insert(zoneMap[zone], id)
     end
     table.sort(zoneNames)
 
@@ -420,16 +536,18 @@ local function PopulateList(frame)
 
     for _, zone in ipairs(zoneNames) do
         local ids = zoneMap[zone]
-        local _, hh = MakeZoneHeader(frame.ListContent, zone, yOff, listWidth, Repopulate)
-        yOff = yOff + hh
+        if #ids > 0 then  -- Only show zone header if it has matching achievements
+            local _, hh = MakeZoneHeader(frame.ListContent, zone, yOff, listWidth, Repopulate)
+            yOff = yOff + hh
 
-        if not GetCollapsed()[zone] then
-            for _, id in ipairs(ids) do
-                local _, h = MakeListButton(frame.ListContent, id, yOff, listWidth)
-                yOff = yOff + h + 2
+            if not GetCollapsed()[zone] then
+                for _, id in ipairs(ids) do
+                    local _, h = MakeListButton(frame.ListContent, id, yOff, listWidth)
+                    yOff = yOff + h + 2
+                end
             end
+            yOff = yOff + 4
         end
-        yOff = yOff + 4
     end
 
     frame.ListContent:SetHeight(yOff + 10)
@@ -563,6 +681,51 @@ function MF.SelectAchievement(id)
     tb:Show()
 end
 
+-- ─── Minimize/Maximize ───────────────────────────────────────────────────────
+
+function MF.ToggleMinimize()
+    local f = MF.Frame
+    if not f then return end
+
+    f.isMinimized = not f.isMinimized
+    local db = GuidePostDB or {}
+    db.isMinimized = f.isMinimized
+
+    if f.isMinimized then
+        -- Minimize: hide content, shrink to title bar only
+        f.savedHeight = f:GetHeight()
+        f:SetHeight(40)
+        f.Inset:Hide()
+        f.ListPanel:Hide()
+        f.DetailPanel:Hide()
+        f.Divider:Hide()
+        f.ZoneLabel:Hide()
+        f.MinimizeButton:SetNormalTexture("Interface\\Buttons\\UI-Panel-SmallerButton-Up")
+        f.MinimizeButton:SetHighlightTexture("Interface\\Buttons\\UI-Panel-SmallerButton-Highlight")
+        f.MinimizeButton:SetPushedTexture("Interface\\Buttons\\UI-Panel-SmallerButton-Down")
+
+        -- Show summary line
+        local tracked = GP.Progress.GetTrackedList()
+        local zoneSuggestions = GP.AchievementData.CurrentZoneSuggestions
+        f.SummaryText:SetText(string.format("|cffffff00%d tracked | %d in zone|r", 
+            #tracked, #zoneSuggestions))
+        f.SummaryText:Show()
+    else
+        -- Maximize: restore content
+        f:SetHeight(f.savedHeight or MIN_H)
+        f.Inset:Show()
+        f.ListPanel:Show()
+        f.DetailPanel:Show()
+        f.Divider:Show()
+        f.ZoneLabel:Show()
+        f.MinimizeButton:SetNormalTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Up")
+        f.MinimizeButton:SetHighlightTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Highlight")
+        f.MinimizeButton:SetPushedTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Down")
+        f.SummaryText:Hide()
+        LayoutPanels(f)
+    end
+end
+
 -- ─── Public API ───────────────────────────────────────────────────────────────
 
 function MF.Open()
@@ -596,6 +759,12 @@ function MF.Open()
     end
 
     MF.Frame:Show()
+
+    -- Restore minimized state if it was minimized when closed
+    if db and db.isMinimized then
+        MF.Frame.isMinimized = false  -- reset first so ToggleMinimize works
+        MF.ToggleMinimize()
+    end
 end
 
 function MF.Close()

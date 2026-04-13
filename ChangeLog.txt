@@ -3,6 +3,78 @@
 ================================================================================
 
 --------------------------------------------------------------------------------
+v2.2.0 - 2026-4-13
+--------------------------------------------------------------------------------
+
+NEW FEATURES — UI ENHANCEMENTS
+-------------------------------
+- Added minimize/maximize button to collapse window to just the title bar
+  • Saves screen space while keeping the addon accessible
+  • Shows summary line when minimized (tracked count | zone suggestions)
+  • Remembers collapsed state between sessions
+  • Click minimize button again to restore full window
+
+- Added search bar at the top of the achievement list
+  • Filter achievements by name, category, or zone in real-time
+  • Case-insensitive search matches as you type
+  • Clear button (X) to quickly reset search
+  • Filtered results show in all sections (Tracked, In This Zone, All)
+
+NEW COMMAND — /gp next
+----------------------
+- Added `/gp next` command to set waypoint for next incomplete step
+  • Works without opening the UI — perfect for quick navigation
+  • Automatically finds the first tracked achievement with incomplete steps
+  • Sets TomTom waypoint and displays step description in chat
+  • Shows helpful message if no achievements are tracked
+
+UI IMPROVEMENTS
+---------------
+- Search box tooltip added for better discoverability
+- Minimize button tooltip dynamically shows "Minimize" or "Maximize"
+- Improved layout handling when minimized/restored
+
+--------------------------------------------------------------------------------
+v2.1.0 - 2026-4-13
+--------------------------------------------------------------------------------
+
+NEW FEATURES — FACTION SUPPORT
+-------------------------------
+- Added automatic faction detection system that shows only relevant achievements
+  based on your character's faction (Alliance, Horde, or Neutral)
+- Implemented faction filtering in achievement lists and zone suggestions
+- Added `faction` field to achievement data structure (optional: "Alliance", 
+  "Horde", or omit for cross-faction/neutral achievements)
+
+ACHIEVEMENT DATA — HORDE CITIES & ZONES
+----------------------------------------
+Added comprehensive Horde achievement coverage:
+  • Explore Orgrimmar (#1012) — All 6 districts of the capital city
+  • Champion of Orgrimmar (#2783) — Argent Tournament representation
+  • Exalted Champion of Orgrimmar (#2765) — Exalted reputation achievement
+  • Let's Do Lunch: Orgrimmar (#5475) — Food tour achievement (5 vendors)
+  • Fish or Cut Bait: Orgrimmar (#5477) — Daily fishing quests
+  • Explore Mulgore (#736) — Tauren starting zone (12 locations)
+  • Explore Thunder Bluff (#1003) — All 4 city platforms
+  • Explore Durotar (#43) — Marked as Horde-specific
+
+ACHIEVEMENT DATA — ALLIANCE FACTION TAGS
+-----------------------------------------
+Updated existing Alliance achievements with faction tags:
+  • Stormwind-related achievements (exploration, dailies, fishing)
+  • Elwynn Forest exploration and skyriding races
+  • Champion/Exalted Champion of Stormwind
+  • Alliance-specific zone achievements
+
+CORE FUNCTIONALITY
+------------------
+- Added GetPlayerFaction() function to detect character faction automatically
+- Added IsAvailableForPlayerFaction() to filter achievements by faction
+- Updated achievement filtering logic in RefreshZoneSuggestions() and GetAll()
+- Neutral achievements (e.g., Pest Control, The Fishing Diplomat) remain 
+  visible to all factions
+
+--------------------------------------------------------------------------------
 v2.0.5 - 2026-4-13
 --------------------------------------------------------------------------------
 
@@ -11,7 +83,7 @@ BUG FIXES
 - Removed registration of the deprecated "WORLD_MAP_UPDATE" event in
   core/Events.lua, which caused a Lua error on load. The handler was a no-op
   and has been deleted entirely. No functionality was lost.
-  
+
 --------------------------------------------------------------------------------
  v2.0.0 — 2026-04-12
 --------------------------------------------------------------------------------

@@ -23,11 +23,15 @@ function GP.Print(msg)
 end
 
 -- ─── Slash Commands ──────────────────────────────────────────────────────────
--- /ag or /guidepost  →  toggles the main window
--- /ag list                  →  prints all known achievements to chat
--- /ag track <id>            →  start tracking achievement by ID
--- /ag untrack <id>          →  stop tracking
--- /ag zone                  →  show achievements suggested for current zone
+-- /gp or /guidepost         → toggles the main window
+-- /gp list                  → prints all known achievements to chat
+-- /gp track <id>            → start tracking achievement by ID
+-- /gp untrack <id>          → stop tracking
+-- /gp zone                  → show achievements suggested for current zone
+-- /gp next                  → set waypoint for next incomplete step (tracked)
+-- /gp mapid                 → print current zone's UiMapID
+-- /gp criteria <id>         → dump criteria IDs for an achievement
+-- /gp scan [zone]           → scan for achievement IDs in current or named zone
 
 SLASH_GUIDEPOST1 = "/gp"
 SLASH_GUIDEPOST2 = "/guidepost"
@@ -108,6 +112,33 @@ SlashCmdList["GUIDEPOST"] = function(input)
         local zoneName = input:match("^scan (.+)$")
         GP.AchievementData.ScanZone(zoneName)
 
+    elseif input == "next" then
+        -- Set waypoint for next incomplete step of any tracked achievement
+        local tracked = GP.Progress.GetTrackedList()
+        if #tracked == 0 then
+            GP.Print("|cffffcc00No achievements are currently tracked.|r")
+            GP.Print("Use |cff00ccff/gp track <id>|r or click 'Track' in the UI.")
+            return
+        end
+
+        -- Find the first tracked achievement with an incomplete step
+        local foundStep = false
+        for _, id in ipairs(tracked) do
+            local nextStep = GP.AchievementData.GetNextStep(id)
+            if nextStep then
+                local ach = GP.Data.Achievements[id]
+                GP.TomTom.SetWaypoint(id, nextStep)
+                GP.Print(string.format("Next step for |cff00ccff%s|r:", ach.name))
+                GP.Print("  " .. nextStep.desc)
+                foundStep = true
+                break
+            end
+        end
+
+        if not foundStep then
+            GP.Print("|cff00ff00All tracked achievements are complete!|r")
+        end
+
     else
         GP.Print("Commands:")
         GP.Print("  /gp                    - Open / close window")
@@ -115,6 +146,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
         GP.Print("  /gp track <id>         - Track an achievement")
         GP.Print("  /gp untrack <id>       - Stop tracking")
         GP.Print("  /gp zone               - Suggestions for current zone")
+        GP.Print("  /gp next               - Set waypoint for next tracked step")
         GP.Print("  /gp mapid              - Print UiMapID for your current zone")
         GP.Print("  /gp criteria <achID>   - Dump criteria IDs for an achievement")
         GP.Print("  /gp scan               - Scan current zone for achievement IDs")
