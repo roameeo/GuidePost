@@ -3,6 +3,38 @@
 ================================================================================
 
 --------------------------------------------------------------------------------
+v2.4.1 - 2026-4-14
+--------------------------------------------------------------------------------
+
+BUG FIXES — DATA & CODE QUALITY
+---------------------------------
+- Removed 15 duplicate and wrong-ID achievement entries from Achievements.lua
+  • [43] "Explore Durotar" removed (ID 43 = Kalimdor Explorer meta)
+  • Second [736] "Explore Mulgore" entry removed (duplicate, shorter version)
+  • [1262] "Loremaster of Outland" removed (ID 1262 = Explore Outland meta)
+  • [4928] "Bloodmyst Isle Quests" removed (ID 4928 = Darkshore Quests)
+  • Both [4933] entries removed ("Mulgore Quests" and "Northern Barrens Quests",
+    neither could be verified with a correct ID)
+  • [6974] "Explore Vale of Eternal Blossoms" removed (ID 6974 = Pandaria Explorer)
+  • [10665] "Explore Broken Isles" meta removed (ID 10665 = Explore Azsuna)
+  • [13791] "Junkyard Tinkerer" and "Making the Most of It" removed
+    (ID 13791 = Making the Mount — neither entry matched)
+  • [13708] "Toy Tester", "Snowball's Revenge", and "Most Minis Wins" removed
+    (all three used the same wrong shared ID)
+  • [13799] "Periodic Destruction" and "Junkyard Collector" removed
+    (ID 13799 does not exist in the game)
+- Added missing faction = "Alliance" tag to skyriding achievements 18448–18452
+  • Elwynn Forest Flash Advanced: Silver & Gold
+  • Elwynn Forest Flash Reverse: Bronze, Silver & Gold
+- Fixed PopulateList forward-reference warning in MainFrame.lua
+  • Added local forward declaration before CreateMainFrame()
+  • Converted local function definition to assignment
+- Fixed GameTooltip:SetText calls in MainFrame.lua to pass all required arguments
+  (r, g, b, wrapText) — affects 7 tooltip calls throughout the file
+- Added TomTom and EasyMenu to Lua.diagnostics.globals in .vscode/settings.json
+  to suppress false-positive undefined-global warnings
+
+--------------------------------------------------------------------------------
 v2.4.0 - 2026-4-14
 --------------------------------------------------------------------------------
 
