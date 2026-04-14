@@ -3,38 +3,45 @@
 ## Recently Completed ✓
 
 ### ✓ Min/Max Button (v2.2.0)
+
 - Collapse the window to just the title bar to save screen space
 - Remember collapsed state between sessions (saved to GuidePostDB)
 - Show a summary line when collapsed (e.g. "3 tracked | 2 in this zone")
 
 ### ✓ Search Bar (v2.2.0)
+
 - Search bar to find achievements by name, category, or zone
 - Real-time filtering as you type
 - Clear button to reset search quickly
 
 ### ✓ /gp next Command (v2.2.0)
+
 - `/gp next` slash command — set waypoint for next incomplete step without opening UI
 - Automatically finds first tracked achievement with incomplete steps
 - Perfect for quick navigation while questing
 
 ### ✓ Faction Support (v2.1.0)
+
 - Automatic faction detection (Alliance/Horde/Neutral)
 - Faction-specific achievements filtered automatically
 - Cross-faction achievements remain visible to all
 
 ### ✓ Custom Icon
+
 - Custom minimap button icon (Media/Icon.png)
 - Unique design to distinguish GuidePost from other addons
+
+### ✓ Filter Options (v2.3.0)
+
+- Filter by category (General, Exploration, PvP, Dungeons, etc.)
+- Filter by status (All, In Progress, Not Started, Completed)
+- Filter by zone (All, Current Zone)
+- Low-Hanging Fruit sorting — show achievements closest to completion first
+- All filters persist between sessions
 
 ---
 
 ## In Progress / Next Up
-
-### Filter Options
-- Filter the achievement list by category (General, Exploration, PvP, Dungeons, etc.)
-- Filter by status: All / In Progress / Not Started / Completed
-- Filter by zone: only show achievements for the current zone
-- "Low-hanging fruit" filter — show achievements closest to completion first
 
 ---
 

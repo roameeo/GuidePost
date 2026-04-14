@@ -3,6 +3,26 @@
 ================================================================================
 
 --------------------------------------------------------------------------------
+v2.3.0 - 2026-4-13
+--------------------------------------------------------------------------------
+
+NEW FEATURES — FILTER OPTIONS
+------------------------------
+- Added comprehensive filtering system to the achievement list
+  • Category filter: Show only achievements from specific categories
+    (General, Exploration, PvP, Dungeons, Profession, World Events, etc.)
+  • Status filter: Filter by completion state
+    - All: Show all achievements (default)
+    - In Progress: Show achievements with some criteria completed or tracked
+    - Not Started: Show achievements with no progress yet
+    - Completed: Show only earned achievements
+  • Zone filter: Toggle between "All" and "Current Zone" to find relevant content
+  • Low-Hanging Fruit: Checkbox to sort achievements by completion percentage
+    (shows achievements closest to completion first)
+  • All filter settings persist between sessions in SavedVariables
+  • Filter controls integrated below the search bar in the main UI
+
+--------------------------------------------------------------------------------
 v2.2.0 - 2026-4-13
 --------------------------------------------------------------------------------
 

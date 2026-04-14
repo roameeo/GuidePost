@@ -20,6 +20,14 @@ MF.SelectedID = nil
 -- Search filter text (lowercase for case-insensitive matching)
 MF.SearchFilter = ""
 
+-- Active filters (persisted in SavedVars)
+MF.Filters = {
+    category = "All",  -- "All" or specific category name
+    status = "All",    -- "All", "In Progress", "Not Started", "Completed"
+    zone = "All",      -- "All", "Current Zone"
+    lowHangingFruit = false  -- Sort by completion percentage
+}
+
 -- ─── Frame Creation ──────────────────────────────────────────────────────────
 
 -- ─── Layout constants (panels recompute from these on resize) ────────────────
@@ -230,9 +238,136 @@ local function CreateMainFrame()
     end)
     f.SearchClearBtn = clearBtn
 
-    -- ScrollFrame for the list (adjusted for search box)
+    -- ── Filter Controls ───────────────────────────────────────────────────────
+    -- Load persisted filters
+    GuidePostDB = GuidePostDB or {}
+    GuidePostDB.filters = GuidePostDB.filters or {}
+    MF.Filters.category = GuidePostDB.filters.category or "All"
+    MF.Filters.status = GuidePostDB.filters.status or "All"
+    MF.Filters.zone = GuidePostDB.filters.zone or "All"
+    MF.Filters.lowHangingFruit = GuidePostDB.filters.lowHangingFruit or false
+
+    local filterY = -47  -- Start position for filters
+
+    -- Category filter dropdown
+    local categoryLabel = listPanel:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    categoryLabel:SetPoint("TOPLEFT", 8, filterY)
+    categoryLabel:SetText("|cffaaaaaaCategory:|r")
+
+    local categoryBtn = CreateFrame("Button", nil, listPanel)
+    categoryBtn:SetSize(GetListWidth() - 80, 20)
+    categoryBtn:SetPoint("TOPLEFT", 65, filterY)
+    categoryBtn:SetNormalTexture("Interface\\ChatFrame\\UI-ChatInputBorder-Left")
+    categoryBtn:GetNormalTexture():SetTexCoord(0, 0, 0, 1)
+    
+    local categoryBtnBg = categoryBtn:CreateTexture(nil, "BACKGROUND")
+    categoryBtnBg:SetAllPoints()
+    categoryBtnBg:SetColorTexture(0.1, 0.1, 0.1, 0.8)
+    
+    local categoryBtnText = categoryBtn:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    categoryBtnText:SetPoint("LEFT", 5, 0)
+    categoryBtnText:SetText(MF.Filters.category)
+    f.CategoryBtnText = categoryBtnText
+    
+    categoryBtn:SetScript("OnClick", function()
+        MF.ShowCategoryMenu(categoryBtn)
+    end)
+    categoryBtn:SetScript("OnEnter", function()
+        categoryBtnBg:SetColorTexture(0.15, 0.15, 0.25, 0.9)
+    end)
+    categoryBtn:SetScript("OnLeave", function()
+        categoryBtnBg:SetColorTexture(0.1, 0.1, 0.1, 0.8)
+    end)
+
+    filterY = filterY - 25
+
+    -- Status filter dropdown
+    local statusLabel = listPanel:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    statusLabel:SetPoint("TOPLEFT", 8, filterY)
+    statusLabel:SetText("|cffaaaaaaStatus:|r")
+
+    local statusBtn = CreateFrame("Button", nil, listPanel)
+    statusBtn:SetSize(GetListWidth() - 80, 20)
+    statusBtn:SetPoint("TOPLEFT", 65, filterY)
+    
+    local statusBtnBg = statusBtn:CreateTexture(nil, "BACKGROUND")
+    statusBtnBg:SetAllPoints()
+    statusBtnBg:SetColorTexture(0.1, 0.1, 0.1, 0.8)
+    
+    local statusBtnText = statusBtn:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    statusBtnText:SetPoint("LEFT", 5, 0)
+    statusBtnText:SetText(MF.Filters.status)
+    f.StatusBtnText = statusBtnText
+    
+    statusBtn:SetScript("OnClick", function()
+        MF.ShowStatusMenu(statusBtn)
+    end)
+    statusBtn:SetScript("OnEnter", function()
+        statusBtnBg:SetColorTexture(0.15, 0.15, 0.25, 0.9)
+    end)
+    statusBtn:SetScript("OnLeave", function()
+        statusBtnBg:SetColorTexture(0.1, 0.1, 0.1, 0.8)
+    end)
+
+    filterY = filterY - 25
+
+    -- Zone filter and Low-Hanging Fruit checkbox on same row
+    local zoneLabel = listPanel:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    zoneLabel:SetPoint("TOPLEFT", 8, filterY)
+    zoneLabel:SetText("|cffaaaaaaZone:|r")
+
+    local zoneBtn = CreateFrame("Button", nil, listPanel)
+    zoneBtn:SetSize((GetListWidth() - 85) / 2, 20)
+    zoneBtn:SetPoint("TOPLEFT", 45, filterY)
+    
+    local zoneBtnBg = zoneBtn:CreateTexture(nil, "BACKGROUND")
+    zoneBtnBg:SetAllPoints()
+    zoneBtnBg:SetColorTexture(0.1, 0.1, 0.1, 0.8)
+    
+    local zoneBtnText = zoneBtn:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    zoneBtnText:SetPoint("LEFT", 5, 0)
+    zoneBtnText:SetText(MF.Filters.zone)
+    f.ZoneBtnText = zoneBtnText
+    
+    zoneBtn:SetScript("OnClick", function()
+        MF.ShowZoneMenu(zoneBtn)
+    end)
+    zoneBtn:SetScript("OnEnter", function()
+        zoneBtnBg:SetColorTexture(0.15, 0.15, 0.25, 0.9)
+    end)
+    zoneBtn:SetScript("OnLeave", function()
+        zoneBtnBg:SetColorTexture(0.1, 0.1, 0.1, 0.8)
+    end)
+
+    -- Low-Hanging Fruit checkbox
+    local lhfCheck = CreateFrame("CheckButton", nil, listPanel, "UICheckButtonTemplate")
+    lhfCheck:SetSize(20, 20)
+    lhfCheck:SetPoint("LEFT", zoneBtn, "RIGHT", 5, 0)
+    lhfCheck:SetChecked(MF.Filters.lowHangingFruit)
+    lhfCheck:SetScript("OnClick", function(self)
+        MF.Filters.lowHangingFruit = self:GetChecked()
+        GuidePostDB.filters.lowHangingFruit = MF.Filters.lowHangingFruit
+        PopulateList(f)
+    end)
+    lhfCheck:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText("Low-Hanging Fruit\nShow achievements closest to completion first")
+        GameTooltip:Show()
+    end)
+    lhfCheck:SetScript("OnLeave", function()
+        GameTooltip:Hide()
+    end)
+    
+    local lhfLabel = listPanel:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    lhfLabel:SetPoint("LEFT", lhfCheck, "RIGHT", 2, 0)
+    lhfLabel:SetText("|cffaaaaaa↓%|r")
+    f.LowHangingFruitCheck = lhfCheck
+
+    filterY = filterY - 28
+
+    -- ScrollFrame for the list (adjusted for filter controls)
     local scroll = CreateFrame("ScrollFrame", nil, listPanel, "UIPanelScrollFrameTemplate")
-    scroll:SetPoint("TOPLEFT",     5, -47)
+    scroll:SetPoint("TOPLEFT",     5, filterY)
     scroll:SetPoint("BOTTOMRIGHT", -25, 5)
 
     local listContent = CreateFrame("Frame", nil, scroll)
@@ -335,21 +470,136 @@ end
 
 -- ─── List Population ─────────────────────────────────────────────────────────
 
--- Check if an achievement matches the current search filter
-local function MatchesFilter(id)
-    if not MF.SearchFilter or MF.SearchFilter == "" then
-        return true
+-- ─── Filter Menu Helpers ─────────────────────────────────────────────────────
+
+-- Show category filter dropdown menu
+function MF.ShowCategoryMenu(anchor)
+    local menu = CreateFrame("Frame", "GuidePostCategoryMenu", UIParent, "UIDropDownMenuTemplate")
+    
+    -- Get unique categories from achievements
+    local categories = {"All"}
+    local seen = {}
+    for id, ach in pairs(GP.Data.Achievements) do
+        if ach.category and not seen[ach.category] then
+            seen[ach.category] = true
+            table.insert(categories, ach.category)
+        end
     end
+    table.sort(categories, function(a, b)
+        if a == "All" then return true end
+        if b == "All" then return false end
+        return a < b
+    end)
+    
+    local menuList = {}
+    for _, cat in ipairs(categories) do
+        table.insert(menuList, {
+            text = cat,
+            func = function()
+                MF.Filters.category = cat
+                GuidePostDB.filters.category = cat
+                MF.Frame.CategoryBtnText:SetText(cat)
+                PopulateList(MF.Frame)
+            end,
+            checked = (MF.Filters.category == cat)
+        })
+    end
+    
+    EasyMenu(menuList, menu, anchor, 0, 0, "MENU")
+end
+
+-- Show status filter dropdown menu
+function MF.ShowStatusMenu(anchor)
+    local menu = CreateFrame("Frame", "GuidePostStatusMenu", UIParent, "UIDropDownMenuTemplate")
+    
+    local statuses = {"All", "In Progress", "Not Started", "Completed"}
+    local menuList = {}
+    for _, status in ipairs(statuses) do
+        table.insert(menuList, {
+            text = status,
+            func = function()
+                MF.Filters.status = status
+                GuidePostDB.filters.status = status
+                MF.Frame.StatusBtnText:SetText(status)
+                PopulateList(MF.Frame)
+            end,
+            checked = (MF.Filters.status == status)
+        })
+    end
+    
+    EasyMenu(menuList, menu, anchor, 0, 0, "MENU")
+end
+
+-- Show zone filter dropdown menu
+function MF.ShowZoneMenu(anchor)
+    local menu = CreateFrame("Frame", "GuidePostZoneMenu", UIParent, "UIDropDownMenuTemplate")
+    
+    local zones = {"All", "Current Zone"}
+    local menuList = {}
+    for _, zone in ipairs(zones) do
+        table.insert(menuList, {
+            text = zone,
+            func = function()
+                MF.Filters.zone = zone
+                GuidePostDB.filters.zone = zone
+                MF.Frame.ZoneBtnText:SetText(zone)
+                PopulateList(MF.Frame)
+            end,
+            checked = (MF.Filters.zone == zone)
+        })
+    end
+    
+    EasyMenu(menuList, menu, anchor, 0, 0, "MENU")
+end
+
+-- Check if an achievement matches the current search filter and active filters
+local function MatchesFilter(id)
     local ach = GP.Data.Achievements[id]
     if not ach then return false end
     
-    local name = (ach.name or ""):lower()
-    local category = (ach.category or ""):lower()
-    local zone = (ach.zone or ""):lower()
+    -- Search text filter
+    if MF.SearchFilter and MF.SearchFilter ~= "" then
+        local name = (ach.name or ""):lower()
+        local category = (ach.category or ""):lower()
+        local zone = (ach.zone or ""):lower()
+        
+        local searchMatch = name:find(MF.SearchFilter, 1, true) or 
+                           category:find(MF.SearchFilter, 1, true) or 
+                           zone:find(MF.SearchFilter, 1, true)
+        if not searchMatch then return false end
+    end
     
-    return name:find(MF.SearchFilter, 1, true) or 
-           category:find(MF.SearchFilter, 1, true) or 
-           zone:find(MF.SearchFilter, 1, true)
+    -- Category filter
+    if MF.Filters.category ~= "All" then
+        if ach.category ~= MF.Filters.category then
+            return false
+        end
+    end
+    
+    -- Status filter
+    if MF.Filters.status ~= "All" then
+        local isComplete = GP.AchievementData.IsCompleted(id)
+        local done, total = GP.AchievementData.GetCriteriaProgress(id)
+        local isInProgress = (done > 0 and done < total) or GP.Progress.IsTracked(id)
+        
+        if MF.Filters.status == "Completed" and not isComplete then
+            return false
+        elseif MF.Filters.status == "In Progress" and (not isInProgress or isComplete) then
+            return false
+        elseif MF.Filters.status == "Not Started" and (isInProgress or isComplete) then
+            return false
+        end
+    end
+    
+    -- Zone filter
+    if MF.Filters.zone == "Current Zone" then
+        local currentZone = GetZoneText()
+        if ach.zone ~= currentZone then
+            return false
+        end
+    end
+    
+    return true
 end
 
 -- Tracks which zone groups are collapsed. Persisted in SavedVars.
@@ -458,6 +708,23 @@ local function MakeZoneHeader(parent, zoneName, yOffset, width, onToggle)
     return btn, 22
 end
 
+-- Sort achievements by completion percentage (descending)
+local function SortByCompletion(list)
+    if not MF.Filters.lowHangingFruit then return end
+    
+    table.sort(list, function(a, b)
+        local doneA, totalA = GP.AchievementData.GetCriteriaProgress(a)
+        local doneB, totalB = GP.AchievementData.GetCriteriaProgress(b)
+        
+        -- Calculate percentages (avoid division by zero)
+        local pctA = (totalA > 0) and (doneA / totalA) or 0
+        local pctB = (totalB > 0) and (doneB / totalB) or 0
+        
+        -- Sort by percentage descending (highest completion first)
+        return pctA > pctB
+    end)
+end
+
 local function PopulateList(frame)
     -- Clear existing content
     for _, child in ipairs({frame.ListContent:GetChildren()}) do
@@ -479,6 +746,7 @@ local function PopulateList(frame)
             table.insert(filteredTracked, id)
         end
     end
+    SortByCompletion(filteredTracked)
 
     if #filteredTracked > 0 then
         local hdr = frame.ListContent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
@@ -501,6 +769,7 @@ local function PopulateList(frame)
             table.insert(filteredSuggestions, id)
         end
     end
+    SortByCompletion(filteredSuggestions)
 
     if #filteredSuggestions > 0 then
         local hdr = frame.ListContent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
@@ -536,6 +805,7 @@ local function PopulateList(frame)
 
     for _, zone in ipairs(zoneNames) do
         local ids = zoneMap[zone]
+        SortByCompletion(ids)
         if #ids > 0 then  -- Only show zone header if it has matching achievements
             local _, hh = MakeZoneHeader(frame.ListContent, zone, yOff, listWidth, Repopulate)
             yOff = yOff + hh
