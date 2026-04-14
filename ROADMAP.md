@@ -43,14 +43,15 @@
 
 ## In Progress / Next Up
 
+- **Achievement chains view** — show prerequisite chains visually (e.g. Loremaster)
+- **Seasonal alerts** — warn when time-limited achievements are about to expire
+- **Estimated completion** — rough time estimate based on step count
+
 ---
 
 ## Other Ideas (Backlog)
 
-- **Achievement chains view** — show prerequisite chains visually (e.g. Loremaster)
-- **Seasonal alerts** — warn when time-limited achievements are about to expire
 - **Party sync** — broadcast your current achievement goal to group members
-- **Estimated completion** — rough time estimate based on step count
 - **WeakAuras export** — push current progress to a dynamic WA display
 - **Per-character vs account-wide** — flag achievements that are account-wide
 - **Sound + flash** on completion — something more satisfying than the default Blizzard ding
