@@ -1,4 +1,4 @@
--- =============================================================================
+                                                 -- =============================================================================
 -- GuidePost: ui/MainFrame.lua
 -- =============================================================================
 -- The primary UI window.  Shows:
@@ -81,6 +81,8 @@ local function LayoutPanels(f)
     end
 end
 
+local PopulateList  -- forward declaration; defined below
+
 local function CreateMainFrame()
     -- Root window
     local f = CreateFrame("Frame", "GuidePostFrame", UIParent,
@@ -161,9 +163,9 @@ local function CreateMainFrame()
     minBtn:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
         if f.isMinimized then
-            GameTooltip:SetText("Maximize")
+            GameTooltip:SetText("Maximize", 1, 1, 1, true)
         else
-            GameTooltip:SetText("Minimize to title bar")
+            GameTooltip:SetText("Minimize to title bar", 1, 1, 1, true)
         end
         GameTooltip:Show()
     end)
@@ -209,7 +211,7 @@ local function CreateMainFrame()
     end)
     searchBox:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        GameTooltip:SetText("Search achievements by name")
+        GameTooltip:SetText("Search achievements by name", 1, 1, 1, true)
         GameTooltip:Show()
     end)
     searchBox:SetScript("OnLeave", function()
@@ -230,7 +232,7 @@ local function CreateMainFrame()
     end)
     clearBtn:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        GameTooltip:SetText("Clear search")
+        GameTooltip:SetText("Clear search", 1, 1, 1, true)
         GameTooltip:Show()
     end)
     clearBtn:SetScript("OnLeave", function()
@@ -351,7 +353,7 @@ local function CreateMainFrame()
     end)
     lhfCheck:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        GameTooltip:SetText("Low-Hanging Fruit\nShow achievements closest to completion first")
+        GameTooltip:SetText("Low-Hanging Fruit\nShow achievements closest to completion first", 1, 1, 1, true)
         GameTooltip:Show()
     end)
     lhfCheck:SetScript("OnLeave", function()
@@ -392,7 +394,7 @@ local function CreateMainFrame()
         divBar:SetColorTexture(0.6, 0.8, 1.0, 0.9)
         -- Show a resize cursor hint via tooltip
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        GameTooltip:SetText("Drag to resize panels", 0.8, 0.8, 0.8)
+        GameTooltip:SetText("Drag to resize panels", 0.8, 0.8, 0.8, true)
         GameTooltip:Show()
     end)
     divider:SetScript("OnLeave", function(self)
@@ -725,7 +727,7 @@ local function SortByCompletion(list)
     end)
 end
 
-local function PopulateList(frame)
+PopulateList = function(frame)
     -- Clear existing content
     for _, child in ipairs({frame.ListContent:GetChildren()}) do
         child:Hide()
@@ -906,7 +908,7 @@ function MF.SelectAchievement(id)
             wpBtn:SetText("|cff00ccffW|r")
             wpBtn:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-                GameTooltip:SetText("Set TomTom waypoint")
+                GameTooltip:SetText("Set TomTom waypoint", 1, 1, 1, true)
                 GameTooltip:Show()
             end)
             wpBtn:SetScript("OnLeave", function() GameTooltip:Hide() end)

@@ -182,49 +182,6 @@ GP.Data.Achievements = {
         },
     },
 
-    -- -------------------------------------------------------------------------
-    -- "Explore Durotar" (ID 43)
-    -- Use /gp mapid while in Durotar to verify mapID.
-    -- Use /gp criteria 43 to get the real criteria IDs.
-    -- -------------------------------------------------------------------------
-    [43] = {
-        id       = 43,
-        name     = "Explore Durotar",
-        category = "Exploration",
-        zone     = "Durotar",
-        faction  = "Horde",
-        mapID    = nil,  -- use /gp mapid while in Durotar
-        steps = {
-            {
-                index        = 1,
-                desc         = "Visit Razor Hill in southern Durotar.",
-                npc          = "Kaltunk (Flight Master)",
-                coords       = { x = 52.6, y = 61.6 },
-                criteriaIndex = 1,   -- use /gp criteria 43 to verify
-            },
-            {
-                index        = 2,
-                desc         = "Head to the Valley of Trials.",
-                npc          = nil,
-                coords       = { x = 43.0, y = 69.0 },
-                criteriaIndex = 2,
-            },
-            {
-                index        = 3,
-                desc         = "Visit Sen'jin Village on the coast.",
-                npc          = nil,
-                coords       = { x = 55.6, y = 74.6 },
-                criteriaIndex = 3,
-            },
-            {
-                index        = 4,
-                desc         = "Explore the northern border near Skull Rock.",
-                npc          = nil,
-                coords       = { x = 50.0, y = 28.0 },
-                criteriaIndex = 4,
-            },
-        },
-    },
 
     -- =========================================================================
     -- HORDE ACHIEVEMENTS
@@ -1086,6 +1043,7 @@ GP.Data.Achievements = {
         name     = "Elwynn Forest Flash Advanced: Silver",
         category = "Skyriding",
         zone     = "Elwynn Forest",
+        faction  = "Alliance",
         mapID    = nil,
         steps = {
             {
@@ -1104,6 +1062,7 @@ GP.Data.Achievements = {
         name     = "Elwynn Forest Flash Advanced: Gold",
         category = "Skyriding",
         zone     = "Elwynn Forest",
+        faction  = "Alliance",
         mapID    = nil,
         steps = {
             {
@@ -1122,6 +1081,7 @@ GP.Data.Achievements = {
         name     = "Elwynn Forest Flash Reverse: Bronze",
         category = "Skyriding",
         zone     = "Elwynn Forest",
+        faction  = "Alliance",
         mapID    = nil,
         steps = {
             {
@@ -1140,6 +1100,7 @@ GP.Data.Achievements = {
         name     = "Elwynn Forest Flash Reverse: Silver",
         category = "Skyriding",
         zone     = "Elwynn Forest",
+        faction  = "Alliance",
         mapID    = nil,
         steps = {
             {
@@ -1158,6 +1119,7 @@ GP.Data.Achievements = {
         name     = "Elwynn Forest Flash Reverse: Gold",
         category = "Skyriding",
         zone     = "Elwynn Forest",
+        faction  = "Alliance",
         mapID    = nil,
         steps = {
             {
@@ -3305,23 +3267,6 @@ GP.Data.Achievements = {
         },
     },
 
-    [13791] = {
-        id       = 13791,
-        name     = "Junkyard Tinkerer",
-        category = "Reputation",
-        zone     = "Mechagon",
-        mapID    = 1462,
-        steps = {
-            {
-                index         = 1,
-                desc          = "Reach Exalted reputation with Rustbolt Resistance. Do daily quests, turn in Spare Parts, kill rares, and complete construction projects in Rustbolt.",
-                npc           = "Prince Erazmin",
-                coords        = { x = 71.0, y = 36.0 },
-                mapID         = 1462,
-                criteriaIndex = nil,
-            },
-        },
-    },
 
     [13470] = {
         id       = 13470,
@@ -3336,23 +3281,6 @@ GP.Data.Achievements = {
         },
     },
 
-    [13708] = {
-        id       = 13708,
-        name     = "Toy Tester",
-        category = "General",
-        zone     = "Mechagon",
-        mapID    = 1462,
-        steps = {
-            {
-                index         = 1,
-                desc          = "Collect 25 toys from Mechagon. Many can be crafted with Pascal-K1N6, purchased with Spare Parts, or looted from rares and chests.",
-                npc           = "Pascal-K1N6",
-                coords        = { x = 71.0, y = 32.0 },
-                mapID         = 1462,
-                criteriaIndex = nil,
-            },
-        },
-    },
 
     [13479] = {
         id       = 13479,
@@ -3441,35 +3369,6 @@ GP.Data.Achievements = {
         },
     },
 
-    [13708] = {
-        id       = 13708,
-        name     = "Snowball's Revenge",
-        category = "General",
-        zone     = "Mechagon",
-        mapID    = 1462,
-        steps = {
-            { index=1,  desc="Kill Arachnoid Harvester (drops blueprint).",               npc="Arachnoid Harvester",           coords={x=52.0,y=41.0}, mapID=1462, criteriaIndex=1  },
-            { index=2,  desc="Kill Boilburn (drops blueprint).",                          npc="Boilburn",                      coords={x=51.0,y=50.0}, mapID=1462, criteriaIndex=2  },
-            { index=3,  desc="Kill Bonepicker (drops blueprint).",                        npc="Bonepicker",                    coords={x=65.0,y=76.0}, mapID=1462, criteriaIndex=3  },
-            { index=4,  desc="Kill Earthbreaker Gulroc (drops blueprint).",               npc="Earthbreaker Gulroc",           coords={x=33.0,y=64.0}, mapID=1462, criteriaIndex=4  },
-            { index=5,  desc="Kill Foul Manifestation (drops blueprint).",                npc="Foul Manifestation",            coords={x=67.0,y=55.0}, mapID=1462, criteriaIndex=5  },
-            { index=6,  desc="Kill Fungarian Furor (drops blueprint).",                   npc="Fungarian Furor",               coords={x=44.0,y=62.0}, mapID=1462, criteriaIndex=6  },
-            { index=7,  desc="Kill Gemicide (drops blueprint).",                          npc="Gemicide",                      coords={x=81.0,y=26.0}, mapID=1462, criteriaIndex=7  },
-            { index=8,  desc="Kill Caustic Mechaslime (drops blueprint).",                npc="Caustic Mechaslime",            coords={x=66.0,y=58.0}, mapID=1462, criteriaIndex=8  },
-            { index=9,  desc="Kill Gear Checker Cogstar (drops blueprint).",              npc="Gear Checker Cogstar",          coords={x=59.0,y=56.0}, mapID=1462, criteriaIndex=9  },
-            { index=10, desc="Kill Killsaw (drops blueprint).",                           npc="Killsaw",                       coords={x=60.0,y=42.0}, mapID=1462, criteriaIndex=10 },
-            { index=11, desc="Kill Malfunctioning Beastbot (drops blueprint).",           npc="Malfunctioning Beastbot",       coords={x=60.0,y=42.0}, mapID=1462, criteriaIndex=11 },
-            { index=12, desc="Kill Mechagonian Nullifier (drops blueprint).",             npc="Mechagonian Nullifier",         coords={x=56.0,y=36.0}, mapID=1462, criteriaIndex=12 },
-            { index=13, desc="Kill Ol' Big Tusk (drops blueprint).",                      npc="Ol' Big Tusk",                  coords={x=55.0,y=77.0}, mapID=1462, criteriaIndex=13 },
-            { index=14, desc="Kill Oxidized Leachbeast (drops blueprint).",               npc="Oxidized Leachbeast",           coords={x=82.0,y=20.0}, mapID=1462, criteriaIndex=14 },
-            { index=15, desc="Kill Paol Pondwader (drops blueprint).",                    npc="Paol Pondwader",                coords={x=22.0,y=77.0}, mapID=1462, criteriaIndex=15 },
-            { index=16, desc="Kill Rustfeather (drops blueprint).",                       npc="Rustfeather",                   coords={x=65.0,y=79.0}, mapID=1462, criteriaIndex=16 },
-            { index=17, desc="Kill Scrapclaw (drops blueprint).",                         npc="Scrapclaw",                     coords={x=19.0,y=81.0}, mapID=1462, criteriaIndex=17 },
-            { index=18, desc="Kill Steel Singer Freza (drops blueprint).",                npc="Steel Singer Freza",            coords={x=25.0,y=77.0}, mapID=1462, criteriaIndex=18 },
-            { index=19, desc="Kill The Doppel Gang (drops blueprint).",                   npc="The Doppel Gang",               coords={x=80.0,y=21.0}, mapID=1462, criteriaIndex=19 },
-            { index=20, desc="Kill The Kleptoboss (drops blueprint).",                    npc="The Kleptoboss",                coords={x=68.0,y=48.0}, mapID=1462, criteriaIndex=20 },
-        },
-    },
 
     [13497] = {
         id       = 13497,
@@ -3507,41 +3406,7 @@ GP.Data.Achievements = {
         },
     },
 
-    [13791] = {
-        id       = 13791,
-        name     = "Making the Most of It",
-        category = "General",
-        zone     = "Mechagon",
-        mapID    = 1462,
-        steps = {
-            {
-                index         = 1,
-                desc          = "Complete a construction project while the Annihilation Aficionados daily construction is active — grants increased XP from kills.",
-                npc           = "Recyclerizer DX-82",
-                coords        = { x = 71.0, y = 36.0 },
-                mapID         = 1462,
-                criteriaIndex = nil,
-            },
-        },
-    },
 
-    [13799] = {
-        id       = 13799,
-        name     = "Periodic Destruction",
-        category = "General",
-        zone     = "Mechagon",
-        mapID    = 1462,
-        steps = {
-            {
-                index         = 1,
-                desc          = "Complete a construction project while the Annihilation Aficionados daily is active. This daily increases experience gained from killing enemies.",
-                npc           = "Recyclerizer DX-82",
-                coords        = { x = 71.0, y = 36.0 },
-                mapID         = 1462,
-                criteriaIndex = nil,
-            },
-        },
-    },
 
     [13798] = {
         id       = 13798,
@@ -3597,23 +3462,6 @@ GP.Data.Achievements = {
         },
     },
 
-    [13708] = {
-        id       = 13708,
-        name     = "Most Minis Wins",
-        category = "Pet Battles",
-        zone     = "Mechagon",
-        mapID    = 1462,
-        steps = {
-            {
-                index         = 1,
-                desc          = "Defeat all 3 Mechagon pet battle trainers with a team of all level 1 pets. This is a skill challenge — use pet synergies carefully!",
-                npc           = nil,
-                coords        = { x = 40.0, y = 40.0 },
-                mapID         = 1462,
-                criteriaIndex = nil,
-            },
-        },
-    },
 
     [13501] = {
         id       = 13501,
@@ -3705,23 +3553,6 @@ GP.Data.Achievements = {
         },
     },
 
-    [13799] = {
-        id       = 13799,
-        name     = "Junkyard Collector",
-        category = "General",
-        zone     = "Mechagon",
-        mapID    = 1462,
-        steps = {
-            {
-                index         = 1,
-                desc          = "Collect 100 Spare Parts from killing enemies, opening chests, and completing quests in Mechagon. Use parts to purchase items or contribute to construction projects.",
-                npc           = nil,
-                coords        = { x = 71.0, y = 36.0 },
-                mapID         = 1462,
-                criteriaIndex = nil,
-            },
-        },
-    },
 
     [13512] = {
         id       = 13512,
@@ -4132,18 +3963,6 @@ GP.Data.Achievements = {
         },
     },
 
-    [4928] = {
-        id       = 4928,
-        name     = "Bloodmyst Isle Quests",
-        category = "Quests",
-        zone     = "Bloodmyst Isle",
-        mapID    = 476,
-        steps = {
-            { index=1, desc="Complete the Blood Watch quest chain.",               npc=nil, coords={x=55.0,y=59.0}, mapID=476, criteriaIndex=1 },
-            { index=2, desc="Complete The Unwritten Prophecy quest chain.",        npc=nil, coords={x=55.0,y=59.0}, mapID=476, criteriaIndex=2 },
-            { index=3, desc="Complete the Vindicator's Rest quest chain.",         npc=nil, coords={x=28.0,y=48.0}, mapID=476, criteriaIndex=3 },
-        },
-    },
 
     -- =========================================================================
     -- DARKSHORE (mapID 62)
@@ -4345,45 +4164,7 @@ GP.Data.Achievements = {
         },
     },
 
-    -- =========================================================================
-    -- MULGORE (mapID 7)
-    -- Tauren starting zone
-    -- =========================================================================
 
-    [736] = {
-        id       = 736,
-        name     = "Explore Mulgore",
-        category = "Exploration",
-        zone     = "Mulgore",
-        mapID    = 7,
-        steps = {
-            { index=1,  desc="Discover Bloodhoof Village.",           npc=nil, coords={x=48.0,y=60.0}, mapID=7, criteriaIndex=1  },
-            { index=2,  desc="Discover Palemane Rock.",               npc=nil, coords={x=54.0,y=48.0}, mapID=7, criteriaIndex=2  },
-            { index=3,  desc="Discover The Rolling Plains.",          npc=nil, coords={x=59.0,y=25.0}, mapID=7, criteriaIndex=3  },
-            { index=4,  desc="Discover Bael'dun Digsite.",            npc=nil, coords={x=32.0,y=49.0}, mapID=7, criteriaIndex=4  },
-            { index=5,  desc="Discover The Venture Co. Mine.",        npc=nil, coords={x=61.0,y=48.0}, mapID=7, criteriaIndex=5  },
-            { index=6,  desc="Discover Ravaged Caravan.",             npc=nil, coords={x=53.0,y=65.0}, mapID=7, criteriaIndex=6  },
-            { index=7,  desc="Discover Red Cloud Mesa.",              npc=nil, coords={x=51.0,y=81.0}, mapID=7, criteriaIndex=7  },
-            { index=8,  desc="Discover Thunderhorn Water Well.",      npc=nil, coords={x=44.0,y=45.0}, mapID=7, criteriaIndex=8  },
-            { index=9,  desc="Discover Winterhoof Water Well.",       npc=nil, coords={x=54.0,y=45.0}, mapID=7, criteriaIndex=9  },
-            { index=10, desc="Discover Wildmane Water Well.",         npc=nil, coords={x=43.0,y=65.0}, mapID=7, criteriaIndex=10 },
-            { index=11, desc="Discover Red Rocks.",                   npc=nil, coords={x=59.0,y=20.0}, mapID=7, criteriaIndex=11 },
-            { index=12, desc="Discover Windfury Ridge.",              npc=nil, coords={x=50.0,y=23.0}, mapID=7, criteriaIndex=12 },
-        },
-    },
-
-    [4933] = {
-        id       = 4933,
-        name     = "Mulgore Quests",
-        category = "Quests",
-        zone     = "Mulgore",
-        mapID    = 7,
-        steps = {
-            { index=1, desc="Complete Red Cloud Mesa starter quests.",              npc=nil, coords={x=51.0,y=81.0}, mapID=7, criteriaIndex=1 },
-            { index=2, desc="Complete Bloodhoof Village quest chain.",              npc="Baine Bloodhoof", coords={x=48.0,y=60.0}, mapID=7, criteriaIndex=2 },
-            { index=3, desc="Complete The Venture Co. quest chain.",                npc=nil, coords={x=61.0,y=48.0}, mapID=7, criteriaIndex=3 },
-        },
-    },
 
     -- =========================================================================
     -- NORTHERN BARRENS (mapID 10)
@@ -4412,18 +4193,6 @@ GP.Data.Achievements = {
         },
     },
 
-    [4933] = {
-        id       = 4933,
-        name     = "Northern Barrens Quests",
-        category = "Quests",
-        zone     = "Northern Barrens",
-        mapID    = 10,
-        steps = {
-            { index=1, desc="Complete The Crossroads quest chain.",                npc=nil, coords={x=49.0,y=58.0}, mapID=10, criteriaIndex=1 },
-            { index=2, desc="Complete Ratchet quests.",                            npc=nil, coords={x=68.0,y=74.0}, mapID=10, criteriaIndex=2 },
-            { index=3, desc="Complete The Overgrowth quest chain.",                npc=nil, coords={x=41.0,y=27.0}, mapID=10, criteriaIndex=3 },
-        },
-    },
 
     -- =========================================================================
     -- SOUTHERN BARRENS (mapID 199)
@@ -5539,27 +5308,6 @@ GP.Data.Achievements = {
     -- Level 90 zone (endgame hub)
     -- =========================================================================
 
-    [6974] = {
-        id       = 6974,
-        name     = "Explore Vale of Eternal Blossoms",
-        category = "Exploration",
-        zone     = "Vale of Eternal Blossoms",
-        mapID    = 390,
-        steps = {
-            { index=1,  desc="Discover The Golden Pagoda.",          npc=nil, coords={x=54.0,y=43.0}, mapID=390, criteriaIndex=1  },
-            { index=2,  desc="Discover The Imperial Exchange.",      npc=nil, coords={x=61.0,y=35.0}, mapID=390, criteriaIndex=2  },
-            { index=3,  desc="Discover Mogu'shan Palace.",           npc=nil, coords={x=80.0,y=32.0}, mapID=390, criteriaIndex=3  },
-            { index=4,  desc="Discover Setting Sun Garrison.",       npc=nil, coords={x=17.0,y=71.0}, mapID=390, criteriaIndex=4  },
-            { index=5,  desc="Discover The Five Sisters.",           npc=nil, coords={x=19.0,y=42.0}, mapID=390, criteriaIndex=5  },
-            { index=6,  desc="Discover Shrine of Two Moons.",        npc=nil, coords={x=62.0,y=21.0}, mapID=390, criteriaIndex=6  },
-            { index=7,  desc="Discover Shrine of Seven Stars.",      npc=nil, coords={x=87.0,y=70.0}, mapID=390, criteriaIndex=7  },
-            { index=8,  desc="Discover Guo-Lai Halls.",              npc=nil, coords={x=40.0,y=23.0}, mapID=390, criteriaIndex=8  },
-            { index=9,  desc="Discover Summer Terrace.",             npc=nil, coords={x=35.0,y=66.0}, mapID=390, criteriaIndex=9  },
-            { index=10, desc="Discover Mistfall Village.",           npc=nil, coords={x=39.0,y=81.0}, mapID=390, criteriaIndex=10 },
-            { index=11, desc="Discover Tu Shen Burial Ground.",      npc=nil, coords={x=52.0,y=68.0}, mapID=390, criteriaIndex=11 },
-            { index=12, desc="Discover Ruins Rise.",                 npc=nil, coords={x=36.0,y=47.0}, mapID=390, criteriaIndex=12 },
-        },
-    },
 
     [7438] = {
         id       = 7438,
@@ -5938,23 +5686,6 @@ GP.Data.Achievements = {
         },
     },
 
-    [1262] = {
-        id       = 1262,
-        name     = "Loremaster of Outland",
-        category = "Quests",
-        zone     = "Multiple Zones",
-        mapID    = nil,
-        steps = {
-            {
-                index         = 1,
-                desc          = "Complete questing achievements in all major Outland zones.",
-                npc           = nil,
-                coords        = nil,
-                mapID         = nil,
-                criteriaIndex = nil,
-            },
-        },
-    },
 
     -- =========================================================================
     -- DRAENOR ZONES (Warlords of Draenor)
@@ -6433,20 +6164,6 @@ GP.Data.Achievements = {
     -- BROKEN ISLES META ACHIEVEMENTS
     -- =========================================================================
 
-    [10665] = {
-        id       = 10665,
-        name     = "Explore Broken Isles",
-        category = "Exploration",
-        zone     = "Multiple Zones",
-        mapID    = nil,
-        steps = {
-            { index=1, desc="Complete Explore Azsuna.",                      npc=nil, coords={x=62.0,y=46.0}, mapID=630, criteriaIndex=1 },
-            { index=2, desc="Complete Explore Val'sharah.",                  npc=nil, coords={x=54.0,y=73.0}, mapID=641, criteriaIndex=2 },
-            { index=3, desc="Complete Explore Highmountain.",                npc=nil, coords={x=46.0,y=61.0}, mapID=650, criteriaIndex=3 },
-            { index=4, desc="Complete Explore Stormheim.",                   npc=nil, coords={x=60.0,y=51.0}, mapID=634, criteriaIndex=4 },
-            { index=5, desc="Complete Explore Suramar.",                     npc=nil, coords={x=44.0,y=59.0}, mapID=680, criteriaIndex=5 },
-        },
-    },
 
     [11188] = {
         id       = 11188,
