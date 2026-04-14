@@ -40,31 +40,35 @@ GP.Data.Achievements = {
                 desc          = "Kill a Larva in Ghostlands near Tranquillien (easier than Naxxramas).",
                 npc           = "Larva",
                 coords        = { x = 45.0, y = 27.0 },
-                mapID         = nil,   -- /gp mapid while in Ghostlands
+                mapID         = 647,   -- Ghostlands
                 criteriaIndex = 1,
             },
             {
                 index         = 2,
-                desc          = "Kill a Water Snake in Dustwallow Marsh or Zangarmarsh.",
+                -- Previously called "Moccasin" (NPC 4953) — renamed to Water Snake.
+                -- Easiest location: Orgrimmar rivers near the Valley of Spirits.
+                -- Also found in Durotar, Northern Stranglethorn, Swamp of Sorrows.
+                -- criteriaIndex: verify with /gp criteria 2556 if progress doesn't track.
+                desc          = "Kill a Water Snake in Orgrimmar near the Valley of Spirits (SW river). Also in Durotar, N. Stranglethorn, or Swamp of Sorrows.",
                 npc           = "Water Snake",
-                coords        = { x = 50.0, y = 50.0 },
-                mapID         = nil,
+                coords        = { x = 37.0, y = 82.0 },
+                mapID         = 1454,  -- Orgrimmar
                 criteriaIndex = 2,
             },
             {
                 index         = 3,
                 desc          = "Kill a Spider in Howling Fjord, Ghostlands, or several Northrend dungeons.",
                 npc           = "Spider",
-                coords        = nil,
-                mapID         = nil,
+                coords        = { x = 45.0, y = 27.0 },
+                mapID         = 647,   -- Ghostlands (spiders near Tranquillien)
                 criteriaIndex = 3,
             },
             {
                 index         = 4,
-                desc          = "Kill a Squirrel — found in many forested zones like Elwynn Forest or Grizzly Hills.",
+                desc          = "Kill a Squirrel in Elwynn Forest (Alliance) or Grizzly Hills (neutral). Dalaran also has squirrels running loose in the streets.",
                 npc           = "Squirrel",
                 coords        = { x = 47.0, y = 67.0 },
-                mapID         = nil,
+                mapID         = 37,    -- Elwynn Forest; Horde: use Grizzly Hills (494) or Dalaran (502)
                 criteriaIndex = 4,
             },
             {
@@ -72,7 +76,7 @@ GP.Data.Achievements = {
                 desc          = "Kill an Underbelly Rat in the Dalaran Sewers (enter via the grate in Dalaran).",
                 npc           = "Underbelly Rat",
                 coords        = { x = 42.0, y = 90.0 },
-                mapID         = nil,   -- /gp mapid while in Dalaran
+                mapID         = 502,   -- Dalaran (Northrend); verify with /gp mapid
                 criteriaIndex = 5,
             },
             {
@@ -80,7 +84,7 @@ GP.Data.Achievements = {
                 desc          = "Kill a Devouring Maggot in Howling Fjord (Utgarde Catacombs area, coords 57, 55).",
                 npc           = "Devouring Maggot",
                 coords        = { x = 57.0, y = 55.0 },
-                mapID         = nil,   -- /gp mapid while in Howling Fjord
+                mapID         = 491,   -- Howling Fjord
                 criteriaIndex = 6,
             },
             {
@@ -96,7 +100,7 @@ GP.Data.Achievements = {
                 desc          = "Kill a Zul'Drak Rat in Zul'Drak near the Amphitheater of Anguish (coords 45, 63).",
                 npc           = "Zul'Drak Rat",
                 coords        = { x = 45.0, y = 63.0 },
-                mapID         = nil,   -- /gp mapid while in Zul'Drak
+                mapID         = 496,   -- Zul'Drak
                 criteriaIndex = 8,
             },
             {
@@ -104,7 +108,7 @@ GP.Data.Achievements = {
                 desc          = "Kill a Roach in Howling Fjord or Ahn'Kahet.",
                 npc           = "Roach",
                 coords        = { x = 36.0, y = 11.0 },
-                mapID         = nil,
+                mapID         = 491,   -- Howling Fjord
                 criteriaIndex = 9,
             },
             {
@@ -117,18 +121,18 @@ GP.Data.Achievements = {
             },
             {
                 index         = 11,
-                desc          = "Kill a Crystal Spider inside The Nexus or The Oculus (Coldarra, Northrend).",
+                desc          = "Kill a Crystal Spider in Winterspring near Lake Kel'Theril (NW area) — far easier than queuing for The Nexus. Also found in Tanaan Jungle or inside The Nexus/Oculus.",
                 npc           = "Crystal Spider",
-                coords        = { x = 27.0, y = 25.0 },
-                mapID         = nil,   -- /gp mapid while in Coldarra
+                coords        = { x = 44.0, y = 49.0 },
+                mapID         = nil,   -- Winterspring; verify with /gp mapid
                 criteriaIndex = 11,
             },
             {
                 index         = 12,
-                desc          = "Kill an Adder in Hellfire Peninsula (Outland) or Durotar/Barrens.",
+                desc          = "Kill an Adder in Durotar near Razor Hill (easiest for Horde). Also in Hellfire Peninsula or the Barrens.",
                 npc           = "Adder",
-                coords        = { x = 52.0, y = 50.0 },
-                mapID         = nil,   -- /gp mapid while in Hellfire Peninsula
+                coords        = { x = 41.0, y = 52.0 },
+                mapID         = 1,     -- Durotar
                 criteriaIndex = 12,
             },
             {
@@ -136,15 +140,15 @@ GP.Data.Achievements = {
                 desc          = "Kill a Maggot in Ghostlands or outside Naxxramas.",
                 npc           = "Maggot",
                 coords        = { x = 45.0, y = 27.0 },
-                mapID         = nil,
+                mapID         = 647,   -- Ghostlands
                 criteriaIndex = 13,
             },
             {
                 index         = 14,
-                desc          = "Kill a Scorpion in Hellfire Peninsula or Ahn'Qiraj.",
+                desc          = "Kill a Scorpion in Hellfire Peninsula or Eastern Plaguelands (NPC is named Scorpid in-game).",
                 npc           = "Scorpion",
                 coords        = { x = 52.0, y = 50.0 },
-                mapID         = nil,
+                mapID         = 466,   -- Hellfire Peninsula
                 criteriaIndex = 14,
             },
             {
@@ -152,23 +156,23 @@ GP.Data.Achievements = {
                 desc          = "Kill a Fjord Rat in Howling Fjord (Northrend).",
                 npc           = "Fjord Rat",
                 coords        = { x = 58.0, y = 62.0 },
-                mapID         = nil,   -- /gp mapid while in Howling Fjord
+                mapID         = 491,   -- Howling Fjord
                 criteriaIndex = 15,
             },
             {
                 index         = 16,
-                desc          = "Kill a Fire Beetle in Searing Gorge or Burning Steppes.",
+                desc          = "Kill a Fire Beetle in Searing Gorge or Burning Steppes. Searing Gorge has the most spawns (W side of zone).",
                 npc           = "Fire Beetle",
                 coords        = { x = 53.0, y = 62.0 },
-                mapID         = nil,   -- /gp mapid while in Searing Gorge
+                mapID         = nil,   -- Searing Gorge; verify with /gp mapid
                 criteriaIndex = 16,
             },
             {
                 index         = 17,
-                desc          = "Kill a Gold Beetle inside Halls of Lightning or Halls of Stone (Storm Peaks).",
+                desc          = "Kill a Gold Beetle in Badlands (outdoor, no dungeon needed — easiest option). Also inside Halls of Lightning or Halls of Stone (Storm Peaks).",
                 npc           = "Gold Beetle",
                 coords        = { x = 42.0, y = 23.0 },
-                mapID         = nil,   -- /gp mapid while in Storm Peaks
+                mapID         = nil,   -- Storm Peaks or Badlands; verify with /gp mapid
                 criteriaIndex = 17,
             },
             {
@@ -609,7 +613,7 @@ GP.Data.Achievements = {
                 desc          = "Fly to the race start near Razor Hill in Durotar. Talk to the race NPC and complete the course under the Bronze par time.",
                 npc           = "Durotar Dart Race",
                 coords        = { x = 52.0, y = 60.0 },
-                mapID         = nil,
+                mapID         = 1,     -- Durotar
                 criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
@@ -621,14 +625,14 @@ GP.Data.Achievements = {
         category = "Skyriding",
         zone     = "Durotar",
         faction  = "Horde",
-        mapID    = nil,
+        mapID    = 1,     -- Durotar
         steps = {
             {
                 index         = 1,
                 desc          = "Same race start as Bronze. Complete the Durotar Dart course under the Silver par time.",
                 npc           = "Durotar Dart Race",
                 coords        = { x = 52.0, y = 60.0 },
-                mapID         = nil,
+                mapID         = 1,     -- Durotar
                 criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
@@ -640,14 +644,14 @@ GP.Data.Achievements = {
         category = "Skyriding",
         zone     = "Durotar",
         faction  = "Horde",
-        mapID    = nil,
+        mapID    = 1,     -- Durotar
         steps = {
             {
                 index         = 1,
                 desc          = "Same race start as Bronze/Silver. Complete the Durotar Dart course under the Gold par time. This is the hardest — learn the rings first on Bronze runs!",
                 npc           = "Durotar Dart Race",
                 coords        = { x = 52.0, y = 60.0 },
-                mapID         = nil,
+                mapID         = 1,     -- Durotar
                 criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
@@ -659,14 +663,14 @@ GP.Data.Achievements = {
         category = "Skyriding",
         zone     = "Durotar",
         faction  = "Horde",
-        mapID    = nil,
+        mapID    = 1,     -- Durotar
         steps = {
             {
                 index         = 1,
                 desc          = "Advanced course — same start location, harder route. Complete under the Bronze par time.",
                 npc           = "Durotar Dart Race",
                 coords        = { x = 52.0, y = 60.0 },
-                mapID         = nil,
+                mapID         = 1,     -- Durotar
                 criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
@@ -678,14 +682,14 @@ GP.Data.Achievements = {
         category = "Skyriding",
         zone     = "Durotar",
         faction  = "Horde",
-        mapID    = nil,
+        mapID    = 1,     -- Durotar
         steps = {
             {
                 index         = 1,
                 desc          = "Advanced course. Complete under the Silver par time.",
                 npc           = "Durotar Dart Race",
                 coords        = { x = 52.0, y = 60.0 },
-                mapID         = nil,
+                mapID         = 1,     -- Durotar
                 criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
@@ -697,14 +701,14 @@ GP.Data.Achievements = {
         category = "Skyriding",
         zone     = "Durotar",
         faction  = "Horde",
-        mapID    = nil,
+        mapID    = 1,     -- Durotar
         steps = {
             {
                 index         = 1,
                 desc          = "Advanced course. Complete under the Gold par time. Hardest of the advanced tier.",
                 npc           = "Durotar Dart Race",
                 coords        = { x = 52.0, y = 60.0 },
-                mapID         = nil,
+                mapID         = 1,     -- Durotar
                 criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
@@ -716,14 +720,14 @@ GP.Data.Achievements = {
         category = "Skyriding",
         zone     = "Durotar",
         faction  = "Horde",
-        mapID    = nil,
+        mapID    = 1,     -- Durotar
         steps = {
             {
                 index         = 1,
                 desc          = "Reverse course — runs the rings in the opposite direction. Complete under the Bronze par time.",
                 npc           = "Durotar Dart Race",
                 coords        = { x = 52.0, y = 60.0 },
-                mapID         = nil,
+                mapID         = 1,     -- Durotar
                 criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
@@ -735,14 +739,14 @@ GP.Data.Achievements = {
         category = "Skyriding",
         zone     = "Durotar",
         faction  = "Horde",
-        mapID    = nil,
+        mapID    = 1,     -- Durotar
         steps = {
             {
                 index         = 1,
                 desc          = "Reverse course. Complete under the Silver par time.",
                 npc           = "Durotar Dart Race",
                 coords        = { x = 52.0, y = 60.0 },
-                mapID         = nil,
+                mapID         = 1,     -- Durotar
                 criteriaIndex = nil,  -- verify with /gp criteria
             },
         },
@@ -754,14 +758,14 @@ GP.Data.Achievements = {
         category = "Skyriding",
         zone     = "Durotar",
         faction  = "Horde",
-        mapID    = nil,
+        mapID    = 1,     -- Durotar
         steps = {
             {
                 index         = 1,
                 desc          = "Reverse course. Complete under the Gold par time.",
                 npc           = "Durotar Dart Race",
                 coords        = { x = 52.0, y = 60.0 },
-                mapID         = nil,
+                mapID         = 1,     -- Durotar
                 criteriaIndex = nil,  -- verify with /gp criteria
             },
         },

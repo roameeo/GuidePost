@@ -3,6 +3,33 @@
 ================================================================================
 
 --------------------------------------------------------------------------------
+v2.4.2 - 2026-4-14
+--------------------------------------------------------------------------------
+
+DATA IMPROVEMENTS — PEST CONTROL [2556]
+-----------------------------------------
+- Water Snake step: updated coords to Orgrimmar (37, 82), mapID = 1454; added
+  note that this NPC was formerly named "Moccasin" (same NPC 4953, renamed)
+- Crystal Spider step: changed primary location from The Nexus dungeon to
+  Winterspring near Lake Kel'Theril (44, 49) — outdoor, no group needed
+- Filled in mapIDs for 11 previously-nil Pest Control steps:
+  • Ghostlands = 647  (Larva, Spider, Maggot)
+  • Howling Fjord = 491  (Devouring Maggot, Roach, Fjord Rat)
+  • Zul'Drak = 496  (Zul'Drak Rat)
+  • Hellfire Peninsula = 466  (Scorpion / "Scorpid")
+  • Durotar = 1  (Adder — moved coords to Razor Hill 41, 52)
+  • Orgrimmar = 1454  (Water Snake)
+  • Dalaran (Northrend) ≈ 502  (Underbelly Rat — needs in-game verify)
+- Improved descriptions for Fire Beetle (Searing Gorge primary), Gold Beetle
+  (Badlands outdoor alternative), Adder (Durotar/Horde-friendly note), and
+  Scorpion (NPC is named "Scorpid" in-game)
+
+DATA IMPROVEMENTS — DUROTAR DART RACES [18453–18461]
+------------------------------------------------------
+- Set mapID = 1 (Durotar) on all 9 Durotar Dart race achievements at both the
+  achievement level and individual step level (previously all nil)
+
+--------------------------------------------------------------------------------
 v2.4.1 - 2026-4-14
 --------------------------------------------------------------------------------
 

@@ -61,9 +61,11 @@
 
 ## Known Issues / Tech Debt
 
-- mapIDs for most Pest Control steps still need to be verified in-game with `/gp mapid`
-- Pest Control Moccasin step is missing its criteriaIndex — verify with `/gp criteria 2556`
-- Explore Durotar mapID needs verification with `/gp mapid` while in Durotar
+- **Pest Control mapIDs**: Best-effort values filled in (Ghostlands=647, Howling Fjord=491, Zul'Drak=496, Hellfire Peninsula=466, Durotar=1, Orgrimmar=1454, Dalaran≈502). Still need in-game verification with `/gp mapid` — especially Dalaran (502), Fire Beetle (Searing Gorge), and Gold Beetle (Badlands). Step comments note which are uncertain.
+- **Pest Control Moccasin**: Resolved — "Moccasin" (NPC 4953) was renamed to "Water Snake" in a later patch. The Water Snake step is present at `criteriaIndex = 2`. Verify this index is correct with `/gp criteria 2556` if tracking appears broken.
+- **Crystal Spider**: Updated to Winterspring (outdoor, no dungeon needed). MapID for Winterspring still needs in-game verification with `/gp mapid`.
+- **Durotar Dart race mapIDs**: Set to `mapID = 1` (Durotar) for all 9 race achievements. Verify with `/gp mapid` while standing at the race start near Razor Hill.
+- **criteriaIndex values for Durotar Dart races**: All still `nil` — run `/gp criteria <id>` in-game to fill these in.
 - Sample achievements are placeholders — the real value comes from adding your own
 
 ---
