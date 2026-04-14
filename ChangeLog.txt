@@ -3,6 +3,35 @@
 ================================================================================
 
 --------------------------------------------------------------------------------
+v2.4.0 - 2026-4-14
+--------------------------------------------------------------------------------
+
+NEW CONTENT — HORDE FACTION BALANCE
+------------------------------------
+- Added 18 new Horde-specific skyriding race achievements
+  • Durotar Dart series (9 achievements: 18453-18461)
+    - Normal: Bronze, Silver, Gold
+    - Advanced: Bronze, Silver, Gold
+    - Reverse: Bronze, Silver, Gold
+    - Race starts near Razor Hill in Durotar
+  • Mulgore Momentum series (9 achievements: 18462-18470)
+    - Normal: Bronze, Silver, Gold
+    - Advanced: Bronze, Silver, Gold
+    - Reverse: Bronze, Silver, Gold
+    - Race starts near Bloodhoof Village in Mulgore
+  • Balances faction-specific content with Alliance's Elwynn Forest races
+  • Part of the Eastern Kingdoms Cup seasonal event
+
+ACHIEVEMENT COVERAGE UPDATE
+---------------------------
+- Horde now has 26 faction-specific achievements (up from 8)
+- Alliance maintains 19+ faction-specific achievements
+- Both factions have comprehensive coverage for:
+  • Capital city achievements (exploration, food, fishing, champions)
+  • Starting zone exploration and quests
+  • Skyriding race seasonal events
+
+--------------------------------------------------------------------------------
 v2.3.0 - 2026-4-13
 --------------------------------------------------------------------------------
 
