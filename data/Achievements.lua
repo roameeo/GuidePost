@@ -624,6 +624,368 @@ GP.Data.Achievements = {
         },
     },
 
+    -- -------------------------------------------------------------------------
+    -- Durotar Dart — Skyriding Race (Normal/Advanced/Reverse)
+    -- Eastern Kingdoms Cup event. Start NPC near Razor Hill.
+    -- NOTE: This is a timed event race. The Eastern Kingdoms Cup must be active.
+    -- Pick up the intro quest from Racing Enthusiast in Orgrimmar first.
+    -- Bronze = easiest time, Gold = hardest. All three share the same start.
+    -- -------------------------------------------------------------------------
+    [18453] = {
+        id       = 18453,
+        name     = "Durotar Dart: Bronze",
+        category = "Skyriding",
+        zone     = "Durotar",
+        faction  = "Horde",
+        mapID    = nil,   -- use /gp mapid in Durotar
+        steps = {
+            {
+                index         = 1,
+                desc          = "Pick up the Eastern Kingdoms Cup Circuit quest from Racing Enthusiast in Orgrimmar (if not already done).",
+                npc           = "Racing Enthusiast",
+                coords        = { x = 51.0, y = 76.0 },
+                mapID         = 1454,  -- Orgrimmar
+                criteriaIndex = nil,
+            },
+            {
+                index         = 2,
+                desc          = "Fly to the race start near Razor Hill in Durotar. Talk to the race NPC and complete the course under the Bronze par time.",
+                npc           = "Durotar Dart Race",
+                coords        = { x = 52.0, y = 60.0 },
+                mapID         = nil,
+                criteriaIndex = nil,  -- verify with /gp criteria
+            },
+        },
+    },
+
+    [18454] = {
+        id       = 18454,
+        name     = "Durotar Dart: Silver",
+        category = "Skyriding",
+        zone     = "Durotar",
+        faction  = "Horde",
+        mapID    = nil,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Same race start as Bronze. Complete the Durotar Dart course under the Silver par time.",
+                npc           = "Durotar Dart Race",
+                coords        = { x = 52.0, y = 60.0 },
+                mapID         = nil,
+                criteriaIndex = nil,  -- verify with /gp criteria
+            },
+        },
+    },
+
+    [18455] = {
+        id       = 18455,
+        name     = "Durotar Dart: Gold",
+        category = "Skyriding",
+        zone     = "Durotar",
+        faction  = "Horde",
+        mapID    = nil,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Same race start as Bronze/Silver. Complete the Durotar Dart course under the Gold par time. This is the hardest — learn the rings first on Bronze runs!",
+                npc           = "Durotar Dart Race",
+                coords        = { x = 52.0, y = 60.0 },
+                mapID         = nil,
+                criteriaIndex = nil,  -- verify with /gp criteria
+            },
+        },
+    },
+
+    [18456] = {
+        id       = 18456,
+        name     = "Durotar Dart Advanced: Bronze",
+        category = "Skyriding",
+        zone     = "Durotar",
+        faction  = "Horde",
+        mapID    = nil,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Advanced course — same start location, harder route. Complete under the Bronze par time.",
+                npc           = "Durotar Dart Race",
+                coords        = { x = 52.0, y = 60.0 },
+                mapID         = nil,
+                criteriaIndex = nil,  -- verify with /gp criteria
+            },
+        },
+    },
+
+    [18457] = {
+        id       = 18457,
+        name     = "Durotar Dart Advanced: Silver",
+        category = "Skyriding",
+        zone     = "Durotar",
+        faction  = "Horde",
+        mapID    = nil,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Advanced course. Complete under the Silver par time.",
+                npc           = "Durotar Dart Race",
+                coords        = { x = 52.0, y = 60.0 },
+                mapID         = nil,
+                criteriaIndex = nil,  -- verify with /gp criteria
+            },
+        },
+    },
+
+    [18458] = {
+        id       = 18458,
+        name     = "Durotar Dart Advanced: Gold",
+        category = "Skyriding",
+        zone     = "Durotar",
+        faction  = "Horde",
+        mapID    = nil,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Advanced course. Complete under the Gold par time. Hardest of the advanced tier.",
+                npc           = "Durotar Dart Race",
+                coords        = { x = 52.0, y = 60.0 },
+                mapID         = nil,
+                criteriaIndex = nil,  -- verify with /gp criteria
+            },
+        },
+    },
+
+    [18459] = {
+        id       = 18459,
+        name     = "Durotar Dart Reverse: Bronze",
+        category = "Skyriding",
+        zone     = "Durotar",
+        faction  = "Horde",
+        mapID    = nil,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Reverse course — runs the rings in the opposite direction. Complete under the Bronze par time.",
+                npc           = "Durotar Dart Race",
+                coords        = { x = 52.0, y = 60.0 },
+                mapID         = nil,
+                criteriaIndex = nil,  -- verify with /gp criteria
+            },
+        },
+    },
+
+    [18460] = {
+        id       = 18460,
+        name     = "Durotar Dart Reverse: Silver",
+        category = "Skyriding",
+        zone     = "Durotar",
+        faction  = "Horde",
+        mapID    = nil,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Reverse course. Complete under the Silver par time.",
+                npc           = "Durotar Dart Race",
+                coords        = { x = 52.0, y = 60.0 },
+                mapID         = nil,
+                criteriaIndex = nil,  -- verify with /gp criteria
+            },
+        },
+    },
+
+    [18461] = {
+        id       = 18461,
+        name     = "Durotar Dart Reverse: Gold",
+        category = "Skyriding",
+        zone     = "Durotar",
+        faction  = "Horde",
+        mapID    = nil,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Reverse course. Complete under the Gold par time.",
+                npc           = "Durotar Dart Race",
+                coords        = { x = 52.0, y = 60.0 },
+                mapID         = nil,
+                criteriaIndex = nil,  -- verify with /gp criteria
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Mulgore Momentum — Skyriding Race (Normal/Advanced/Reverse)
+    -- Eastern Kingdoms Cup event. Start NPC near Bloodhoof Village.
+    -- NOTE: This is a timed event race. The Eastern Kingdoms Cup must be active.
+    -- -------------------------------------------------------------------------
+    [18462] = {
+        id       = 18462,
+        name     = "Mulgore Momentum: Bronze",
+        category = "Skyriding",
+        zone     = "Mulgore",
+        faction  = "Horde",
+        mapID    = 7,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Mulgore Momentum course under Bronze par time. Race starts near Bloodhoof Village.",
+                npc           = "Mulgore Momentum Race",
+                coords        = { x = 47.0, y = 58.0 },
+                mapID         = 7,
+                criteriaIndex = nil,  -- verify with /gp criteria
+            },
+        },
+    },
+
+    [18463] = {
+        id       = 18463,
+        name     = "Mulgore Momentum: Silver",
+        category = "Skyriding",
+        zone     = "Mulgore",
+        faction  = "Horde",
+        mapID    = 7,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Mulgore Momentum course under Silver par time.",
+                npc           = "Mulgore Momentum Race",
+                coords        = { x = 47.0, y = 58.0 },
+                mapID         = 7,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18464] = {
+        id       = 18464,
+        name     = "Mulgore Momentum: Gold",
+        category = "Skyriding",
+        zone     = "Mulgore",
+        faction  = "Horde",
+        mapID    = 7,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Mulgore Momentum course under Gold par time. Master the route for the best time!",
+                npc           = "Mulgore Momentum Race",
+                coords        = { x = 47.0, y = 58.0 },
+                mapID         = 7,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18465] = {
+        id       = 18465,
+        name     = "Mulgore Momentum Advanced: Bronze",
+        category = "Skyriding",
+        zone     = "Mulgore",
+        faction  = "Horde",
+        mapID    = 7,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Advanced course. Complete under the Bronze par time.",
+                npc           = "Mulgore Momentum Race",
+                coords        = { x = 47.0, y = 58.0 },
+                mapID         = 7,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18466] = {
+        id       = 18466,
+        name     = "Mulgore Momentum Advanced: Silver",
+        category = "Skyriding",
+        zone     = "Mulgore",
+        faction  = "Horde",
+        mapID    = 7,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Advanced course. Complete under the Silver par time.",
+                npc           = "Mulgore Momentum Race",
+                coords        = { x = 47.0, y = 58.0 },
+                mapID         = 7,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18467] = {
+        id       = 18467,
+        name     = "Mulgore Momentum Advanced: Gold",
+        category = "Skyriding",
+        zone     = "Mulgore",
+        faction  = "Horde",
+        mapID    = 7,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Advanced course. Complete under the Gold par time.",
+                npc           = "Mulgore Momentum Race",
+                coords        = { x = 47.0, y = 58.0 },
+                mapID         = 7,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18468] = {
+        id       = 18468,
+        name     = "Mulgore Momentum Reverse: Bronze",
+        category = "Skyriding",
+        zone     = "Mulgore",
+        faction  = "Horde",
+        mapID    = 7,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Reverse course. Complete under the Bronze par time.",
+                npc           = "Mulgore Momentum Race",
+                coords        = { x = 47.0, y = 58.0 },
+                mapID         = 7,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18469] = {
+        id       = 18469,
+        name     = "Mulgore Momentum Reverse: Silver",
+        category = "Skyriding",
+        zone     = "Mulgore",
+        faction  = "Horde",
+        mapID    = 7,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Reverse course. Complete under the Silver par time.",
+                npc           = "Mulgore Momentum Race",
+                coords        = { x = 47.0, y = 58.0 },
+                mapID         = 7,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18470] = {
+        id       = 18470,
+        name     = "Mulgore Momentum Reverse: Gold",
+        category = "Skyriding",
+        zone     = "Mulgore",
+        faction  = "Horde",
+        mapID    = 7,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Reverse course. Complete under the Gold par time.",
+                npc           = "Mulgore Momentum Race",
+                coords        = { x = 47.0, y = 58.0 },
+                mapID         = 7,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
     -- =========================================================================
     -- END HORDE SECTION
     -- =========================================================================
