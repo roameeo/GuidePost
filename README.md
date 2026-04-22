@@ -41,7 +41,7 @@ Open `data/Achievements.lua` and follow the template at the bottom of the file.
 
 ## Requirements
 
-- World of Warcraft: The War Within Season 2 (Interface 120001+)
+- World of Warcraft: The War Within Season 2 (Interface 120005+)
 - [TomTom](https://www.curseforge.com/wow/addons/tomtom)
 
 ## Folder Structure
