@@ -3,6 +3,18 @@
 ================================================================================
 
 --------------------------------------------------------------------------------
+v2.4.3 - 2026-4-22
+--------------------------------------------------------------------------------
+
+BUG FIXES
+----------
+- Fixed GameTooltip:SetText call on the divider resize handle in MainFrame.lua
+  • Changed wrapText argument from boolean `true` to numeric `1` to match the
+    WoW API signature: SetText(text, r, g, b, wrapText)
+  • Affected the "Drag to resize panels" tooltip
+- Updated Interface version to 120005 (patch 12.0.5) in GuidePost.toc
+
+--------------------------------------------------------------------------------
 v2.4.2 - 2026-4-14
 --------------------------------------------------------------------------------
 
