@@ -170,7 +170,10 @@ local SCAN_ID_MAX     = 20000 -- highest ID to scan (Blizzard's range as of TWW)
 
 AD.ScanActive = false  -- true while a scan is running (prevents double-scans)
 
-function AD.ScanZone(overrideZone)
+-- autoAdd = true  →  silently insert any new finds into the runtime DB
+--                     (used by auto-scan on zone change)
+-- autoAdd = false →  print results to chat for the developer (default /gp scan)
+function AD.ScanZone(overrideZone, autoAdd)
     if AD.ScanActive then
         GP.Print("Scan already in progress — please wait.")
         return
@@ -183,7 +186,9 @@ function AD.ScanZone(overrideZone)
     end
 
     local zoneLower = zone:lower()
-    GP.Print(string.format("Scanning for achievements in |cff00ccff%s|r ... (this may take a moment)", zone))
+    if not autoAdd then
+        GP.Print(string.format("Scanning for achievements in |cff00ccff%s|r ... (this may take a moment)", zone))
+    end
 
     AD.ScanActive  = true
     local currentID = 1
@@ -222,9 +227,47 @@ function AD.ScanZone(overrideZone)
         if currentID > SCAN_ID_MAX then
             ticker:Cancel()
             AD.ScanActive = false
-            AD.PrintScanResults(zone, results)
+            if autoAdd then
+                AD.AutoAddResults(zone, results)
+            else
+                AD.PrintScanResults(zone, results)
+            end
         end
     end)
+end
+
+-- Inserts newly discovered achievements into the runtime data so they appear
+-- in the UI immediately.  Entries are flagged as auto-discovered so the user
+-- knows they lack hand-curated steps/waypoints.
+function AD.AutoAddResults(zone, results)
+    local added = 0
+    for _, r in ipairs(results) do
+        -- Skip anything already tracked or already completed
+        if not r.inDB and not r.completed then
+            GP.Data.Achievements[r.id] = {
+                name      = r.name,
+                zone      = zone,
+                autoFound = true,   -- flag so the UI can show a "needs review" hint
+                steps     = {},     -- no hand-curated steps yet
+            }
+            -- Register in the zone lookup table
+            if not GP.Data.ByZone[zone] then
+                GP.Data.ByZone[zone] = {}
+            end
+            table.insert(GP.Data.ByZone[zone], r.id)
+            added = added + 1
+        end
+    end
+
+    if added > 0 then
+        GP.Print(string.format(
+            "Auto-scan: added |cff00ccff%d|r new achievement(s) for |cff00ccff%s|r.",
+            added, zone))
+        AD.RefreshZoneSuggestions()
+        if GP.UI.MainFrame then
+            GP.UI.MainFrame.RefreshList()
+        end
+    end
 end
 
 function AD.PrintScanResults(zone, results)

@@ -21,6 +21,7 @@ core\Progress.lua
 ui\MinimapButton.lua
 ui\ProgressBar.lua
 ui\Tooltip.lua
+ui\SettingsFrame.lua
 ui\MainFrame.lua
 
 # Main entry point

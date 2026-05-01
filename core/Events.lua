@@ -35,12 +35,19 @@ On("PLAYER_LOGIN", function()
     GP.AchievementData.Initialize()  -- build zone index, check completion state
     GP.Progress.Initialize()          -- load saved per-character progress
     GP.UI.MinimapButton.Initialize()  -- add the minimap icon
+    GP.UI.Settings.Initialize()       -- build settings frame
     GP.Print("Loaded! Type |cff00ccff/gp|r to open.")
 end)
 
 -- Called when the player enters a new zone or subzone
 On("ZONE_CHANGED_NEW_AREA", function()
     GP.AchievementData.RefreshZoneSuggestions()
+    -- Auto-scan if the user has enabled it in settings.
+    -- Pass true so new finds are inserted into the runtime DB automatically
+    -- rather than printed to chat.
+    if GP.UI.Settings and GP.UI.Settings.Get("autoScan") then
+        GP.AchievementData.ScanZone(nil, true)
+    end
 end)
 
 -- Called when ANY achievement criteria changes (kill, collect, explore, etc.)

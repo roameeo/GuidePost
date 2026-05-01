@@ -174,6 +174,23 @@ local function CreateMainFrame()
     end)
     f.MinimizeButton = minBtn
 
+    -- Settings (gear) button — left of minimize button
+    local settingsBtn = CreateFrame("Button", nil, f)
+    settingsBtn:SetSize(24, 24)
+    settingsBtn:SetPoint("RIGHT", minBtn, "LEFT", -2, 0)
+    settingsBtn:SetNormalTexture("Interface\\Buttons\\UI-OptionsButton")
+    settingsBtn:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
+    settingsBtn:SetScript("OnClick", function()
+        if GP.UI.Settings then GP.UI.Settings.Toggle() end
+    end)
+    settingsBtn:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText("Settings", 1, 1, 1, 1)
+        GameTooltip:Show()
+    end)
+    settingsBtn:SetScript("OnLeave", function() GameTooltip:Hide() end)
+    f.SettingsButton = settingsBtn
+
     -- Summary text shown when minimized
     local summaryText = f:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     summaryText:SetPoint("LEFT", f.TitleText, "RIGHT", 10, 0)
@@ -599,8 +616,31 @@ local function MatchesFilter(id)
             return false
         end
     end
-    
+
+    -- Scope filter
+    local scope = GP.UI.Settings and GP.UI.Settings.Get("scope") or "account"
+    if scope == "character" then
+        -- Show only achievements with in-progress criteria or actively tracked
+        local isComplete = GP.AchievementData.IsCompleted(id)
+        if not isComplete then
+            local done, _ = GP.AchievementData.GetCriteriaProgress(id)
+            local isTracked = GP.Progress.IsTracked(id)
+            if done == 0 and not isTracked then
+                return false
+            end
+        end
+    elseif scope == "guild" then
+        -- Guild achievements are not yet in the database; hide everything until added
+        return false
+    end
+    -- scope == "account": no additional filtering
+
     return true
+end
+
+-- Exposed so SettingsFrame can trigger a refresh without a direct dependency
+function MF.RefreshList()
+    if MF.Frame then PopulateList(MF.Frame) end
 end
 
 -- Tracks which zone groups are collapsed. Persisted in SavedVars.
@@ -632,6 +672,8 @@ local function MakeListButton(parent, id, yOffset, width)
     nameText:SetJustifyH("LEFT")
     if isComplete then
         nameText:SetText("|cff888888" .. ach.name .. "|r")
+    elseif ach.autoFound then
+        nameText:SetText(ach.name .. " |cffffff00[?]|r")
     else
         nameText:SetText(ach.name)
     end
@@ -854,6 +896,18 @@ function MF.SelectAchievement(id)
     end
 
     local yOff = 0
+
+    -- If this entry was auto-discovered by a scan it may have no curated steps
+    if ach.autoFound and #ach.steps == 0 then
+        local notice = frame.StepsContent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        notice:SetPoint("TOPLEFT", 4, -4)
+        notice:SetWidth(210 - 8)
+        notice:SetWordWrap(true)
+        notice:SetJustifyH("LEFT")
+        notice:SetText("|cffffff00[Auto-discovered]|r\nNo curated steps yet. Check your achievements list in-game for details.")
+        frame.StepsContent:SetHeight(52)
+        return
+    end
 
     for _, step in ipairs(ach.steps) do
         -- Check if this step's criteria is complete

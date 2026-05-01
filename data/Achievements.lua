@@ -5395,8 +5395,12 @@ GP.Data.Achievements = {
     -- Level 58-63 starting zone (Outland)
     -- =========================================================================
 
-    [1189] = {
-        id       = 1189,
+    -- -------------------------------------------------------------------------
+    -- "Explore Hellfire Peninsula" (ID 862)
+    -- Discover all subzones in Hellfire Peninsula.
+    -- -------------------------------------------------------------------------
+    [862] = {
+        id       = 862,
         name     = "Explore Hellfire Peninsula",
         category = "Exploration",
         zone     = "Hellfire Peninsula",
@@ -5420,6 +5424,23 @@ GP.Data.Achievements = {
         },
     },
 
+    -- -------------------------------------------------------------------------
+    -- "To Hellfire and Back" (ID 1189 / 1271)
+    -- Complete quests in Hellfire Peninsula.
+    -- Two achievement IDs exist for this — likely Horde (1271) and Alliance (1189)
+    -- variants, or an old threshold vs current. Both are valid in-game achievements.
+    -- -------------------------------------------------------------------------
+    [1189] = {
+        id       = 1189,
+        name     = "To Hellfire and Back",
+        category = "Quests",
+        zone     = "Hellfire Peninsula",
+        mapID    = 100,
+        steps = {
+            { index=1, desc="Complete 90 quests in Hellfire Peninsula. Start at Thrallmar (Horde) or Honor Hold (Alliance).", npc=nil, coords={x=56.0,y=38.0}, mapID=100, criteriaIndex=1 },
+        },
+    },
+
     [1271] = {
         id       = 1271,
         name     = "To Hellfire and Back",
@@ -5427,7 +5448,7 @@ GP.Data.Achievements = {
         zone     = "Hellfire Peninsula",
         mapID    = 100,
         steps = {
-            { index=1, desc="Complete 90 quests in Hellfire Peninsula.",          npc=nil, coords={x=56.0,y=38.0}, mapID=100, criteriaIndex=1 },
+            { index=1, desc="Complete 90 quests in Hellfire Peninsula. Start at Thrallmar (Horde) or Honor Hold (Alliance). Use /gp criteria 1271 to verify tracking.", npc=nil, coords={x=56.0,y=38.0}, mapID=100, criteriaIndex=1 },
         },
     },
 
@@ -5436,8 +5457,12 @@ GP.Data.Achievements = {
     -- Level 60-64 zone
     -- =========================================================================
 
-    [1190] = {
-        id       = 1190,
+    -- -------------------------------------------------------------------------
+    -- "Explore Zangarmarsh" (ID 863)
+    -- Discover all subzones in Zangarmarsh.
+    -- -------------------------------------------------------------------------
+    [863] = {
+        id       = 863,
         name     = "Explore Zangarmarsh",
         category = "Exploration",
         zone     = "Zangarmarsh",
@@ -5458,14 +5483,18 @@ GP.Data.Achievements = {
         },
     },
 
-    [1272] = {
-        id       = 1272,
-        name     = "Terror of Terokkar",
+    -- -------------------------------------------------------------------------
+    -- "Mysteries of the Marsh" (ID 1190)
+    -- Complete quests in Zangarmarsh.
+    -- -------------------------------------------------------------------------
+    [1190] = {
+        id       = 1190,
+        name     = "Mysteries of the Marsh",
         category = "Quests",
         zone     = "Zangarmarsh",
         mapID    = 102,
         steps = {
-            { index=1, desc="Complete 54 quests in Zangarmarsh.",                 npc=nil, coords={x=78.0,y=63.0}, mapID=102, criteriaIndex=1 },
+            { index=1, desc="Complete 54 quests in Zangarmarsh. Start with quests in Cenarion Refuge, Zabra'jin (Horde), and Telredor (Alliance).", npc=nil, coords={x=78.0,y=63.0}, mapID=102, criteriaIndex=1 },
         },
     },
 
@@ -5474,8 +5503,11 @@ GP.Data.Achievements = {
     -- Level 62-65 zone
     -- =========================================================================
 
-    [1191] = {
-        id       = 1191,
+    -- -------------------------------------------------------------------------
+    -- "Explore Terokkar Forest" (ID 867) — Exploration
+    -- -------------------------------------------------------------------------
+    [867] = {
+        id       = 867,
         name     = "Explore Terokkar Forest",
         category = "Exploration",
         zone     = "Terokkar Forest",
@@ -5499,6 +5531,25 @@ GP.Data.Achievements = {
         },
     },
 
+    -- -------------------------------------------------------------------------
+    -- "Terror of Terokkar" (ID 1191) — Quests
+    -- Complete 63 quests in Terokkar Forest.
+    -- -------------------------------------------------------------------------
+    [1191] = {
+        id       = 1191,
+        name     = "Terror of Terokkar",
+        category = "Quests",
+        zone     = "Terokkar Forest",
+        mapID    = 108,
+        steps = {
+            { index=1, desc="Complete 63 quests in Terokkar Forest.", npc=nil, coords={x=58.0,y=54.0}, mapID=108, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Bombs Away" (ID 1275) — Quests
+    -- Complete the bombing-run quests in Terokkar Forest.
+    -- -------------------------------------------------------------------------
     [1275] = {
         id       = 1275,
         name     = "Bombs Away",
@@ -5506,7 +5557,207 @@ GP.Data.Achievements = {
         zone     = "Terokkar Forest",
         mapID    = 108,
         steps = {
-            { index=1, desc="Complete 63 quests in Terokkar Forest.",             npc=nil, coords={x=58.0,y=54.0}, mapID=108, criteriaIndex=1 },
+            { index=1, desc="Complete the bombing run quests in Terokkar Forest. Pick up quests at Allerian Stronghold or Stonebreaker Hold.", npc=nil, coords={x=58.0,y=54.0}, mapID=108, criteriaIndex=1 },
+        },
+    },
+
+    -- =========================================================================
+    -- SHATTRATH CITY (mapID — confirm via /gp mapid while in Shattrath)
+    -- Capital city of Outland, located in Terokkar Forest
+    -- =========================================================================
+
+    -- -------------------------------------------------------------------------
+    -- Shattrath City Sashay — Skyriding races
+    -- mapID TBD: confirm with /gp mapid while at the race course in Shattrath
+    -- -------------------------------------------------------------------------
+    [18679] = {
+        id       = 18679,
+        name     = "Shattrath City Sashay: Bronze",
+        category = "Skyriding",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the Shattrath City Sashay skyriding race within the bronze time limit.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [18680] = {
+        id       = 18680,
+        name     = "Shattrath City Sashay: Silver",
+        category = "Skyriding",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the Shattrath City Sashay skyriding race within the silver time limit.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [18681] = {
+        id       = 18681,
+        name     = "Shattrath City Sashay: Gold",
+        category = "Skyriding",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the Shattrath City Sashay skyriding race within the gold time limit.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [18682] = {
+        id       = 18682,
+        name     = "Shattrath City Sashay Advanced: Bronze",
+        category = "Skyriding",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the Shattrath City Sashay Advanced skyriding race within the bronze time limit.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [18683] = {
+        id       = 18683,
+        name     = "Shattrath City Sashay Advanced: Silver",
+        category = "Skyriding",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the Shattrath City Sashay Advanced skyriding race within the silver time limit.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [18684] = {
+        id       = 18684,
+        name     = "Shattrath City Sashay Advanced: Gold",
+        category = "Skyriding",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the Shattrath City Sashay Advanced skyriding race within the gold time limit.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [18685] = {
+        id       = 18685,
+        name     = "Shattrath City Sashay Reverse: Bronze",
+        category = "Skyriding",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the Shattrath City Sashay Reverse skyriding race within the bronze time limit.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [18686] = {
+        id       = 18686,
+        name     = "Shattrath City Sashay Reverse: Silver",
+        category = "Skyriding",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the Shattrath City Sashay Reverse skyriding race within the silver time limit.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [18687] = {
+        id       = 18687,
+        name     = "Shattrath City Sashay Reverse: Gold",
+        category = "Skyriding",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the Shattrath City Sashay Reverse skyriding race within the gold time limit.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Shattrath City — Event/World achievements (IDs 9486, 9632–9638)
+    -- Details TBD — use /gp criteria <id> in-game to verify step criteria
+    -- -------------------------------------------------------------------------
+    [9486] = {
+        id       = 9486,
+        name     = "Goodness Gracious",
+        category = "Quests",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the requirements for Goodness Gracious in Shattrath City. Use /gp criteria 9486 to verify.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [9632] = {
+        id       = 9632,
+        name     = "The Power Is Yours",
+        category = "Quests",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the requirements for The Power Is Yours in Shattrath City. Use /gp criteria 9632 to verify.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [9633] = {
+        id       = 9633,
+        name     = "Cut off the Head",
+        category = "Quests",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the requirements for Cut off the Head in Shattrath City. Use /gp criteria 9633 to verify.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [9634] = {
+        id       = 9634,
+        name     = "Charged Up",
+        category = "Quests",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the requirements for Charged Up in Shattrath City. Use /gp criteria 9634 to verify.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [9635] = {
+        id       = 9635,
+        name     = "Bobbing for Orcs",
+        category = "Quests",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the requirements for Bobbing for Orcs in Shattrath City. Use /gp criteria 9635 to verify.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [9636] = {
+        id       = 9636,
+        name     = "United We Stand",
+        category = "Quests",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the requirements for United We Stand in Shattrath City. Use /gp criteria 9636 to verify.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [9637] = {
+        id       = 9637,
+        name     = "Poor Communication",
+        category = "Quests",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the requirements for Poor Communication in Shattrath City. Use /gp criteria 9637 to verify.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
+        },
+    },
+
+    [9638] = {
+        id       = 9638,
+        name     = "Heralds of the Legion",
+        category = "Quests",
+        zone     = "Shattrath City",
+        mapID    = nil,
+        steps = {
+            { index=1, desc="Complete the requirements for Heralds of the Legion in Shattrath City. Use /gp criteria 9638 to verify.", npc=nil, coords={x=44.0,y=26.0}, mapID=nil, criteriaIndex=1 },
         },
     },
 
@@ -5515,8 +5766,11 @@ GP.Data.Achievements = {
     -- Level 64-67 zone
     -- =========================================================================
 
-    [1192] = {
-        id       = 1192,
+    -- -------------------------------------------------------------------------
+    -- "Explore Nagrand" (ID 866) — Exploration
+    -- -------------------------------------------------------------------------
+    [866] = {
+        id       = 866,
         name     = "Explore Nagrand",
         category = "Exploration",
         zone     = "Nagrand",
@@ -5538,6 +5792,22 @@ GP.Data.Achievements = {
         },
     },
 
+    -- -------------------------------------------------------------------------
+    -- "Nagrand Slam" (ID 1192 / 1273) — Quests
+    -- Complete 87 quests in Nagrand. Two IDs exist — likely Horde/Alliance
+    -- variants or old/new threshold versions.
+    -- -------------------------------------------------------------------------
+    [1192] = {
+        id       = 1192,
+        name     = "Nagrand Slam",
+        category = "Quests",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Complete 87 quests in Nagrand. Use /gp criteria 1192 to verify tracking.", npc=nil, coords={x=55.0,y=37.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
     [1273] = {
         id       = 1273,
         name     = "Nagrand Slam",
@@ -5549,13 +5819,160 @@ GP.Data.Achievements = {
         },
     },
 
+    -- -------------------------------------------------------------------------
+    -- Nagrand Arena achievements (PvP)
+    -- -------------------------------------------------------------------------
+    [100] = {
+        id       = 100,
+        name     = "Nagrand Arena",
+        category = "Player vs. Player",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Win 10 Nagrand Arena matches.", npc=nil, coords={x=67.0,y=52.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
+    [101] = {
+        id       = 101,
+        name     = "Nagrand Arena",
+        category = "Player vs. Player",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Complete 100 Nagrand Arena matches.", npc=nil, coords={x=67.0,y=52.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "World Wide Winner" (ID 699) — PvP (Halaa)
+    -- -------------------------------------------------------------------------
+    [699] = {
+        id       = 699,
+        name     = "World Wide Winner",
+        category = "Player vs. Player",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Win Halaa in Nagrand.", npc=nil, coords={x=42.0,y=44.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Hills Like White Elekk" (ID 939) — Collections (mount)
+    -- -------------------------------------------------------------------------
+    [939] = {
+        id       = 939,
+        name     = "Hills Like White Elekk",
+        category = "Collections",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Obtain the Elekk mount from the Kurenai (Alliance) or The Mag'har (Horde) at Exalted reputation. Turn in Obsidian Warbeads to gain rep.", npc=nil, coords={x=55.0,y=37.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Of Blood and Anguish" (ID 1576) — Quests / Lore
+    -- -------------------------------------------------------------------------
+    [1576] = {
+        id       = 1576,
+        name     = "Of Blood and Anguish",
+        category = "Quests",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Complete the Ring of Blood quest chain in the Laughing Skull Ruins area of Nagrand.", npc=nil, coords={x=45.0,y=20.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Nagrandeur" (ID 8928) — Quests (Draenor Nagrand)
+    -- Note: ID 8927 is already in DB. 8928 may be a variant/threshold.
+    -- -------------------------------------------------------------------------
+    [8928] = {
+        id       = 8928,
+        name     = "Nagrandeur",
+        category = "Quests",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Complete quests in Nagrand (Draenor). Use /gp criteria 8928 to verify tracking.", npc=nil, coords={x=55.0,y=37.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Stable Master / Husbandry achievements (ID 9539, 9540, 9705, 9706)
+    -- These relate to the Draenor garrison stables in Nagrand.
+    -- -------------------------------------------------------------------------
+    [9539] = {
+        id       = 9539,
+        name     = "Advanced Husbandry",
+        category = "Quests",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Complete advanced stable quests in Nagrand (Draenor). Use /gp criteria 9539 to verify.", npc=nil, coords={x=55.0,y=37.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
+    [9540] = {
+        id       = 9540,
+        name     = "The Stable Master",
+        category = "Quests",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Complete stable mastery quests in Nagrand (Draenor). Use /gp criteria 9540 to verify.", npc=nil, coords={x=55.0,y=37.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
+    [9705] = {
+        id       = 9705,
+        name     = "Advanced Husbandry",
+        category = "Quests",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Advanced Husbandry variant. Use /gp criteria 9705 to verify tracking.", npc=nil, coords={x=55.0,y=37.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
+    [9706] = {
+        id       = 9706,
+        name     = "The Stable Master",
+        category = "Quests",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="The Stable Master variant. Use /gp criteria 9706 to verify tracking.", npc=nil, coords={x=55.0,y=37.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "With a Nagrand Cherry On Top" (ID 9615) — Quests
+    -- -------------------------------------------------------------------------
+    [9615] = {
+        id       = 9615,
+        name     = "With a Nagrand Cherry On Top",
+        category = "Quests",
+        zone     = "Nagrand",
+        mapID    = 107,
+        steps = {
+            { index=1, desc="Complete Nagrand bonus objectives or specific quests. Use /gp criteria 9615 to verify.", npc=nil, coords={x=55.0,y=37.0}, mapID=107, criteriaIndex=1 },
+        },
+    },
+
     -- =========================================================================
     -- BLADE'S EDGE MOUNTAINS (mapID 105)
     -- Level 65-68 zone
     -- =========================================================================
 
-    [1193] = {
-        id       = 1193,
+    -- -------------------------------------------------------------------------
+    -- "Explore Blade's Edge Mountains" (ID 865) — Exploration
+    -- -------------------------------------------------------------------------
+    [865] = {
+        id       = 865,
         name     = "Explore Blade's Edge Mountains",
         category = "Exploration",
         zone     = "Blade's Edge Mountains",
@@ -5577,6 +5994,21 @@ GP.Data.Achievements = {
         },
     },
 
+    -- -------------------------------------------------------------------------
+    -- "On the Blade's Edge" (ID 1193) — Quests
+    -- Complete 90 quests in Blade's Edge Mountains.
+    -- -------------------------------------------------------------------------
+    [1193] = {
+        id       = 1193,
+        name     = "On the Blade's Edge",
+        category = "Quests",
+        zone     = "Blade's Edge Mountains",
+        mapID    = 105,
+        steps = {
+            { index=1, desc="Complete 90 quests in Blade's Edge Mountains.", npc=nil, coords={x=61.0,y=68.0}, mapID=105, criteriaIndex=1 },
+        },
+    },
+
     [1276] = {
         id       = 1276,
         name     = "Blade's Edge Bomberman",
@@ -5593,8 +6025,11 @@ GP.Data.Achievements = {
     -- Level 67-70 zone
     -- =========================================================================
 
-    [1194] = {
-        id       = 1194,
+    -- -------------------------------------------------------------------------
+    -- "Explore Netherstorm" (ID 843) — Exploration
+    -- -------------------------------------------------------------------------
+    [843] = {
+        id       = 843,
         name     = "Explore Netherstorm",
         category = "Exploration",
         zone     = "Netherstorm",
@@ -5618,6 +6053,21 @@ GP.Data.Achievements = {
         },
     },
 
+    -- -------------------------------------------------------------------------
+    -- "Into the Nether" (ID 1194) — Quests
+    -- Complete 120 quests in Netherstorm.
+    -- -------------------------------------------------------------------------
+    [1194] = {
+        id       = 1194,
+        name     = "Into the Nether",
+        category = "Quests",
+        zone     = "Netherstorm",
+        mapID    = 109,
+        steps = {
+            { index=1, desc="Complete 120 quests in Netherstorm.", npc=nil, coords={x=33.0,y=64.0}, mapID=109, criteriaIndex=1 },
+        },
+    },
+
     [1277] = {
         id       = 1277,
         name     = "Rapid Defense",
@@ -5634,8 +6084,11 @@ GP.Data.Achievements = {
     -- Level 67-70 zone
     -- =========================================================================
 
-    [1195] = {
-        id       = 1195,
+    -- -------------------------------------------------------------------------
+    -- "Explore Shadowmoon Valley" (ID 864) — Exploration
+    -- -------------------------------------------------------------------------
+    [864] = {
+        id       = 864,
         name     = "Explore Shadowmoon Valley",
         category = "Exploration",
         zone     = "Shadowmoon Valley",
@@ -5658,14 +6111,60 @@ GP.Data.Achievements = {
         },
     },
 
-    [1274] = {
-        id       = 1274,
+    -- -------------------------------------------------------------------------
+    -- "Shadow of the Betrayer" (ID 1195) — Quests
+    -- Complete 90 quests in Shadowmoon Valley.
+    -- -------------------------------------------------------------------------
+    [1195] = {
+        id       = 1195,
         name     = "Shadow of the Betrayer",
         category = "Quests",
         zone     = "Shadowmoon Valley",
         mapID    = 104,
         steps = {
-            { index=1, desc="Complete 90 quests in Shadowmoon Valley.",           npc=nil, coords={x=30.0,y=28.0}, mapID=104, criteriaIndex=1 },
+            { index=1, desc="Complete 90 quests in Shadowmoon Valley.", npc=nil, coords={x=30.0,y=28.0}, mapID=104, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "On the Shadow's Trail" (ID 9528) — Quests (Draenor)
+    -- -------------------------------------------------------------------------
+    [9528] = {
+        id       = 9528,
+        name     = "On the Shadow's Trail",
+        category = "Quests",
+        zone     = "Shadowmoon Valley",
+        mapID    = 539,
+        steps = {
+            { index=1, desc="Complete quests along the Shadow's Trail in Shadowmoon Valley (Draenor). Use /gp criteria 9528 to verify.", npc=nil, coords={x=56.0,y=42.0}, mapID=539, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Shoot For the Moon" (ID 9602) — Quests (Draenor)
+    -- -------------------------------------------------------------------------
+    [9602] = {
+        id       = 9602,
+        name     = "Shoot For the Moon",
+        category = "Quests",
+        zone     = "Shadowmoon Valley",
+        mapID    = 539,
+        steps = {
+            { index=1, desc="Complete the requirements for Shoot For the Moon in Shadowmoon Valley (Draenor). Use /gp criteria 9602 to verify.", npc=nil, coords={x=56.0,y=42.0}, mapID=539, criteriaIndex=1 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Extinguishing Draenor" (ID 11277) — Quests (Draenor)
+    -- -------------------------------------------------------------------------
+    [11277] = {
+        id       = 11277,
+        name     = "Extinguishing Draenor",
+        category = "Quests",
+        zone     = "Shadowmoon Valley",
+        mapID    = 539,
+        steps = {
+            { index=1, desc="Complete the requirements for Extinguishing Draenor in Shadowmoon Valley (Draenor). Use /gp criteria 11277 to verify.", npc=nil, coords={x=56.0,y=42.0}, mapID=539, criteriaIndex=1 },
         },
     },
 

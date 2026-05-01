@@ -43,6 +43,9 @@ SlashCmdList["GUIDEPOST"] = function(input)
     if input == "" then
         GP.UI.MainFrame.Toggle()
 
+    elseif input == "settings" then
+        if GP.UI.Settings then GP.UI.Settings.Toggle() end
+
     elseif input == "list" then
         GP.Print("Known achievements:")
         for _, id in ipairs(GP.AchievementData.GetAll()) do

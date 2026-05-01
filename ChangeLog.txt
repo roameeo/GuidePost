@@ -3,6 +3,69 @@
 ================================================================================
 
 --------------------------------------------------------------------------------
+v2.5.0 - 2026-5-1
+--------------------------------------------------------------------------------
+
+NEW FEATURES — SETTINGS PANEL
+-------------------------------
+- Added a Settings panel (gear icon in the main frame title bar, or /gp settings)
+- Achievement Scope selector with three modes:
+  • Account / Warband (default) — show all tracked achievements
+  • Character — show only achievements where this character has in-progress
+    criteria or is actively tracking
+  • Guild — reserved for future guild achievement support; hides all entries
+    until guild achievements are added to the database
+- Auto-scan on zone change toggle: when enabled, GuidePost automatically scans
+  for new achievements matching the current zone every time you enter a new area
+  • New finds are added to the runtime database immediately — no reload needed
+  • Auto-discovered entries appear in the list with a yellow [?] marker
+  • Selecting an auto-discovered entry shows an [Auto-discovered] notice in the
+    detail pane and prompts you to check your in-game achievements panel
+  • Manual /gp scan still prints results to chat as before
+- Settings are saved account-wide in GuidePostDB.settings
+
+DATA IMPROVEMENTS — OUTLAND (ALL ZONES)
+-----------------------------------------
+- Fixed all 7 Outland exploration achievement IDs (were filed under quest IDs):
+  • [862] Explore Hellfire Peninsula  (was [1189])
+  • [863] Explore Zangarmarsh         (was [1190])
+  • [867] Explore Terokkar Forest     (was [1191])
+  • [866] Explore Nagrand             (was [1192])
+  • [865] Explore Blade's Edge Mts.   (was [1193])
+  • [843] Explore Netherstorm         (was [1194])
+  • [864] Explore Shadowmoon Valley   (was [1195])
+- Renamed displaced quest achievement entries to their correct names:
+  To Hellfire and Back [1189/1271], Mysteries of the Marsh [1190], Terror of
+  Terokkar [1191], Nagrand Slam [1192], On the Blade's Edge [1193],
+  Into the Nether [1194], Shadow of the Betrayer [1195]
+- Removed incorrect [864] "Cenarion War Hippogryph" entry from Zangarmarsh
+  (ID 864 = Explore Shadowmoon Valley)
+
+DATA IMPROVEMENTS — NAGRAND
+-----------------------------
+- Added [100], [101] Nagrand Arena achievements
+- Added [699] Halaa battle achievement
+- Added [939] Hills Like White Elekk
+- Added [1576] Ring of Blood quest chain achievement
+- Added [8928] Nagrandeur
+- Added [9539], [9540] Stable Master / Husbandry achievements
+- Added [9705], [9706] related stable achievements
+- Added [9615] Nagrand misc achievement
+
+DATA IMPROVEMENTS — SHADOWMOON VALLEY
+---------------------------------------
+- Added [9528] On the Shadow's Trail
+- Added [9602] Shoot For the Moon
+- Added [11277] Extinguishing Draenor (mapID = 539)
+
+DATA IMPROVEMENTS — SHATTRATH CITY
+-------------------------------------
+- Added skyriding race achievements [18679]–[18687] (mapIDs pending in-game
+  confirmation)
+- Added [9486] Goodness Gracious
+- Added event achievements [9632]–[9638]
+
+--------------------------------------------------------------------------------
 v2.4.3 - 2026-4-22
 --------------------------------------------------------------------------------
 
