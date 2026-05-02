@@ -4009,6 +4009,345 @@ GP.Data.Achievements = {
         },
     },
 
+    -- -------------------------------------------------------------------------
+    -- Ghosts in the Dark (ID 5453) — Darkshore
+    -- Classic quest achievement: slay ghostly/undead enemies haunting Darkshore.
+    -- Criteria: verify with /gp criteria 5453.
+    -- -------------------------------------------------------------------------
+    [5453] = {
+        id       = 5453,
+        name     = "Ghosts in the Dark",
+        category = "Quests",
+        zone     = "Darkshore",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the ghost/undead quest chains around the ruins of Auberdine. Slay the spectral entities haunting the Darkshore coastline.",
+                npc           = nil,
+                coords        = { x = 37.0, y = 43.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- BfA 8.0 Darkshore Skip Unlock — Alliance (ID 13147)
+    -- Complete Darkshore warfront intro content to unlock the skip for alts.
+    -- -------------------------------------------------------------------------
+    [13147] = {
+        id       = 13147,
+        name     = "8.0 Darkshore Skip Unlock - Alliance",
+        category = "Quests",
+        zone     = "Darkshore",
+        faction  = "Alliance",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Darkshore warfront intro quest chain as Alliance from Lor'danel. Finishing this unlocks the skip for your alts.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 18.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- BfA 8.0 Darkshore Skip Unlock — Horde (ID 13148)
+    -- -------------------------------------------------------------------------
+    [13148] = {
+        id       = 13148,
+        name     = "8.0 Darkshore Skip Unlock - Horde",
+        category = "Quests",
+        zone     = "Darkshore",
+        faction  = "Horde",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Darkshore warfront intro quest chain as Horde. Finishing this unlocks the skip for your alts.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 65.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- War for the Shore — Alliance (ID 13296) — Darkshore Warfront
+    -- Complete the Darkshore warfront campaign as Alliance.
+    -- Criteria: verify with /gp criteria 13296.
+    -- -------------------------------------------------------------------------
+    [13296] = {
+        id       = 13296,
+        name     = "War for the Shore",
+        category = "Warfront",
+        zone     = "Darkshore",
+        faction  = "Alliance",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Darkshore warfront as Alliance. Enter via the warfront command board in Lor'danel and win the Warfront scenario.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 18.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Under Cover of Darkness — Alliance (ID 13301) — Darkshore Warfront
+    -- Kill enemies from stealth during the Darkshore warfront.
+    -- -------------------------------------------------------------------------
+    [13301] = {
+        id       = 13301,
+        name     = "Under Cover of Darkness",
+        category = "Warfront",
+        zone     = "Darkshore",
+        faction  = "Alliance",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "In the Darkshore warfront, kill enemies while stealthed. Use a Druid (Cat Form) or Rogue to get stealth kills inside the warfront instance.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 18.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Under Cover of Darkness — Horde (ID 13302) — Darkshore Warfront
+    -- -------------------------------------------------------------------------
+    [13302] = {
+        id       = 13302,
+        name     = "Under Cover of Darkness",
+        category = "Warfront",
+        zone     = "Darkshore",
+        faction  = "Horde",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "In the Darkshore warfront, kill enemies while stealthed as Horde. Use a Druid (Cat Form) or Rogue to get stealth kills inside the warfront instance.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 65.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Night Moves — Alliance (ID 13305) — Darkshore Warfront
+    -- Criteria: verify with /gp criteria 13305.
+    -- -------------------------------------------------------------------------
+    [13305] = {
+        id       = 13305,
+        name     = "Night Moves",
+        category = "Warfront",
+        zone     = "Darkshore",
+        faction  = "Alliance",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Night Moves objectives during the Darkshore warfront as Alliance. Verify exact criteria with /gp criteria 13305.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 18.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Night Moves — Horde (ID 13306) — Darkshore Warfront
+    -- -------------------------------------------------------------------------
+    [13306] = {
+        id       = 13306,
+        name     = "Night Moves",
+        category = "Warfront",
+        zone     = "Darkshore",
+        faction  = "Horde",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Night Moves objectives during the Darkshore warfront as Horde. Verify exact criteria with /gp criteria 13306.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 65.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Recruitment Officer — Alliance (ID 13307) — Darkshore Warfront
+    -- Recruit NPC allies during the warfront gathering/build phase.
+    -- -------------------------------------------------------------------------
+    [13307] = {
+        id       = 13307,
+        name     = "Recruitment Officer",
+        category = "Warfront",
+        zone     = "Darkshore",
+        faction  = "Alliance",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "During the Darkshore warfront as Alliance, recruit NPC followers/allies to fight for your side. Complete the recruitment objectives inside the warfront instance.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 18.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Recruitment Officer — Horde (ID 13308) — Darkshore Warfront
+    -- -------------------------------------------------------------------------
+    [13308] = {
+        id       = 13308,
+        name     = "Recruitment Officer",
+        category = "Warfront",
+        zone     = "Darkshore",
+        faction  = "Horde",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "During the Darkshore warfront as Horde, recruit NPC followers/allies to fight for your side. Complete the recruitment objectives inside the warfront instance.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 65.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Deforester (ID 13309) — Darkshore Warfront
+    -- Gather lumber resources during the warfront's resource phase.
+    -- -------------------------------------------------------------------------
+    [13309] = {
+        id       = 13309,
+        name     = "Deforester",
+        category = "Warfront",
+        zone     = "Darkshore",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "During the Darkshore warfront, gather lumber/wood resources from the trees in the warfront zone during the resource collection phase.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 18.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- By Nature's Call (ID 13310) — Darkshore Warfront
+    -- Summon or empower Ancient guardians during the warfront.
+    -- -------------------------------------------------------------------------
+    [13310] = {
+        id       = 13310,
+        name     = "By Nature's Call",
+        category = "Warfront",
+        zone     = "Darkshore",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "During the Darkshore warfront, summon or empower Ancient guardians/nature elementals. Complete the associated objectives inside the warfront instance.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 18.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Tall, Dark, and Sinister (ID 13433) — Darkshore Warfront
+    -- Defeat a specific powerful enemy in the Darkshore warfront.
+    -- Criteria: verify with /gp criteria 13433.
+    -- -------------------------------------------------------------------------
+    [13433] = {
+        id       = 13433,
+        name     = "Tall, Dark, and Sinister",
+        category = "Warfront",
+        zone     = "Darkshore",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Defeat the powerful elite enemy inside the Darkshore warfront. Verify the exact target with /gp criteria 13433.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 18.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Heroic: War for the Shore — Alliance (ID 14149) — Darkshore Warfront
+    -- Complete the Heroic difficulty Darkshore warfront as Alliance.
+    -- -------------------------------------------------------------------------
+    [14149] = {
+        id       = 14149,
+        name     = "Heroic: War for the Shore",
+        category = "Warfront",
+        zone     = "Darkshore",
+        faction  = "Alliance",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Heroic difficulty Darkshore warfront as Alliance. Queue via the warfront board in Lor'danel when the Heroic warfront is active.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 18.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Heroic: War for the Shore — Horde (ID 14150) — Darkshore Warfront
+    -- -------------------------------------------------------------------------
+    [14150] = {
+        id       = 14150,
+        name     = "Heroic: War for the Shore",
+        category = "Warfront",
+        zone     = "Darkshore",
+        faction  = "Horde",
+        mapID    = 62,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Heroic difficulty Darkshore warfront as Horde. Queue via the warfront board when the Heroic warfront is active.",
+                npc           = nil,
+                coords        = { x = 51.0, y = 65.0 },
+                mapID         = 62,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
     -- =========================================================================
     -- DESOLACE (mapID 66)
     -- =========================================================================
@@ -4391,6 +4730,54 @@ GP.Data.Achievements = {
             { index=1, desc="Complete Shadowglen starter quests.",                 npc=nil, coords={x=45.0,y=61.0}, mapID=57, criteriaIndex=1 },
             { index=2, desc="Complete Dolanaar quest chain.",                      npc=nil, coords={x=55.0,y=52.0}, mapID=57, criteriaIndex=2 },
             { index=3, desc="Complete The Corruption of Teldrassil quest chain.",  npc=nil, coords={x=55.0,y=52.0}, mapID=57, criteriaIndex=3 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- BfA: In Teldrassil's Shadow (ID 13251) — Alliance
+    -- War of the Thorns (8.0 pre-patch) Alliance questline.
+    -- Criteria: verify with /gp criteria 13251.
+    -- -------------------------------------------------------------------------
+    [13251] = {
+        id       = 13251,
+        name     = "In Teldrassil's Shadow",
+        category = "Quests",
+        zone     = "Teldrassil",
+        faction  = "Alliance",
+        mapID    = 57,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Pick up the War of the Thorns intro quest from Malfurion Stormrage in Darnassus and complete the Alliance defence/evacuation chain leading through Teldrassil.",
+                npc           = "Malfurion Stormrage",
+                coords        = { x = 39.0, y = 42.0 },
+                mapID         = 57,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- BfA: In Teldrassil's Shadow — Hidden (ID 13488) — Alliance
+    -- Hidden character-level tracking achievement paired with 13251.
+    -- Criteria: verify with /gp criteria 13488.
+    -- -------------------------------------------------------------------------
+    [13488] = {
+        id       = 13488,
+        name     = "In Teldrassil's Shadow (Hidden Character Achievement)",
+        category = "Quests",
+        zone     = "Teldrassil",
+        faction  = "Alliance",
+        mapID    = 57,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Hidden progress tracker for 13251. Automatically awarded alongside 'In Teldrassil's Shadow' upon completing the War of the Thorns questline.",
+                npc           = nil,
+                coords        = { x = 39.0, y = 42.0 },
+                mapID         = 57,
+                criteriaIndex = 1,
+            },
         },
     },
 

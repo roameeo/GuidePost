@@ -166,7 +166,7 @@ end
 -- =============================================================================
 
 local SCAN_BATCH_SIZE = 200   -- IDs checked per frame — raise if you want faster
-local SCAN_ID_MAX     = 20000 -- highest ID to scan (Blizzard's range as of TWW)
+local SCAN_ID_MAX     = 40000 -- highest ID to scan; raised for TWW S2+ content
 
 AD.ScanActive = false  -- true while a scan is running (prevents double-scans)
 
@@ -186,6 +186,17 @@ function AD.ScanZone(overrideZone, autoAdd)
     end
 
     local zoneLower = zone:lower()
+
+    -- Build a list of search terms: always include the zone as-is, plus a
+    -- de-pluralised variant (e.g. "siren isles" → "siren isle") so we catch
+    -- achievements whose text omits or adds a trailing 's'.
+    local searchTerms = { zoneLower }
+    if zoneLower:sub(-1) == "s" then
+        table.insert(searchTerms, zoneLower:sub(1, -2))  -- strip trailing 's'
+    else
+        table.insert(searchTerms, zoneLower .. "s")      -- add trailing 's'
+    end
+
     if not autoAdd then
         GP.Print(string.format("Scanning for achievements in |cff00ccff%s|r ... (this may take a moment)", zone))
     end
@@ -209,8 +220,15 @@ function AD.ScanZone(overrideZone, autoAdd)
                 local nameLower = name:lower()
                 local descLower = (desc or ""):lower()
 
-                -- Match if the zone name appears in the achievement name or description
-                if nameLower:find(zoneLower, 1, true) or descLower:find(zoneLower, 1, true) then
+                -- Match if any search term appears in the achievement name or description
+                local matched = false
+                for _, term in ipairs(searchTerms) do
+                    if nameLower:find(term, 1, true) or descLower:find(term, 1, true) then
+                        matched = true
+                        break
+                    end
+                end
+                if matched then
                     table.insert(results, {
                         id          = id,
                         name        = name,
