@@ -106,16 +106,28 @@ SlashCmdList["GUIDEPOST"] = function(input)
             end
         end
 
-    elseif input == "dump" then
+    elseif input == "dump" or input:match("^dump .+$") then
         -- Dump filtered achievement panel results as Lua stubs into SavedVariables.
-        -- Usage: open Achievement panel, search/filter, then run /gp dump
+        -- /gp dump              → zone = current zone
+        -- /gp dump todo         → zone = "TODO", mapID = nil  (for broad searches)
+        -- /gp dump <zone name>  → zone = that name, mapID = nil
         local count = GetNumFilteredAchievements and GetNumFilteredAchievements() or 0
         if count == 0 then
-            GP.Print("No results loaded. Open the Achievement panel, search for a zone, then run /gp dump.")
+            GP.Print("No results loaded. Open the Achievement panel, search/filter, then run /gp dump.")
             return
         end
-        local zone    = GetZoneText() or "TODO"
-        local mapID   = C_Map.GetBestMapForUnit("player") or 0
+        local zoneArg = input:match("^dump (.+)$")
+        local zone, mapID
+        if not zoneArg then
+            zone  = GetZoneText() or "TODO"
+            mapID = C_Map.GetBestMapForUnit("player") or 0
+        elseif zoneArg == "todo" then
+            zone  = "TODO"
+            mapID = nil
+        else
+            zone  = zoneArg:gsub("^%l", string.upper)  -- capitalise first letter
+            mapID = nil
+        end
         local stubs   = {}
         local skipped = 0
         for i = 1, count do
@@ -125,6 +137,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
                 if GP.Data.Achievements[id] then
                     skipped = skipped + 1
                 else
+                    local mapIDStr = mapID and tostring(mapID) or "nil"
                     local doneTag = completed and "  -- DONE" or ""
                     table.insert(stubs, string.format(
                         "    [%d] = {\n" ..
@@ -132,15 +145,16 @@ SlashCmdList["GUIDEPOST"] = function(input)
                         "        name     = %q,\n" ..
                         "        category = \"TODO\",\n" ..
                         "        zone     = %q,\n" ..
-                        "        mapID    = %d,\n" ..
+                        "        mapID    = %s,\n" ..
                         "        steps = {\n" ..
-                        "            { index=1, desc=\"TODO\", npc=nil, coords=nil, mapID=%d, criteriaIndex=1 },\n" ..
+                        "            { index=1, desc=\"TODO\", npc=nil, coords=nil, mapID=%s, criteriaIndex=1 },\n" ..
                         "        },\n" ..
                         "    },%s",
-                        id, id, name, zone, mapID, mapID, doneTag))
+                        id, id, name, zone, mapIDStr, mapIDStr, doneTag))
                 end
             end
         end
+        GuidePostDB = GuidePostDB or {}
         GuidePostDB.exportBuffer = table.concat(stubs, "\n")
         GP.Print(string.format(
             "Dumped |cff00ccff%d|r new stubs to |cffffcc00GuidePostDB.exportBuffer|r (%d already in DB, skipped).",
@@ -195,6 +209,8 @@ SlashCmdList["GUIDEPOST"] = function(input)
         GP.Print("  /gp criteria <achID>   - Dump criteria IDs for an achievement")
         GP.Print("  /gp scan               - Scan current zone for achievement IDs")
         GP.Print("  /gp scan <zone>        - Scan a specific zone by name")
-        GP.Print("  /gp dump               - Dump achievement panel search results as Lua stubs")
+        GP.Print("  /gp dump               - Dump achievement panel results as Lua stubs (uses current zone)")
+        GP.Print("  /gp dump todo          - Dump with zone=TODO (for broad/multi-zone searches)")
+        GP.Print("  /gp dump <zone>        - Dump with a specific zone name")
     end
 end

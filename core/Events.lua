@@ -32,6 +32,7 @@ end
 
 -- Called once when the player's UI is fully loaded and usable
 On("PLAYER_LOGIN", function()
+    GuidePostDB = GuidePostDB or {}   -- ensure account SavedVars table always exists
     GP.AchievementData.Initialize()  -- build zone index, check completion state
     GP.Progress.Initialize()          -- load saved per-character progress
     GP.UI.MinimapButton.Initialize()  -- add the minimap icon
