@@ -7756,6 +7756,98 @@ GP.Data.Achievements = {
         },
     },
 
+    -- =========================================================================
+    -- Siren Isle (The War Within – patch 11.1)
+    -- =========================================================================
+
+    [41042] = {
+        id       = 41042,
+        name     = "Siren-ity Now!",
+        category = "Quests",
+        zone     = "Siren Isle",
+        mapID    = 2369,
+        steps = {
+            { index=1, desc="TODO: verify with /gp criteria 41042", npc=nil, coords=nil, mapID=2369, criteriaIndex=1 },
+        },
+    },
+
+    [41043] = {
+        id       = 41043,
+        name     = "Excavation Projects",
+        category = "Quests",
+        zone     = "Siren Isle",
+        mapID    = 2369,
+        steps = {
+            { index=1, desc="TODO: verify with /gp criteria 41043", npc=nil, coords=nil, mapID=2369, criteriaIndex=1 },
+        },
+    },
+
+    [41045] = {
+        id       = 41045,
+        name     = "A Song of Secrets",
+        category = "Quests",
+        zone     = "Siren Isle",
+        mapID    = 2369,
+        steps = {
+            { index=1, desc="TODO: verify with /gp criteria 41045", npc=nil, coords=nil, mapID=2369, criteriaIndex=1 },
+        },
+    },
+
+    [41046] = {
+        id       = 41046,
+        name     = "Clean Up on Isle Siren",
+        category = "Exploration",
+        zone     = "Siren Isle",
+        mapID    = 2369,
+        steps = {
+            { index=1, desc="TODO: verify with /gp criteria 41046", npc=nil, coords=nil, mapID=2369, criteriaIndex=1 },
+        },
+    },
+
+    [41050] = {
+        id       = 41050,
+        name     = "A Choir of Citrines",
+        category = "Exploration",
+        zone     = "Siren Isle",
+        mapID    = 2369,
+        steps = {
+            { index=1, desc="TODO: verify with /gp criteria 41050", npc=nil, coords=nil, mapID=2369, criteriaIndex=1 },
+        },
+    },
+
+    [41131] = {
+        id       = 41131,
+        name     = "Treasures of the Storm",
+        category = "Exploration",
+        zone     = "Siren Isle",
+        mapID    = 2369,
+        steps = {
+            { index=1, desc="TODO: verify with /gp criteria 41131", npc=nil, coords=nil, mapID=2369, criteriaIndex=1 },
+        },
+    },
+
+    [41133] = {
+        id       = 41133,
+        name     = "Isle Remember You",
+        category = "Exploration",
+        zone     = "Siren Isle",
+        mapID    = 2369,
+        steps = {
+            { index=1, desc="TODO: verify with /gp criteria 41133", npc=nil, coords=nil, mapID=2369, criteriaIndex=1 },
+        },
+    },
+
+    [41185] = {
+        id       = 41185,
+        name     = "Siren's Squall",
+        category = "Quests",
+        zone     = "Siren Isle",
+        mapID    = 2369,
+        steps = {
+            { index=1, desc="TODO: verify with /gp criteria 41185", npc=nil, coords=nil, mapID=2369, criteriaIndex=1 },
+        },
+    },
+
 }
 
 -- Zone → achievement ID list, populated at load time in AchievementData.lua

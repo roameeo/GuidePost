@@ -166,7 +166,7 @@ end
 -- =============================================================================
 
 local SCAN_BATCH_SIZE = 200   -- IDs checked per frame — raise if you want faster
-local SCAN_ID_MAX     = 40000 -- highest ID to scan; raised for TWW S2+ content
+local SCAN_ID_MAX     = 60000 -- highest ID to scan; raised for TWW S2+ content
 
 AD.ScanActive = false  -- true while a scan is running (prevents double-scans)
 

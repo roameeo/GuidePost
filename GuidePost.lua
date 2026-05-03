@@ -106,6 +106,47 @@ SlashCmdList["GUIDEPOST"] = function(input)
             end
         end
 
+    elseif input == "dump" then
+        -- Dump filtered achievement panel results as Lua stubs into SavedVariables.
+        -- Usage: open Achievement panel, search/filter, then run /gp dump
+        local count = GetNumFilteredAchievements and GetNumFilteredAchievements() or 0
+        if count == 0 then
+            GP.Print("No results loaded. Open the Achievement panel, search for a zone, then run /gp dump.")
+            return
+        end
+        local zone    = GetZoneText() or "TODO"
+        local mapID   = C_Map.GetBestMapForUnit("player") or 0
+        local stubs   = {}
+        local skipped = 0
+        for i = 1, count do
+            local id = GetFilteredAchievementID(i)
+            local _, name, _, completed, _, _, _, _, _, _, _, isGuild = GetAchievementInfo(id)
+            if name and not isGuild then
+                if GP.Data.Achievements[id] then
+                    skipped = skipped + 1
+                else
+                    local doneTag = completed and "  -- DONE" or ""
+                    table.insert(stubs, string.format(
+                        "    [%d] = {\n" ..
+                        "        id       = %d,\n" ..
+                        "        name     = %q,\n" ..
+                        "        category = \"TODO\",\n" ..
+                        "        zone     = %q,\n" ..
+                        "        mapID    = %d,\n" ..
+                        "        steps = {\n" ..
+                        "            { index=1, desc=\"TODO\", npc=nil, coords=nil, mapID=%d, criteriaIndex=1 },\n" ..
+                        "        },\n" ..
+                        "    },%s",
+                        id, id, name, zone, mapID, mapID, doneTag))
+                end
+            end
+        end
+        GuidePostDB.exportBuffer = table.concat(stubs, "\n")
+        GP.Print(string.format(
+            "Dumped |cff00ccff%d|r new stubs to |cffffcc00GuidePostDB.exportBuffer|r (%d already in DB, skipped).",
+            #stubs, skipped))
+        GP.Print("Find them in your WTF SavedVariables/GuidePost.lua file — search for 'exportBuffer'.")
+
     elseif input == "scan" then
         -- Scan the current zone for achievement IDs
         GP.AchievementData.ScanZone()
@@ -154,5 +195,6 @@ SlashCmdList["GUIDEPOST"] = function(input)
         GP.Print("  /gp criteria <achID>   - Dump criteria IDs for an achievement")
         GP.Print("  /gp scan               - Scan current zone for achievement IDs")
         GP.Print("  /gp scan <zone>        - Scan a specific zone by name")
+        GP.Print("  /gp dump               - Dump achievement panel search results as Lua stubs")
     end
 end
