@@ -2,8 +2,8 @@
 ## Interface-Retail: 120005
 ## Title: |cff00ccffGuidePost|r
 ## Notes: Step-by-step achievement guidance with TomTom waypoints, progress tracking, and zone suggestions.
-## Author: YourNameHere
-## Version: 2.0.0
+## Author: Roameeo
+## Version: 2.5.0
 ## Dependencies: TomTom
 ## SavedVariables: GuidePostDB
 ## SavedVariablesPerCharacter: GuidePostCharDB
