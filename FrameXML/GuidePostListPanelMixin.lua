@@ -39,6 +39,8 @@ function GuidePostListPanelMixin:OnLoad()
     end)
     self.LhfCheckbox:SetScript("OnLeave", function() GameTooltip:Hide() end)
     self.LhfButton:HookScript("OnClick", function() self.LhfCheckbox:Click() end)
+
+    self:PopulateList()
 end
 
 function GuidePostListPanelMixin:InitializeCategoryDropdown()
@@ -111,7 +113,7 @@ function GuidePostListPanelMixin:InitializeZoneDropdown()
     UIDropDownMenu_SetText(self.ZoneDropdown, GuidePostDB.filters.zone)
 end
 
-local function sortTrackedByCompletion(list)
+local function sortListByCompletionDesc(list)
     if not GuidePostDB.filters.lowHangingFruit then return end
 
     table.sort(list, function(a, b)
@@ -127,13 +129,84 @@ local function sortTrackedByCompletion(list)
     end)
 end
 
-function GuidePostListPanelMixin:PopulateList()
-    local listContent = self.ScrollFrame.ListContent
+local CATEGORY_GAP = 15
+function GuidePostListPanelMixin:BuildListCategory(listContentFrame, itemList, headerData, lastFrame)
+    if #itemList == 0 then return lastFrame end
+    
+    local isCollapsed = (GuidePostDB.collapsedZones or {})[headerData.name] or false
+    local header
+    if headerData.isZoneHeader then
+
+        header = CreateFrame("Button", nil, listContentFrame, "GuidePostListHeaderButtonTemplate")
+        header:HookScript("OnClick", function()
+            GuidePostDB.collapsedZones = GuidePostDB.collapsedZones or {}
+            GuidePostDB.collapsedZones[headerData.name] = not GuidePostDB.collapsedZones[headerData.name]
+            self:PopulateList()
+        end)
+        local collapseInd = GP.GetAtlasString("friendslist-categorybutton-arrow-"..(isCollapsed and "right" or "down"))
+        header.ZoneName:SetText(headerData.color:WrapTextInColorCode(collapseInd..headerData.name))
+    else
+        header = listContentFrame:CreateFontString(nil, "OVERLAY", "GuidePostListHeaderTemplate")
+        header:SetText(headerData.color:WrapTextInColorCode(headerData.name))
+    end
+
+    if lastFrame then
+        header:SetPoint("TOP", lastFrame, "BOTTOM", 0, -1 * CATEGORY_GAP)
+    else
+        header:SetPoint("TOP")
+    end
+
+    if isCollapsed then return header end
+    
+    local lastItem
+    for idx, achievementID in ipairs(itemList) do
+        local ach = GP.Data.Achievements[achievementID]
+        local isComplete = GP.AchievementData.IsCompleted(achievementID)
+        local done, total = GP.AchievementData.GetCriteriaProgress(achievementID)
+        local item = CreateFrame("Button", nil, listContentFrame, "GuidePostListItemButtonTemplate")
+        item.achievementID = achievementID
+        local yOffset = 0
+        if headerData.isZoneHeader and idx <= 1 then yOffset = -5
+        elseif headerData.isZoneHeader then yOffset = (idx - 1) * -45
+        elseif idx > 1 then yOffset = (idx - 1) * -40
+        end
+        item:SetPoint("TOP", header, "BOTTOM", 0, yOffset)
+        if ach and ach.autoFound then
+            item.Name:SetText(ach.name.." "..LIGHTYELLOW_FONT_COLOR:WrapTextInColorCode("[?]"))
+        else
+            item.Name:SetText(ach and ach.name or "Unknown: "..achievementID)
+        end
+
+        if total > 0 and isComplete then
+            item.Progress:SetText(GP.GetAtlasString("VAS-icon-checkmark"))
+        elseif total > 0 then
+            item.Progress:SetText(string.format("%d/%d", done, total))
+        end
+
+        lastItem = item
+    end
+
+    return lastItem
+end
+
+function GuidePostListPanelMixin:ClearCurrentList()
     -- Clear existing content
-    for _, child in ipairs({ listContent:GetChildren() }) do
+    -- TODO: Explore using a scrollable list template instead to utilize DataProvider's frame recycling capabilities
+    for _, child in ipairs({ self.ScrollFrame.ListContent:GetChildren() }) do
         child:Hide()
         child:SetParent(nil)
     end
+    for _, region in ipairs({ self.ScrollFrame.ListContent:GetRegions() }) do
+        region:Hide()
+        region:SetParent(nil)
+    end
+end
+
+function GuidePostListPanelMixin:PopulateList()
+    self:ClearCurrentList()
+    local listContent = self.ScrollFrame.ListContent
+    local lastListFrame
+    
     -- Tracked Section
     local tracked = GuidePostCharDB.tracked
     local filteredTracked = {}
@@ -142,31 +215,42 @@ function GuidePostListPanelMixin:PopulateList()
             tinsert(filteredTracked, achievementID)
         end
     end
-    sortTrackedByCompletion(filteredTracked)
 
-    if #filteredTracked > 0 then
-        local header = listContent:CreateFontString(nil, "OVERLAY", "GuidePostListHeaderTemplate")
-        header:SetPoint("TOP")
-        header:SetText(GREEN_FONT_COLOR:WrapTextInColorCode("Tracked"))
+    sortListByCompletionDesc(filteredTracked)
+    lastListFrame = self:BuildListCategory(listContent, filteredTracked, { color = GREEN_FONT_COLOR, name = "Tracked" }, lastListFrame)
 
-        for idx, achievementID in ipairs(filteredTracked) do
-            local ach = GP.Data.Achievements[achievementID]
-            local isComplete = GP.AchievementData.IsCompleted(achievementID)
-            local done, total = GP.AchievementData.GetCriteriaProgress(achievementID)
-            local item = CreateFrame("Button", nil, listContent, "GuidePostListItemButtonTemplate")
-            item.achievementID = achievementID
-            item:SetPoint("TOP", header, "BOTTOM", 0, idx <= 1 and 0 or ((idx - 1) * -40))
-            if ach and ach.autoFound then
-                item.Name:SetText(ach.name.." "..LIGHTYELLOW_FONT_COLOR:WrapTextInColorCode("[?]"))
-            else
-                item.Name:SetText(ach and ach.name or "Unknown: "..achievementID)
-            end
-
-            if total > 0 and isComplete then
-                item.Progress:SetText(GP.GetAtlasString("VAS-icon-checkmark"))
-            elseif total > 0 then
-                item.Progress:SetText(string.format("%d/%d", done, total))
-            end
+    -- In This Zone section
+    local suggestions = GP.AchievementData.CurrentZoneSuggestions
+    local filteredSuggestions = {}
+    for _, achievementID in ipairs(suggestions) do
+        -- Making a small change to not show achievements in other sections if they are being tracked
+        if GuidePostFrame:MatchesFilter(achievementID) and not tContains(filteredTracked, achievementID) then
+            tinsert(filteredSuggestions, achievementID)
         end
+    end
+
+    sortListByCompletionDesc(filteredSuggestions)
+    lastListFrame = self:BuildListCategory(listContent, filteredSuggestions, { color = HEIRLOOM_BLUE_COLOR, name = "In This Zone" }, lastListFrame)
+
+    -- All achievements grouped by zone
+    local zoneAchievementMap = {}
+    local zoneNames = {}
+    for _, achievementID in ipairs(GP.AchievementData.GetAll()) do
+        if GuidePostFrame:MatchesFilter(achievementID) then
+            local ach = GP.Data.Achievements[achievementID]
+            local zone = (ach and ach.zone) or "Unknown"
+            if not zoneAchievementMap[zone] then
+                zoneAchievementMap[zone] = {}
+                tinsert(zoneNames, zone)
+            end
+            tinsert(zoneAchievementMap[zone], achievementID)
+        end
+    end
+    table.sort(zoneNames)
+
+    for _, zone in ipairs(zoneNames) do
+        local zoneAchievementIDs = zoneAchievementMap[zone]
+        sortListByCompletionDesc(zoneAchievementIDs)
+        lastListFrame = self:BuildListCategory(listContent, zoneAchievementIDs, { color = DARKYELLOW_FONT_COLOR, name = zone, isZoneHeader = true }, lastListFrame)
     end
 end

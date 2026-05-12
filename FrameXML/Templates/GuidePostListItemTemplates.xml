@@ -8,6 +8,30 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
         </Anchors>
     </FontString>
 
+    <Button name="GuidePostListHeaderButtonTemplate" virtual="true" mixin="GuidePostListHeaderButtonMixin">
+        <Size y="15"/>
+        <KeyValues>
+            <KeyValue key="zone" value="" type="string"/>
+        </KeyValues>
+        <Anchors>
+            <Anchor point="LEFT"/>
+            <Anchor point="RIGHT"/>
+        </Anchors>
+        <NormalTexture file="Interface/Buttons/WHITE8x8">
+            <Color r="0.08" g="0.08" b="0.12" a="0.9"/>
+        </NormalTexture>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="ZoneName" inherits="GameFontHighlightSmall" justifyH="CENTER" setAllPoints="true" text="{zone name}"/>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnEnter method="OnEnter"/>
+            <OnLeave method="OnLeave"/>
+            <OnClick method="OnClick"/>
+        </Scripts>
+    </Button>
+
     <Button name="GuidePostListItemButtonTemplate" virtual="true" mixin="GuidePostListItemButtonMixin">
         <Size y="35"/>
         <KeyValues>
@@ -28,7 +52,7 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
                         <Anchor point="BOTTOMRIGHT" x="-50"/>
                     </Anchors>
                 </FontString>
-                <FontString parentKey="Progress" inherits="GameFontNormalSmall" justifyH="RIGHT" justifyV="BOTTOM" text="{prog}">
+                <FontString parentKey="Progress" inherits="GameFontNormalSmall" justifyH="RIGHT" justifyV="BOTTOM">
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeKey="$parent.Name" relativePoint="TOPRIGHT"/>
                         <Anchor point="BOTTOMRIGHT" x="-2" y="2"/>

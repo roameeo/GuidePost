@@ -8,7 +8,7 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
         </Anchors>
         <Layers>
             <Layer level="OVERLAY">
-                <FontString parentKey="AchName" inherits="GameFontNormal" text="{Achievement Name}">
+                <FontString parentKey="AchName" inherits="GameFontNormal" text="Select an achievement">
                     <Anchors>
                         <Anchor point="TOPLEFT" y="-5"/>
                         <Anchor point="TOPRIGHT" y="-5"/>
