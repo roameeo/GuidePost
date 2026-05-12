@@ -3,7 +3,11 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
     <ScrollFrame name="GuidePostScrollFrameTemplate" virtual="true" inherits="UIPanelScrollFrameTemplate" mixin="GuidePostScrollFrameMixin">
         <Frames>
             <Frame parentKey="ListContent">
-                <Size x="1" y="1"/>
+                <Size y="1"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT"/>
+                    <Anchor point="TOPRIGHT"/>
+                </Anchors>
             </Frame>
         </Frames>
         <Scripts>

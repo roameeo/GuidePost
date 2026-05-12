@@ -52,10 +52,10 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
             </Button>
             <ScrollFrame parentKey="ScrollFrame" inherits="GuidePostScrollFrameTemplate">
                 <Anchors>
-                <Anchor point="TOPLEFT" relativeKey="$parent.ProgressBar" relativePoint="BOTTOMLEFT" y="-60"/>
-                <Anchor point="BOTTOMLEFT" x="10" y="10"/>
-                <Anchor point="BOTTOMRIGHT" x="-30" y="10"/>
-            </Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.ProgressBar" relativePoint="BOTTOMLEFT" y="-60"/>
+                    <Anchor point="BOTTOMLEFT" x="10" y="10"/>
+                    <Anchor point="BOTTOMRIGHT" x="-30" y="10"/>
+                </Anchors>
             </ScrollFrame>
         </Frames>
         <Scripts>

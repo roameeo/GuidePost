@@ -8,9 +8,10 @@ function GuidePostFrameMixin:OnLoad()
     GP.UI.Settings.GetSettings()
     GP.Progress.Initialize()
     self.TitleText:SetText(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("GuidePost"))
+    self:SetMinimizeButtonTextures()
     self.MinimizeButton:HookScript("OnEnter", function(btn)
         GameTooltip:SetOwner(btn, "ANCHOR_RIGHT")
-        if self.isMinimized then
+        if GuidePostDB.isMinimized then
             GameTooltip:SetText("Maximize", 1, 1, 1, 1)
         else
             GameTooltip:SetText("Minimize to title bar", 1, 1, 1, 1)
@@ -24,18 +25,22 @@ function GuidePostFrameMixin:OnLoad()
         GameTooltip:Show()
     end)
     self.SettingsButton:SetScript("OnLeave", function() GameTooltip:Hide() end)
-    self.ResizeGrip:HookScript("OnMouseDown", function() self:StartSizing("BOTTOMRIGHT") end)
-    self.ResizeGrip:HookScript("OnMouseUp", function() self:StopMovingOrSizing() end)
-    self.CloseButton:HookScript("OnClick", function()
-        if GuidePostDB then
-            GuidePostDB.windowX = self:GetLeft()
-            GuidePostDB.windowY = self:GetTop()
-            GuidePostDB.windowW = self:GetWidth()
-            GuidePostDB.windowH = self:GetHeight()
+    self.ResizeGrip:HookScript("OnMouseDown", function()
+        if GuidePostDB.isMinimized then
+            -- Maximize window before resizing
+            self:ToggleMinimize()
         end
+        self:StartSizing("BOTTOMRIGHT")
+    end)
+    self.ResizeGrip:HookScript("OnMouseUp", function()
+        self:StopMovingOrSizing()
+        self:SaveWindowPositionToDB()
+    end)
+    self.CloseButton:HookScript("OnClick", function()
+        self:SaveWindowPositionToDB()
         self:Hide()
     end)
-    self.MinimizeButton:HookScript("OnClick", function() self.ToggleMinimize() end)
+    self.MinimizeButton:HookScript("OnClick", function() self:ToggleMinimize() end)
     self.SettingsButton:SetScript("OnClick", function()
         if GP.UI.Settings then GP.UI.Settings.Toggle() end
     end)
@@ -52,16 +57,47 @@ function GuidePostFrameMixin:OnDragStop()
     self:ClearAllPoints()
     self:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", x, y)
     -- Persist position so it survives /reload and relog
-    if GuidePostDB then
-        GuidePostDB.windowX = x
-        GuidePostDB.windowY = y
-    end
+    GuidePostDB.windowX = x
+    GuidePostDB.windowY = y
     self:StopMovingOrSizing()
+end
+
+function GuidePostFrameMixin:OnShow()
+    GP.AchievementData.RefreshZoneSuggestions()
+    local suggestionCount = #GP.AchievementData.CurrentZoneSuggestions
+    self.ZoneSuggestions:SetText(suggestionCount > 0 and (suggestionCount.." suggestion(s) in "..GetZoneText()) or "")
+    self:HandleMinimizeSizing()
+end
+
+function GuidePostFrameMixin:SetMinimizeButtonTextures()
+    local textureBasename = "128-RedButton-"..(GuidePostDB.isMinimized and "Plus" or "Minus")
+    self.MinimizeButton:SetNormalAtlas(textureBasename)
+    self.MinimizeButton:SetHighlightAtlas(textureBasename)
+    self.MinimizeButton:SetPushedAtlas(textureBasename.."-Pressed")
 end
 
 function GuidePostFrameMixin:Toggle()
     if self:IsShown() then self:Hide() else self:Show() end
 end
 
-function GuidePostFrameMixin.ToggleMinimize()
+function GuidePostFrameMixin:SaveWindowPositionToDB()
+    GuidePostDB.windowX = self:GetLeft()
+    GuidePostDB.windowY = self:GetTop()
+    GuidePostDB.windowW = self:GetWidth()
+    GuidePostDB.windowH = self:GetHeight()
+end
+
+function GuidePostFrameMixin:HandleMinimizeSizing()
+    local show = not GuidePostDB.isMinimized
+    self.InsetBg:SetShown(show)
+    self.ListPanel:SetShown(show)
+    self.DetailPanel:SetShown(show)
+    self:SetHeight(show and GuidePostDB.windowH or 50)
+end
+
+function GuidePostFrameMixin:ToggleMinimize()
+    GuidePostDB.isMinimized = not GuidePostDB.isMinimized
+    if GuidePostDB.isMinimized then self:SaveWindowPositionToDB() end
+    self:SetMinimizeButtonTextures()
+    self:HandleMinimizeSizing()
 end

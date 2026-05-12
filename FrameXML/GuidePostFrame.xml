@@ -6,9 +6,6 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
             <minResize x="620" y="390"/>
             <maxResize x="900" y="800"/>
         </ResizeBounds>
-        <KeyValues>
-            <KeyValue key="isMinimized" type="boolean" value="false"/>
-        </KeyValues>
          <Anchors>
             <Anchor point="CENTER"/>
          </Anchors>
@@ -19,7 +16,7 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
                         <Anchor point="LEFT" relativeKey="$parent.TitleText" relativePoint="RIGHT" x="10"/>
                     </Anchors>
                 </FontString>
-                <FontString parentKey="ZoneLabel" inherits="GameFontHighlightSmall" text="{zone label}">
+                <FontString parentKey="ZoneSuggestions" inherits="GameFontHighlightSmall">
                     <Color color="DARKYELLOW_FONT_COLOR"/>
                     <Anchors>
                         <Anchor point="BOTTOMLEFT" x="10" y="10"/>
@@ -42,9 +39,6 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
                 <Anchors>
                     <Anchor point="RIGHT" relativeKey="$parent.CloseButton" relativePoint="LEFT" x="-2"/>
                 </Anchors>
-                <NormalTexture atlas="128-RedButton-Minus"/>
-                <HighlightTexture atlas="128-RedButton-Minus"/>
-                <PushedTexture atlas="128-RedButton-Minus-Pressed"/>
             </Button>
             <Button parentKey="SettingsButton">
                 <Size x="24" y="24"/>
@@ -60,6 +54,7 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
             <OnLoad method="OnLoad"/>
             <OnDragStart method="OnDragStart"/>
             <OnDragStop method="OnDragStop"/>
+            <OnShow method="OnShow"/>
          </Scripts>
     </Frame>
 </Ui>
