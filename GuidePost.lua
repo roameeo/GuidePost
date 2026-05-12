@@ -41,7 +41,8 @@ SlashCmdList["GUIDEPOST"] = function(input)
     input = input:lower()  -- make all commands case-insensitive
 
     if input == "" then
-        GP.UI.MainFrame.Toggle()
+        -- GP.UI.MainFrame.Toggle()
+        GuidePostFrame:Toggle()
 
     elseif input == "settings" then
         if GP.UI.Settings then GP.UI.Settings.Toggle() end

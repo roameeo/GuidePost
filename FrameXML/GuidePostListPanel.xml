@@ -1,0 +1,87 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+<Frame name="GPListPanel" parent="GuidePostFrame" parentKey="ListPanel" mixin="GuidePostListPanelMixin" inherits="InsetFrameTemplate">
+    <Size x="225"/>
+    <Anchors>
+        <Anchor point="TOPLEFT" relativeKey="$parent.InsetBorderTopLeft"/>
+        <Anchor point="BOTTOMLEFT" relativeKey="$parent.InsetBorderBottomLeft" y="20"/>
+    </Anchors>
+    <Layers>
+        <Layer level="OVERLAY">
+            <FontString parentKey="ListLabel" inherits="GameFontNormalSmall" text="Achievements" justifyH="CENTER">
+                <Color color="HEIRLOOM_BLUE_COLOR"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="5" y="-5"/>
+                    <Anchor point="TOPRIGHT" x="-5" y="-5"/>
+                </Anchors>
+            </FontString>
+            <FontString parentKey="CategoryLabel" inherits="GameFontNormalSmall" text="Category:" justifyH="LEFT">
+                <Color color="DARKYELLOW_FONT_COLOR"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.ListLabel" relativePoint="BOTTOMLEFT" y="-50"/>
+                </Anchors>
+            </FontString>
+            <FontString parentKey="StatusLabel" inherits="GameFontNormalSmall" text="Status:" justifyH="LEFT">
+                <Color color="DARKYELLOW_FONT_COLOR"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.CategoryLabel" relativePoint="BOTTOMLEFT" y="-20"/>
+                    <Anchor point="TOPRIGHT" relativeKey="$parent.CategoryLabel" relativePoint="BOTTOMRIGHT" y="-20"/>
+                </Anchors>
+            </FontString>
+            <FontString parentKey="ZoneLabel" inherits="GameFontNormalSmall" text="Zone:" justifyH="LEFT">
+                <Color color="DARKYELLOW_FONT_COLOR"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.StatusLabel" relativePoint="BOTTOMLEFT" y="-20"/>
+                    <Anchor point="TOPRIGHT" relativeKey="$parent.StatusLabel" relativePoint="BOTTOMRIGHT" y="-20"/>
+                </Anchors>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+        <EditBox parentKey="SearchBox" inherits="SearchBoxTemplate" autoFocus="false">
+            <Size x="210" y="20"/>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeKey="$parent.ListLabel" relativePoint="BOTTOMLEFT" x="5" y="-10"/>
+            </Anchors>
+        </EditBox>
+        <Frame parentKey="CategoryDropdown" inherits="UIDropDownMenuTemplate">
+            <Anchors>
+                <Anchor point="LEFT" relativeKey="$parent.CategoryLabel" relativePoint="RIGHT"/>
+            </Anchors>
+        </Frame>
+        <Frame parentKey="StatusDropdown" inherits="UIDropDownMenuTemplate">
+            <Anchors>
+                <Anchor point="LEFT" relativeKey="$parent.StatusLabel" relativePoint="RIGHT"/>
+            </Anchors>
+        </Frame>
+        <Frame parentKey="ZoneDropdown" inherits="UIDropDownMenuTemplate">
+            <Anchors>
+                <Anchor point="LEFT" relativeKey="$parent.ZoneLabel" relativePoint="RIGHT"/>
+            </Anchors>
+        </Frame>
+        <CheckButton parentKey="LhfCheckbox" inherits="MinimalCheckboxTemplate">
+            <Size x="20" y="19"/>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeKey="$parent.ZoneLabel" relativePoint="BOTTOMLEFT" y="-10"/>
+            </Anchors>
+        </CheckButton>
+        <Button parentKey="LhfButton" inherits="InsecureActionButtonTemplate">
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeKey="$parent.LhfCheckbox" relativePoint="TOPRIGHT" x="5"/>
+                <Anchor point="BOTTOMLEFT" relativeKey="$parent.LhfCheckbox" relativePoint="BOTTOMRIGHT" x="5"/>
+                <Anchor point="RIGHT"/>
+            </Anchors>
+            <Layers>
+                <Layer level="OVERLAY">
+                    <FontString parentKey="Text" inherits="GameFontHighlightSmall" justifyH="LEFT" setAllPoints="true" text="Low-Hanging Fruit">
+                        <Color color="DARKYELLOW_FONT_COLOR"/>
+                    </FontString>
+                </Layer>
+            </Layers>
+        </Button>
+    </Frames>
+    <Scripts>
+        <OnLoad method="OnLoad"/>
+    </Scripts>
+</Frame>
+</Ui>

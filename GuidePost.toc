@@ -2,11 +2,13 @@
 ## Interface-Retail: 120005
 ## Title: |cff00ccffGuidePost|r
 ## Notes: Step-by-step achievement guidance with TomTom waypoints, progress tracking, and zone suggestions.
+## IconTexture: Interface/AddOns/GuidePost/Media/Icon.png
 ## Author: Roameeo
 ## Version: 2.5.0
 ## Dependencies: TomTom
 ## SavedVariables: GuidePostDB
 ## SavedVariablesPerCharacter: GuidePostCharDB
+## LoadSavedVariablesFirst: 1
 
 # Data (loaded first so everything else can reference it)
 data\Achievements.lua
@@ -23,6 +25,10 @@ ui\ProgressBar.lua
 ui\Tooltip.lua
 ui\SettingsFrame.lua
 ui\MainFrame.lua
+FrameXML\GuidePostFrameMixin.lua
+FrameXML\GuidePostFrame.xml
+FrameXML\GuidePostListPanelMixin.lua
+FrameXML\GuidePostListPanel.xml
 
 # Main entry point
 GuidePost.lua

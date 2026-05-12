@@ -1,0 +1,61 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+    <Frame name="GuidePostFrame" parent="UIParent" mixin="GuidePostFrameMixin" inherits="BasicFrameTemplateWithInset" hidden="true" enableMouse="true" movable="true" registerForDrag="LeftButton" resizable="true">
+        <Size x="460" y="520"/>
+        <ResizeBounds>
+            <minResize x="380" y="300"/>
+            <maxResize x="900" y="800"/>
+        </ResizeBounds>
+        <KeyValues>
+            <KeyValue key="SelectedID" type="number" value="-1"/>
+            <KeyValue key="SearchFilter" type="string" value=""/>
+            <KeyValue key="isMinimized" type="boolean" value="false"/>
+        </KeyValues>
+         <Anchors>
+            <Anchor point="CENTER"/>
+         </Anchors>
+         <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="SummaryText" inherits="GameFontHighlightSmall" justifyH="LEFT" hidden="true">
+                    <Anchors>
+                        <Anchor point="LEFT" relativeKey="$parent.TitleText" relativePoint="RIGHT" x="10"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+         </Layers>
+         <Frames>
+            <Button parentKey="ResizeGrip">
+                <Size x="16" y="16"/>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT" x="-2" y="2"/>
+                </Anchors>
+                <NormalTexture file="Interface/ChatFrame/UI-ChatIM-SizeGrabber-Up"/>
+                <HighlightTexture file="Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Highlight"/>
+                <PushedTexture file="Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Down"/>
+            </Button>
+            <Button parentKey="MinimizeButton">
+                <Size x="20" y="20"/>
+                <Anchors>
+                    <Anchor point="RIGHT" relativeKey="$parent.CloseButton" relativePoint="LEFT" x="-2"/>
+                </Anchors>
+                <NormalTexture atlas="128-RedButton-Minus"/>
+                <HighlightTexture atlas="128-RedButton-Minus"/>
+                <PushedTexture atlas="128-RedButton-Minus-Pressed"/>
+            </Button>
+            <Button parentKey="SettingsButton">
+                <Size x="24" y="24"/>
+                <Anchors>
+                    <Anchor point="RIGHT" relativeKey="$parent.MinimizeButton" relativePoint="LEFT" y="-2"/>
+                </Anchors>
+                <NormalTexture atlas="common-dropdown-a-button-settings-shadowless"/>
+                <HighlightTexture atlas="common-dropdown-a-button-settings-hover-shadowless"/>
+                <PushedTexture atlas="common-dropdown-a-button-settings-pressed-shadowless"/>
+            </Button>
+         </Frames>
+         <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnDragStart method="OnDragStart"/>
+            <OnDragStop method="OnDragStop"/>
+         </Scripts>
+    </Frame>
+</Ui>
