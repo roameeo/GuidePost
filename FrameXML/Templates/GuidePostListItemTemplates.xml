@@ -1,0 +1,46 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+    <FontString name="GuidePostListHeaderTemplate" virtual="true" inherits="GameFontNormalSmall" justifyH="CENTER">
+        <Size y="15"/>
+        <Anchors>
+            <Anchor point="LEFT" x="10"/>
+            <Anchor point="RIGHT" x="-10"/>
+        </Anchors>
+    </FontString>
+
+    <Button name="GuidePostListItemButtonTemplate" virtual="true" mixin="GuidePostListItemButtonMixin">
+        <Size y="35"/>
+        <KeyValues>
+            <KeyValue key="achievementID" value="-1" type="number"/>
+        </KeyValues>
+        <Anchors>
+            <Anchor point="LEFT"/>
+            <Anchor point="RIGHT"/>
+        </Anchors>
+        <NormalTexture file="Interface/Buttons/WHITE8x8">
+            <Color r="0.15" g="0.15" b="0.15" a="0.6"/>
+        </NormalTexture>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="Name" inherits="GameFontHighlightSmall" wordwrap="true" justifyH="LEFT" justifyV="TOP" text="{name}">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="5" y="-5"/>
+                        <Anchor point="BOTTOMRIGHT" x="-50"/>
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="Progress" inherits="GameFontNormalSmall" justifyH="RIGHT" justifyV="BOTTOM" text="{prog}">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeKey="$parent.Name" relativePoint="TOPRIGHT"/>
+                        <Anchor point="BOTTOMRIGHT" x="-2" y="2"/>
+                    </Anchors>
+                    <Color r="0.67" g="0.67" b="0.67"/>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnEnter method="OnEnter"/>
+            <OnLeave method="OnLeave"/>
+            <OnClick method="OnClick"/>
+        </Scripts>
+    </Button>
+</Ui>

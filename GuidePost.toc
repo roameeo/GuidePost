@@ -14,6 +14,7 @@
 data\Achievements.lua
 
 # Core systems
+core\Utils.lua
 core\Events.lua
 core\AchievementData.lua
 core\TomTomIntegration.lua
@@ -25,10 +26,16 @@ ui\ProgressBar.lua
 ui\Tooltip.lua
 ui\SettingsFrame.lua
 ui\MainFrame.lua
+FrameXML\Templates\GuidePostListItemMixins.lua
+FrameXML\Templates\GuidePostListItemTemplates.xml
+FrameXML\Templates\GuidePostScrollFrameMixin.lua
+FrameXML\Templates\GuidePostScrollFrameTemplate.xml
 FrameXML\GuidePostFrameMixin.lua
 FrameXML\GuidePostFrame.xml
 FrameXML\GuidePostListPanelMixin.lua
 FrameXML\GuidePostListPanel.xml
+FrameXML\GuidePostDetailPanelMixin.lua
+FrameXML\GuidePostDetailPanel.xml
 
 # Main entry point
 GuidePost.lua

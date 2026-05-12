@@ -21,6 +21,12 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
                         <Anchor point="LEFT" relativeKey="$parent.TitleText" relativePoint="RIGHT" x="10"/>
                     </Anchors>
                 </FontString>
+                <FontString parentKey="ZoneLabel" inherits="GameFontHighlightSmall" text="{zone label}">
+                    <Color color="DARKYELLOW_FONT_COLOR"/>
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" x="10" y="10"/>
+                    </Anchors>
+                </FontString>
             </Layer>
          </Layers>
          <Frames>

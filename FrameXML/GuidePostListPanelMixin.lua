@@ -1,10 +1,8 @@
 local GP = GuidePostNS or {}
+GuidePostDB = GuidePostDB or {}
+GuidePostCharDB = GuidePostCharDB or {}
 
 GuidePostListPanelMixin = {}
-
-local function PopulateList(frame)
-    print("Dummy list population")
-end
 
 function GuidePostListPanelMixin:OnLoad()
     self.SearchBox:SetMaxLetters(50)
@@ -19,12 +17,12 @@ function GuidePostListPanelMixin:OnLoad()
         end
         -- Filter achievements as user types
         self:GetParent().SearchFilter = sb:GetText():lower()
-        PopulateList(self:GetParent())
+        self:PopulateList()
     end)
 
-    self.CategoryDropdown.Middle:SetWidth(self.CategoryDropdown.Middle:GetWidth() + 15)
-    self.StatusDropdown.Middle:SetWidth(self.StatusDropdown.Middle:GetWidth() + 15)
-    self.ZoneDropdown.Middle:SetWidth(self.ZoneDropdown.Middle:GetWidth() + 15)
+    self.CategoryDropdown.Middle:SetWidth(self.CategoryDropdown.Middle:GetWidth() + 10)
+    self.StatusDropdown.Middle:SetWidth(self.StatusDropdown.Middle:GetWidth() + 10)
+    self.ZoneDropdown.Middle:SetWidth(self.ZoneDropdown.Middle:GetWidth() + 10)
     self:InitializeCategoryDropdown()
     self:InitializeStatusDropdown()
     self:InitializeZoneDropdown()
@@ -32,7 +30,7 @@ function GuidePostListPanelMixin:OnLoad()
     self.LhfCheckbox:SetChecked(GuidePostDB.filters.lowHangingFruit)
     self.LhfCheckbox:HookScript("OnClick", function(cb)
         GuidePostDB.filters.lowHangingFruit = cb:GetChecked()
-        PopulateList(self:GetParent())
+        self:PopulateList()
     end)
     self.LhfCheckbox:HookScript("OnEnter", function(cb)
         GameTooltip:SetOwner(cb, "ANCHOR_RIGHT")
@@ -63,11 +61,11 @@ function GuidePostListPanelMixin:InitializeCategoryDropdown()
         for _, cat in ipairs(categories) do
             info.text = cat
             info.value = cat
-            info.checked = (GuidePostDB.filters.category == cat)
+            info.checked = GuidePostDB.filters.category == cat
             info.func = function(btn)
                 GuidePostDB.filters.category = btn.value
                 UIDropDownMenu_SetText(dropdown, btn.value)
-                PopulateList(self:GetParent())
+                self:PopulateList()
             end
             UIDropDownMenu_AddButton(info)
         end
@@ -82,12 +80,11 @@ function GuidePostListPanelMixin:InitializeStatusDropdown()
         for _, status in ipairs(statuses) do
             info.text = status
             info.value = status
-            info.checked = (GuidePostDB.filters.status == status)
+            info.checked = GuidePostDB.filters.status == status
             info.func = function(btn)
                 GuidePostDB.filters.status = btn.value
-                GuidePostDB.filters.status = btn.value
                 UIDropDownMenu_SetText(dropdown, btn.value)
-                PopulateList(self:GetParent())
+                self:PopulateList()
             end
             UIDropDownMenu_AddButton(info)
         end
@@ -102,15 +99,74 @@ function GuidePostListPanelMixin:InitializeZoneDropdown()
         for _, zone in ipairs(zones) do
             info.text = zone
             info.value = zone
-            info.checked = (GuidePostDB.filters.zone == zone)
+            info.checked = GuidePostDB.filters.zone == zone
             info.func = function(btn)
-                MF.Filters.zone = btn.value
                 GuidePostDB.filters.zone = btn.value
                 UIDropDownMenu_SetText(dropdown, btn.value)
-                PopulateList(self:GetParent())
+                self:PopulateList()
             end
             UIDropDownMenu_AddButton(info)
         end
     end)
     UIDropDownMenu_SetText(self.ZoneDropdown, GuidePostDB.filters.zone)
+end
+
+local function sortTrackedByCompletion(list)
+    if not GuidePostDB.filters.lowHangingFruit then return end
+
+    table.sort(list, function(a, b)
+        local doneA, totalA = GP.AchievementData.GetCriteriaProgress(a)
+        local doneB, totalB = GP.AchievementData.GetCriteriaProgress(b)
+
+        -- Calculate percentages (avoid division by zero)
+        local pctA = (totalA > 0) and (doneA / totalA) or 0
+        local pctB = (totalB > 0) and (doneB / totalB) or 0
+        
+        -- Sort by percentage descending (highest completion first)
+        return pctA > pctB
+    end)
+end
+
+function GuidePostListPanelMixin:PopulateList()
+    local listContent = self.ScrollFrame.ListContent
+    -- Clear existing content
+    for _, child in ipairs({ listContent:GetChildren() }) do
+        child:Hide()
+        child:SetParent(nil)
+    end
+    -- Tracked Section
+    local tracked = GuidePostCharDB.tracked
+    local filteredTracked = {}
+    for achievementID, _ in pairs(tracked) do
+        if GuidePostFrame:MatchesFilter(achievementID) then
+            tinsert(filteredTracked, achievementID)
+        end
+    end
+    sortTrackedByCompletion(filteredTracked)
+
+    if #filteredTracked > 0 then
+        local header = listContent:CreateFontString(nil, "OVERLAY", "GuidePostListHeaderTemplate")
+        header:SetPoint("TOP")
+        header:SetText(GREEN_FONT_COLOR:WrapTextInColorCode("Tracked"))
+
+        for idx, achievementID in ipairs(filteredTracked) do
+            local ach = GP.Data.Achievements[achievementID]
+            local isComplete = GP.AchievementData.IsCompleted(achievementID)
+            local done, total = GP.AchievementData.GetCriteriaProgress(achievementID)
+            local item = CreateFrame("Button", nil, listContent, "GuidePostListItemButtonTemplate")
+            item.achievementID = achievementID
+            item:SetPoint("TOP", header, "BOTTOM", 0, idx <= 1 and 0 or ((idx - 1) * -40))
+            if ach and ach.autoFound then
+                item.Name:SetText(ach.name.." "..LIGHTYELLOW_FONT_COLOR:WrapTextInColorCode("[?]"))
+            else
+                item.Name:SetText(ach and ach.name or "Unknown: "..achievementID)
+            end
+
+            if total > 0 and isComplete then
+                item.Progress:SetText(GP.GetAtlasString("VAS-icon-checkmark"))
+            elseif total > 0 then
+                item.Progress:SetText(string.format("%d/%d", done, total))
+            end
+        end
+    end
 end

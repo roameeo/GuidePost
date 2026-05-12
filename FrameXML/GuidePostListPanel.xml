@@ -11,8 +11,8 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
             <FontString parentKey="ListLabel" inherits="GameFontNormalSmall" text="Achievements" justifyH="CENTER">
                 <Color color="HEIRLOOM_BLUE_COLOR"/>
                 <Anchors>
-                    <Anchor point="TOPLEFT" x="5" y="-5"/>
-                    <Anchor point="TOPRIGHT" x="-5" y="-5"/>
+                    <Anchor point="TOPLEFT" x="10" y="-5"/>
+                    <Anchor point="TOPRIGHT" x="-10" y="-5"/>
                 </Anchors>
             </FontString>
             <FontString parentKey="CategoryLabel" inherits="GameFontNormalSmall" text="Category:" justifyH="LEFT">
@@ -39,7 +39,7 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
     </Layers>
     <Frames>
         <EditBox parentKey="SearchBox" inherits="SearchBoxTemplate" autoFocus="false">
-            <Size x="210" y="20"/>
+            <Size x="200" y="20"/>
             <Anchors>
                 <Anchor point="TOPLEFT" relativeKey="$parent.ListLabel" relativePoint="BOTTOMLEFT" x="5" y="-10"/>
             </Anchors>
@@ -79,6 +79,13 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
                 </Layer>
             </Layers>
         </Button>
+        <ScrollFrame parentKey="ScrollFrame" inherits="GuidePostScrollFrameTemplate">
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeKey="$parent.LhfCheckbox" relativePoint="BOTTOMLEFT" y="-20"/>
+                <Anchor point="BOTTOMLEFT" x="10" y="10"/>
+                <Anchor point="BOTTOMRIGHT" x="-30" y="10"/>
+            </Anchors>
+        </ScrollFrame>
     </Frames>
     <Scripts>
         <OnLoad method="OnLoad"/>

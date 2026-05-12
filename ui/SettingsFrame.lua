@@ -77,7 +77,7 @@ local function CreateSettingsFrame()
           tip = "Show all achievements shared across your entire account." },
         { value = "character", label = "Character",
           tip = "Show only achievements that have in-progress criteria or are\ntracked on this character." },
-        { value = "guild",     label = "Guild",
+        { value = "guild",     label = "Guild (Coming Soon)",
           tip = "Show guild achievements. (Requires guild achievements in the\ndatabase — coming in a future update.)" },
     }
 
@@ -100,6 +100,7 @@ local function CreateSettingsFrame()
         radio:SetPoint("TOPLEFT", 20, y)
         radio:SetSize(20, 20)
         radio.gpValue = scope.value
+        radio:SetEnabled(scope.value ~= "guild")
         radio:SetChecked(S.Get("scope") == scope.value)
         radio:SetScript("OnClick", function() SetScope(scope.value) end)
         radio:SetScript("OnEnter", function(self)
@@ -112,6 +113,7 @@ local function CreateSettingsFrame()
         local lbl = f:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
         lbl:SetPoint("LEFT", radio, "RIGHT", 4, 0)
         lbl:SetText(scope.label)
+        if scope.value == "guild" then lbl:SetTextColor(0.65, 0.65, 0.65) end
 
         table.insert(radioGroup, radio)
         y = y - 22
