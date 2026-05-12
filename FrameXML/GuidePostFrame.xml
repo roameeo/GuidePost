@@ -3,12 +3,10 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
     <Frame name="GuidePostFrame" parent="UIParent" mixin="GuidePostFrameMixin" inherits="BasicFrameTemplateWithInset" hidden="true" enableMouse="true" movable="true" registerForDrag="LeftButton" resizable="true">
         <Size x="460" y="520"/>
         <ResizeBounds>
-            <minResize x="380" y="300"/>
+            <minResize x="620" y="390"/>
             <maxResize x="900" y="800"/>
         </ResizeBounds>
         <KeyValues>
-            <KeyValue key="SelectedID" type="number" value="-1"/>
-            <KeyValue key="SearchFilter" type="string" value=""/>
             <KeyValue key="isMinimized" type="boolean" value="false"/>
         </KeyValues>
          <Anchors>
@@ -36,8 +34,8 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
                     <Anchor point="BOTTOMRIGHT" x="-2" y="2"/>
                 </Anchors>
                 <NormalTexture file="Interface/ChatFrame/UI-ChatIM-SizeGrabber-Up"/>
-                <HighlightTexture file="Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Highlight"/>
-                <PushedTexture file="Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Down"/>
+                <HighlightTexture file="Interface/ChatFrame/UI-ChatIM-SizeGrabber-Highlight"/>
+                <PushedTexture file="Interface/ChatFrame/UI-ChatIM-SizeGrabber-Down"/>
             </Button>
             <Button parentKey="MinimizeButton">
                 <Size x="20" y="20"/>

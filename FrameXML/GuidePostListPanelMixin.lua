@@ -5,6 +5,9 @@ GuidePostCharDB = GuidePostCharDB or {}
 GuidePostListPanelMixin = {}
 
 function GuidePostListPanelMixin:OnLoad()
+    -- Listen for track/untrack events to refresh the achievements list
+    EventRegistry:RegisterCallback("GuidePost.ToggleTracking", function() self:PopulateList() end)
+    
     self.SearchBox:SetMaxLetters(50)
     self.SearchBox:SetFontObject("GameFontHighlightSmall")
     self.SearchBox.Instructions:SetText("Search by name")
@@ -16,7 +19,7 @@ function GuidePostListPanelMixin:OnLoad()
         elseif sb:GetText() ~= "" and sb.Instructions:IsShown() then sb.Instructions:Hide()
         end
         -- Filter achievements as user types
-        self:GetParent().SearchFilter = sb:GetText():lower()
+        self.searchFilter = sb:GetText():lower()
         self:PopulateList()
     end)
 
@@ -113,6 +116,69 @@ function GuidePostListPanelMixin:InitializeZoneDropdown()
     UIDropDownMenu_SetText(self.ZoneDropdown, GuidePostDB.filters.zone)
 end
 
+function GuidePostListPanelMixin:MatchesFilter(achievementID)
+    local ach = GP.Data.Achievements[achievementID]
+    if not ach then return false end
+
+    -- Filter by search text
+    if self.searchFilter and self.searchFilter ~= "" then
+        local name = (ach.name or ""):lower()
+        local category = (ach.category or ""):lower()
+        local zone = (ach.zone or ""):lower()
+
+        local searchMatch = name:find(self.searchFilter, 1, true)
+            or category:find(self.searchFilter, 1, true)
+            or zone:find(self.searchFilter, 1, true)
+        if not searchMatch then return false end
+    end
+
+    local db = GuidePostDB
+    local showAllCategories = db.filters.category == "All"
+    local showAllStatuses = db.filters.status == "All"
+    local showAllZones = db.filters.zone == "All"
+    -- Filter by Category
+    if not showAllCategories and ach.category ~= db.filters.category then
+        return false
+    end
+
+    local isComplete = GP.AchievementData.IsCompleted(achievementID)
+    local done, total = GP.AchievementData.GetCriteriaProgress(achievementID)
+    local isTracked = GP.Progress.IsTracked(achievementID)
+    local isInProgress = (done > 0 and done < total) or isTracked
+    -- Filter by Status
+    if not showAllStatuses then
+
+        -- Keeping completion check separate to immediately stop checking other conditions when this is true
+        if (db.filters.status ~= "Completed" and isComplete) then return false end
+
+        if (db.filters.status == "Completed" and not isComplete)
+        or (db.filters.status == "In Progress" and not isInProgress)
+        or (db.filters.status == "Not Started" and (isInProgress or isComplete)) then
+            return false
+        end
+    end
+
+    -- Filter by Zone
+    if db.filters.zone == "Current Zone" then
+        if ach.zone ~= GetZoneText() then return false end
+    end
+
+    -- TODO: Scope is not saved to DB, so it's never persisted through sessions. Should this change?
+    local scope = GuidePostDB.settings and GuidePostDB.settings.scope or "account"
+    if scope == "character" then
+        -- Show only achievements with in-progress criteria or actively tracked
+        if not isComplete and not isTracked and done == 0 then
+            return false
+        end
+    elseif scope == "guild" then
+        -- Guild achievements are not yet in the database; hide everything until added
+        return false
+    end
+    -- scope == "account": no additional filtering
+
+    return true
+end
+
 local function sortListByCompletionDesc(list)
     if not GuidePostDB.filters.lowHangingFruit then return end
 
@@ -144,7 +210,7 @@ function GuidePostListPanelMixin:BuildListCategory(listContentFrame, itemList, h
             self:PopulateList()
         end)
         local collapseInd = GP.GetAtlasString("friendslist-categorybutton-arrow-"..(isCollapsed and "right" or "down"))
-        header.ZoneName:SetText(headerData.color:WrapTextInColorCode(collapseInd..headerData.name))
+        header.ZoneName:SetText(headerData.color:WrapTextInColorCode(collapseInd.." "..headerData.name))
     else
         header = listContentFrame:CreateFontString(nil, "OVERLAY", "GuidePostListHeaderTemplate")
         header:SetText(headerData.color:WrapTextInColorCode(headerData.name))
@@ -178,7 +244,7 @@ function GuidePostListPanelMixin:BuildListCategory(listContentFrame, itemList, h
         end
 
         if total > 0 and isComplete then
-            item.Progress:SetText(GP.GetAtlasString("VAS-icon-checkmark"))
+            item.Progress:SetText(GP.GetAtlasString("VAS-icon-checkmark", nil, nil, -10))
         elseif total > 0 then
             item.Progress:SetText(string.format("%d/%d", done, total))
         end
@@ -211,7 +277,7 @@ function GuidePostListPanelMixin:PopulateList()
     local tracked = GuidePostCharDB.tracked
     local filteredTracked = {}
     for achievementID, _ in pairs(tracked) do
-        if GuidePostFrame:MatchesFilter(achievementID) then
+        if self:MatchesFilter(achievementID) then
             tinsert(filteredTracked, achievementID)
         end
     end
@@ -224,7 +290,7 @@ function GuidePostListPanelMixin:PopulateList()
     local filteredSuggestions = {}
     for _, achievementID in ipairs(suggestions) do
         -- Making a small change to not show achievements in other sections if they are being tracked
-        if GuidePostFrame:MatchesFilter(achievementID) and not tContains(filteredTracked, achievementID) then
+        if self:MatchesFilter(achievementID) and not tContains(filteredTracked, achievementID) then
             tinsert(filteredSuggestions, achievementID)
         end
     end
@@ -236,7 +302,7 @@ function GuidePostListPanelMixin:PopulateList()
     local zoneAchievementMap = {}
     local zoneNames = {}
     for _, achievementID in ipairs(GP.AchievementData.GetAll()) do
-        if GuidePostFrame:MatchesFilter(achievementID) then
+        if self:MatchesFilter(achievementID) then
             local ach = GP.Data.Achievements[achievementID]
             local zone = (ach and ach.zone) or "Unknown"
             if not zoneAchievementMap[zone] then

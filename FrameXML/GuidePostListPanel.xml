@@ -2,6 +2,9 @@
 https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
 <Frame name="GPListPanel" parent="GuidePostFrame" parentKey="ListPanel" mixin="GuidePostListPanelMixin" inherits="InsetFrameTemplate">
     <Size x="225"/>
+    <KeyValues>
+        <KeyValue key="searchFilter" type="string" value=""/>
+    </KeyValues>
     <Anchors>
         <Anchor point="TOPLEFT" relativeKey="$parent.InsetBorderTopLeft"/>
         <Anchor point="BOTTOMLEFT" relativeKey="$parent.InsetBorderBottomLeft" y="20"/>
@@ -82,7 +85,7 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
         </Button>
         <ScrollFrame parentKey="ScrollFrame" inherits="GuidePostScrollFrameTemplate">
             <Anchors>
-                <Anchor point="TOPLEFT" relativeKey="$parent.LhfCheckbox" relativePoint="BOTTOMLEFT" y="-20"/>
+                <Anchor point="TOPLEFT" relativeKey="$parent.LhfCheckbox" relativePoint="BOTTOMLEFT" y="-0"/>
                 <Anchor point="BOTTOMLEFT" x="10" y="10"/>
                 <Anchor point="BOTTOMRIGHT" x="-30" y="10"/>
             </Anchors>

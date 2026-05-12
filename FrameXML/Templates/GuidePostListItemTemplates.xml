@@ -36,6 +36,7 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
         <Size y="35"/>
         <KeyValues>
             <KeyValue key="achievementID" value="-1" type="number"/>
+            <KeyValue key="isSelected" value="false" type="boolean"/>
         </KeyValues>
         <Anchors>
             <Anchor point="LEFT"/>
@@ -62,9 +63,69 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
             </Layer>
         </Layers>
         <Scripts>
+            <OnLoad method="OnLoad"/>
             <OnEnter method="OnEnter"/>
             <OnLeave method="OnLeave"/>
             <OnClick method="OnClick"/>
         </Scripts>
     </Button>
+    
+    <Frame name="GuidePostDetailsStepTemplate" virtual="true" mixin="GuidePostDetailsStepMixin">
+        <Size y="50"/>
+        <Anchors>
+            <Anchor point="LEFT"/>
+            <Anchor point="RIGHT"/>
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Bg" setAllPoints="true">
+                    <Color r="0.15" g="0.15" b="0.15" a="0.6"/>
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString parentKey="StepIndex" inherits="GameFontNormalSmall" justifyH="LEFT" justifyV="TOP">
+                    <Size x="25"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="5" y="-5"/>
+                    </Anchors>
+                    <Color r="0.67" g="0.67" b="0.67"/>
+                </FontString>
+                <FontString parentKey="StepDesc" inherits="GameFontHighlightSmall" wordwrap="true" justifyH="LEFT" justifyV="TOP" text="{name}">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="30" y="-5"/>
+                        <Anchor point="BOTTOMRIGHT" x="-50"/>
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="NpcLabel" inherits="GameFontNormalSmall" justifyH="LEFT" justifyV="BOTTOM">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" x="5" y="5"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Button parentKey="WaypointBtn" hidden="true">
+                <Size x="15" y="15"/>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT" x="-5" y="5"/>
+                </Anchors>
+                <NormalTexture file="Interface/AddOns/TomTom/Images/Modern/Waypoints/WaypointArrowGreen"/>
+                <PushedTexture file="Interface/AddOns/TomTom/Images/Modern/Waypoints/WaypointArrowGreen">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="2" y="-2"/>
+                        <Anchor point="BOTTOMRIGHT" x="2" y="-2"/>
+                    </Anchors>
+                </PushedTexture>
+                <Scripts>
+                    <OnEnter/>
+                    <OnLeave/>
+                    <OnClick/>
+                </Scripts>
+            </Button>
+        </Frames>
+        <Scripts>
+            <OnEnter method="OnEnter"/>
+            <OnLeave method="OnLeave"/>
+        </Scripts>
+    </Frame>
 </Ui>

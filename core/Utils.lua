@@ -8,10 +8,10 @@ function GP.GetTextureString(texture, dim)
     return "|T"..texture..":"..size..":"..size.."|t"
 end
 
-function GP.GetAtlasString(atlas, dim)
+function GP.GetAtlasString(atlas, dim, offX, offY, r, g, b)
     local size = 15
     if dim and type(dim) == "number" then
         size = dim
     end
-    return "|A:"..atlas..":"..size..":"..size.."|a"
+    return CreateAtlasMarkup(atlas, size, size, offX, offY, r, g, b)
 end
