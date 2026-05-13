@@ -52,7 +52,7 @@ GP.Data.Achievements = {
                 desc          = "Kill a Water Snake in Orgrimmar near the Valley of Spirits (SW river). Also in Durotar, N. Stranglethorn, or Swamp of Sorrows.",
                 npc           = "Water Snake",
                 coords        = { x = 37.0, y = 82.0 },
-                mapID         = 1454,  -- Orgrimmar
+                mapID         = 85,    -- Orgrimmar
                 criteriaIndex = 2,
             },
             {
@@ -201,14 +201,14 @@ GP.Data.Achievements = {
         category = "Exploration",
         zone     = "Orgrimmar",
         faction  = "Horde",
-        mapID    = 1454,
+        mapID    = 85,
         steps = {
             {
                 index         = 1,
                 desc          = "Discover The Valley of Spirits.",
                 npc           = nil,
                 coords        = { x = 37.0, y = 87.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 1,
             },
             {
@@ -216,7 +216,7 @@ GP.Data.Achievements = {
                 desc          = "Discover The Valley of Strength (main city center with bank).",
                 npc           = nil,
                 coords        = { x = 51.0, y = 76.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 2,
             },
             {
@@ -224,7 +224,7 @@ GP.Data.Achievements = {
                 desc          = "Discover The Valley of Wisdom (Grommash Hold area).",
                 npc           = nil,
                 coords        = { x = 48.0, y = 71.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 3,
             },
             {
@@ -232,7 +232,7 @@ GP.Data.Achievements = {
                 desc          = "Discover The Valley of Honor (auction house district).",
                 npc           = nil,
                 coords        = { x = 51.0, y = 38.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 4,
             },
             {
@@ -240,7 +240,7 @@ GP.Data.Achievements = {
                 desc          = "Discover The Drag (zeppelin tower and profession trainers).",
                 npc           = nil,
                 coords        = { x = 55.0, y = 63.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 5,
             },
             {
@@ -248,7 +248,7 @@ GP.Data.Achievements = {
                 desc          = "Discover The Cleft of Shadow (rogue/warlock area).",
                 npc           = nil,
                 coords        = { x = 47.0, y = 59.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 6,
             },
         },
@@ -326,14 +326,14 @@ GP.Data.Achievements = {
         category = "Exploration",
         zone     = "Orgrimmar",
         faction  = "Horde",
-        mapID    = 1454,
+        mapID    = 85,
         steps = {
             {
                 index         = 1,
                 desc          = "Buy and eat Grilled Crab from a food vendor in the Valley of Strength.",
                 npc           = "Food Vendor",
                 coords        = { x = 51.0, y = 76.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 1,
             },
             {
@@ -341,7 +341,7 @@ GP.Data.Achievements = {
                 desc          = "Buy and eat Delicious Chocolate Cake from a vendor in the Valley of Spirits.",
                 npc           = "Food Vendor",
                 coords        = { x = 37.0, y = 87.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 2,
             },
             {
@@ -349,7 +349,7 @@ GP.Data.Achievements = {
                 desc          = "Buy and eat Kaldorei Spider Kabob from a vendor in the Valley of Honor.",
                 npc           = "Food Vendor",
                 coords        = { x = 51.0, y = 38.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 3,
             },
             {
@@ -357,7 +357,7 @@ GP.Data.Achievements = {
                 desc          = "Buy and eat Crunchy Frog from a vendor near Grommash Hold.",
                 npc           = "Food Vendor",
                 coords        = { x = 48.0, y = 71.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 4,
             },
             {
@@ -365,7 +365,7 @@ GP.Data.Achievements = {
                 desc          = "Buy and eat Roasted Boar Meat from a vendor in The Drag.",
                 npc           = "Food Vendor",
                 coords        = { x = 55.0, y = 63.0 },
-                mapID         = 1454,
+                mapID         = 85,
                 criteriaIndex = 5,
             },
         },
@@ -548,14 +548,14 @@ GP.Data.Achievements = {
         category = "Exploration",
         zone     = "Thunder Bluff",
         faction  = "Horde",
-        mapID    = 1638,
+        mapID    = 88,
         steps = {
             {
                 index         = 1,
                 desc          = "Discover The High Rise (central platform).",
                 npc           = nil,
                 coords        = { x = 46.0, y = 50.0 },
-                mapID         = 1638,
+                mapID         = 88,
                 criteriaIndex = 1,
             },
             {
@@ -563,7 +563,7 @@ GP.Data.Achievements = {
                 desc          = "Discover The Hunter's Rise (northeast platform).",
                 npc           = nil,
                 coords        = { x = 59.0, y = 51.0 },
-                mapID         = 1638,
+                mapID         = 88,
                 criteriaIndex = 2,
             },
             {
@@ -571,7 +571,7 @@ GP.Data.Achievements = {
                 desc          = "Discover The Spirit Rise (southeast platform with druid area).",
                 npc           = nil,
                 coords        = { x = 45.0, y = 65.0 },
-                mapID         = 1638,
+                mapID         = 88,
                 criteriaIndex = 3,
             },
             {
@@ -579,7 +579,7 @@ GP.Data.Achievements = {
                 desc          = "Discover The Elder Rise (northwest platform with inn).",
                 npc           = nil,
                 coords        = { x = 28.0, y = 29.0 },
-                mapID         = 1638,
+                mapID         = 88,
                 criteriaIndex = 4,
             },
         },
@@ -598,14 +598,14 @@ GP.Data.Achievements = {
         category = "Skyriding",
         zone     = "Durotar",
         faction  = "Horde",
-        mapID    = nil,   -- use /gp mapid in Durotar
+        mapID    = 1,
         steps = {
             {
                 index         = 1,
                 desc          = "Pick up the Eastern Kingdoms Cup Circuit quest from Racing Enthusiast in Orgrimmar (if not already done).",
                 npc           = "Racing Enthusiast",
                 coords        = { x = 51.0, y = 76.0 },
-                mapID         = 1454,  -- Orgrimmar
+                mapID         = 85,    -- Orgrimmar
                 criteriaIndex = nil,
             },
             {
@@ -1257,7 +1257,7 @@ GP.Data.Achievements = {
                 desc          = "Fish in Orgrimmar — cast your line in the river running through the Valley of Honor.",
                 npc           = nil,
                 coords        = { x = 51.0, y = 38.0 },
-                mapID         = 1454,  -- Orgrimmar (verify with /gp mapid)
+                mapID         = 85,    -- Orgrimmar
                 criteriaIndex = 1,
             },
             {
