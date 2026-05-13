@@ -72,6 +72,9 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
     
     <Frame name="GuidePostDetailsStepTemplate" virtual="true" mixin="GuidePostDetailsStepMixin">
         <Size y="50"/>
+        <KeyValues>
+            <KeyValue key="criteriaIndex" value="-1" type="number"/>
+        </KeyValues>
         <Anchors>
             <Anchor point="LEFT"/>
             <Anchor point="RIGHT"/>
@@ -124,6 +127,7 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
             </Button>
         </Frames>
         <Scripts>
+            <OnLoad method="OnLoad"/>
             <OnEnter method="OnEnter"/>
             <OnLeave method="OnLeave"/>
         </Scripts>

@@ -80,6 +80,7 @@ function GuidePostDetailPanelMixin:PopulateStepList()
         end
 
         local stepFrame = CreateFrame("Frame", nil, self.ScrollFrame.ListContent, "GuidePostDetailsStepTemplate")
+        stepFrame.criteriaIndex = step.criteriaIndex
         stepFrame:SetPoint("TOP", 0, idx <= 1 and 0 or (idx - 1) * -55)
 
         if isStepComplete then stepFrame.Bg:SetColorTexture(0.1, 0.25, 0.1, 0.6) end
