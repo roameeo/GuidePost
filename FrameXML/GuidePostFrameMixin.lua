@@ -4,6 +4,8 @@ local GP = GuidePostNS or {}
 GuidePostFrameMixin = {}
 
 function GuidePostFrameMixin:OnLoad()
+    -- Allows closing via ESC key
+    tinsert(UISpecialFrames, self:GetName())
     -- Making sure necessary DBs exist
     GP.UI.Settings.GetSettings()
     GP.Progress.Initialize()
