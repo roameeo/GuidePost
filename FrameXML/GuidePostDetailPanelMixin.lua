@@ -1,4 +1,4 @@
-local GP = GuidePostNS or {}
+local GP = select(2, ...)
 
 GuidePostDetailPanelMixin = {}
 
@@ -10,12 +10,12 @@ function GuidePostDetailPanelMixin:OnLoad()
 
         self.AchName:SetText(ach.name)
 
-        if GP.AchievementData.IsCompleted(achievementID) then
+        if GP.IsAchievementCompleted(achievementID) then
             self.ProgressBar:SetValue(100)
             self.ProgressBar.ProgressLabel:SetText(DARKYELLOW_FONT_COLOR:WrapTextInColorCode("Completed!"))
             if self.ToggleTrackingBtn:IsShown() then self.ToggleTrackingBtn:Hide() end
         else
-            local pct = GP.AchievementData.GetPercent(achievementID)
+            local pct = GP.GetAchievementCompletionPercent(achievementID)
             self.ProgressBar:SetValue(pct)
             self.ProgressBar.ProgressLabel:SetText(pct.."%")
             if GuidePostCharDB and GuidePostCharDB.tracked and GuidePostCharDB.tracked[achievementID] then

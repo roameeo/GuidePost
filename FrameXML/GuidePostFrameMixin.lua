@@ -1,5 +1,4 @@
--- local GP = select(2, ...) -- TODO: Use provided addon namespace across the board instead of defining a new global?
-local GP = GuidePostNS or {}
+local GP = select(2, ...)
 
 GuidePostFrameMixin = {}
 

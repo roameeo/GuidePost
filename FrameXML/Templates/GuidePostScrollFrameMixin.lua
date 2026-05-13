@@ -1,4 +1,4 @@
-local GP = GuidePostNS or {}
+local GP = select(2, ...)
 
 GuidePostScrollFrameMixin = {}
 

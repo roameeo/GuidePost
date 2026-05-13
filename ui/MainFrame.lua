@@ -8,7 +8,7 @@
 --   • "Set Waypoint" button per step
 -- =============================================================================
 
-local GP = GuidePostNS
+local GP = select(2, ...)
 
 GP.UI = GP.UI or {}
 GP.UI.MainFrame = {}
@@ -521,8 +521,8 @@ local function MatchesFilter(id)
     
     -- Status filter
     if MF.Filters.status ~= "All" then
-        local isComplete = GP.AchievementData.IsCompleted(id)
-        local done, total = GP.AchievementData.GetCriteriaProgress(id)
+        local isComplete = GP.IsAchievementCompleted(id)
+        local done, total = GP.GetAchievementCriteriaProgress(id)
         local isInProgress = (done > 0 and done < total) or GP.Progress.IsTracked(id)
         
         if MF.Filters.status == "Completed" and not isComplete then
@@ -546,9 +546,9 @@ local function MatchesFilter(id)
     local scope = GP.UI.Settings and GP.UI.Settings.Get("scope") or "account"
     if scope == "character" then
         -- Show only achievements with in-progress criteria or actively tracked
-        local isComplete = GP.AchievementData.IsCompleted(id)
+        local isComplete = GP.IsAchievementCompleted(id)
         if not isComplete then
-            local done, _ = GP.AchievementData.GetCriteriaProgress(id)
+            local done, _ = GP.GetAchievementCriteriaProgress(id)
             local isTracked = GP.Progress.IsTracked(id)
             if done == 0 and not isTracked then
                 return false
@@ -589,7 +589,7 @@ local function MakeListButton(parent, id, yOffset, width)
     bg:SetColorTexture(0.15, 0.15, 0.15, 0.6)
 
     -- Completed checkmark or name
-    local isComplete = GP.AchievementData.IsCompleted(id)
+    local isComplete = GP.IsAchievementCompleted(id)
     local nameText = btn:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     nameText:SetPoint("TOPLEFT", 4, -4)
     nameText:SetWidth(width - 32)
@@ -604,7 +604,7 @@ local function MakeListButton(parent, id, yOffset, width)
     end
 
     -- Progress fraction (bottom right)
-    local done, total = GP.AchievementData.GetCriteriaProgress(id)
+    local done, total = GP.GetAchievementCriteriaProgress(id)
     if total > 0 then
         local prog = btn:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         prog:SetPoint("BOTTOMRIGHT", -4, 4)
@@ -681,8 +681,8 @@ local function SortByCompletion(list)
     if not MF.Filters.lowHangingFruit then return end
     
     table.sort(list, function(a, b)
-        local doneA, totalA = GP.AchievementData.GetCriteriaProgress(a)
-        local doneB, totalB = GP.AchievementData.GetCriteriaProgress(b)
+        local doneA, totalA = GP.GetAchievementCriteriaProgress(a)
+        local doneB, totalB = GP.GetAchievementCriteriaProgress(b)
         
         -- Calculate percentages (avoid division by zero)
         local pctA = (totalA > 0) and (doneA / totalA) or 0
@@ -803,11 +803,11 @@ function MF.SelectAchievement(id)
 
     frame.AchName:SetText(ach.name)
 
-    if GP.AchievementData.IsCompleted(id) then
+    if GP.IsAchievementCompleted(id) then
         frame.ProgressBar:SetProgress(100)
         frame.ProgressBar:SetLabel("|cff00ff00Completed!|r")
     else
-        local pct = GP.AchievementData.GetPercent(id)
+        local pct = GP.GetAchievementCompletionPercent(id)
         frame.ProgressBar:SetProgress(pct)
     end
 

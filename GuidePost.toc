@@ -1,5 +1,4 @@
 ## Interface: 120005
-## Interface-Retail: 120005
 ## Title: |cff00ccffGuidePost|r
 ## Notes: Step-by-step achievement guidance with TomTom waypoints, progress tracking, and zone suggestions.
 ## IconTexture: Interface/AddOns/GuidePost/Media/Icon.png
@@ -14,7 +13,7 @@
 data\Achievements.lua
 
 # Core systems
-core\Utils.lua
+core\Common.lua
 core\Events.lua
 core\AchievementData.lua
 core\TomTomIntegration.lua

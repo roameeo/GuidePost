@@ -6,7 +6,7 @@
 -- around the full 360 degrees. Its angle is saved between sessions.
 -- =============================================================================
 
-local GP = GuidePostNS
+local GP = select(2, ...)
 
 GP.UI = GP.UI or {}
 GP.UI.MinimapButton = {}
@@ -45,6 +45,7 @@ local function GetCursorAngle()
 end
 
 function MB.Initialize()
+    print('init minimap button')
     local button = CreateFrame("Button", "GuidePostMinimapButton", Minimap)
     button:SetSize(32, 32)
     button:SetFrameStrata("MEDIUM")
@@ -79,6 +80,7 @@ function MB.Initialize()
 
     -- ── Drag: orbit around the minimap edge ───────────────────────────────────
     button:RegisterForDrag("LeftButton")
+    button:RegisterForClicks("LeftButtonUp", "RightButtonUp")
 
     button:SetScript("OnDragStart", function(self)
         self.dragging = true
@@ -121,6 +123,8 @@ function MB.Initialize()
     button:SetScript("OnClick", function(self, mouseButton)
         if mouseButton == "LeftButton" and not self.dragging then
             GP.UI.MainFrame.Toggle()
+        elseif mouseButton == "RightButton" and not self.dragging and GuidePostFrame then
+            GuidePostFrame:Toggle()
         end
     end)
 

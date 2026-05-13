@@ -6,26 +6,20 @@
 -- before adding a new one (no duplicate arrows).
 -- =============================================================================
 
-local GP = GuidePostNS
+local GP = select(2, ...)
 
 GP.TomTom = {}
 local TT = GP.TomTom
 
--- Holds the TomTom UID of the currently active waypoint (or nil)
+-- Holds the TomTom UUID of the currently active waypoint (or nil)
 TT.CurrentWaypoint = nil
-
--- ─── Helpers ─────────────────────────────────────────────────────────────────
-
--- Returns true if TomTom is loaded and functional
-local function TomTomAvailable()
-    return TomTom and TomTom.AddWaypoint ~= nil
-end
 
 -- ─── Public API ──────────────────────────────────────────────────────────────
 
 -- Set a waypoint for a specific step.
 -- achID   – the achievement ID (used to resolve mapID if the step doesn't have one)
 -- step    – a step table from data/Achievements.lua
+-- Usage: slash commands, legacy UI (deprecated)
 function TT.SetWaypoint(achID, step)
     if not TomTomAvailable() then
         GP.Print("|cffff4444TomTom is not loaded.|r Please install and enable it.")
@@ -37,7 +31,7 @@ function TT.SetWaypoint(achID, step)
 
     -- Resolve which map to pin the waypoint on:
     -- step.mapID overrides the parent achievement's mapID (used for multi-zone achievements)
-    local ach   = GP.AchievementData.Get(achID)
+    local ach   = GP.Data.Achievements[achID]
     local mapID = step.mapID or (ach and ach.mapID) or nil
 
     -- If no mapID is stored, fall back to the player's current map.
@@ -69,6 +63,7 @@ function TT.SetWaypoint(achID, step)
 end
 
 -- Remove the current waypoint (called when user picks a different step, or closes)
+-- Usage: legacy progress module (deprecated)
 function TT.ClearWaypoint()
     if TomTomAvailable() and TT.CurrentWaypoint then
         TomTom:RemoveWaypoint(TT.CurrentWaypoint)
@@ -77,6 +72,7 @@ function TT.ClearWaypoint()
 end
 
 -- Convenience: set a waypoint directly from an achievement's next incomplete step
+-- Usage: legacy progress module (deprecated) -- TODO: Need to implement in new UI
 function TT.SetNextStepWaypoint(achID)
     local step = GP.AchievementData.GetNextStep(achID)
     if step then

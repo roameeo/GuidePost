@@ -1,9 +1,6 @@
 -- =============================================================================
 -- GuidePost: data/Achievements.lua
 -- =============================================================================
--- All achievement data lives here.  Each entry follows the same structure so
--- the UI and core systems can loop over them generically.
---
 -- HOW TO ADD A NEW ACHIEVEMENT:
 --   1. Look up the ID on Wowhead (it's in the URL: /achievement=XXXX)
 --   2. Copy a block below, fill in the fields, done.
@@ -14,11 +11,7 @@
 -- FACTION: Set to "Alliance" or "Horde" for faction-specific achievements.
 --   Leave blank (or omit) for neutral/cross-faction achievements.
 -- =============================================================================
-
--- Create the global namespace here since this file loads first (see .toc).
--- Every other file references it as: local GP = GuidePostNS
-GuidePostNS = GuidePostNS or {}
-local GP = GuidePostNS
+local GP = select(2, ...)
 
 GP.Data = {}
 
@@ -7851,4 +7844,4 @@ GP.Data.Achievements = {
 }
 
 -- Zone → achievement ID list, populated at load time in AchievementData.lua
-GP.Data.ByZone = {}
+GP.ZoneAchievementMap = {}

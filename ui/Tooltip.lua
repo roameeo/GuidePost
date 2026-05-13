@@ -5,7 +5,7 @@
 -- hovers over NPCs or items that are linked to tracked achievements.
 -- =============================================================================
 
-local GP = GuidePostNS
+local GP = select(2, ...)
 
 GP.UI = GP.UI or {}
 GP.UI.Tooltip = {}
@@ -43,7 +43,7 @@ local function HookTooltip()
 
         for _, match in ipairs(matches) do
             local ach = GP.Data.Achievements[match.achID]
-            if ach and not GP.AchievementData.IsCompleted(match.achID) then
+            if ach and not GP.IsAchievementCompleted(match.achID) then
                 self:AddLine(string.format("  • %s - Step %d", ach.name, match.step.index),
                     0.9, 0.9, 0.2)
             end

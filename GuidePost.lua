@@ -1,19 +1,4 @@
--- =============================================================================
--- GuidePost.lua — Main entry point
--- =============================================================================
--- This file is loaded LAST (see .toc).  By the time it runs, every other file
--- has already set up its module table inside GuidePostNS.
---
--- Responsibilities:
---   1. Register slash commands
---   2. Provide the GP.Print helper
--- NOTE: GuidePostNS is created in data/Achievements.lua (the first file loaded)
--- =============================================================================
-
--- Namespace was already created in data/Achievements.lua
--- The 'or {}' here is just a safety net
-GuidePostNS = GuidePostNS or {}
-local GP = GuidePostNS
+local GP = select(2, ...)
 
 -- ─── Utility ─────────────────────────────────────────────────────────────────
 

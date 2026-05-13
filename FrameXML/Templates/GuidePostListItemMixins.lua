@@ -1,4 +1,4 @@
-local GP = GuidePostNS
+local GP = select(2, ...)
 
 GuidePostListItemButtonMixin = {}
 
@@ -52,6 +52,7 @@ function GuidePostDetailsStepMixin:OnLoad()
         GameTooltip:Hide()
     end)
     self.WaypointBtn:HookScript("OnClick", function()
+        -- TomTom will always be required for this AddOn to load since it's a defined dependency in the TOC file
         -- Remove any existing waypoint first
         if GP.TomTom.CurrentWaypoint then
             TomTom:RemoveWaypoint(GP.TomTom.CurrentWaypoint)
@@ -95,13 +96,12 @@ function GuidePostDetailsStepMixin:OnLoad()
             GP.Print(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("No mapID for this step — using your current map. Use /gp mapid to get the correct ID and update Achievements.lua."))
         end
         GP.TomTom.CurrentWaypoint = TomTom:AddWaypoint(mapID, criteria.coords.x / 100, criteria.coords.y / 100, {
-            title = ach.name.." ["..(criteria.npc or "Objective").."]",
+            title = ach.name..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(" ["..(criteria.npc or "Objective").."]"),
             from = "GuidePost",
             persistent = false,
             minimap = true,
             world = true,
         })
-        GP.Print(string.format("Waypoint set: |cff00ccff%s|r (%.1f, %.1f)", ach.name.." ["..(criteria.npc or "Objective").."]", criteria.coords.x, criteria.coords.y))
     end)
 end
 

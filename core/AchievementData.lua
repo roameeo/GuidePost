@@ -1,34 +1,20 @@
--- =============================================================================
--- GuidePost: core/AchievementData.lua
--- =============================================================================
--- Functions that query, filter and enrich the achievement database.
--- Nothing in this file draws any UI — it's pure data logic.
--- =============================================================================
-
-local GP = GuidePostNS
+local GP = select(2, ...)
 
 GP.AchievementData = {}
 local AD = GP.AchievementData   -- short alias used throughout this file
 
 -- ─── Faction Detection ──────────────────────────────────────────────────────
 
--- Returns "Alliance", "Horde", or "Neutral" based on the player's faction
-function AD.GetPlayerFaction()
-    local englishFaction, localizedFaction = UnitFactionGroup("player")
-    -- englishFaction is "Alliance", "Horde", or "Neutral" (for Pandaren before choosing)
-    return englishFaction or "Neutral"
-end
-
 -- Returns true if the achievement is available for the player's faction
 -- faction field can be: "Alliance", "Horde", or nil (meaning Neutral/Both)
-function AD.IsAvailableForPlayerFaction(id)
+local function isAvailableForPlayerFaction(id)
     local ach = GP.Data.Achievements[id]
     if not ach then return false end
     
     -- If no faction specified, achievement is available to all
     if not ach.faction then return true end
     
-    local playerFaction = AD.GetPlayerFaction()
+    local playerFaction = UnitFactionGroup("player") or "Neutral"
     
     -- Neutral players (pre-choice Pandaren) see everything
     if playerFaction == "Neutral" then return true end
@@ -39,14 +25,15 @@ end
 
 -- ─── Initialisation ──────────────────────────────────────────────────────────
 
+-- Usage: event handler
 function AD.Initialize()
     -- Build the zone → [ids] lookup table from the raw data
     for id, ach in pairs(GP.Data.Achievements) do
         local zone = ach.zone or "Unknown"
-        if not GP.Data.ByZone[zone] then
-            GP.Data.ByZone[zone] = {}
+        if not GP.ZoneAchievementMap[zone] then
+            GP.ZoneAchievementMap[zone] = {}
         end
-        table.insert(GP.Data.ByZone[zone], id)
+        table.insert(GP.ZoneAchievementMap[zone], id)
     end
     AD.RefreshZoneSuggestions()
 end
@@ -56,77 +43,31 @@ end
 -- Stores the IDs of achievements relevant to the player's current zone
 AD.CurrentZoneSuggestions = {}
 
+-- Usage: Other AchievementData functions, event handler, main frame XML
 function AD.RefreshZoneSuggestions()
     AD.CurrentZoneSuggestions = {}
     -- GetZoneText() returns something like "Durotar" or "Stormwind City"
     local zone = GetZoneText()
-    if GP.Data.ByZone[zone] then
-        for _, id in ipairs(GP.Data.ByZone[zone]) do
+    if GP.ZoneAchievementMap[zone] then
+        for _, id in ipairs(GP.ZoneAchievementMap[zone]) do
             -- Only suggest achievements that match player's faction and aren't completed
-            if AD.IsAvailableForPlayerFaction(id) and not AD.IsCompleted(id) then
+            if isAvailableForPlayerFaction(id) and not GP.IsAchievementCompleted(id) then
                 table.insert(AD.CurrentZoneSuggestions, id)
             end
         end
     end
 end
 
--- ─── Completion Checks ───────────────────────────────────────────────────────
-
--- Returns true if Blizzard already marks this achievement as earned
-function AD.IsCompleted(id)
-    local _, _, _, completed = GetAchievementInfo(id)
-    return completed == true
-end
-
--- Returns 0-100 percent completion for an achievement
-function AD.GetPercent(id)
-    local ach = GP.Data.Achievements[id]
-    if not ach then return 0 end
-
-    local total = #ach.steps
-    local done  = 0
-
-    for _, step in ipairs(ach.steps) do
-        if step.criteriaIndex then
-            local ok, _, _, completed = pcall(GetAchievementCriteriaInfo, id, step.criteriaIndex)
-            if ok and completed then done = done + 1 end
-        end
-    end
-
-    if total == 0 then return 0 end
-    return math.floor((done / total) * 100)
-end
-
--- Returns how many criteria steps are done vs total
-function AD.GetCriteriaProgress(id)
-    local ach = GP.Data.Achievements[id]
-    if not ach then return 0, 0 end
-
-    local total, done = 0, 0
-    for _, step in ipairs(ach.steps) do
-        if step.criteriaIndex then
-            total = total + 1
-            local ok, _, _, completed = pcall(GetAchievementCriteriaInfo, id, step.criteriaIndex)
-            if ok and completed then done = done + 1 end
-        end
-    end
-    return done, total
-end
-
 -- ─── Retrieval Helpers ───────────────────────────────────────────────────────
-
--- Returns the achievement table for a given ID, or nil
-function AD.Get(id)
-    return GP.Data.Achievements[id]
-end
 
 -- Returns a sorted list of all achievement IDs (sorted by name)
 -- Only returns achievements available to the player's faction
+-- Usage: ListPanel XML, slash commands, legacy UI (deprecated)
 function AD.GetAll()
     local list = {}
     for id in pairs(GP.Data.Achievements) do
         -- Filter by faction
-        if AD.IsAvailableForPlayerFaction(id) then
+        if isAvailableForPlayerFaction(id) then
             table.insert(list, id)
         end
     end
@@ -139,6 +80,7 @@ function AD.GetAll()
 end
 
 -- Returns the next incomplete step for an achievement, or nil if all done
+-- Usage: TomTom integration (deprecated?), slash commands
 function AD.GetNextStep(id)
     local ach = GP.Data.Achievements[id]
     if not ach then return nil end
@@ -170,9 +112,72 @@ local SCAN_ID_MAX     = 60000 -- highest ID to scan; raised for TWW S2+ content
 
 AD.ScanActive = false  -- true while a scan is running (prevents double-scans)
 
+-- Inserts newly discovered achievements into the runtime data so they appear
+-- in the UI immediately.  Entries are flagged as auto-discovered so the user
+-- knows they lack hand-curated steps/waypoints.
+local function autoAddResults(zone, results)
+    local added = 0
+    for _, r in ipairs(results) do
+        -- Skip anything already tracked or already completed
+        if not r.inDB and not r.completed then
+            GP.Data.Achievements[r.id] = {
+                name      = r.name,
+                zone      = zone,
+                autoFound = true,   -- flag so the UI can show a "needs review" hint
+                steps     = {},     -- no hand-curated steps yet
+            }
+            -- Register in the zone lookup table
+            if not GP.ZoneAchievementMap[zone] then
+                GP.ZoneAchievementMap[zone] = {}
+            end
+            table.insert(GP.ZoneAchievementMap[zone], r.id)
+            added = added + 1
+        end
+    end
+
+    if added > 0 then
+        GP.Print(string.format(
+            "Auto-scan: added |cff00ccff%d|r new achievement(s) for |cff00ccff%s|r.",
+            added, zone))
+        AD.RefreshZoneSuggestions()
+        if GP.UI.MainFrame then
+            GP.UI.MainFrame.RefreshList()
+        end
+    end
+end
+
+local function printScanResults(zone, results)
+    if #results == 0 then
+        GP.Print(string.format("No achievements found matching |cff00ccff%s|r.", zone))
+        return
+    end
+
+    GP.Print(string.format(
+        "Found |cff00ccff%d|r achievement(s) matching |cff00ccff%s|r:", #results, zone))
+
+    for _, r in ipairs(results) do
+        local tags = {}
+
+        if r.completed then
+            table.insert(tags, "|cff00ff00DONE|r")
+        end
+        if r.inDB then
+            table.insert(tags, "|cff00ccffIN DB|r")
+        else
+            table.insert(tags, "|cffffcc00ADD ME|r")
+        end
+
+        local tagStr = table.concat(tags, " ")
+        GP.Print(string.format("  [%d] %s  %s", r.id, r.name, tagStr))
+    end
+
+    GP.Print("Copy any |cffffcc00ADD ME|r IDs into data/Achievements.lua!")
+end
+
 -- autoAdd = true  →  silently insert any new finds into the runtime DB
 --                     (used by auto-scan on zone change)
 -- autoAdd = false →  print results to chat for the developer (default /gp scan)
+-- Usage: slash commands, event handlers
 function AD.ScanZone(overrideZone, autoAdd)
     if AD.ScanActive then
         GP.Print("Scan already in progress — please wait.")
@@ -246,72 +251,10 @@ function AD.ScanZone(overrideZone, autoAdd)
             ticker:Cancel()
             AD.ScanActive = false
             if autoAdd then
-                AD.AutoAddResults(zone, results)
+                autoAddResults(zone, results)
             else
-                AD.PrintScanResults(zone, results)
+                printScanResults(zone, results)
             end
         end
     end)
-end
-
--- Inserts newly discovered achievements into the runtime data so they appear
--- in the UI immediately.  Entries are flagged as auto-discovered so the user
--- knows they lack hand-curated steps/waypoints.
-function AD.AutoAddResults(zone, results)
-    local added = 0
-    for _, r in ipairs(results) do
-        -- Skip anything already tracked or already completed
-        if not r.inDB and not r.completed then
-            GP.Data.Achievements[r.id] = {
-                name      = r.name,
-                zone      = zone,
-                autoFound = true,   -- flag so the UI can show a "needs review" hint
-                steps     = {},     -- no hand-curated steps yet
-            }
-            -- Register in the zone lookup table
-            if not GP.Data.ByZone[zone] then
-                GP.Data.ByZone[zone] = {}
-            end
-            table.insert(GP.Data.ByZone[zone], r.id)
-            added = added + 1
-        end
-    end
-
-    if added > 0 then
-        GP.Print(string.format(
-            "Auto-scan: added |cff00ccff%d|r new achievement(s) for |cff00ccff%s|r.",
-            added, zone))
-        AD.RefreshZoneSuggestions()
-        if GP.UI.MainFrame then
-            GP.UI.MainFrame.RefreshList()
-        end
-    end
-end
-
-function AD.PrintScanResults(zone, results)
-    if #results == 0 then
-        GP.Print(string.format("No achievements found matching |cff00ccff%s|r.", zone))
-        return
-    end
-
-    GP.Print(string.format(
-        "Found |cff00ccff%d|r achievement(s) matching |cff00ccff%s|r:", #results, zone))
-
-    for _, r in ipairs(results) do
-        local tags = {}
-
-        if r.completed then
-            table.insert(tags, "|cff00ff00DONE|r")
-        end
-        if r.inDB then
-            table.insert(tags, "|cff00ccffIN DB|r")
-        else
-            table.insert(tags, "|cffffcc00ADD ME|r")
-        end
-
-        local tagStr = table.concat(tags, " ")
-        GP.Print(string.format("  [%d] %s  %s", r.id, r.name, tagStr))
-    end
-
-    GP.Print("Copy any |cffffcc00ADD ME|r IDs into data/Achievements.lua!")
 end

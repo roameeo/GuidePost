@@ -5,7 +5,7 @@
 -- then bar:SetProgress(0-100) to update it.
 -- =============================================================================
 
-local GP = GuidePostNS
+local GP = select(2, ...)
 
 GP.UI = GP.UI or {}
 GP.UI.ProgressBar = {}

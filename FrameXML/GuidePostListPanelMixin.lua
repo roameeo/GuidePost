@@ -1,6 +1,4 @@
-local GP = GuidePostNS or {}
-GuidePostDB = GuidePostDB or {}
-GuidePostCharDB = GuidePostCharDB or {}
+local GP = select(2, ...)
 
 GuidePostListPanelMixin = {}
 
@@ -141,8 +139,8 @@ function GuidePostListPanelMixin:MatchesFilter(achievementID)
         return false
     end
 
-    local isComplete = GP.AchievementData.IsCompleted(achievementID)
-    local done, total = GP.AchievementData.GetCriteriaProgress(achievementID)
+    local isComplete = GP.IsAchievementCompleted(achievementID)
+    local done, total = GP.GetAchievementCriteriaProgress(achievementID)
     local isTracked = GP.Progress.IsTracked(achievementID)
     local isInProgress = (done > 0 and done < total) or isTracked
     -- Filter by Status
@@ -183,8 +181,8 @@ local function sortListByCompletionDesc(list)
     if not GuidePostDB.filters.lowHangingFruit then return end
 
     table.sort(list, function(a, b)
-        local doneA, totalA = GP.AchievementData.GetCriteriaProgress(a)
-        local doneB, totalB = GP.AchievementData.GetCriteriaProgress(b)
+        local doneA, totalA = GP.GetAchievementCriteriaProgress(a)
+        local doneB, totalB = GP.GetAchievementCriteriaProgress(b)
 
         -- Calculate percentages (avoid division by zero)
         local pctA = (totalA > 0) and (doneA / totalA) or 0
@@ -227,8 +225,8 @@ function GuidePostListPanelMixin:BuildListCategory(listContentFrame, itemList, h
     local lastItem
     for idx, achievementID in ipairs(itemList) do
         local ach = GP.Data.Achievements[achievementID]
-        local isComplete = GP.AchievementData.IsCompleted(achievementID)
-        local done, total = GP.AchievementData.GetCriteriaProgress(achievementID)
+        local isComplete = GP.IsAchievementCompleted(achievementID)
+        local done, total = GP.GetAchievementCriteriaProgress(achievementID)
         local item = CreateFrame("Button", nil, listContentFrame, "GuidePostListItemButtonTemplate")
         item.achievementID = achievementID
         local yOffset = 0

@@ -9,7 +9,7 @@
 --   autoScan = true | false
 -- =============================================================================
 
-local GP = GuidePostNS
+local GP = select(2, ...)
 
 GP.UI         = GP.UI or {}
 GP.UI.Settings = {}
