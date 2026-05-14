@@ -1,0 +1,63 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+    <Frame name="GuidePostSettingsPanel" parent="UIParent" inherits="BasicFrameTemplateWithInset" mixin="GuidePostSettingsPanelMixin" frameStrata="DIALOG" movable="true" enableMouse="true" registerForDrag="LeftButton" hidden="true">
+        <Size x="310" y="240"/>
+        <Anchors>
+            <Anchor point="CENTER"/>
+        </Anchors>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="ScopeHeader" inherits="GameFontNormal" text="Achievement Scope">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="15" y="-35"/>
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="ScopeDesc" inherits="GameFontNormalSmall" text="Controls which achievements are shown in the list.">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeKey="$parent.ScopeHeader" relativePoint="BOTTOMLEFT" x="15" y="-5"/>
+                    </Anchors>
+                    <Color r="0.67" g="0.67" b="0.67"/>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <CheckButton parentKey="AccountScopeButton" inherits="UIRadioButtonTemplate">
+                <Size x="20" y="20"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.ScopeDesc" relativePoint="BOTTOMLEFT" x="20" y="-10"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <FontString name="$parentText" inherits="GameFontNormalSmall" parentKey="text" text="Account (Warband)">
+                            <Anchors>
+                                <Anchor point="LEFT" relativePoint="RIGHT" x="5" y="0"/>
+                            </Anchors>
+                            <Color color="WHITE_FONT_COLOR"/>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </CheckButton>
+            <CheckButton parentKey="CharacterScopeButton" inherits="UIRadioButtonTemplate">
+                <Size x="20" y="20"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.AccountScopeButton" relativePoint="BOTTOMLEFT" y="-5"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <FontString name="$parentText" inherits="GameFontNormalSmall" parentKey="text" text="Character">
+                            <Anchors>
+                                <Anchor point="LEFT" relativePoint="RIGHT" x="5" y="0"/>
+                            </Anchors>
+                            <Color color="WHITE_FONT_COLOR"/>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </CheckButton>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnDragStart method="OnDragStart"/>
+            <OnDragStop method="OnDragStop"/>
+        </Scripts>
+    </Frame>
+</Ui>

@@ -52,6 +52,7 @@ function GuidePostFrameMixin:OnLoad()
     self.MinimizeButton:HookScript("OnClick", function() self:ToggleMinimize() end)
     self.SettingsButton:SetScript("OnClick", function()
         if GP.UI.Settings then GP.UI.Settings.Toggle() end
+        GuidePostSettingsPanel:Toggle()
     end)
 end
 

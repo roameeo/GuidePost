@@ -23,6 +23,8 @@ ui\Tooltip.lua
 ui\SettingsFrame.lua
 FrameXML\GuidePostMinimapButtonMixin.lua
 FrameXML\GuidePostMinimapButton.xml
+FrameXML\GuidePostSettingsPanelMixin.lua
+FrameXML\GuidePostSettingsPanel.xml
 FrameXML\Templates\GuidePostListItemMixins.lua
 FrameXML\Templates\GuidePostListItemTemplates.xml
 FrameXML\Templates\GuidePostScrollFrameMixin.lua
