@@ -19,7 +19,6 @@ SlashCmdList["GUIDEPOST"] = function(input)
     input = input:lower()  -- make all commands case-insensitive
 
     if input == "" then
-        -- GP.UI.MainFrame.Toggle()
         GuidePostFrame:Toggle()
 
     elseif input == "settings" then
@@ -27,7 +26,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
 
     elseif input == "list" then
         GP.Print("Known achievements:")
-        for _, id in ipairs(GP.AchievementData.GetAll()) do
+        for _, id in ipairs(GP.AchievementData.GetAllAchievementsForPlayer()) do
             local ach = GP.Data.Achievements[id]
             GP.Print(string.format("  [%d] %s (%s)", id, ach.name, ach.category))
         end

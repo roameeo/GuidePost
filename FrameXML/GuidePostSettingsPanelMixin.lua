@@ -19,6 +19,7 @@ function GuidePostSettingsPanelMixin:OnLoad()
         self:ConfigureRadioButtons()
     end)
 
+    self.AutoCheck:SetChecked(GuidePostDB.settings.autoScan or false)
     self.AutoCheck:HookScript("OnEnter", function(btn)
         GameTooltip:SetOwner(btn, "ANCHOR_RIGHT")
         GameTooltip:AddLine("Automatically runs /gp scan when you enter a new zone and prints a chat message once complete", 0.8, 0.8, 0.8, true)

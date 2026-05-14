@@ -35,12 +35,12 @@ function GP.EnsureDatabase(db, dbDefaults)
     end
 
     for k, v in pairs(dbDefaults) do
-        if db[k] == nil then
-            db[k] = v
-        elseif type(db[k]) == "table" then
+        if type(db[k]) == "table" then
             for nK, nV in pairs(dbDefaults[k]) do
                 if db[k][nK] == nil then db[k][nK] = nV end
             end
+        elseif db[k] == nil
+            then db[k] = v
         end
     end
 end

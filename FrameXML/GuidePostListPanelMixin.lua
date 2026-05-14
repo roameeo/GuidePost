@@ -300,7 +300,7 @@ function GuidePostListPanelMixin:PopulateList()
     -- All achievements grouped by zone
     local zoneAchievementMap = {}
     local zoneNames = {}
-    for _, achievementID in ipairs(GP.AchievementData.GetAll()) do
+    for _, achievementID in ipairs(GP.AchievementData.GetAllAchievementsForPlayer()) do
         if self:MatchesFilter(achievementID)
         and not tContains(filteredTracked, achievementID)
         and not tContains(filteredSuggestions, achievementID) then
