@@ -13,9 +13,13 @@ local handlers = {
         end
     end,
     ["PLAYER_LOGIN"] = function() -- Called once when the player's UI is fully loaded and usable
-        GP.Progress.Initialize()          -- load saved per-character progress
-        GP.UI.MinimapButton.Initialize()  -- add the minimap icon
-        GP.UI.Settings.Initialize()       -- build settings frame
+        -- load saved per-character progress, removing any achievements from the tracked list that are now completed
+        for id in pairs(GuidePostCharDB.tracked) do
+            if GP.IsAchievementCompleted(id) then
+                GuidePostCharDB.tracked[id] = nil
+            end
+        end
+        GP.UI.Settings.Initialize() -- build settings frame
 
         GP.Print("Loaded! Type |cff00ccff/gp|r to open.")
     end,
@@ -36,7 +40,7 @@ local handlers = {
     end,
     ["ACHIEVEMENT_EARNED"] = function(id, alreadyEarned) -- Called when an achievement is fully completed
         if not alreadyEarned then
-            GP.Progress.Untrack(id)
+            GP.UntrackAchievement(id)
             GP.Print(string.format("|cffffff00Achievement complete:|r %s", tostring(id)))
         end
         handlers["CRITERIA_UPDATE"]()

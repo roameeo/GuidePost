@@ -41,8 +41,9 @@ SlashCmdList["GUIDEPOST"] = function(input)
 
     elseif input:match("^track %d+$") then
         local id = tonumber(input:match("%d+"))
-        if GP.Data.Achievements[id] then
-            GP.Progress.Track(id)
+        if id and GP.Data.Achievements[id] then
+            GuidePostCharDB.tracked[id] = true
+            GP.TomTom.SetWaypoint(id)
             GP.Print("Tracking: " .. GP.Data.Achievements[id].name)
         else
             GP.Print("Unknown achievement ID: " .. id)
@@ -50,7 +51,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
 
     elseif input:match("^untrack %d+$") then
         local id = tonumber(input:match("%d+"))
-        GP.Progress.Untrack(id)
+        GP.UntrackAchievement(id)
         GP.Print("Untracked ID: " .. id)
 
     elseif input == "zone" then
@@ -158,30 +159,30 @@ SlashCmdList["GUIDEPOST"] = function(input)
 
     elseif input == "next" then
         -- Set waypoint for next incomplete step of any tracked achievement
-        local tracked = GP.Progress.GetTrackedList()
+        local tracked = GP.GetTrackedAchievementsList()
         if #tracked == 0 then
             GP.Print("|cffffcc00No achievements are currently tracked.|r")
             GP.Print("Use |cff00ccff/gp track <id>|r or click 'Track' in the UI.")
             return
         end
 
-        -- Find the first tracked achievement with an incomplete step
-        local foundStep = false
-        for _, id in ipairs(tracked) do
-            local nextStep = GP.AchievementData.GetNextStep(id)
-            if nextStep then
-                local ach = GP.Data.Achievements[id]
-                GP.TomTom.SetWaypoint(id, nextStep)
-                GP.Print(string.format("Next step for |cff00ccff%s|r:", ach.name))
-                GP.Print("  " .. nextStep.desc)
-                foundStep = true
-                break
-            end
-        end
+        -- -- Find the first tracked achievement with an incomplete step
+        -- local foundStep = false
+        -- for _, id in ipairs(tracked) do
+        --     local nextStep = GP.AchievementData.GetNextStep(id)
+        --     if nextStep then
+        --         local ach = GP.Data.Achievements[id]
+        --         GP.TomTom.SetWaypoint(id, nextStep)
+        --         GP.Print(string.format("Next step for |cff00ccff%s|r:", ach.name))
+        --         GP.Print("  " .. nextStep.desc)
+        --         foundStep = true
+        --         break
+        --     end
+        -- end
 
-        if not foundStep then
-            GP.Print("|cff00ff00All tracked achievements are complete!|r")
-        end
+        -- if not foundStep then
+        --     GP.Print("|cff00ff00All tracked achievements are complete!|r")
+        -- end
 
     else
         GP.Print("Commands:")

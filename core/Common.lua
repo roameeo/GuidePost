@@ -101,3 +101,16 @@ function GP.GetAchievementCriteriaProgress(id)
     end
     return done, total
 end
+
+function GP.GetTrackedAchievementsList()
+    local list = {}
+    for id in pairs(GuidePostCharDB.tracked) do
+        table.insert(list, id)
+    end
+    return list
+end
+
+function GP.UntrackAchievement(achievementID)
+    GuidePostCharDB.tracked[achievementID] = nil
+    GP.TomTom.ClearWaypoint()
+end

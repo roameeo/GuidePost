@@ -39,7 +39,6 @@ function GuidePostDetailPanelMixin:OnLoad()
         else
             tracked[self.selectedAchievementID] = true
         end
-        print(self.selectedAchievementID, "is tracked:", GuidePostCharDB.tracked[self.selectedAchievementID] or false)
         if tracked[self.selectedAchievementID] then
                 btn:SetText("Untrack")
             else

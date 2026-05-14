@@ -17,14 +17,12 @@ core\Common.lua
 core\Events.lua
 core\AchievementData.lua
 core\TomTomIntegration.lua
-core\Progress.lua
 
 # UI (loaded last, depends on core systems)
-ui\MinimapButton.lua
-ui\ProgressBar.lua
 ui\Tooltip.lua
 ui\SettingsFrame.lua
-ui\MainFrame.lua
+FrameXML\GuidePostMinimapButtonMixin.lua
+FrameXML\GuidePostMinimapButton.xml
 FrameXML\Templates\GuidePostListItemMixins.lua
 FrameXML\Templates\GuidePostListItemTemplates.xml
 FrameXML\Templates\GuidePostScrollFrameMixin.lua

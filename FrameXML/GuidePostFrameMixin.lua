@@ -6,9 +6,13 @@ function GuidePostFrameMixin:OnLoad()
     -- Allows closing via ESC key
     tinsert(UISpecialFrames, self:GetName())
     -- Making sure necessary DBs exist
-    GP.UI.Settings.GetSettings()
-    GP.Progress.Initialize()
+    GP.UI.Settings.GetSettings() --?
     self.TitleText:SetText(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("GuidePost"))
+
+    EventRegistry:RegisterCallback("GuidePost.RefreshZoneSuggestions", function()
+        local suggestionCount = #GP.AchievementData.CurrentZoneSuggestions
+        self.ZoneSuggestions:SetText(suggestionCount > 0 and (suggestionCount.." suggestion(s) in "..GetZoneText()) or "")
+    end)
     self:SetMinimizeButtonTextures()
     self.MinimizeButton:HookScript("OnEnter", function(btn)
         GameTooltip:SetOwner(btn, "ANCHOR_RIGHT")
@@ -65,8 +69,6 @@ end
 
 function GuidePostFrameMixin:OnShow()
     GP.AchievementData.RefreshZoneSuggestions()
-    local suggestionCount = #GP.AchievementData.CurrentZoneSuggestions
-    self.ZoneSuggestions:SetText(suggestionCount > 0 and (suggestionCount.." suggestion(s) in "..GetZoneText()) or "")
     self:HandleMinimizeSizing()
 end
 

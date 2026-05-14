@@ -141,7 +141,7 @@ function GuidePostListPanelMixin:MatchesFilter(achievementID)
 
     local isComplete = GP.IsAchievementCompleted(achievementID)
     local done, total = GP.GetAchievementCriteriaProgress(achievementID)
-    local isTracked = GP.Progress.IsTracked(achievementID)
+    local isTracked = GuidePostCharDB.tracked[achievementID]
     local isInProgress = (done > 0 and done < total) or isTracked
     -- Filter by Status
     if not showAllStatuses then
@@ -300,7 +300,9 @@ function GuidePostListPanelMixin:PopulateList()
     local zoneAchievementMap = {}
     local zoneNames = {}
     for _, achievementID in ipairs(GP.AchievementData.GetAll()) do
-        if self:MatchesFilter(achievementID) then
+        if self:MatchesFilter(achievementID)
+        and not tContains(filteredTracked, achievementID)
+        and not tContains(filteredSuggestions, achievementID) then
             local ach = GP.Data.Achievements[achievementID]
             local zone = (ach and ach.zone) or "Unknown"
             if not zoneAchievementMap[zone] then

@@ -56,6 +56,7 @@ function AD.RefreshZoneSuggestions()
             end
         end
     end
+    EventRegistry:TriggerEvent("GuidePost.RefreshZoneSuggestions")
 end
 
 -- ─── Retrieval Helpers ───────────────────────────────────────────────────────
@@ -80,7 +81,7 @@ function AD.GetAll()
 end
 
 -- Returns the next incomplete step for an achievement, or nil if all done
--- Usage: TomTom integration (deprecated?), slash commands
+-- Usage: TomTom integration, slash commands
 function AD.GetNextStep(id)
     local ach = GP.Data.Achievements[id]
     if not ach then return nil end
