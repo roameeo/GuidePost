@@ -2,11 +2,6 @@ local GP = select(2, ...)
 
 GP.StatusFilters = { "All", "In Progress", "Not Started", "Completed" }
 GP.ZoneFilters = { "All", "Current Zone" }
-GP.SettingsScopes = {
-    { value = "account", label = "Account (Warband)", tip = "Show all achievements shared across your entire account." },
-    { value = "character",label = "Character", tip = "Show only achievements that have in-progress criteria or are\ntracked on this character." },
-    { value = "guild", label = "Guild (Coming Soon)", tip = "Show guild achievements. (Requires guild achievements in the\ndatabase — coming in a future update.)" },
-}
 
 GP.GlobalDbDefaults = {
     isMinimized = false,
@@ -26,6 +21,11 @@ GP.GlobalDbDefaults = {
 GP.CharDbDefaults = {
     tracked = {}
 }
+
+-- Print a message to chat with the addon prefix
+function GP.Print(...)
+    print(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("[GuidePost]"), ...)
+end
 
 -- Call this once the AddOn is loaded to ensure database structures remain up to date even when new properties are added
 -- Expects that tables are not nested past one level in a database (example: GuidePostDB.filters.zone)

@@ -5,8 +5,6 @@ GuidePostFrameMixin = {}
 function GuidePostFrameMixin:OnLoad()
     -- Allows closing via ESC key
     tinsert(UISpecialFrames, self:GetName())
-    -- Making sure necessary DBs exist
-    GP.UI.Settings.GetSettings() --?
     self.TitleText:SetText(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("GuidePost"))
 
     EventRegistry:RegisterCallback("GuidePost.RefreshZoneSuggestions", function()
@@ -51,7 +49,6 @@ function GuidePostFrameMixin:OnLoad()
     end)
     self.MinimizeButton:HookScript("OnClick", function() self:ToggleMinimize() end)
     self.SettingsButton:SetScript("OnClick", function()
-        if GP.UI.Settings then GP.UI.Settings.Toggle() end
         GuidePostSettingsPanel:Toggle()
     end)
 end

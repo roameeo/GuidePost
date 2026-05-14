@@ -4,7 +4,8 @@ local GP = select(2, ...)
 local eventFrame = CreateFrame("Frame", "GuidePostEventFrame", UIParent)
 
 local handlers = {
-    ["ADDON_LOADED"] = function(name) -- Called once when the AddOn is loaded and SavedVariables are accessible
+    ["ADDON_LOADED"] = function(name)
+        -- Called once when the AddOn is loaded and SavedVariables are accessible
         if name == "GuidePost" then
             GP.EnsureDatabase(GuidePostDB, GP.GlobalDbDefaults)
             GP.EnsureDatabase(GuidePostCharDB, GP.CharDbDefaults)
@@ -12,33 +13,36 @@ local handlers = {
             eventFrame:UnregisterEvent("ADDON_LOADED")
         end
     end,
-    ["PLAYER_LOGIN"] = function() -- Called once when the player's UI is fully loaded and usable
+    ["PLAYER_LOGIN"] = function()
+        -- Called once when the player's UI is fully loaded and usable
         -- load saved per-character progress, removing any achievements from the tracked list that are now completed
         for id in pairs(GuidePostCharDB.tracked) do
             if GP.IsAchievementCompleted(id) then
                 GuidePostCharDB.tracked[id] = nil
             end
         end
-        GP.UI.Settings.Initialize() -- build settings frame
 
         GP.Print("Loaded! Type |cff00ccff/gp|r to open.")
     end,
-    ["ZONE_CHANGED_NEW_AREA"] = function() -- Called when the player enters a new zone or subzone
+    ["ZONE_CHANGED_NEW_AREA"] = function()
+        -- Called when the player enters a new zone or subzone
         GP.AchievementData.RefreshZoneSuggestions()
         -- Auto-scan if the user has enabled it in settings.
         -- Pass true so new finds are inserted into the runtime DB automatically
         -- rather than printed to chat.
-        if GP.UI.Settings and GP.UI.Settings.Get("autoScan") then
+        if GuidePostDB.settings.autoScan then
             GP.AchievementData.ScanZone(nil, true)
         end
     end,
-    ["CRITERIA_UPDATE"] = function() -- Called when ANY achievement criteria changes (kill, collect, explore, etc.)
+    ["CRITERIA_UPDATE"] = function()
+        -- Called when ANY achievement criteria changes (kill, collect, explore, etc.)
         if GuidePostListPanel then GuidePostListPanel:PopulateList() end
         if GuidePostDetailPanel and GuidePostDetailPanel.selectedAchievementID > 0 then
             EventRegistry:TriggerEvent("GuidePost.AchievementSelected", GuidePostDetailPanel.selectedAchievementID)
         end
     end,
-    ["ACHIEVEMENT_EARNED"] = function(id, alreadyEarned) -- Called when an achievement is fully completed
+    ["ACHIEVEMENT_EARNED"] = function(id, alreadyEarned)
+        -- Called when an achievement is fully completed
         if not alreadyEarned then
             GP.UntrackAchievement(id)
             GP.Print(string.format("|cffffff00Achievement complete:|r %s", tostring(id)))

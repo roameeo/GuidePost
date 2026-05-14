@@ -5,6 +5,7 @@ GuidePostListPanelMixin = {}
 function GuidePostListPanelMixin:OnLoad()
     -- Listen for track/untrack events to refresh the achievements list
     EventRegistry:RegisterCallback("GuidePost.ToggleTracking", function() self:PopulateList() end)
+    EventRegistry:RegisterCallback("GuidePost.UpdateScope", function() self:PopulateList() end)
     
     self.SearchBox:SetMaxLetters(50)
     self.SearchBox:SetFontObject("GameFontHighlightSmall")

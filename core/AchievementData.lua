@@ -1,12 +1,6 @@
 local GP = select(2, ...)
 
-GP.AchievementData = {}
-local AD = GP.AchievementData   -- short alias used throughout this file
-
--- ─── Faction Detection ──────────────────────────────────────────────────────
-
--- Returns true if the achievement is available for the player's faction
--- faction field can be: "Alliance", "Horde", or nil (meaning Neutral/Both)
+local AD = {}
 local function isAvailableForPlayerFaction(id)
     local ach = GP.Data.Achievements[id]
     if not ach then return false end
@@ -104,8 +98,8 @@ end
 -- Prints any achievement whose name or description contains the current zone,
 -- flagging ones already in the GuidePost database.
 --
--- Usage: GP.AchievementData.ScanZone()        -- scans for current zone
---        GP.AchievementData.ScanZone("Durotar") -- scans for a specific zone
+-- Usage: AD.ScanZone()        -- scans for current zone
+--        AD.ScanZone("Durotar") -- scans for a specific zone
 -- =============================================================================
 
 local SCAN_BATCH_SIZE = 200   -- IDs checked per frame — raise if you want faster
@@ -181,7 +175,7 @@ end
 -- Usage: slash commands, event handlers
 function AD.ScanZone(overrideZone, autoAdd)
     if AD.ScanActive then
-        GP.Print("Scan already in progress — please wait.")
+        GP.Print("Scan already in progress")
         return
     end
 
@@ -190,6 +184,8 @@ function AD.ScanZone(overrideZone, autoAdd)
         GP.Print("Could not determine zone. Try: /gp scan <zone name>")
         return
     end
+
+    GP.Print("Scanning for achievements in", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(zone))
 
     local zoneLower = zone:lower()
 
@@ -259,3 +255,5 @@ function AD.ScanZone(overrideZone, autoAdd)
         end
     end)
 end
+
+GP.AchievementData = AD

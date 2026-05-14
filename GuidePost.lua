@@ -1,12 +1,5 @@
 local GP = select(2, ...)
 
--- ─── Utility ─────────────────────────────────────────────────────────────────
-
--- Print a message to chat with the addon prefix
-function GP.Print(msg)
-    print("|cff00ccff[GP]|r " .. tostring(msg))
-end
-
 -- ─── Slash Commands ──────────────────────────────────────────────────────────
 -- /gp or /guidepost         → toggles the main window
 -- /gp list                  → prints all known achievements to chat
@@ -30,7 +23,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
         GuidePostFrame:Toggle()
 
     elseif input == "settings" then
-        if GP.UI.Settings then GP.UI.Settings.Toggle() end
+        GuidePostSettingsPanel:Toggle()
 
     elseif input == "list" then
         GP.Print("Known achievements:")

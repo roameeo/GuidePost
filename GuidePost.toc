@@ -20,7 +20,6 @@ core\TomTomIntegration.lua
 
 # UI (loaded last, depends on core systems)
 ui\Tooltip.lua
-ui\SettingsFrame.lua
 FrameXML\GuidePostMinimapButtonMixin.lua
 FrameXML\GuidePostMinimapButton.xml
 FrameXML\GuidePostSettingsPanelMixin.lua
