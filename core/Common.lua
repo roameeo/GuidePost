@@ -113,4 +113,5 @@ end
 function GP.UntrackAchievement(achievementID)
     GuidePostCharDB.tracked[achievementID] = nil
     GP.TomTom.ClearWaypoint()
+    EventRegistry:TriggerEvent("GuidePost.ToggleTracking")
 end

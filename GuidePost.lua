@@ -2,6 +2,7 @@ local GP = select(2, ...)
 
 -- ─── Slash Commands ──────────────────────────────────────────────────────────
 -- /gp or /guidepost         → toggles the main window
+-- /gp settings              → toggles the settings panel
 -- /gp list                  → prints all known achievements to chat
 -- /gp track <id>            → start tracking achievement by ID
 -- /gp untrack <id>          → stop tracking
@@ -10,6 +11,7 @@ local GP = select(2, ...)
 -- /gp mapid                 → print current zone's UiMapID
 -- /gp criteria <id>         → dump criteria IDs for an achievement
 -- /gp scan [zone]           → scan for achievement IDs in current or named zone
+-- /gp dump [zone|todo]      → dump achievement panel results as Lua stubs
 
 SLASH_GUIDEPOST1 = "/gp"
 SLASH_GUIDEPOST2 = "/guidepost"
@@ -28,7 +30,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
         GP.Print("Known achievements:")
         for _, id in ipairs(GP.AchievementData.GetAllAchievementsForPlayer()) do
             local ach = GP.Data.Achievements[id]
-            GP.Print(string.format("  [%d] %s (%s)", id, ach.name, ach.category))
+            print(string.format("  [%d] %s (%s)", id, ach.name, ach.category))
         end
 
     elseif input:match("^track %d+$") then
@@ -36,7 +38,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
         if id and GP.Data.Achievements[id] then
             GuidePostCharDB.tracked[id] = true
             GP.TomTom.SetWaypoint(id)
-            GP.Print("Tracking: " .. GP.Data.Achievements[id].name)
+            GP.Print("Tracking: "..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(GP.Data.Achievements[id].name))
         else
             GP.Print("Unknown achievement ID: " .. id)
         end
@@ -71,13 +73,13 @@ SlashCmdList["GUIDEPOST"] = function(input)
         if not achName then
             GP.Print("Unknown achievement ID: " .. achID)
         else
-            GP.Print(string.format("Criteria for [%d] %s:", achID, achName))
+            GP.Print("Criteria for", "["..achID.."]", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(achName))
             local i = 1
             while true do
                 local criteriaStr, _, completed = GetAchievementCriteriaInfo(achID, i)
                 if not criteriaStr then break end
                 local status = completed and GREEN_FONT_COLOR:WrapTextInColorCode("(DONE)") or ""
-                GP.Print("criteriaIndex ", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(i), "=", criteriaStr, status)
+                GP.Print("criteriaIndex", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(i), "=", criteriaStr, status)
                 i = i + 1
             end
         end
@@ -173,18 +175,19 @@ SlashCmdList["GUIDEPOST"] = function(input)
 
     else
         GP.Print("Commands:")
-        print("  /gp                    - Open / close window")
-        print("  /gp list               - List all known achievements")
-        print("  /gp track <id>         - Track an achievement")
-        print("  /gp untrack <id>       - Stop tracking")
-        print("  /gp zone               - Suggestions for current zone")
-        print("  /gp next               - Set waypoint for next tracked step")
-        print("  /gp mapid              - Print UiMapID for your current zone")
-        print("  /gp criteria <achID>   - Dump criteria IDs for an achievement")
-        print("  /gp scan               - Scan current zone for achievement IDs")
-        print("  /gp scan <zone>        - Scan a specific zone by name")
-        print("  /gp dump               - Dump achievement panel results as Lua stubs (uses current zone)")
-        print("  /gp dump todo          - Dump with zone=TODO (for broad/multi-zone searches)")
-        print("  /gp dump <zone>        - Dump with a specific zone name")
+        print("  /gp                   - Open / close window")
+        print("  /gp settings          - Open / close settings panel")
+        print("  /gp list              - List all known achievements")
+        print("  /gp track <id>        - Track an achievement")
+        print("  /gp untrack <id>      - Stop tracking")
+        print("  /gp zone              - Suggestions for current zone")
+        print("  /gp next              - Set waypoint for next tracked step")
+        print("  /gp mapid             - Print UiMapID for your current zone")
+        print("  /gp criteria <achID>  - Dump criteria IDs for an achievement")
+        print("  /gp scan              - Scan current zone for achievement IDs")
+        print("  /gp scan <zone>       - Scan a specific zone by name")
+        print("  /gp dump              - Dump achievement panel results as Lua stubs (uses current zone)")
+        print("  /gp dump todo         - Dump with zone=TODO (for broad/multi-zone searches)")
+        print("  /gp dump <zone>       - Dump with a specific zone name")
     end
 end
