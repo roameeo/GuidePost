@@ -20,6 +20,7 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
                     </Anchors>
                 </Texture>
             </Layer>
+            <!-- TODO: Figure out why this texture never renders in the expected location -->
             <!-- <Layer level="HIGHLIGHT">
                 <Texture parentKey="Highlight" file="Interface/Minimap/MiniMap-TrackingBorder" setAllPoints="true">
                     <Size x="32" y="32"/>

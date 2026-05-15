@@ -20,20 +20,20 @@ core\TomTomIntegration.lua
 
 # UI (loaded last, depends on core systems)
 ui\Tooltip.lua
-FrameXML\GuidePostMinimapButtonMixin.lua
-FrameXML\GuidePostMinimapButton.xml
-FrameXML\GuidePostSettingsPanelMixin.lua
-FrameXML\GuidePostSettingsPanel.xml
-FrameXML\Templates\GuidePostListItemMixins.lua
-FrameXML\Templates\GuidePostListItemTemplates.xml
-FrameXML\Templates\GuidePostScrollFrameMixin.lua
-FrameXML\Templates\GuidePostScrollFrameTemplate.xml
-FrameXML\GuidePostFrameMixin.lua
-FrameXML\GuidePostFrame.xml
-FrameXML\GuidePostListPanelMixin.lua
-FrameXML\GuidePostListPanel.xml
-FrameXML\GuidePostDetailPanelMixin.lua
-FrameXML\GuidePostDetailPanel.xml
+ui\Templates\GuidePostListItemMixins.lua
+ui\Templates\GuidePostListItemTemplates.xml
+ui\Templates\GuidePostScrollFrameMixin.lua
+ui\Templates\GuidePostScrollFrameTemplate.xml
+ui\Frames\GuidePostMinimapButtonMixin.lua
+ui\Frames\GuidePostMinimapButton.xml
+ui\Frames\GuidePostSettingsPanelMixin.lua
+ui\Frames\GuidePostSettingsPanel.xml
+ui\Frames\GuidePostFrameMixin.lua
+ui\Frames\GuidePostFrame.xml
+ui\Frames\GuidePostListPanelMixin.lua
+ui\Frames\GuidePostListPanel.xml
+ui\Frames\GuidePostDetailPanelMixin.lua
+ui\Frames\GuidePostDetailPanel.xml
 
 # Main entry point
 GuidePost.lua

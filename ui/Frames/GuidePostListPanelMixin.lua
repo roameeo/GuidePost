@@ -162,7 +162,6 @@ function GuidePostListPanelMixin:MatchesFilter(achievementID)
         if ach.zone ~= GetZoneText() then return false end
     end
 
-    -- TODO: Scope is not saved to DB, so it's never persisted through sessions. Should this change?
     local scope = GuidePostDB.settings and GuidePostDB.settings.scope or "account"
     if scope == "character" then
         -- Show only achievements with in-progress criteria or actively tracked

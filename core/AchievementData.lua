@@ -59,7 +59,7 @@ local function printScanResults(zone, results)
         if r.completed then tinsert(tags, GREEN_FONT_COLOR:WrapTextInColorCode("(DONE)")) end
 
         local tagStr = table.concat(tags, " ")
-        print("   ", r.id, r.name, tagStr)
+        print(" ", r.id, r.name, tagStr)
     end
 
     GP.Print("Copy these IDs into data/Achievements.lua!")
@@ -181,7 +181,6 @@ function AD.ScanZone(overrideZone, autoAdd)
     local zoneLower = zone:lower()
 
     -- Build a list of search terms: always include the zone as-is, plus a de-pluralised variant (e.g. "siren isles" → "siren isle") so we catch achievements whose text omits or adds a trailing 's'.
-    -- TODO: Improve achievement scanning method (or indicate that it's a guess as to achievements for this zone to avoid misattribution)
     local searchTerms = { zoneLower }
     if zoneLower:sub(-1) == "s" then
         table.insert(searchTerms, zoneLower:sub(1, -2))  -- strip trailing 's'
