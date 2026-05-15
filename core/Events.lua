@@ -22,7 +22,7 @@ local handlers = {
             end
         end
 
-        GP.Print("Loaded! Type |cff00ccff/gp|r to open.")
+        GP.Print("Type", DARKYELLOW_FONT_COLOR:WrapTextInColorCode("/gp"), "to open")
     end,
     ["ZONE_CHANGED_NEW_AREA"] = function()
         -- Called when the player enters a new zone or subzone
@@ -43,9 +43,10 @@ local handlers = {
     end,
     ["ACHIEVEMENT_EARNED"] = function(id, alreadyEarned)
         -- Called when an achievement is fully completed
+        local name = GP.Data.Achievements[id].name
         if not alreadyEarned then
             GP.UntrackAchievement(id)
-            GP.Print(string.format("|cffffff00Achievement complete:|r %s", tostring(id)))
+            GP.Print(GREEN_FONT_COLOR:WrapTextInColorCode("Achievement complete:"), DARKYELLOW_FONT_COLOR:WrapTextInColorCode(name))
         end
         handlers["CRITERIA_UPDATE"]()
     end

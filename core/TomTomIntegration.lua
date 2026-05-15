@@ -1,11 +1,11 @@
 local GP = select(2, ...)
 
-GP.TomTom = {}
+local TT = {}
 
-GP.TomTom.CurrentWaypoint = nil
+TT.CurrentWaypoint = nil
 
 -- Set a waypoint for a specific step (criteria index optional)
-function GP.TomTom.SetWaypoint(achievementID, criteriaIndex)
+function TT.SetWaypoint(achievementID, criteriaIndex)
     local ach = GP.Data.Achievements[achievementID]
     if not ach then
         -- print error msg
@@ -51,9 +51,11 @@ function GP.TomTom.SetWaypoint(achievementID, criteriaIndex)
 end
 
 -- Remove the currently set waypoint
-function GP.TomTom.ClearWaypoint()
+function TT.ClearWaypoint()
     if TT.CurrentWaypoint then
         TomTom:RemoveWaypoint(TT.CurrentWaypoint)
         TT.CurrentWaypoint = nil
     end
 end
+
+GP.TomTom = TT

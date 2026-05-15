@@ -63,8 +63,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
         local mapID   = C_Map.GetBestMapForUnit("player")
         local mapInfo = C_Map.GetMapInfo(mapID)
         local name    = mapInfo and mapInfo.name or "Unknown"
-        GP.Print(string.format("Current zone: |cff00ccff%s|r  mapID = |cffffcc00%d|r", name, mapID))
-        GP.Print("Use this mapID in data/Achievements.lua for steps in this zone.")
+        GP.Print(name, "mapID =", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(mapID))
 
     elseif input:match("^criteria %d+$") then
         local achID = tonumber(input:match("%d+"))
@@ -73,14 +72,12 @@ SlashCmdList["GUIDEPOST"] = function(input)
             GP.Print("Unknown achievement ID: " .. achID)
         else
             GP.Print(string.format("Criteria for [%d] %s:", achID, achName))
-            GP.Print("Use the |cffffcc00index number|r as criteriaIndex in Achievements.lua")
             local i = 1
             while true do
                 local criteriaStr, _, completed = GetAchievementCriteriaInfo(achID, i)
                 if not criteriaStr then break end
-                local status = completed and "|cff00ff00DONE|r" or "|cffaaaaaa    |r"
-                GP.Print(string.format("  criteriaIndex=|cffffcc00%d|r  %s  %s",
-                    i, status, criteriaStr))
+                local status = completed and GREEN_FONT_COLOR:WrapTextInColorCode("(DONE)") or ""
+                GP.Print("criteriaIndex ", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(i), "=", criteriaStr, status)
                 i = i + 1
             end
         end
@@ -135,10 +132,8 @@ SlashCmdList["GUIDEPOST"] = function(input)
         end
         GuidePostDB = GuidePostDB or {}
         GuidePostDB.exportBuffer = table.concat(stubs, "\n")
-        GP.Print(string.format(
-            "Dumped |cff00ccff%d|r new stubs to |cffffcc00GuidePostDB.exportBuffer|r (%d already in DB, skipped).",
-            #stubs, skipped))
-        GP.Print("Find them in your WTF SavedVariables/GuidePost.lua file — search for 'exportBuffer'.")
+        GP.Print("Dumped", HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(#stubs), "new stubs to", DARKYELLOW_FONT_COLOR:WrapTextInColorCode("GuidePostDB.exportBuffer"), string.format("(%d already in DB, skipped)", skipped))
+        print("    Find them in your WTF SavedVariables/GuidePost.lua file (search for 'exportBuffer')")
 
     elseif input == "scan" then
         -- Scan the current zone for achievement IDs
@@ -153,28 +148,28 @@ SlashCmdList["GUIDEPOST"] = function(input)
         -- Set waypoint for next incomplete step of any tracked achievement
         local tracked = GP.GetTrackedAchievementsList()
         if #tracked == 0 then
-            GP.Print("|cffffcc00No achievements are currently tracked.|r")
-            GP.Print("Use |cff00ccff/gp track <id>|r or click 'Track' in the UI.")
+            GP.Print(DARKYELLOW_FONT_COLOR:WrapTextInColorCode("No achievements are currently tracked"))
+            print("    Use", DARKYELLOW_FONT_COLOR:WrapTextInColorCode("/gp track <id>"), "or begin tracking an achievement from the addon UI")
             return
         end
 
-        -- -- Find the first tracked achievement with an incomplete step
-        -- local foundStep = false
-        -- for _, id in ipairs(tracked) do
-        --     local nextStep = GP.AchievementData.GetNextStep(id)
-        --     if nextStep then
-        --         local ach = GP.Data.Achievements[id]
-        --         GP.TomTom.SetWaypoint(id, nextStep)
-        --         GP.Print(string.format("Next step for |cff00ccff%s|r:", ach.name))
-        --         GP.Print("  " .. nextStep.desc)
-        --         foundStep = true
-        --         break
-        --     end
-        -- end
+        -- Find the first tracked achievement with an incomplete step
+        local foundStep = false
+        for _, id in ipairs(tracked) do
+            local nextStep = GP.AchievementData.GetNextStep(id)
+            if nextStep then
+                local ach = GP.Data.Achievements[id]
+                GP.TomTom.SetWaypoint(id, nextStep)
+                GP.Print("Next step for", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(ach.name))
+                print("   ", nextStep.desc)
+                foundStep = true
+                break
+            end
+        end
 
-        -- if not foundStep then
-        --     GP.Print("|cff00ff00All tracked achievements are complete!|r")
-        -- end
+        if not foundStep then
+            GP.Print(GREEN_FONT_COLOR:WrapTextInColorCode("All tracked achievements are complete!"))
+        end
 
     else
         GP.Print("Commands:")

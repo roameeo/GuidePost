@@ -38,8 +38,8 @@ local function HookTooltip()
         local matches = npcIndex[name:lower()]
         if not matches then return end
 
-        self:AddLine(" ")  -- spacer
-        self:AddLine("|cff00ccff[GuidePost]|r")
+        self:AddLine(" ")
+        self:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("GuidePost"))
 
         for _, match in ipairs(matches) do
             local ach = GP.Data.Achievements[match.achID]

@@ -21,7 +21,7 @@ local function autoAddResults(zone, results)
     local added = 0
     for _, r in ipairs(results) do
         -- Skip anything already tracked or already completed
-        if not r.completed then
+        if not r.completed and not GP.Data.Achievements[r.id] then
             GP.Data.Achievements[r.id] = {
                 name      = r.name,
                 zone      = zone,
@@ -38,29 +38,28 @@ local function autoAddResults(zone, results)
     end
 
     if added > 0 then
-        GP.Print(string.format("Added |cff00ccff%d|r new achievement(s) from auto-scan", added))
+        GP.Print("Added", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(added), "new achievement(s) from auto-scan")
         AD.RefreshZoneSuggestions()
+    else
+        GP.Print("No new achievements found matching", "\""..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(zone).."\"")
     end
 end
 
 local function printScanResults(zone, results)
     if #results == 0 then
-        GP.Print(string.format("No new achievements found matching \"|cff00ccff%s|r\"", zone))
+        GP.Print("No new achievements found matching", "\""..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(zone).."\"")
         return
     end
-
-    GP.Print(string.format(
-        "Found |cff00ccff%d|r new achievement(s) matching \"|cff00ccff%s|r\":", #results, zone))
+    
+    GP.Print("Found", #results, "new achievement(s) matching", "\""..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(zone).."\"")
 
     for _, r in ipairs(results) do
         local tags = {}
 
-        if r.completed then
-            table.insert(tags, "|cff00ff00DONE|r")
-        end
+        if r.completed then tinsert(tags, GREEN_FONT_COLOR:WrapTextInColorCode("(DONE)")) end
 
         local tagStr = table.concat(tags, " ")
-        GP.Print(string.format("  [%d] %s  %s", r.id, r.name, tagStr))
+        print("   ", r.id, r.name, tagStr)
     end
 
     GP.Print("Copy these IDs into data/Achievements.lua!")
@@ -78,9 +77,7 @@ EventRegistry:RegisterCallback("GuidePost.ZoneScanComplete", function(_, zone, s
             end
         end
 
-        if matched then
-            tinsert(zoneResults, result)
-        end
+        if matched then tinsert(zoneResults, result) end
     end
 
     if autoAdd then
@@ -179,7 +176,7 @@ function AD.ScanZone(overrideZone, autoAdd)
         return
     end
 
-    GP.Print("Scanning for achievements matching", "\""..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(zone).."\"", (#AD.ScanResults == 0 and "(may take a moment)" or ""))
+    GP.Print("Scanning for achievements matching", "\""..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(zone).."\"", (#AD.ScanResults == 0 and "(this may take a moment)" or ""))
 
     local zoneLower = zone:lower()
 
