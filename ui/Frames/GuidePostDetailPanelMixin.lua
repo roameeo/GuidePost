@@ -46,6 +46,12 @@ function GuidePostDetailPanelMixin:OnLoad()
             end
         EventRegistry:TriggerEvent("GuidePost.ToggleTracking", self.selectedAchievementID, tracked[self.selectedAchievementID] or false)
     end)
+
+    self.ScrollFrame:HookScript("OnSizeChanged", function(scrollFrame)
+        scrollFrame.ListContent:ClearAllPoints()
+        scrollFrame.ListContent:SetPoint("TOPLEFT")
+        scrollFrame.ListContent:SetPoint("TOPRIGHT")
+    end)
 end
 
 function GuidePostDetailPanelMixin:ClearCurrentSteps()

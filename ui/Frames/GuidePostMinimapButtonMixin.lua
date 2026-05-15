@@ -12,6 +12,8 @@ end
 GuidePostMinimapButtonMixin = {}
 
 function GuidePostMinimapButtonMixin:OnLoad()
+    GP.EnsureDatabase("GuidePostDB", GP.GlobalDbDefaults)
+    GP.EnsureDatabase("GuidePostCharDB", GP.CharDbDefaults)
     if GuidePostDB.minimapAngle then
         self:SetAngle(GuidePostDB.minimapAngle)
         self.angle = GuidePostDB.minimapAngle

@@ -9,8 +9,10 @@ GP.GlobalDbDefaults = {
         lowHangingFruit = false,
         category = "All",
         status = "All",
-        zone = "Current Zone"
+        zone = "All"
     },
+    windowH = 520,
+    windowW = 460,
     collapsedZones = {},
     settings = {
         scope = "account",
@@ -29,18 +31,18 @@ end
 
 -- Call this once the AddOn is loaded to ensure database structures remain up to date even when new properties are added
 -- Expects that tables are not nested past one level in a database (example: GuidePostDB.filters.zone)
-function GP.EnsureDatabase(db, dbDefaults)
-    if not db then
-        db = dbDefaults
-    end
-
-    for k, v in pairs(dbDefaults) do
-        if type(db[k]) == "table" then
-            for nK, nV in pairs(dbDefaults[k]) do
-                if db[k][nK] == nil then db[k][nK] = nV end
+function GP.EnsureDatabase(dbName, dbDefaults)
+    if not _G[dbName] then
+        _G[dbName] = dbDefaults
+    else
+        for k, v in pairs(dbDefaults) do
+            if type(_G[dbName][k]) == "table" then
+                for nK, nV in pairs(dbDefaults[k]) do
+                    if _G[dbName][k][nK] == nil then _G[dbName][k][nK] = nV end
+                end
+            elseif _G[dbName][k] == nil
+                then _G[dbName][k] = v
             end
-        elseif db[k] == nil
-            then db[k] = v
         end
     end
 end

@@ -80,8 +80,7 @@ end
 function GuidePostListPanelMixin:InitializeStatusDropdown()
     UIDropDownMenu_Initialize(self.StatusDropdown, function(dropdown, level)
         local info = UIDropDownMenu_CreateInfo()
-        local statuses = { "All", "In Progress", "Not Started", "Completed" }
-        for _, status in ipairs(statuses) do
+        for _, status in ipairs(GP.StatusFilters) do
             info.text = status
             info.value = status
             info.checked = GuidePostDB.filters.status == status
@@ -99,8 +98,7 @@ end
 function GuidePostListPanelMixin:InitializeZoneDropdown()
     UIDropDownMenu_Initialize(self.ZoneDropdown, function(dropdown, level)
         local info = UIDropDownMenu_CreateInfo()
-        local zones = { "All", "Current Zone" }
-        for _, zone in ipairs(zones) do
+        for _, zone in ipairs(GP.ZoneFilters) do
             info.text = zone
             info.value = zone
             info.checked = GuidePostDB.filters.zone == zone

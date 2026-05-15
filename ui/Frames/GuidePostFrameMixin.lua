@@ -6,6 +6,7 @@ function GuidePostFrameMixin:OnLoad()
     -- Allows closing via ESC key
     tinsert(UISpecialFrames, self:GetName())
     self.TitleText:SetText(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("GuidePost"))
+    self:SetSize(GuidePostDB.windowW, GuidePostDB.windowH)
 
     EventRegistry:RegisterCallback("GuidePost.RefreshZoneSuggestions", function()
         local suggestionCount = #GP.AchievementData.CurrentZoneSuggestions
