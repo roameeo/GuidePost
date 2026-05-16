@@ -1,0 +1,344 @@
+GuidePost - data/Achievements.lua TODO List
+Generated: 2026-05-16
+============================================================
+
+This file tracks all outstanding in-game verification tasks.
+Use /gp criteria <ID> and /gp mapid in-game to fill in values.
+
+============================================================
+SECTION 1: INFERRED ACHIEVEMENT IDs — NEED IN-GAME VERIFICATION
+============================================================
+Only the Bronze tier IDs in each race group were confirmed from
+screenshots. Silver (+1), Gold (+2), Advanced (+3/+4/+5), Reverse,
+and Challenge variants were inferred by sequential numbering.
+Verify each ID actually exists before shipping.
+
+-- THALDRASZUS (mapID 2025) --
+
+The Flowing Forest Flight:
+  15827 Bronze   (confirmed from screenshot)
+  15828 Silver   (inferred: Bronze+1)
+  15829 Gold     (inferred: Bronze+2)
+  15830 Advanced Bronze  (inferred)
+  15831 Advanced Silver  (inferred)
+  15832 Advanced Gold    (inferred)
+  17177 Reverse Bronze   (inferred)
+  17178 Reverse Silver   (inferred)
+  17179 Reverse Gold     (inferred)
+  17991 Challenge Bronze (inferred)
+  17992 Challenge Silver (inferred)
+  17993 Challenge Gold   (inferred)
+  17994 Reverse Challenge Bronze (inferred — verify this tier exists)
+  17995 Reverse Challenge Silver (inferred)
+  17996 Reverse Challenge Gold   (inferred)
+
+Tyrhold Trial:
+  15855 Bronze   (confirmed from screenshot)
+  15856 Silver   (inferred)
+  15857 Gold     (inferred)
+  15858 Advanced Bronze  (inferred)
+  15859 Advanced Silver  (inferred)
+  15860 Advanced Gold    (inferred)
+  17180 Reverse Bronze   (confirmed from screenshot)
+  17181 Reverse Silver   (inferred)
+  17182 Reverse Gold     (inferred)
+  17997 Challenge Bronze (inferred)
+  17998 Challenge Silver (inferred)
+  17999 Challenge Gold   (inferred)
+  18000 Reverse Challenge Bronze (inferred — verify this tier exists)
+  18001 Reverse Challenge Silver (inferred)
+  18002 Reverse Challenge Gold   (inferred)
+
+Cliffside Circuit:
+  15891 Bronze   (confirmed from screenshot)
+  15892 Silver   (inferred)
+  15893 Gold     (inferred)
+  15894 Advanced Bronze  (inferred)
+  15895 Advanced Silver  (inferred)
+  15896 Advanced Gold    (inferred)
+  17183 Reverse Bronze   (inferred)
+  17184 Reverse Silver   (inferred)
+  17185 Reverse Gold     (inferred)
+  18003 Challenge Bronze (inferred)
+  18004 Challenge Silver (inferred)
+  18005 Challenge Gold   (inferred)
+  18006 Reverse Challenge Bronze (inferred — verify this tier exists)
+  18007 Reverse Challenge Silver (inferred)
+  18008 Reverse Challenge Gold   (inferred)
+
+Academy Ascent:
+  15897 Bronze   (confirmed from screenshot)
+  15898 Silver   (inferred)
+  15899 Gold     (inferred)
+  15900 Advanced Bronze  (inferred)
+  15901 Advanced Silver  (inferred)
+  15902 Advanced Gold    (inferred)
+  17186 Reverse Bronze   (inferred)
+  17187 Reverse Silver   (inferred)
+  17188 Reverse Gold     (inferred)
+  18009 Challenge Bronze (inferred)
+  18010 Challenge Silver (inferred)
+  18011 Challenge Gold   (inferred)
+  18012 Reverse Challenge Bronze (inferred — verify this tier exists)
+  18013 Reverse Challenge Silver (inferred)
+  18014 Reverse Challenge Gold   (inferred)
+
+Garden Gallivant:
+  15903 Bronze   (confirmed from screenshot)
+  15904 Silver   (inferred)
+  15905 Gold     (inferred)
+  15906 Advanced Bronze  (inferred)
+  15907 Advanced Silver  (inferred)
+  15908 Advanced Gold    (inferred)
+  17189 Reverse Bronze   (inferred)
+  17190 Reverse Silver   (inferred)
+  17191 Reverse Gold     (inferred)
+  18015 Challenge Bronze (inferred)
+  18016 Challenge Silver (inferred)
+  18017 Challenge Gold   (inferred)
+  18018 Reverse Challenge Bronze (inferred — verify this tier exists)
+  18019 Reverse Challenge Silver (inferred)
+  18020 Reverse Challenge Gold   (inferred)
+
+Caverns Criss-Cross:
+  15909 Bronze   (confirmed from screenshot)
+  15910 Silver   (inferred)
+  15911 Gold     (inferred)
+  15912 Advanced Bronze  (inferred)
+  15913 Advanced Silver  (inferred)
+  15914 Advanced Gold    (inferred)
+  17192 Reverse Bronze   (inferred)
+  17193 Reverse Silver   (inferred)
+  17194 Reverse Gold     (inferred)
+  18021 Challenge Bronze (inferred)
+  18022 Challenge Silver (inferred)
+  18023 Challenge Gold   (inferred)
+  18024 Reverse Challenge Bronze (inferred — verify this tier exists)
+  18025 Reverse Challenge Silver (inferred)
+  18026 Reverse Challenge Gold   (inferred)
+
+Thaldraszus Meta Race:
+  15924 Bronze   (confirmed from screenshot)
+  15925 Silver   (inferred)
+  15926 Gold     (inferred)
+  15936 Advanced Bronze  (inferred)
+  15937 Advanced Silver  (inferred)
+  15938 Advanced Gold    (inferred)
+  17204 Reverse Bronze   (inferred)
+  17205 Reverse Silver   (inferred)
+  17206 Reverse Gold     (inferred)
+  18760 Challenge Bronze (confirmed from screenshot)
+  18761 Challenge Silver (inferred)
+  18762 Challenge Gold   (inferred)
+  NOTE: No Reverse Challenge added for meta race — verify if it exists.
+
+-- WAKING SHORES (mapID 2022) --
+All Silver/Gold/Advanced/Reverse/Challenge IDs inferred from confirmed
+Bronze IDs. Verify all IDs in the range:
+  15915–15929 (Normal + Advanced tiers)
+  16297 (Waking Shores meta Bronze — verify name)
+  16401, 16406 (exploration — verify names)
+  16463, 16465–16468 (exploration — verify names)
+  16575, 16584, 16592, 16676 (exploration — verify names)
+  17561 (exploration — verify name)
+  18748–18750 (Challenge tiers — verify IDs)
+  19479 (exploration — verify name)
+
+-- FORBIDDEN REACH (mapID 2151) --
+All IDs in this section were inferred or confirmed only for specific
+entries. Verify all IDs in the range:
+  15325 (Dracthyr, Awaken — confirmed)
+  15638 (verify ID and name)
+  16452 (verify ID and name)
+  17279–17290 (race tiers — verify sequential IDs)
+  17294, 17296, 17298 (verify IDs and names)
+  17315 (verify ID and name)
+  17411 (verify ID and name)
+  17524–17528 (verify IDs and names)
+  17534 (verify ID and name)
+  17543 (verify ID and name)
+  18779–18781 (verify IDs and names)
+
+============================================================
+SECTION 2: PLACEHOLDER COORDS — REPLACE WITH ACTUAL VALUES
+============================================================
+All entries below use coords={x=50.0, y=50.0} or coords={x=58.03, y=33.69}
+as a zone-centre placeholder. Replace with the NPC or object coords
+for each individual race start / treasure / rare spawn.
+
+-- HOW TO GET COORDS --
+  1. Stand at the race start NPC or relevant location in-game.
+  2. Type: /gp coords   (or use TomTom / coordinates addon)
+  3. Update the coords field in data/Achievements.lua.
+
+-- FORBIDDEN REACH (mapID 2151) coords to replace (x=50.0, y=50.0) --
+  15325 — Dracthyr, Awaken
+  15638 — (verify name)
+  16452 — (verify name)
+  17279–17290, 17294, 17296, 17298, 17315, 17411
+  17524–17528, 17534, 17543
+  18779, 18780, 18781
+  (also the Forbidden Reach Explore entries: sub-coords in steps)
+
+-- WAKING SHORES (mapID 2022) coords to replace (x=50.0, y=50.0) --
+  15915–15929 (all race tiers)
+  16297, 16401, 16406
+  16463, 16465–16468
+  16575, 16584, 16592, 16676
+  17561
+  18748–18750
+  19479
+
+-- THALDRASZUS (mapID 2025) coords to replace (x=58.03, y=33.69) --
+  All 90 race entries currently share the zone-centre coord.
+  Each race has a distinct start NPC location — find each one:
+  - The Flowing Forest Flight start NPC
+  - Tyrhold Trial start NPC
+  - Cliffside Circuit start NPC
+  - Academy Ascent start NPC
+  - Garden Gallivant start NPC
+  - Caverns Criss-Cross start NPC
+  - Thaldraszus meta race start NPC
+  Also update exploration entries (16107, 16287, 16288, 16301, 16398,
+  16485–16489, 16578, 16593, 16621, 16634, 16679, 17564)
+
+-- VALDRAKKEN (mapID 2112) --
+  41182 — Ally of the Flights: coords={x=50.0, y=50.0} (line ~8980)
+
+-- OLDER ACHIEVEMENTS with approximate coords --
+  Multiple achievements throughout the file use round numbers like
+  x=19.0,y=50.0 or x=59.0,y=50.0 that are clearly estimates.
+  Grep for ", y=50.0" to find them and verify in-game.
+
+============================================================
+SECTION 3: mapID = nil — NEED ACTUAL WoW MAP IDs
+============================================================
+Use /gp mapid while standing in the relevant zone/dungeon to get
+the correct value, then update the mapID field.
+
+Notable entries:
+  Line 127  — Winterspring (step mapID)
+  Line 167  — Searing Gorge (step mapID)
+  Line 175  — Storm Peaks or Badlands (step mapID)
+  Line 267  — (verify zone)
+  Line 298  — (verify zone)
+  Line 601  — Durotar (outer mapID)
+  Line 967  — Elwynn Forest (outer mapID)
+  Line 1253 — (verify zone)
+  Line 1307 — Icecrown (outer mapID)
+  Line 1338 — (verify zone)
+  Line 1502 — Dornogal (outer mapID and step mapID)
+  Line 1532 — (verify zone)
+  Line 1554 — (verify zone)
+  Line 1585 — (verify zone)
+  Line 1616 — (verify zone)
+  Line 1665 — Scholomance (dungeon mapID)
+  Line 1898 — (verify zone)
+  Line 1948 — (verify zone)
+  Line 2056 — (verify zone — Spring Robes / Noblegarden)
+  Line 2083 — (verify zone — Un'Goro / Noblegarden)
+  Line 2087 — Thousand Needles (step mapID)
+  Line 2099 — (verify zone)
+  Line 2118 — (verify zone — Noblegarden meta)
+  Line 2136 — (verify zone)
+  Line 2154 — (verify zone — Argent Tournament)
+  Line 2674 — (verify zone)
+  Line 2907 — Wetlands (verify outer mapID)
+  Line 3757 — (verify zone)
+  Line 3792 — (verify zone)
+  Line 4995 — (verify zone)
+  Line 5027 — (verify zone)
+  Line 5425 — (verify zone)
+  Line 5445 — (verify zone)
+  Lines 5965–6147 — All Shattrath City races and Delve achievements
+                    (mapID for Outland Shattrath — likely 534 or 976)
+  Line 6567 — (verify zone)
+  Line 6840 — (verify zone)
+  Line 6856 — (verify zone)
+  Line 7063 — (verify zone)
+  Line 7305 — (verify zone)
+  Line 7321 — (verify zone)
+  Line 7339 — (verify zone)
+  Line 7526 — (verify zone)
+  Line 7541 — (verify zone)
+  Line 7732 — (verify zone)
+  Line 7746 — (verify zone)
+
+============================================================
+SECTION 4: criteriaIndex = nil — NEED VERIFICATION
+============================================================
+Many step entries have criteriaIndex = nil with a comment
+"verify with /gp criteria <ID>". Run /gp criteria <achievementID>
+in-game to see the indexed list and fill in the correct value.
+
+Notable ranges with nil criteriaIndex (lines approximate):
+  Lines 617–793   — various older achievements
+  Lines 983–1135  — various older achievements
+  Line 1753       — (achievement ~18368)
+  Line 2763       — Consumed by Nightmare (5451)
+
+============================================================
+SECTION 5: ACHIEVEMENT DATA TO REVIEW / FILL IN
+============================================================
+
+[ ] 41182 "Ally of the Flights" (Valdrakken)
+    - Step description is generic. Add actual faction requirements
+      and milestones once confirmed in-game.
+    - Update coords from 50.0, 50.0 to the relevant NPC location.
+
+[ ] 16556 "Great Gourmand of The Ruby Feast" (Valdrakken, mapID 2112)
+    - 20 food criteria are filled in with coords {x=61.03, y=11.04}.
+    - Verify each food item's exact criteriaIndex in-game.
+
+[ ] All Thaldraszus exploration achievements (16107, 16287, 16288,
+    16301, 16398, 16485–16489, 16578, 16593, 16621, 16634, 16679,
+    17564) — descriptions are generic placeholders. Expand each
+    with proper step-by-step guidance once verified in-game.
+
+[ ] Shattrath City Delve achievements (9486, 9632–9638)
+    - mapID = nil; Shattrath mapID needs verification
+      (likely 534 for Outland Shattrath or 976 for Delve instance)
+
+[ ] Eastern Kingdoms Cup (lines ~3150+)
+    - Comment says "verify criteriaIndex with /gp criteria when active"
+    - Season-locked; verify next time the event is live.
+
+[ ] Theater of Pain explore entry (ID ~7409, step 7)
+    - coords={x=50.0, y=50.0}, mapID=1536 — verify exact coords.
+
+-- THE AZURE SPAN (mapID 2024) — ADDED 2026-05-16 --
+All 52 Azure Span achievements added. Verify the following:
+
+[ ] Tour of Duty: The Azure Span — ID IS UNKNOWN.
+    The screenshot showed it adjacent to 16638 (Ley Line in the Span)
+    but the exact ID could not be reliably read. Verify in-game:
+      /gp criteria [ID]  while standing in The Azure Span
+    Then add it to data/Achievements.lua near [16638].
+
+[ ] All Azure Span race coords are placeholders {x=50.0, y=50.0}.
+    Replace with each race's actual start NPC coords:
+    - The Azure Span Sprint start NPC
+    - The Azure Span Slalom start NPC
+    - Azure Span meta race start NPC
+
+[ ] Verify all inferred Silver/Gold/Advanced/Challenge IDs:
+    Sprint:  15788-15793, 17159-17161, 17953-17958
+    Slalom:  15799-15804, 17162-17164, 17959-17964
+    Meta:    15921-15923, 15933-15935, 18757-18759
+    (All Silver/Gold/Advanced IDs inferred from confirmed Bronze IDs)
+
+============================================================
+SECTION 6: MISSING ACHIEVEMENT ZONES / FUTURE ADDITIONS
+============================================================
+These zones have been identified as needing achievements added
+but haven't been started yet:
+
+[ ] Ohn'ahran Plains (mapID 2023) — race achievements and exploration
+[ ] Zaralek Cavern (mapID 2133) — race achievements and exploration
+[ ] Emerald Dream (mapID 2200) — race achievements and exploration
+[ ] Isle of Dorn / Khaz Algar zones — all pending
+[ ] The War Within zones — all pending
+
+============================================================
+END OF TODO LIST
+============================================================

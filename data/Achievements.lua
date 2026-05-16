@@ -3275,7 +3275,7 @@ GP.Data.Achievements = {
     [13470] = {
         id       = 13470,
         name     = "Rest In Pistons",
-        category = "Pet Battles",
+        category = "Exploration",
         zone     = "Mechagon",
         mapID    = 1462,
         steps = {
@@ -7845,6 +7845,2253 @@ GP.Data.Achievements = {
         mapID    = 2369,
         steps = {
             { index=1, desc="TODO: verify with /gp criteria 41185", npc=nil, coords=nil, mapID=2369, criteriaIndex=1 },
+        },
+    },
+
+    -- =========================================================================
+    -- THE FORBIDDEN REACH (mapID 2151) — Dracthyr starting zone
+    -- =========================================================================
+
+    -- -------------------------------------------------------------------------
+    -- "Dracthyr, Awaken" (ID 15325)
+    -- Complete the Dracthyr intro questline in the Forbidden Reach.
+    -- -------------------------------------------------------------------------
+    [15325] = {
+        id       = 15325,
+        name     = "Dracthyr, Awaken",
+        category = "Quests",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Dracthyr starting experience questline in the Forbidden Reach. Begin with 'The Forbidden Reach' intro quest upon character creation or entering the zone.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Dracthyr, Awaken" (ID 15638)
+    -- Alternate version — verify with /gp criteria 15638 which step differs.
+    -- -------------------------------------------------------------------------
+    [15638] = {
+        id       = 15638,
+        name     = "Dracthyr, Awaken",
+        category = "Quests",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Dracthyr starting experience questline in the Forbidden Reach. This may be the Horde-side variant — verify with /gp criteria 15638.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Familiar Skies" (ID 16452)
+    -- Complete the Dragonriding / Skyriding tutorial in the Forbidden Reach.
+    -- -------------------------------------------------------------------------
+    [16452] = {
+        id       = 16452,
+        name     = "Familiar Skies",
+        category = "Exploration",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Dragonriding (Skyriding) training in the Forbidden Reach. Follow the intro questline — you'll be taught to fly and collect your first Dragonriding Glyphs.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Forbidden Reach Skyriding Race — Normal (Bronze / Silver / Gold)
+    -- -------------------------------------------------------------------------
+    [17279] = {
+        id       = 17279,
+        name     = "Forbidden Reach: Bronze",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach skyriding race under the Bronze par time. Find the race NPC in the Forbidden Reach — verify coords with /gp mapid.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [17280] = {
+        id       = 17280,
+        name     = "Forbidden Reach: Silver",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach skyriding race under the Silver par time.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [17281] = {
+        id       = 17281,
+        name     = "Forbidden Reach: Gold",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach skyriding race under the Gold par time. Learn the ring layout on Bronze runs first.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Forbidden Reach Skyriding Race — Advanced (Bronze / Silver / Gold)
+    -- -------------------------------------------------------------------------
+    [17284] = {
+        id       = 17284,
+        name     = "Forbidden Reach Advanced: Bronze",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach Advanced skyriding race under the Bronze par time.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [17286] = {
+        id       = 17286,
+        name     = "Forbidden Reach Advanced: Silver",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach Advanced skyriding race under the Silver par time.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [17287] = {
+        id       = 17287,
+        name     = "Forbidden Reach Advanced: Gold",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach Advanced skyriding race under the Gold par time.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Forbidden Reach Skyriding Race — Reverse (Bronze / Silver / Gold)
+    -- -------------------------------------------------------------------------
+    [17288] = {
+        id       = 17288,
+        name     = "Forbidden Reach Reverse: Bronze",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach Reverse skyriding race under the Bronze par time. Rings run in the opposite direction.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [17289] = {
+        id       = 17289,
+        name     = "Forbidden Reach Reverse: Silver",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach Reverse skyriding race under the Silver par time.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [17290] = {
+        id       = 17290,
+        name     = "Forbidden Reach Reverse: Gold",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach Reverse skyriding race under the Gold par time.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Forbidden Reach Racing Completionist (Bronze / Silver / Gold)
+    -- Meta-achievements for completing all Forbidden Reach races.
+    -- -------------------------------------------------------------------------
+    [17294] = {
+        id       = 17294,
+        name     = "Forbidden Reach Racing Completionist",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            { index=1, desc="Earn Bronze in Forbidden Reach (Normal).",         npc=nil, coords=nil, mapID=2151, criteriaIndex=1 },
+            { index=2, desc="Earn Bronze in Forbidden Reach Advanced.",         npc=nil, coords=nil, mapID=2151, criteriaIndex=2 },
+            { index=3, desc="Earn Bronze in Forbidden Reach Reverse.",          npc=nil, coords=nil, mapID=2151, criteriaIndex=3 },
+        },
+    },
+
+    [17296] = {
+        id       = 17296,
+        name     = "Forbidden Reach Racing Completionist: Silver",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            { index=1, desc="Earn Silver in Forbidden Reach (Normal).",         npc=nil, coords=nil, mapID=2151, criteriaIndex=1 },
+            { index=2, desc="Earn Silver in Forbidden Reach Advanced.",         npc=nil, coords=nil, mapID=2151, criteriaIndex=2 },
+            { index=3, desc="Earn Silver in Forbidden Reach Reverse.",          npc=nil, coords=nil, mapID=2151, criteriaIndex=3 },
+        },
+    },
+
+    [17298] = {
+        id       = 17298,
+        name     = "Forbidden Reach Racing Completionist: Gold",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            { index=1, desc="Earn Gold in Forbidden Reach (Normal).",           npc=nil, coords=nil, mapID=2151, criteriaIndex=1 },
+            { index=2, desc="Earn Gold in Forbidden Reach Advanced.",           npc=nil, coords=nil, mapID=2151, criteriaIndex=2 },
+            { index=3, desc="Earn Gold in Forbidden Reach Reverse.",            npc=nil, coords=nil, mapID=2151, criteriaIndex=3 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "While We Were Sleeping" (ID 17315)
+    -- Discover what happened in the Forbidden Reach while the Dracthyr slumbered.
+    -- -------------------------------------------------------------------------
+    [17315] = {
+        id       = 17315,
+        name     = "While We Were Sleeping",
+        category = "Exploration",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Uncover the history of the Forbidden Reach during the Dracthyr's dormancy. Complete the associated quests or discoveries — verify criteria with /gp criteria 17315.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = 1,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Forbidden Reach Glyph Hunter" (ID 17411)
+    -- Collect all Dragonriding Glyphs in the Forbidden Reach.
+    -- -------------------------------------------------------------------------
+    [17411] = {
+        id       = 17411,
+        name     = "Forbidden Reach Glyph Hunter",
+        category = "Exploration",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Collect all Dragonriding (Skyriding) Glyphs scattered throughout the Forbidden Reach. Glyphs appear as golden orbs — fly through each one. There are multiple spread across the zone.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Adventurer of the Forbidden Reach" (ID 17524)
+    -- Complete various activities across the Forbidden Reach.
+    -- -------------------------------------------------------------------------
+    [17524] = {
+        id       = 17524,
+        name     = "Adventurer of the Forbidden Reach",
+        category = "Exploration",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete a variety of objectives in the Forbidden Reach — rare kills, bonus objectives, treasures, and exploration. Check /gp criteria 17524 for the full list.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Champion of the Forbidden Reach" (ID 17525)
+    -- Higher-tier completion achievement for the Forbidden Reach.
+    -- -------------------------------------------------------------------------
+    [17525] = {
+        id       = 17525,
+        name     = "Champion of the Forbidden Reach",
+        category = "Exploration",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Earn Champion status in the Forbidden Reach by completing all major objectives. Verify full criteria with /gp criteria 17525.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Treasures of the Forbidden Reach" (ID 17526)
+    -- Find all hidden treasures in the Forbidden Reach.
+    -- -------------------------------------------------------------------------
+    [17526] = {
+        id       = 17526,
+        name     = "Treasures of the Forbidden Reach",
+        category = "Exploration",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Find all hidden treasure chests scattered throughout the Forbidden Reach. Use TomTom or an addon like Leatrix Maps to track them. Verify the full list with /gp criteria 17526.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Scavenger of the Forbidden Reach" (ID 17527)
+    -- Collect various items and objects across the Forbidden Reach.
+    -- -------------------------------------------------------------------------
+    [17527] = {
+        id       = 17527,
+        name     = "Scavenger of the Forbidden Reach",
+        category = "Exploration",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Collect various scattered objects and items throughout the Forbidden Reach. Verify the full criteria list with /gp criteria 17527.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Hoarder of the Forbidden Reach" (ID 17528)
+    -- Collect a large number of items in the Forbidden Reach.
+    -- -------------------------------------------------------------------------
+    [17528] = {
+        id       = 17528,
+        name     = "Hoarder of the Forbidden Reach",
+        category = "Exploration",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Collect the required quantity of items in the Forbidden Reach. Verify the full criteria with /gp criteria 17528.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Explore the Forbidden Reach" (ID 17534)
+    -- Reveal all areas of the Forbidden Reach on the map.
+    -- -------------------------------------------------------------------------
+    [17534] = {
+        id       = 17534,
+        name     = "Explore the Forbidden Reach",
+        category = "Exploration",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            { index=1,  desc="Discover Rubyscale Outpost.",             npc=nil, coords={x=50.0,y=50.0}, mapID=2151, criteriaIndex=1  },
+            { index=2,  desc="Discover Stormserpent Roost.",            npc=nil, coords={x=50.0,y=50.0}, mapID=2151, criteriaIndex=2  },
+            { index=3,  desc="Discover Morqut Village.",                npc=nil, coords={x=50.0,y=50.0}, mapID=2151, criteriaIndex=3  },
+            { index=4,  desc="Discover Skytop Observatory.",            npc=nil, coords={x=50.0,y=50.0}, mapID=2151, criteriaIndex=4  },
+            { index=5,  desc="Discover The Overflowing Spring.",        npc=nil, coords={x=50.0,y=50.0}, mapID=2151, criteriaIndex=5  },
+            { index=6,  desc="Discover Caldera of the Menders.",        npc=nil, coords={x=50.0,y=50.0}, mapID=2151, criteriaIndex=6  },
+            { index=7,  desc="Discover Dragonhunter's Camp.",           npc=nil, coords={x=50.0,y=50.0}, mapID=2151, criteriaIndex=7  },
+            { index=8,  desc="Discover The Forgotten Approach.",        npc=nil, coords={x=50.0,y=50.0}, mapID=2151, criteriaIndex=8  },
+            -- NOTE: coords and criteriaIndex need verification with /gp criteria 17534 and /gp mapid in zone.
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "You Know How to Reach Me" (ID 17543)
+    -- -------------------------------------------------------------------------
+    [17543] = {
+        id       = 17543,
+        name     = "You Know How to Reach Me",
+        category = "Exploration",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the objectives for 'You Know How to Reach Me' in the Forbidden Reach. Verify criteria with /gp criteria 17543.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Forbidden Reach Challenge Races (Bronze / Silver / Gold)
+    -- Harder timed challenge versions of the Forbidden Reach race.
+    -- -------------------------------------------------------------------------
+    [18779] = {
+        id       = 18779,
+        name     = "Forbidden Reach Challenge: Bronze",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach Challenge race under the Bronze par time. Challenge races are harder than the standard versions.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18780] = {
+        id       = 18780,
+        name     = "Forbidden Reach Challenge: Silver",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach Challenge race under the Silver par time.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18781] = {
+        id       = 18781,
+        name     = "Forbidden Reach Challenge: Gold",
+        category = "Skyriding",
+        zone     = "The Forbidden Reach",
+        mapID    = 2151,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Forbidden Reach Challenge race under the Gold par time. Hardest tier — master the standard course first.",
+                npc           = "Forbidden Reach Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2151,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- =========================================================================
+    -- THE WAKING SHORES (mapID 2022) — Dragon Isles
+    -- =========================================================================
+
+    -- -------------------------------------------------------------------------
+    -- Waking Shores Skyriding Race — Normal (Bronze / Silver / Gold)
+    -- -------------------------------------------------------------------------
+    [15915] = {
+        id       = 15915,
+        name     = "Waking Shores: Bronze",
+        category = "Skyriding",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Waking Shores skyriding race under the Bronze par time. Find the race NPC in the Waking Shores — verify coords with /gp mapid.",
+                npc           = "Waking Shores Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [15916] = {
+        id       = 15916,
+        name     = "Waking Shores: Silver",
+        category = "Skyriding",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Waking Shores skyriding race under the Silver par time.",
+                npc           = "Waking Shores Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [15917] = {
+        id       = 15917,
+        name     = "Waking Shores: Gold",
+        category = "Skyriding",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Waking Shores skyriding race under the Gold par time. Learn the ring layout on Bronze runs first.",
+                npc           = "Waking Shores Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Waking Shores Skyriding Race — Advanced (Bronze / Silver / Gold)
+    -- -------------------------------------------------------------------------
+    [15927] = {
+        id       = 15927,
+        name     = "Waking Shores Advanced: Bronze",
+        category = "Skyriding",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Waking Shores Advanced skyriding race under the Bronze par time.",
+                npc           = "Waking Shores Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [15928] = {
+        id       = 15928,
+        name     = "Waking Shores Advanced: Silver",
+        category = "Skyriding",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Waking Shores Advanced skyriding race under the Silver par time.",
+                npc           = "Waking Shores Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [15929] = {
+        id       = 15929,
+        name     = "Waking Shores Advanced: Gold",
+        category = "Skyriding",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Waking Shores Advanced skyriding race under the Gold par time.",
+                npc           = "Waking Shores Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Treasures of The Waking Shores" (ID 16297)
+    -- Find all hidden treasures in the Waking Shores.
+    -- -------------------------------------------------------------------------
+    [16297] = {
+        id       = 16297,
+        name     = "Treasures of The Waking Shores",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Find all hidden treasure chests in the Waking Shores. Verify the full list with /gp criteria 16297.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Sojourner of the Waking Shores" (ID 16401)
+    -- Complete various activities and storylines in the Waking Shores.
+    -- -------------------------------------------------------------------------
+    [16401] = {
+        id       = 16401,
+        name     = "Sojourner of the Waking Shores",
+        category = "Quests",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the required quests and storylines in the Waking Shores. Verify criteria with /gp criteria 16401.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "All Sides of the Story" (ID 16406)
+    -- -------------------------------------------------------------------------
+    [16406] = {
+        id       = 16406,
+        name     = "All Sides of the Story",
+        category = "Quests",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete all required quest chains for 'All Sides of the Story' in the Waking Shores. Verify criteria with /gp criteria 16406.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Storm Chasing achievements (ID 16463–16468)
+    -- Survive or complete events during various storm types in the Waking Shores.
+    -- -------------------------------------------------------------------------
+    [16463] = {
+        id       = 16463,
+        name     = "Thunderstorms in The Waking Shores",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Experience a Thunderstorm weather event in the Waking Shores and complete the associated objective. Verify with /gp criteria 16463.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [16465] = {
+        id       = 16465,
+        name     = "Sandstorms in The Waking Shores",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Experience a Sandstorm weather event in the Waking Shores and complete the associated objective. Verify with /gp criteria 16465.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [16466] = {
+        id       = 16466,
+        name     = "Firestorms in The Waking Shores",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Experience a Firestorm weather event in the Waking Shores and complete the associated objective. Verify with /gp criteria 16466.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [16467] = {
+        id       = 16467,
+        name     = "Snowstorms in The Waking Shores",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Experience a Snowstorm weather event in the Waking Shores and complete the associated objective. Verify with /gp criteria 16467.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [16468] = {
+        id       = 16468,
+        name     = "Chasing Storms in The Waking Shores",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            { index=1, desc="Complete: Thunderstorms in The Waking Shores (ID 16463).", npc=nil, coords=nil, mapID=2022, criteriaIndex=1 },
+            { index=2, desc="Complete: Sandstorms in The Waking Shores (ID 16465).",    npc=nil, coords=nil, mapID=2022, criteriaIndex=2 },
+            { index=3, desc="Complete: Firestorms in The Waking Shores (ID 16466).",    npc=nil, coords=nil, mapID=2022, criteriaIndex=3 },
+            { index=4, desc="Complete: Snowstorms in The Waking Shores (ID 16467).",    npc=nil, coords=nil, mapID=2022, criteriaIndex=4 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Waking Shores Glyph Hunter" (ID 16575)
+    -- Collect all Dragonriding Glyphs in the Waking Shores.
+    -- -------------------------------------------------------------------------
+    [16575] = {
+        id       = 16575,
+        name     = "Waking Shores Glyph Hunter",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Collect all Dragonriding (Skyriding) Glyphs in the Waking Shores. Glyphs appear as golden orbs — fly through each one. Verify the count with /gp criteria 16575.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Symbols of Hope" (ID 16584)
+    -- -------------------------------------------------------------------------
+    [16584] = {
+        id       = 16584,
+        name     = "Symbols of Hope",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Find and interact with all Symbols of Hope in the Waking Shores. Verify the full list with /gp criteria 16584.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Tour of Duty: The Waking Shores" (ID 16592)
+    -- Complete a set of objectives in the Waking Shores.
+    -- -------------------------------------------------------------------------
+    [16592] = {
+        id       = 16592,
+        name     = "Tour of Duty: The Waking Shores",
+        category = "General",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the required objectives for Tour of Duty in the Waking Shores. Verify criteria with /gp criteria 16592.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Adventurer of The Waking Shores" (ID 16676)
+    -- Complete various activities across the Waking Shores.
+    -- -------------------------------------------------------------------------
+    [16676] = {
+        id       = 16676,
+        name     = "Adventurer of The Waking Shores",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete a variety of objectives in the Waking Shores — rare kills, bonus objectives, treasures, and exploration. Verify with /gp criteria 16676.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Ancient Stones of the Waking Shores" (ID 17561)
+    -- Find all ancient stone objects in the Waking Shores.
+    -- -------------------------------------------------------------------------
+    [17561] = {
+        id       = 17561,
+        name     = "Ancient Stones of the Waking Shores",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Find all Ancient Stones scattered throughout the Waking Shores. Verify the full list with /gp criteria 17561.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- Waking Shores Challenge Races (Bronze / Silver / Gold)
+    -- -------------------------------------------------------------------------
+    [18748] = {
+        id       = 18748,
+        name     = "Waking Shores Challenge: Bronze",
+        category = "Skyriding",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Waking Shores Challenge race under the Bronze par time. Challenge races are harder than the standard versions.",
+                npc           = "Waking Shores Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18749] = {
+        id       = 18749,
+        name     = "Waking Shores Challenge: Silver",
+        category = "Skyriding",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Waking Shores Challenge race under the Silver par time.",
+                npc           = "Waking Shores Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    [18750] = {
+        id       = 18750,
+        name     = "Waking Shores Challenge: Gold",
+        category = "Skyriding",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the Waking Shores Challenge race under the Gold par time. Hardest tier — master the standard course first.",
+                npc           = "Waking Shores Race",
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Wake Me Up" (ID 19479)
+    -- -------------------------------------------------------------------------
+    [19479] = {
+        id       = 19479,
+        name     = "Wake Me Up",
+        category = "Exploration",
+        zone     = "The Waking Shores",
+        mapID    = 2022,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the objectives for 'Wake Me Up' in the Waking Shores. Verify criteria with /gp criteria 19479.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2022,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- =========================================================================
+    -- VALDRAKKEN (mapID 2112) — Dragon Isles capital
+    -- =========================================================================
+
+    -- -------------------------------------------------------------------------
+    -- "Dragon Glyphs: Valdrakken" (ID 16101)
+    -- Collect all Dragonriding Glyphs in Valdrakken.
+    -- -------------------------------------------------------------------------
+    [16101] = {
+        id       = 16101,
+        name     = "Dragon Glyphs: Valdrakken",
+        category = "Exploration",
+        zone     = "Valdrakken",
+        mapID    = 2112,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Collect all Dragonriding (Skyriding) Glyphs in Valdrakken. Glyphs appear as golden orbs — fly through each one. Verify the count with /gp criteria 16101.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2112,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Great Gourmand of The Ruby Feast" (ID 16556)
+    -- Eat all 20 foods at the Grand Banquet (Ruby Feast) in Valdrakken.
+    -- The feast table is in Valdrakken — foods are served at the Ruby Feast event.
+    -- -------------------------------------------------------------------------
+    [16556] = {
+        id       = 16556,
+        name     = "Great Gourmand of The Ruby Feast",
+        category = "General",
+        zone     = "Valdrakken",
+        mapID    = 2112,
+        steps = {
+            { index=1,  desc="Eat Lemon Silverleaf Tea.",           npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=1  },
+            { index=2,  desc="Eat Cinna-Cinderbloom Tea.",          npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=2  },
+            { index=3,  desc="Eat Aruunem Berrytart.",              npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=3  },
+            { index=4,  desc="Eat Charred Porter.",                 npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=4  },
+            { index=5,  desc="Eat Coal-Fired Rib Rack.",            npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=5  },
+            { index=6,  desc="Eat Highly-Spiced Haunch.",           npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=6  },
+            { index=7,  desc="Eat Stonetalon Bloom Skewer.",        npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=7  },
+            { index=8,  desc="Eat Druidic Dreamsalad.",             npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=8  },
+            { index=9,  desc="Eat Dragonfruit Punch.",              npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=9  },
+            { index=10, desc="Eat Azsunian-Poached Lobster.",       npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=10 },
+            { index=11, desc="Eat Rare Vintage Arcwine.",           npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=11 },
+            { index=12, desc="Eat Captain's Carmelized Catfish.",   npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=12 },
+            { index=13, desc="Eat Venrick's Goat Milk.",            npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=13 },
+            { index=14, desc="Eat Mantis Shrimp Cocktail.",         npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=14 },
+            { index=15, desc="Eat Seared Sea Mist Noodles.",        npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=15 },
+            { index=16, desc="Eat Fried Emperor Wraps.",            npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=16 },
+            { index=17, desc="Eat Roquefort-Stuffed Peppers.",      npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=17 },
+            { index=18, desc="Eat Ravenberry Panacotta Delight.",   npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=18 },
+            { index=19, desc="Eat Picante Pomfruit Cake.",          npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=19 },
+            { index=20, desc="Eat Moira's Choice Espresso.",        npc=nil, coords={x=61.03,y=11.04}, mapID=2112, criteriaIndex=20 },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Arcane Influence" (ID 19080)
+    -- -------------------------------------------------------------------------
+    [19080] = {
+        id       = 19080,
+        name     = "Arcane Influence",
+        category = "General",
+        zone     = "Valdrakken",
+        mapID    = 2112,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the objectives for 'Arcane Influence' in Valdrakken. Verify criteria with /gp criteria 19080.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2112,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Flight Club" (ID 19483)
+    -- -------------------------------------------------------------------------
+    [19483] = {
+        id       = 19483,
+        name     = "Flight Club",
+        category = "General",
+        zone     = "Valdrakken",
+        mapID    = 2112,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Complete the objectives for 'Flight Club' in Valdrakken. Verify criteria with /gp criteria 19483.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2112,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Friends in the Accord" (ID 41171)
+    -- Reach a certain reputation level with the factions of the Dragonflight Accord.
+    -- -------------------------------------------------------------------------
+    [41171] = {
+        id       = 41171,
+        name     = "Friends in the Accord",
+        category = "Reputation",
+        zone     = "Valdrakken",
+        mapID    = 2112,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Reach the required reputation levels with the Dragon Isles Accord factions. Complete quests and world activities across the Dragon Isles. Verify exact faction requirements with /gp criteria 41171.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2112,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- "Ally of the Flights" (ID 41182)
+    -- Reach a higher reputation tier with the Dragonflight Accord factions.
+    -- -------------------------------------------------------------------------
+    [41182] = {
+        id       = 41182,
+        name     = "Ally of the Flights",
+        category = "Reputation",
+        zone     = "Valdrakken",
+        mapID    = 2112,
+        steps = {
+            {
+                index         = 1,
+                desc          = "Reach a higher standing with all Dragon Isles Accord factions. Continue completing quests and renown tracks across the Dragon Isles. Verify exact requirements with /gp criteria 41182.",
+                npc           = nil,
+                coords        = { x = 50.0, y = 50.0 },
+                mapID         = 2112,
+                criteriaIndex = nil,
+            },
+        },
+    },
+
+    -- =========================================================================
+    -- THALDRASZUS (mapID 2025) — Dragon Isles
+    -- =========================================================================
+
+    -- -------------------------------------------------------------------------
+    -- THE FLOWING FOREST FLIGHT — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15827] = { id=15827, name="The Flowing Forest Flight: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight race under Bronze par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15828] = { id=15828, name="The Flowing Forest Flight: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight race under Silver par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15829] = { id=15829, name="The Flowing Forest Flight: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight race under Gold par time. Learn the rings on Bronze runs first.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15830] = { id=15830, name="The Flowing Forest Flight Advanced: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Advanced race under Bronze par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15831] = { id=15831, name="The Flowing Forest Flight Advanced: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Advanced race under Silver par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15832] = { id=15832, name="The Flowing Forest Flight Advanced: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Advanced race under Gold par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17177] = { id=17177, name="The Flowing Forest Flight Reverse: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Reverse race under Bronze par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17178] = { id=17178, name="The Flowing Forest Flight Reverse: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Reverse race under Silver par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17179] = { id=17179, name="The Flowing Forest Flight Reverse: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Reverse race under Gold par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17991] = { id=17991, name="The Flowing Forest Flight Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Challenge race under Bronze par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17992] = { id=17992, name="The Flowing Forest Flight Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Challenge race under Silver par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17993] = { id=17993, name="The Flowing Forest Flight Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Challenge race under Gold par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17994] = { id=17994, name="The Flowing Forest Flight Reverse Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Reverse Challenge race under Bronze par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17995] = { id=17995, name="The Flowing Forest Flight Reverse Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Reverse Challenge race under Silver par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17996] = { id=17996, name="The Flowing Forest Flight Reverse Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete The Flowing Forest Flight Reverse Challenge race under Gold par time.", npc="The Flowing Forest Flight Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- TYRHOLD TRIAL — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15855] = { id=15855, name="Tyrhold Trial: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial race under Bronze par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15856] = { id=15856, name="Tyrhold Trial: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial race under Silver par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15857] = { id=15857, name="Tyrhold Trial: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial race under Gold par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15858] = { id=15858, name="Tyrhold Trial Advanced: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Advanced race under Bronze par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15859] = { id=15859, name="Tyrhold Trial Advanced: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Advanced race under Silver par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15860] = { id=15860, name="Tyrhold Trial Advanced: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Advanced race under Gold par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17180] = { id=17180, name="Tyrhold Trial Reverse: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Reverse race under Bronze par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17181] = { id=17181, name="Tyrhold Trial Reverse: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Reverse race under Silver par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17182] = { id=17182, name="Tyrhold Trial Reverse: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Reverse race under Gold par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17997] = { id=17997, name="Tyrhold Trial Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Challenge race under Bronze par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17998] = { id=17998, name="Tyrhold Trial Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Challenge race under Silver par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17999] = { id=17999, name="Tyrhold Trial Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Challenge race under Gold par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18000] = { id=18000, name="Tyrhold Trial Reverse Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Reverse Challenge race under Bronze par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18001] = { id=18001, name="Tyrhold Trial Reverse Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Reverse Challenge race under Silver par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18002] = { id=18002, name="Tyrhold Trial Reverse Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Tyrhold Trial Reverse Challenge race under Gold par time.", npc="Tyrhold Trial Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- CLIFFSIDE CIRCUIT — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15891] = { id=15891, name="Cliffside Circuit: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit race under Bronze par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15892] = { id=15892, name="Cliffside Circuit: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit race under Silver par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15893] = { id=15893, name="Cliffside Circuit: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit race under Gold par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15894] = { id=15894, name="Cliffside Circuit Advanced: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Advanced race under Bronze par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15895] = { id=15895, name="Cliffside Circuit Advanced: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Advanced race under Silver par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15896] = { id=15896, name="Cliffside Circuit Advanced: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Advanced race under Gold par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17183] = { id=17183, name="Cliffside Circuit Reverse: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Reverse race under Bronze par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17184] = { id=17184, name="Cliffside Circuit Reverse: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Reverse race under Silver par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17185] = { id=17185, name="Cliffside Circuit Reverse: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Reverse race under Gold par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18003] = { id=18003, name="Cliffside Circuit Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Challenge race under Bronze par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18004] = { id=18004, name="Cliffside Circuit Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Challenge race under Silver par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18005] = { id=18005, name="Cliffside Circuit Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Challenge race under Gold par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18006] = { id=18006, name="Cliffside Circuit Reverse Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Reverse Challenge race under Bronze par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18007] = { id=18007, name="Cliffside Circuit Reverse Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Reverse Challenge race under Silver par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18008] = { id=18008, name="Cliffside Circuit Reverse Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Cliffside Circuit Reverse Challenge race under Gold par time.", npc="Cliffside Circuit Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- ACADEMY ASCENT — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15897] = { id=15897, name="Academy Ascent: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent race under Bronze par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15898] = { id=15898, name="Academy Ascent: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent race under Silver par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15899] = { id=15899, name="Academy Ascent: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent race under Gold par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15900] = { id=15900, name="Academy Ascent Advanced: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Advanced race under Bronze par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15901] = { id=15901, name="Academy Ascent Advanced: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Advanced race under Silver par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15902] = { id=15902, name="Academy Ascent Advanced: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Advanced race under Gold par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17186] = { id=17186, name="Academy Ascent Reverse: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Reverse race under Bronze par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17187] = { id=17187, name="Academy Ascent Reverse: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Reverse race under Silver par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17188] = { id=17188, name="Academy Ascent Reverse: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Reverse race under Gold par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18009] = { id=18009, name="Academy Ascent Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Challenge race under Bronze par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18010] = { id=18010, name="Academy Ascent Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Challenge race under Silver par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18011] = { id=18011, name="Academy Ascent Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Challenge race under Gold par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18012] = { id=18012, name="Academy Ascent Reverse Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Reverse Challenge race under Bronze par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18013] = { id=18013, name="Academy Ascent Reverse Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Reverse Challenge race under Silver par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18014] = { id=18014, name="Academy Ascent Reverse Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Academy Ascent Reverse Challenge race under Gold par time.", npc="Academy Ascent Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- GARDEN GALLIVANT — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15903] = { id=15903, name="Garden Gallivant: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant race under Bronze par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15904] = { id=15904, name="Garden Gallivant: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant race under Silver par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15905] = { id=15905, name="Garden Gallivant: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant race under Gold par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15906] = { id=15906, name="Garden Gallivant Advanced: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Advanced race under Bronze par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15907] = { id=15907, name="Garden Gallivant Advanced: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Advanced race under Silver par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15908] = { id=15908, name="Garden Gallivant Advanced: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Advanced race under Gold par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17189] = { id=17189, name="Garden Gallivant Reverse: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Reverse race under Bronze par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17190] = { id=17190, name="Garden Gallivant Reverse: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Reverse race under Silver par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17191] = { id=17191, name="Garden Gallivant Reverse: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Reverse race under Gold par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18015] = { id=18015, name="Garden Gallivant Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Challenge race under Bronze par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18016] = { id=18016, name="Garden Gallivant Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Challenge race under Silver par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18017] = { id=18017, name="Garden Gallivant Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Challenge race under Gold par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18018] = { id=18018, name="Garden Gallivant Reverse Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Reverse Challenge race under Bronze par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18019] = { id=18019, name="Garden Gallivant Reverse Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Reverse Challenge race under Silver par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18020] = { id=18020, name="Garden Gallivant Reverse Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Garden Gallivant Reverse Challenge race under Gold par time.", npc="Garden Gallivant Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- CAVERNS CRISS-CROSS — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15909] = { id=15909, name="Caverns Criss-Cross: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross race under Bronze par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15910] = { id=15910, name="Caverns Criss-Cross: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross race under Silver par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15911] = { id=15911, name="Caverns Criss-Cross: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross race under Gold par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15912] = { id=15912, name="Caverns Criss-Cross Advanced: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Advanced race under Bronze par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15913] = { id=15913, name="Caverns Criss-Cross Advanced: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Advanced race under Silver par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15914] = { id=15914, name="Caverns Criss-Cross Advanced: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Advanced race under Gold par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17192] = { id=17192, name="Caverns Criss-Cross Reverse: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Reverse race under Bronze par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17193] = { id=17193, name="Caverns Criss-Cross Reverse: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Reverse race under Silver par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17194] = { id=17194, name="Caverns Criss-Cross Reverse: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Reverse race under Gold par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18021] = { id=18021, name="Caverns Criss-Cross Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Challenge race under Bronze par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18022] = { id=18022, name="Caverns Criss-Cross Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Challenge race under Silver par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18023] = { id=18023, name="Caverns Criss-Cross Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Challenge race under Gold par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18024] = { id=18024, name="Caverns Criss-Cross Reverse Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Reverse Challenge race under Bronze par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18025] = { id=18025, name="Caverns Criss-Cross Reverse Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Reverse Challenge race under Silver par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18026] = { id=18026, name="Caverns Criss-Cross Reverse Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Caverns Criss-Cross Reverse Challenge race under Gold par time.", npc="Caverns Criss-Cross Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- THALDRASZUS (meta race) — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15924] = { id=15924, name="Thaldraszus: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus meta race under Bronze par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15925] = { id=15925, name="Thaldraszus: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus meta race under Silver par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15926] = { id=15926, name="Thaldraszus: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus meta race under Gold par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15936] = { id=15936, name="Thaldraszus Advanced: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus Advanced meta race under Bronze par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15937] = { id=15937, name="Thaldraszus Advanced: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus Advanced meta race under Silver par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [15938] = { id=15938, name="Thaldraszus Advanced: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus Advanced meta race under Gold par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17204] = { id=17204, name="Thaldraszus Reverse: Bronze",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus Reverse meta race under Bronze par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17205] = { id=17205, name="Thaldraszus Reverse: Silver",  category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus Reverse meta race under Silver par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [17206] = { id=17206, name="Thaldraszus Reverse: Gold",    category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus Reverse meta race under Gold par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18760] = { id=18760, name="Thaldraszus Challenge: Bronze", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus Challenge meta race under Bronze par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18761] = { id=18761, name="Thaldraszus Challenge: Silver", category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus Challenge meta race under Silver par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+    [18762] = { id=18762, name="Thaldraszus Challenge: Gold",   category="Skyriding", zone="Thaldraszus", mapID=2025, steps={ { index=1, desc="Complete the Thaldraszus Challenge meta race under Gold par time.", npc="Thaldraszus Race", coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- THALDRASZUS — Exploration / General achievements
+    -- -------------------------------------------------------------------------
+
+    -- "Dragon Glyphs: Thaldraszus Apex" (ID 16107)
+    [16107] = {
+        id       = 16107,
+        name     = "Dragon Glyphs: Thaldraszus Apex",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Collect all Dragonriding (Skyriding) Glyphs in Thaldraszus. Glyphs appear as golden orbs — fly through each one. Verify the count with /gp criteria 16107.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- "<Hidden> Travel Network - Node Unlock: Thaldraszus - Algeth'era" (ID 16287)
+    [16287] = {
+        id       = 16287,
+        name     = "<Hidden> Travel Network - Node Unlock: Thaldraszus - Algeth'era",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Unlock the Algeth'era travel network node in Thaldraszus. Interact with the node to unlock it for fast travel.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- "<Hidden> Travel Network - Node Unlock: Thaldraszus - Eon's Fringe" (ID 16288)
+    [16288] = {
+        id       = 16288,
+        name     = "<Hidden> Travel Network - Node Unlock: Thaldraszus - Eon's Fringe",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Unlock the Eon's Fringe travel network node in Thaldraszus. Interact with the node to unlock it for fast travel.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- "Treasures of Thaldraszus" (ID 16301)
+    [16301] = {
+        id       = 16301,
+        name     = "Treasures of Thaldraszus",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Find all hidden treasure chests in Thaldraszus. Verify the full list with /gp criteria 16301.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- "Sojourner of Thaldraszus" (ID 16398)
+    [16398] = {
+        id       = 16398,
+        name     = "Sojourner of Thaldraszus",
+        category = "Quests",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Complete the required quests and storylines in Thaldraszus. Verify criteria with /gp criteria 16398.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- Storm achievements (16485–16489)
+    [16485] = {
+        id       = 16485,
+        name     = "Thunderstorms in Thaldraszus",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Experience a Thunderstorm weather event in Thaldraszus and complete the associated objective. Verify with /gp criteria 16485.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    [16486] = {
+        id       = 16486,
+        name     = "Sandstorms in Thaldraszus",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Experience a Sandstorm weather event in Thaldraszus and complete the associated objective. Verify with /gp criteria 16486.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    [16487] = {
+        id       = 16487,
+        name     = "Firestorms in Thaldraszus",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Experience a Firestorm weather event in Thaldraszus and complete the associated objective. Verify with /gp criteria 16487.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    [16488] = {
+        id       = 16488,
+        name     = "Snowstorms in Thaldraszus",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Experience a Snowstorm weather event in Thaldraszus and complete the associated objective. Verify with /gp criteria 16488.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    [16489] = {
+        id       = 16489,
+        name     = "Chasing Storms in Thaldraszus",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Complete: Thunderstorms in Thaldraszus (16485).", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=1 },
+            { index=2, desc="Complete: Sandstorms in Thaldraszus (16486).",    npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=2 },
+            { index=3, desc="Complete: Firestorms in Thaldraszus (16487).",    npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=3 },
+            { index=4, desc="Complete: Snowstorms in Thaldraszus (16488).",    npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=4 },
+        },
+    },
+
+    -- "Thaldraszus Glyph Hunter" (ID 16578)
+    [16578] = {
+        id       = 16578,
+        name     = "Thaldraszus Glyph Hunter",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Collect all Dragonriding (Skyriding) Glyphs in Thaldraszus. Verify the count with /gp criteria 16578.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- "Tour of Duty: Thaldraszus" (ID 16593)
+    [16593] = {
+        id       = 16593,
+        name     = "Tour of Duty: Thaldraszus",
+        category = "General",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Complete the required objectives for Tour of Duty in Thaldraszus. Verify criteria with /gp criteria 16593.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- "One of Everything, Please" (ID 16621)
+    [16621] = {
+        id       = 16621,
+        name     = "One of Everything, Please",
+        category = "General",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Complete the objectives for 'One of Everything, Please' in Thaldraszus. Verify criteria with /gp criteria 16621.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- "Framing a New Perspective" (ID 16634)
+    [16634] = {
+        id       = 16634,
+        name     = "Framing a New Perspective",
+        category = "General",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Complete the objectives for 'Framing a New Perspective' in Thaldraszus. Verify criteria with /gp criteria 16634.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- "Adventurer of Thaldraszus" (ID 16679)
+    [16679] = {
+        id       = 16679,
+        name     = "Adventurer of Thaldraszus",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Complete a variety of objectives in Thaldraszus — rare kills, bonus objectives, treasures, and exploration. Verify with /gp criteria 16679.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- "Ancient Stones of Thaldraszus" (ID 17564)
+    [17564] = {
+        id       = 17564,
+        name     = "Ancient Stones of Thaldraszus",
+        category = "Exploration",
+        zone     = "Thaldraszus",
+        mapID    = 2025,
+        steps = {
+            { index=1, desc="Find all Ancient Stones scattered throughout Thaldraszus. Verify the full list with /gp criteria 17564.", npc=nil, coords={x=58.03,y=33.69}, mapID=2025, criteriaIndex=nil },
+        },
+    },
+
+    -- =========================================================================
+    -- THE AZURE SPAN (mapID 2024) — Dragon Isles
+    -- =========================================================================
+
+    -- -------------------------------------------------------------------------
+    -- THE AZURE SPAN SPRINT — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15788] = { id=15788, name="The Azure Span Sprint: Bronze",  category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint race under Bronze par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15789] = { id=15789, name="The Azure Span Sprint: Silver",  category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint race under Silver par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15790] = { id=15790, name="The Azure Span Sprint: Gold",    category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint race under Gold par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15791] = { id=15791, name="The Azure Span Sprint Advanced: Bronze", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Advanced race under Bronze par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15792] = { id=15792, name="The Azure Span Sprint Advanced: Silver", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Advanced race under Silver par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15793] = { id=15793, name="The Azure Span Sprint Advanced: Gold",   category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Advanced race under Gold par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17159] = { id=17159, name="The Azure Span Sprint Reverse: Bronze",  category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Reverse race under Bronze par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17160] = { id=17160, name="The Azure Span Sprint Reverse: Silver",  category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Reverse race under Silver par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17161] = { id=17161, name="The Azure Span Sprint Reverse: Gold",    category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Reverse race under Gold par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17953] = { id=17953, name="The Azure Span Sprint Challenge: Bronze", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Challenge race under Bronze par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17954] = { id=17954, name="The Azure Span Sprint Challenge: Silver", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Challenge race under Silver par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17955] = { id=17955, name="The Azure Span Sprint Challenge: Gold",   category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Challenge race under Gold par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17956] = { id=17956, name="The Azure Span Sprint Reverse Challenge: Bronze", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Reverse Challenge race under Bronze par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17957] = { id=17957, name="The Azure Span Sprint Reverse Challenge: Silver", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Reverse Challenge race under Silver par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17958] = { id=17958, name="The Azure Span Sprint Reverse Challenge: Gold",   category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Sprint Reverse Challenge race under Gold par time.", npc="The Azure Span Sprint Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- THE AZURE SPAN SLALOM — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15799] = { id=15799, name="The Azure Span Slalom: Bronze",  category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom race under Bronze par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15800] = { id=15800, name="The Azure Span Slalom: Silver",  category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom race under Silver par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15801] = { id=15801, name="The Azure Span Slalom: Gold",    category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom race under Gold par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15802] = { id=15802, name="The Azure Span Slalom Advanced: Bronze", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Advanced race under Bronze par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15803] = { id=15803, name="The Azure Span Slalom Advanced: Silver", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Advanced race under Silver par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15804] = { id=15804, name="The Azure Span Slalom Advanced: Gold",   category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Advanced race under Gold par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17162] = { id=17162, name="The Azure Span Slalom Reverse: Bronze",  category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Reverse race under Bronze par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17163] = { id=17163, name="The Azure Span Slalom Reverse: Silver",  category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Reverse race under Silver par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17164] = { id=17164, name="The Azure Span Slalom Reverse: Gold",    category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Reverse race under Gold par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17959] = { id=17959, name="The Azure Span Slalom Challenge: Bronze", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Challenge race under Bronze par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17960] = { id=17960, name="The Azure Span Slalom Challenge: Silver", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Challenge race under Silver par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17961] = { id=17961, name="The Azure Span Slalom Challenge: Gold",   category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Challenge race under Gold par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17962] = { id=17962, name="The Azure Span Slalom Reverse Challenge: Bronze", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Reverse Challenge race under Bronze par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17963] = { id=17963, name="The Azure Span Slalom Reverse Challenge: Silver", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Reverse Challenge race under Silver par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [17964] = { id=17964, name="The Azure Span Slalom Reverse Challenge: Gold",   category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete The Azure Span Slalom Reverse Challenge race under Gold par time.", npc="The Azure Span Slalom Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- AZURE SPAN (meta race) — Normal / Advanced / Challenge
+    -- -------------------------------------------------------------------------
+    [15921] = { id=15921, name="Azure Span: Bronze",  category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete the Azure Span meta race under Bronze par time.", npc="Azure Span Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15922] = { id=15922, name="Azure Span: Silver",  category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete the Azure Span meta race under Silver par time.", npc="Azure Span Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15923] = { id=15923, name="Azure Span: Gold",    category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete the Azure Span meta race under Gold par time.", npc="Azure Span Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15933] = { id=15933, name="Azure Span Advanced: Bronze", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete the Azure Span Advanced meta race under Bronze par time.", npc="Azure Span Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15934] = { id=15934, name="Azure Span Advanced: Silver", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete the Azure Span Advanced meta race under Silver par time.", npc="Azure Span Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [15935] = { id=15935, name="Azure Span Advanced: Gold",   category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete the Azure Span Advanced meta race under Gold par time.", npc="Azure Span Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [18757] = { id=18757, name="Azure Span Challenge: Bronze", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete the Azure Span Challenge meta race under Bronze par time.", npc="Azure Span Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [18758] = { id=18758, name="Azure Span Challenge: Silver", category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete the Azure Span Challenge meta race under Silver par time.", npc="Azure Span Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+    [18759] = { id=18759, name="Azure Span Challenge: Gold",   category="Skyriding", zone="The Azure Span", mapID=2024, steps={ { index=1, desc="Complete the Azure Span Challenge meta race under Gold par time.", npc="Azure Span Race", coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- THE AZURE SPAN — Exploration / General achievements
+    -- -------------------------------------------------------------------------
+
+    -- "Treasures of The Azure Span" (ID 16300)
+    [16300] = {
+        id       = 16300,
+        name     = "Treasures of The Azure Span",
+        category = "Exploration",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Find all hidden treasure chests in The Azure Span. Verify the full list with /gp criteria 16300.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    -- "Azure Spanner" (ID 16336)
+    [16336] = {
+        id       = 16336,
+        name     = "Azure Spanner",
+        category = "General",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Complete the objectives for Azure Spanner in The Azure Span. Verify criteria with /gp criteria 16336.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    -- "Do You Wanna Build a Snowman?" (ID 16474)
+    [16474] = {
+        id       = 16474,
+        name     = "Do You Wanna Build a Snowman?",
+        category = "General",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Complete the objectives for Do You Wanna Build a Snowman? in The Azure Span. Verify criteria with /gp criteria 16474.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    -- Storm achievements (16480–16484)
+    [16480] = {
+        id       = 16480,
+        name     = "Thunderstorms in The Azure Span",
+        category = "Exploration",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Experience a Thunderstorm weather event in The Azure Span and complete the associated objective. Verify with /gp criteria 16480.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    [16481] = {
+        id       = 16481,
+        name     = "Sandstorms in The Azure Span",
+        category = "Exploration",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Experience a Sandstorm weather event in The Azure Span and complete the associated objective. Verify with /gp criteria 16481.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    [16482] = {
+        id       = 16482,
+        name     = "Firestorms in The Azure Span",
+        category = "Exploration",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Experience a Firestorm weather event in The Azure Span and complete the associated objective. Verify with /gp criteria 16482.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    [16483] = {
+        id       = 16483,
+        name     = "Snowstorms in The Azure Span",
+        category = "Exploration",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Experience a Snowstorm weather event in The Azure Span and complete the associated objective. Verify with /gp criteria 16483.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    [16484] = {
+        id       = 16484,
+        name     = "Chasing Storms in The Azure Span",
+        category = "Exploration",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Complete: Thunderstorms in The Azure Span (16480).", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=1 },
+            { index=2, desc="Complete: Sandstorms in The Azure Span (16481).",    npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=2 },
+            { index=3, desc="Complete: Firestorms in The Azure Span (16482).",    npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=3 },
+            { index=4, desc="Complete: Snowstorms in The Azure Span (16483).",    npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=4 },
+        },
+    },
+
+    -- "Azure Span Glyph Hunter" (ID 16577)
+    [16577] = {
+        id       = 16577,
+        name     = "Azure Span Glyph Hunter",
+        category = "Exploration",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Collect all Dragonriding (Skyriding) Glyphs in The Azure Span. Verify the count with /gp criteria 16577.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    -- "Ley Line in the Span" (ID 16638)
+    -- NOTE: "Tour of Duty: The Azure Span" also appears near this ID in the achievement list.
+    -- Verify Tour of Duty's exact ID in-game with /gp criteria and update this file.
+    [16638] = {
+        id       = 16638,
+        name     = "Ley Line in the Span",
+        category = "Exploration",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Complete the objectives for Ley Line in the Span in The Azure Span. Verify criteria with /gp criteria 16638.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    -- "Adventurer of The Azure Span" (ID 16678)
+    [16678] = {
+        id       = 16678,
+        name     = "Adventurer of The Azure Span",
+        category = "Exploration",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Complete a variety of objectives in The Azure Span — rare kills, bonus objectives, treasures, and exploration. Verify with /gp criteria 16678.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    -- "Ancient Stones of the Azure Span" (ID 17563)
+    [17563] = {
+        id       = 17563,
+        name     = "Ancient Stones of the Azure Span",
+        category = "Exploration",
+        zone     = "The Azure Span",
+        mapID    = 2024,
+        steps = {
+            { index=1, desc="Find all Ancient Stones scattered throughout The Azure Span. Verify the full list with /gp criteria 17563.", npc=nil, coords={x=50.0,y=50.0}, mapID=2024, criteriaIndex=nil },
+        },
+    },
+
+    -- =========================================================================
+    -- OHN'AHRAN PLAINS (mapID 2023) — Dragon Isles
+    -- =========================================================================
+
+    -- -------------------------------------------------------------------------
+    -- OHN'A'ROLL (meta exploration)
+    -- -------------------------------------------------------------------------
+    [15394] = {
+        id       = 15394,
+        name     = "Ohn'a'Roll",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Complete a variety of exploration objectives in Ohn'ahran Plains. Verify with /gp criteria 15394.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- -------------------------------------------------------------------------
+    -- SUNDAPPLE COPSE CIRCUIT — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15757] = { id=15757, name="Sundapple Copse Circuit: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit under Bronze par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15758] = { id=15758, name="Sundapple Copse Circuit: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit under Silver par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15759] = { id=15759, name="Sundapple Copse Circuit: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit under Gold par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15760] = { id=15760, name="Sundapple Copse Circuit Advanced: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Advanced under Bronze par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15761] = { id=15761, name="Sundapple Copse Circuit Advanced: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Advanced under Silver par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15762] = { id=15762, name="Sundapple Copse Circuit Advanced: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Advanced under Gold par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17144] = { id=17144, name="Sundapple Copse Circuit Reverse: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Reverse under Bronze par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17145] = { id=17145, name="Sundapple Copse Circuit Reverse: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Reverse under Silver par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17146] = { id=17146, name="Sundapple Copse Circuit Reverse: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Reverse under Gold par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17912] = { id=17912, name="Sundapple Copse Circuit Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Challenge under Bronze par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17913] = { id=17913, name="Sundapple Copse Circuit Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Challenge under Silver par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17914] = { id=17914, name="Sundapple Copse Circuit Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Challenge under Gold par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17919] = { id=17919, name="Sundapple Copse Circuit Reverse Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Reverse Challenge under Bronze par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17920] = { id=17920, name="Sundapple Copse Circuit Reverse Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Reverse Challenge under Silver par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17921] = { id=17921, name="Sundapple Copse Circuit Reverse Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Sundapple Copse Circuit Reverse Challenge under Gold par time.", npc="Sundapple Copse Circuit Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- FEN FLYTHROUGH — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15763] = { id=15763, name="Fen Flythrough: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough under Bronze par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15764] = { id=15764, name="Fen Flythrough: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough under Silver par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15765] = { id=15765, name="Fen Flythrough: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough under Gold par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15766] = { id=15766, name="Fen Flythrough Advanced: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Advanced under Bronze par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15767] = { id=15767, name="Fen Flythrough Advanced: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Advanced under Silver par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15768] = { id=15768, name="Fen Flythrough Advanced: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Advanced under Gold par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17147] = { id=17147, name="Fen Flythrough Reverse: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Reverse under Bronze par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17148] = { id=17148, name="Fen Flythrough Reverse: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Reverse under Silver par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17149] = { id=17149, name="Fen Flythrough Reverse: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Reverse under Gold par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17922] = { id=17922, name="Fen Flythrough Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Challenge under Bronze par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17923] = { id=17923, name="Fen Flythrough Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Challenge under Silver par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17924] = { id=17924, name="Fen Flythrough Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Challenge under Gold par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17925] = { id=17925, name="Fen Flythrough Reverse Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Reverse Challenge under Bronze par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17926] = { id=17926, name="Fen Flythrough Reverse Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Reverse Challenge under Silver par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17927] = { id=17927, name="Fen Flythrough Reverse Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Fen Flythrough Reverse Challenge under Gold par time.", npc="Fen Flythrough Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- RAVINE RIVER RUN — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15769] = { id=15769, name="Ravine River Run: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run under Bronze par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15770] = { id=15770, name="Ravine River Run: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run under Silver par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15771] = { id=15771, name="Ravine River Run: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run under Gold par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15772] = { id=15772, name="Ravine River Run Advanced: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Advanced under Bronze par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15773] = { id=15773, name="Ravine River Run Advanced: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Advanced under Silver par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15774] = { id=15774, name="Ravine River Run Advanced: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Advanced under Gold par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    -- NOTE: Screenshot shows "Ravine River Ru, Advanced: Gold" at 15774 — typo in-game or OCR artifact; name used is "Ravine River Run Advanced: Gold"
+    [17150] = { id=17150, name="Ravine River Run Reverse: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Reverse under Bronze par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17151] = { id=17151, name="Ravine River Run Reverse: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Reverse under Silver par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17152] = { id=17152, name="Ravine River Run Reverse: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Reverse under Gold par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17928] = { id=17928, name="Ravine River Run Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Challenge under Bronze par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17929] = { id=17929, name="Ravine River Run Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Challenge under Silver par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17930] = { id=17930, name="Ravine River Run Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Challenge under Gold par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17931] = { id=17931, name="Ravine River Run Reverse Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Reverse Challenge under Bronze par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17932] = { id=17932, name="Ravine River Run Reverse Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Reverse Challenge under Silver par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17933] = { id=17933, name="Ravine River Run Reverse Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Ravine River Run Reverse Challenge under Gold par time.", npc="Ravine River Run Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- EMERALD GARDENS ASCENT — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15775] = { id=15775, name="Emerald Gardens Ascent: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Gardens Ascent under Bronze par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15776] = { id=15776, name="Emerald Gardens Ascent: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Gardens Ascent under Silver par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15777] = { id=15777, name="Emerald Gardens Ascent: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Gardens Ascent under Gold par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15778] = { id=15778, name="Emerald Gardens Ascent Advanced: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Gardens Ascent Advanced under Bronze par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15779] = { id=15779, name="Emerald Gardens Ascent Advanced: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Gardens Ascent Advanced under Silver par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15780] = { id=15780, name="Emerald Gardens Ascent Advanced: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Gardens Ascent Advanced under Gold par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17153] = { id=17153, name="Emerald Gardens Ascent Reverse: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Gardens Ascent Reverse under Bronze par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17154] = { id=17154, name="Emerald Gardens Ascent Reverse: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Gardens Ascent Reverse under Silver par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17155] = { id=17155, name="Emerald Gardens Ascent Reverse: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Gardens Ascent Reverse under Gold par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17935] = { id=17935, name="Emerald Garden Ascent Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Garden Ascent Challenge under Bronze par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17936] = { id=17936, name="Emerald Garden Ascent Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Garden Ascent Challenge under Silver par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17937] = { id=17937, name="Emerald Garden Ascent Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Garden Ascent Challenge under Gold par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17938] = { id=17938, name="Emerald Garden Ascent Reverse Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Garden Ascent Reverse Challenge under Bronze par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17939] = { id=17939, name="Emerald Garden Ascent Reverse Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Garden Ascent Reverse Challenge under Silver par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17940] = { id=17940, name="Emerald Garden Ascent Reverse Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Emerald Garden Ascent Reverse Challenge under Gold par time.", npc="Emerald Gardens Ascent Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- MARUUKAI DASH — Normal / Challenge
+    -- -------------------------------------------------------------------------
+    [15782] = { id=15782, name="Maruukai Dash: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Maruukai Dash under Bronze par time.", npc="Maruukai Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15783] = { id=15783, name="Maruukai Dash: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Maruukai Dash under Silver par time.", npc="Maruukai Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15784] = { id=15784, name="Maruukai Dash: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Maruukai Dash under Gold par time.", npc="Maruukai Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17947] = { id=17947, name="Maruukai Dash Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Maruukai Dash Challenge under Bronze par time.", npc="Maruukai Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17948] = { id=17948, name="Maruukai Dash Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Maruukai Dash Challenge under Silver par time.", npc="Maruukai Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17949] = { id=17949, name="Maruukai Dash Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Maruukai Dash Challenge under Gold par time.", npc="Maruukai Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- MIRROR OF THE SKY DASH — Normal / Challenge
+    -- -------------------------------------------------------------------------
+    [15785] = { id=15785, name="Mirror of the Sky Dash: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Mirror of the Sky Dash under Bronze par time.", npc="Mirror of the Sky Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15786] = { id=15786, name="Mirror of the Sky Dash: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Mirror of the Sky Dash under Silver par time.", npc="Mirror of the Sky Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15787] = { id=15787, name="Mirror of the Sky Dash: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Mirror of the Sky Dash under Gold par time.", npc="Mirror of the Sky Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17950] = { id=17950, name="Mirror of the Sky Dash Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Mirror of the Sky Dash Challenge under Bronze par time.", npc="Mirror of the Sky Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17951] = { id=17951, name="Mirror of the Sky Dash Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Mirror of the Sky Dash Challenge under Silver par time.", npc="Mirror of the Sky Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17952] = { id=17952, name="Mirror of the Sky Dash Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete Mirror of the Sky Dash Challenge under Gold par time.", npc="Mirror of the Sky Dash Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- OHN'AHRAN PLAINS (meta race) — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [15918] = { id=15918, name="Ohn'ahran Plains: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains meta race under Bronze par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15919] = { id=15919, name="Ohn'ahran Plains: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains meta race under Silver par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15920] = { id=15920, name="Ohn'ahran Plains: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains meta race under Gold par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15930] = { id=15930, name="Ohn'ahran Plains Advanced: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains Advanced meta race under Bronze par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15931] = { id=15931, name="Ohn'ahran Plains Advanced: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains Advanced meta race under Silver par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [15932] = { id=15932, name="Ohn'ahran Plains Advanced: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains Advanced meta race under Gold par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17198] = { id=17198, name="Ohn'ahran Plains Reverse: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains Reverse meta race under Bronze par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17199] = { id=17199, name="Ohn'ahran Plains Reverse: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains Reverse meta race under Silver par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17200] = { id=17200, name="Ohn'ahran Plains Reverse: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains Reverse meta race under Gold par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [18754] = { id=18754, name="Ohn'ahran Plains Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains Challenge meta race under Bronze par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [18755] = { id=18755, name="Ohn'ahran Plains Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains Challenge meta race under Silver par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [18756] = { id=18756, name="Ohn'ahran Plains Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete the Ohn'ahran Plains Challenge meta race under Gold par time.", npc="Ohn'ahran Plains Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- RIVER RAPIDS ROUTE — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [16302] = { id=16302, name="River Rapids Route: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route under Bronze par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [16303] = { id=16303, name="River Rapids Route: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route under Silver par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [16304] = { id=16304, name="River Rapids Route: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route under Gold par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [16305] = { id=16305, name="River Rapids Route Advanced: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Advanced under Bronze par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [16306] = { id=16306, name="River Rapids Route Advanced: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Advanced under Silver par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [16307] = { id=16307, name="River Rapids Route Advanced: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Advanced under Gold par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17156] = { id=17156, name="River Rapids Route Reverse: Bronze",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Reverse under Bronze par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17157] = { id=17157, name="River Rapids Route Reverse: Silver",  category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Reverse under Silver par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17158] = { id=17158, name="River Rapids Route Reverse: Gold",    category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Reverse under Gold par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17941] = { id=17941, name="River Rapids Route Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Challenge under Bronze par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17942] = { id=17942, name="River Rapids Route Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Challenge under Silver par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17943] = { id=17943, name="River Rapids Route Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Challenge under Gold par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17944] = { id=17944, name="River Rapids Route Reverse Challenge: Bronze", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Reverse Challenge under Bronze par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17945] = { id=17945, name="River Rapids Route Reverse Challenge: Silver", category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Reverse Challenge under Silver par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+    [17946] = { id=17946, name="River Rapids Route Reverse Challenge: Gold",   category="Skyriding", zone="Ohn'ahran Plains", mapID=2023, steps={ { index=1, desc="Complete River Rapids Route Reverse Challenge under Gold par time.", npc="River Rapids Route Race", coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- OHN'AHRAN PLAINS — Exploration / General achievements
+    -- -------------------------------------------------------------------------
+
+    -- Travel Network nodes (hidden)
+    [16285] = {
+        id       = 16285,
+        name     = "<Hidden> Travel Network - Node Unlock: Ohn'ahran Plains - Shady Sanctuary",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Unlock the Travel Network node at Shady Sanctuary in Ohn'ahran Plains.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+    [16286] = {
+        id       = 16286,
+        name     = "<Hidden> Travel Network - Node Unlock: Ohn'ahran Plains - Rusza'thar Reach",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Unlock the Travel Network node at Rusza'thar Reach in Ohn'ahran Plains.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- "Treasures of the Ohn'ahran Plains" (ID 16299)
+    [16299] = {
+        id       = 16299,
+        name     = "Treasures of the Ohn'ahran Plains",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Find all hidden treasure chests in the Ohn'ahran Plains. Verify the full list with /gp criteria 16299.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- "Honor Our Ancestors" (ID 16423)
+    [16423] = {
+        id       = 16423,
+        name     = "Honor Our Ancestors",
+        category = "General",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Complete the objectives for Honor Our Ancestors in Ohn'ahran Plains. Verify criteria with /gp criteria 16423.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- "Who's a Good Bakar?" (ID 16424)
+    [16424] = {
+        id       = 16424,
+        name     = "Who's a Good Bakar?",
+        category = "General",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Complete the objectives for Who's a Good Bakar? in Ohn'ahran Plains. Verify criteria with /gp criteria 16424.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- Storm achievements (16475–16479)
+    [16475] = {
+        id       = 16475,
+        name     = "Thunderstorms in the Ohn'ahran Plains",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Experience a Thunderstorm weather event in Ohn'ahran Plains. Verify with /gp criteria 16475.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+    [16476] = {
+        id       = 16476,
+        name     = "Chasing Storms in the Ohn'ahran Plains",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Complete all storm weather events in Ohn'ahran Plains. Verify criteria with /gp criteria 16476.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+    [16477] = {
+        id       = 16477,
+        name     = "Sandstorms in the Ohn'ahran Plains",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Experience a Sandstorm weather event in Ohn'ahran Plains. Verify with /gp criteria 16477.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+    [16478] = {
+        id       = 16478,
+        name     = "Firestorms in the Ohn'ahran Plains",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Experience a Firestorm weather event in Ohn'ahran Plains. Verify with /gp criteria 16478.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+    [16479] = {
+        id       = 16479,
+        name     = "Snowstorms in the Ohn'ahran Plains",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Experience a Snowstorm weather event in Ohn'ahran Plains. Verify with /gp criteria 16479.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- "Sleeping on the Job" (ID 16574)
+    [16574] = {
+        id       = 16574,
+        name     = "Sleeping on the Job",
+        category = "General",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Complete the objectives for Sleeping on the Job in Ohn'ahran Plains. Verify criteria with /gp criteria 16574.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- "Ohn'ahran Plains Glyph Hunter" (ID 16576)
+    [16576] = {
+        id       = 16576,
+        name     = "Ohn'ahran Plains Glyph Hunter",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Collect all Dragonriding (Skyriding) Glyphs in Ohn'ahran Plains. Verify the count with /gp criteria 16576.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- "Tour of Duty: Ohn'ahran Plains" (ID 16595)
+    [16595] = {
+        id       = 16595,
+        name     = "Tour of Duty: Ohn'ahran Plains",
+        category = "General",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Complete a Tour of Duty in Ohn'ahran Plains. Verify criteria with /gp criteria 16595.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- "Adventurer of the Ohn'ahran Plains" (ID 16677)
+    [16677] = {
+        id       = 16677,
+        name     = "Adventurer of the Ohn'ahran Plains",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Complete a variety of objectives in Ohn'ahran Plains — rare kills, bonus objectives, treasures, and exploration. Verify with /gp criteria 16677.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- "A New Beginning" (ID 17546)
+    [17546] = {
+        id       = 17546,
+        name     = "A New Beginning",
+        category = "General",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Complete the objectives for A New Beginning in Ohn'ahran Plains. Verify criteria with /gp criteria 17546.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- "Ancient Stones of the Ohn'ahran Plains" (ID 17562)
+    [17562] = {
+        id       = 17562,
+        name     = "Ancient Stones of the Ohn'ahran Plains",
+        category = "Exploration",
+        zone     = "Ohn'ahran Plains",
+        mapID    = 2023,
+        steps = {
+            { index=1, desc="Find all Ancient Stones scattered throughout Ohn'ahran Plains. Verify the full list with /gp criteria 17562.", npc=nil, coords={x=50.0,y=50.0}, mapID=2023, criteriaIndex=nil },
+        },
+    },
+
+    -- =========================================================================
+    -- EMERALD DREAM (mapID 2200) — Dragon Isles
+    -- =========================================================================
+
+    -- -------------------------------------------------------------------------
+    -- YSERA INVITATIONAL — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [18943] = { id=18943, name="Ysera Invitational: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational under Bronze par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18944] = { id=18944, name="Ysera Invitational: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational under Silver par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18945] = { id=18945, name="Ysera Invitational: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational under Gold par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18946] = { id=18946, name="Ysera Invitational Advanced: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Advanced under Bronze par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18947] = { id=18947, name="Ysera Invitational Advanced: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Advanced under Silver par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18948] = { id=18948, name="Ysera Invitational Advanced: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Advanced under Gold par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18949] = { id=18949, name="Ysera Invitational Reverse: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Reverse under Bronze par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18950] = { id=18950, name="Ysera Invitational Reverse: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Reverse under Silver par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18951] = { id=18951, name="Ysera Invitational Reverse: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Reverse under Gold par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18952] = { id=18952, name="Ysera Invitational Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Challenge under Bronze par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18953] = { id=18953, name="Ysera Invitational Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Challenge under Silver par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18954] = { id=18954, name="Ysera Invitational Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Challenge under Gold par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18955] = { id=18955, name="Ysera Invitational Reverse Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Reverse Challenge under Bronze par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18956] = { id=18956, name="Ysera Invitational Reverse Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Reverse Challenge under Silver par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18957] = { id=18957, name="Ysera Invitational Reverse Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Ysera Invitational Reverse Challenge under Gold par time.", npc="Ysera Invitational Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- SMOLDERING SPRINT — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [18978] = { id=18978, name="Smoldering Sprint: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint under Bronze par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18979] = { id=18979, name="Smoldering Sprint: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint under Silver par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18980] = { id=18980, name="Smoldering Sprint: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint under Gold par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18981] = { id=18981, name="Smoldering Sprint Advanced: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Advanced under Bronze par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18982] = { id=18982, name="Smoldering Sprint Advanced: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Advanced under Silver par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18983] = { id=18983, name="Smoldering Sprint Advanced: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Advanced under Gold par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18984] = { id=18984, name="Smoldering Sprint Reverse: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Reverse under Bronze par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18985] = { id=18985, name="Smoldering Sprint Reverse: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Reverse under Silver par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18986] = { id=18986, name="Smoldering Sprint Reverse: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Reverse under Gold par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18987] = { id=18987, name="Smoldering Sprint Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Challenge under Bronze par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18988] = { id=18988, name="Smoldering Sprint Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Challenge under Silver par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18989] = { id=18989, name="Smoldering Sprint Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Challenge under Gold par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18990] = { id=18990, name="Smoldering Sprint Reverse Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Reverse Challenge under Bronze par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18991] = { id=18991, name="Smoldering Sprint Reverse Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Reverse Challenge under Silver par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18992] = { id=18992, name="Smoldering Sprint Reverse Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Smoldering Sprint Reverse Challenge under Gold par time.", npc="Smoldering Sprint Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- VIRIDESCENT VENTURE — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [18993] = { id=18993, name="Viridescent Venture: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture under Bronze par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18994] = { id=18994, name="Viridescent Venture: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture under Silver par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18995] = { id=18995, name="Viridescent Venture: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture under Gold par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18996] = { id=18996, name="Viridescent Venture Advanced: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Advanced under Bronze par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18997] = { id=18997, name="Viridescent Venture Advanced: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Advanced under Silver par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18998] = { id=18998, name="Viridescent Venture Advanced: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Advanced under Gold par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [18999] = { id=18999, name="Viridescent Venture Reverse: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Reverse under Bronze par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19000] = { id=19000, name="Viridescent Venture Reverse: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Reverse under Silver par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19001] = { id=19001, name="Viridescent Venture Reverse: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Reverse under Gold par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19002] = { id=19002, name="Viridescent Venture Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Challenge under Bronze par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19003] = { id=19003, name="Viridescent Venture Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Challenge under Silver par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19004] = { id=19004, name="Viridescent Venture Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Challenge under Gold par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19005] = { id=19005, name="Viridescent Venture Reverse Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Reverse Challenge under Bronze par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19006] = { id=19006, name="Viridescent Venture Reverse Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Reverse Challenge under Silver par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19007] = { id=19007, name="Viridescent Venture Reverse Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Viridescent Venture Reverse Challenge under Gold par time.", npc="Viridescent Venture Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- SHORELINE SWITCHBACK — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [19032] = { id=19032, name="Shoreline Switchback: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback under Bronze par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19033] = { id=19033, name="Shoreline Switchback: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback under Silver par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19034] = { id=19034, name="Shoreline Switchback: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback under Gold par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19035] = { id=19035, name="Shoreline Switchback Advanced: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Advanced under Bronze par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19036] = { id=19036, name="Shoreline Switchback Advanced: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Advanced under Silver par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19037] = { id=19037, name="Shoreline Switchback Advanced: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Advanced under Gold par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19038] = { id=19038, name="Shoreline Switchback Reverse: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Reverse under Bronze par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19039] = { id=19039, name="Shoreline Switchback Reverse: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Reverse under Silver par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19040] = { id=19040, name="Shoreline Switchback Reverse: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Reverse under Gold par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19041] = { id=19041, name="Shoreline Switchback Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Challenge under Bronze par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19042] = { id=19042, name="Shoreline Switchback Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Challenge under Silver par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19043] = { id=19043, name="Shoreline Switchback Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Challenge under Gold par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19044] = { id=19044, name="Shoreline Switchback Reverse Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Reverse Challenge under Bronze par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19045] = { id=19045, name="Shoreline Switchback Reverse Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Reverse Challenge under Silver par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19046] = { id=19046, name="Shoreline Switchback Reverse Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Shoreline Switchback Reverse Challenge under Gold par time.", npc="Shoreline Switchback Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- CANOPY CONCOURS — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [19047] = { id=19047, name="Canopy Concours: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours under Bronze par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19048] = { id=19048, name="Canopy Concours: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours under Silver par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19049] = { id=19049, name="Canopy Concours: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours under Gold par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19050] = { id=19050, name="Canopy Concours Advanced: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Advanced under Bronze par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19051] = { id=19051, name="Canopy Concours Advanced: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Advanced under Silver par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19052] = { id=19052, name="Canopy Concours Advanced: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Advanced under Gold par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19053] = { id=19053, name="Canopy Concours Reverse: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Reverse under Bronze par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19054] = { id=19054, name="Canopy Concours Reverse: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Reverse under Silver par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19055] = { id=19055, name="Canopy Concours Reverse: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Reverse under Gold par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19056] = { id=19056, name="Canopy Concours Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Challenge under Bronze par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19057] = { id=19057, name="Canopy Concours Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Challenge under Silver par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19058] = { id=19058, name="Canopy Concours Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Challenge under Gold par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19059] = { id=19059, name="Canopy Concours Reverse Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Reverse Challenge under Bronze par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19060] = { id=19060, name="Canopy Concours Reverse Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Reverse Challenge under Silver par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19061] = { id=19061, name="Canopy Concours Reverse Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Canopy Concours Reverse Challenge under Gold par time.", npc="Canopy Concours Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- EMERALD AMBLE — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [19062] = { id=19062, name="Emerald Amble: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble under Bronze par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19063] = { id=19063, name="Emerald Amble: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble under Silver par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19064] = { id=19064, name="Emerald Amble: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble under Gold par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19065] = { id=19065, name="Emerald Amble Advanced: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Advanced under Bronze par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19066] = { id=19066, name="Emerald Amble Advanced: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Advanced under Silver par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19067] = { id=19067, name="Emerald Amble Advanced: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Advanced under Gold par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19068] = { id=19068, name="Emerald Amble Reverse: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Reverse under Bronze par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19069] = { id=19069, name="Emerald Amble Reverse: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Reverse under Silver par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19070] = { id=19070, name="Emerald Amble Reverse: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Reverse under Gold par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19071] = { id=19071, name="Emerald Amble Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Challenge under Bronze par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19072] = { id=19072, name="Emerald Amble Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Challenge under Silver par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19073] = { id=19073, name="Emerald Amble Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Challenge under Gold par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19074] = { id=19074, name="Emerald Amble Reverse Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Reverse Challenge under Bronze par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19075] = { id=19075, name="Emerald Amble Reverse Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Reverse Challenge under Silver par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19076] = { id=19076, name="Emerald Amble Reverse Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete Emerald Amble Reverse Challenge under Gold par time.", npc="Emerald Amble Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- EMERALD DREAM (meta race) — Normal / Advanced / Reverse / Challenge
+    -- -------------------------------------------------------------------------
+    [19109] = { id=19109, name="Emerald Dream: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream meta race under Bronze par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19110] = { id=19110, name="Emerald Dream: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream meta race under Silver par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19111] = { id=19111, name="Emerald Dream: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream meta race under Gold par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19112] = { id=19112, name="Emerald Dream Advanced: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Advanced meta race under Bronze par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19113] = { id=19113, name="Emerald Dream Advanced: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Advanced meta race under Silver par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19114] = { id=19114, name="Emerald Dream Advanced: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Advanced meta race under Gold par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19115] = { id=19115, name="Emerald Dream Reverse: Bronze",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Reverse meta race under Bronze par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19116] = { id=19116, name="Emerald Dream Reverse: Silver",  category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Reverse meta race under Silver par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19117] = { id=19117, name="Emerald Dream Reverse: Gold",    category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Reverse meta race under Gold par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19118] = { id=19118, name="Emerald Dream Racing Completionist: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Racing Completionist under Bronze par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19119] = { id=19119, name="Emerald Dream Racing Completionist: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Racing Completionist under Silver par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19120] = { id=19120, name="Emerald Dream Racing Completionist: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Racing Completionist under Gold par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19121] = { id=19121, name="Emerald Dream Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Challenge meta race under Bronze par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19122] = { id=19122, name="Emerald Dream Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Challenge meta race under Silver par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19123] = { id=19123, name="Emerald Dream Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Challenge meta race under Gold par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19124] = { id=19124, name="Emerald Dream Reverse Challenge: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Reverse Challenge meta race under Bronze par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19125] = { id=19125, name="Emerald Dream Reverse Challenge: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Reverse Challenge meta race under Silver par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19126] = { id=19126, name="Emerald Dream Reverse Challenge: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Reverse Challenge meta race under Gold par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19127] = { id=19127, name="Emerald Dream Challenge Racing Completionist: Bronze", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Challenge Racing Completionist under Bronze par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19128] = { id=19128, name="Emerald Dream Challenge Racing Completionist: Silver", category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Challenge Racing Completionist under Silver par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+    [19129] = { id=19129, name="Emerald Dream Challenge Racing Completionist: Gold",   category="Skyriding", zone="Emerald Dream", mapID=2200, steps={ { index=1, desc="Complete the Emerald Dream Challenge Racing Completionist under Gold par time.", npc="Emerald Dream Race", coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil } } },
+
+    -- -------------------------------------------------------------------------
+    -- EMERALD DREAM — Exploration / General achievements
+    -- -------------------------------------------------------------------------
+
+    -- "Defenders of the Dream" (ID 19026)
+    [19026] = {
+        id       = 19026,
+        name     = "Defenders of the Dream",
+        category = "General",
+        zone     = "Emerald Dream",
+        mapID    = 2200,
+        steps = {
+            { index=1, desc="Complete the objectives for Defenders of the Dream in the Emerald Dream. Verify criteria with /gp criteria 19026.", npc=nil, coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil },
+        },
+    },
+
+    -- "Tour of Duty: Emerald Dream" (ID 19294)
+    [19294] = {
+        id       = 19294,
+        name     = "Tour of Duty: Emerald Dream",
+        category = "General",
+        zone     = "Emerald Dream",
+        mapID    = 2200,
+        steps = {
+            { index=1, desc="Complete a Tour of Duty in the Emerald Dream. Verify criteria with /gp criteria 19294.", npc=nil, coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil },
+        },
+    },
+
+    -- "Emerald Dream Glyph Hunter" (ID 19306)
+    [19306] = {
+        id       = 19306,
+        name     = "Emerald Dream Glyph Hunter",
+        category = "Exploration",
+        zone     = "Emerald Dream",
+        mapID    = 2200,
+        steps = {
+            { index=1, desc="Collect all Dragonriding (Skyriding) Glyphs in the Emerald Dream. Verify the count with /gp criteria 19306.", npc=nil, coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil },
+        },
+    },
+
+    -- "Explore the Emerald Dream" (ID 19309)
+    [19309] = {
+        id       = 19309,
+        name     = "Explore the Emerald Dream",
+        category = "Exploration",
+        zone     = "Emerald Dream",
+        mapID    = 2200,
+        steps = {
+            { index=1, desc="Explore the subregions of the Emerald Dream. Verify the full list with /gp criteria 19309.", npc=nil, coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil },
+        },
+    },
+
+    -- "Adventurer of the Emerald Dream" (ID 19316)
+    [19316] = {
+        id       = 19316,
+        name     = "Adventurer of the Emerald Dream",
+        category = "Exploration",
+        zone     = "Emerald Dream",
+        mapID    = 2200,
+        steps = {
+            { index=1, desc="Complete a variety of objectives in the Emerald Dream — rare kills, bonus objectives, treasures, and exploration. Verify with /gp criteria 19316.", npc=nil, coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil },
+        },
+    },
+
+    -- "Treasures of the Emerald Dream" (ID 19317)
+    [19317] = {
+        id       = 19317,
+        name     = "Treasures of the Emerald Dream",
+        category = "Exploration",
+        zone     = "Emerald Dream",
+        mapID    = 2200,
+        steps = {
+            { index=1, desc="Find all hidden treasure chests in the Emerald Dream. Verify the full list with /gp criteria 19317.", npc=nil, coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil },
+        },
+    },
+
+    -- "Emerald Dream Safari" (ID 19401)
+    [19401] = {
+        id       = 19401,
+        name     = "Emerald Dream Safari",
+        category = "General",
+        zone     = "Emerald Dream",
+        mapID    = 2200,
+        steps = {
+            { index=1, desc="Complete the objectives for Emerald Dream Safari. Verify criteria with /gp criteria 19401.", npc=nil, coords={x=50.0,y=50.0}, mapID=2200, criteriaIndex=nil },
         },
     },
 
