@@ -278,9 +278,6 @@ function AD.AutoAddResults(zone, results)
     end
 
     if added > 0 then
-        GP.Print(string.format(
-            "Auto-scan: added |cff00ccff%d|r new achievement(s) for |cff00ccff%s|r.",
-            added, zone))
         AD.RefreshZoneSuggestions()
         if GP.UI.MainFrame then
             GP.UI.MainFrame.RefreshList()

@@ -54,14 +54,14 @@ end)
 -- Called when ANY achievement criteria changes (kill, collect, explore, etc.)
 On("CRITERIA_UPDATE", function()
     GP.Progress.RefreshAll()
-    GP.UI.MainFrame.RefreshIfVisible()
+    if GP.UI.MainFrame then GP.UI.MainFrame.RefreshIfVisible() end
 end)
 
 -- Called when an achievement is fully completed
 On("ACHIEVEMENT_EARNED", function(id, alreadyEarned)
     if not alreadyEarned then
         GP.Progress.OnAchievementEarned(id)
-        GP.UI.MainFrame.RefreshIfVisible()
+        if GP.UI.MainFrame then GP.UI.MainFrame.RefreshIfVisible() end
     end
 end)
 

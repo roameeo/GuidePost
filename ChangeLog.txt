@@ -3,6 +3,67 @@
 ================================================================================
 
 --------------------------------------------------------------------------------
+v2.6.0 - 2026-5-16
+--------------------------------------------------------------------------------
+
+DATA IMPROVEMENTS — DRAGON ISLES (DRAGONFLIGHT ZONES)
+-------------------------------------------------------
+Added Skyriding race and exploration achievements for six Dragon Isles zones.
+All entries use placeholder coords {x=50.0, y=50.0} pending in-game verification.
+
+  Forbidden Reach (mapID 2151) — 27 achievements
+    • 3 races × Normal / Advanced / Reverse / Challenge / Reverse Challenge tiers
+    • Exploration: Treasures, Glyph Hunter, Adventurer, Ancient Stones, etc.
+
+  Waking Shores (mapID 2022) — 23 achievements
+    • Race tiers (Normal / Advanced / Reverse / Challenge)
+    • Exploration: Treasures, Glyph Hunter, Adventurer, storms, Ancient Stones, etc.
+
+  Valdrakken (mapID 2112) — 6 achievements
+    • Exploration and General achievements including [16556] Great Gourmand of
+      The Ruby Feast (20 food criteria, coords 61.03, 11.04)
+
+  Thaldraszus (mapID 2025) — ~118 achievements
+    • 6 races (Flowing Forest Flight, Tyrhold Trial, Cliffside Circuit,
+      Academy Ascent, Garden Gallivant, Caverns Criss-Cross) × Normal /
+      Advanced / Reverse / Challenge / Reverse Challenge tiers
+    • Thaldraszus meta race (Normal / Advanced / Challenge)
+    • Exploration: Treasures, Glyph Hunter, Adventurer, storms, Ancient Stones,
+      Travel Network nodes, and misc general achievements
+
+  Azure Span (mapID 2024) — 52 achievements
+    • 2 races (Azure Span Sprint, Azure Span Slalom) × Normal / Advanced /
+      Reverse / Challenge / Reverse Challenge tiers
+    • Azure Span meta race (Normal / Advanced / Challenge)
+    • Exploration: Treasures, Azure Spanner, Do You Wanna Build a Snowman?,
+      4 storms + Chasing Storms, Glyph Hunter, Ley Line in the Span,
+      Adventurer, Ancient Stones
+    • NOTE: Tour of Duty: The Azure Span ID is unconfirmed; not yet added
+
+  Ohn'ahran Plains (mapID 2023) — 116 achievements
+    • 4 races (Sundapple Copse Circuit, Fen Flythrough, Ravine River Run,
+      Emerald Gardens Ascent) × Normal / Advanced / Reverse / Challenge /
+      Reverse Challenge tiers
+    • 2 races (Maruukai Dash, Mirror of the Sky Dash) × Normal / Challenge only
+    • River Rapids Route × Normal / Advanced / Reverse / Challenge /
+      Reverse Challenge tiers
+    • Ohn'ahran Plains meta race (Normal / Advanced / Reverse / Challenge)
+    • Exploration: Ohn'a'Roll, Treasures, 2 Travel Network nodes,
+      Honor Our Ancestors, Who's a Good Bakar?, 5 storms + Chasing Storms,
+      Sleeping on the Job, Glyph Hunter, Tour of Duty, Adventurer,
+      A New Beginning, Ancient Stones
+
+  Emerald Dream (mapID 2200) — 118 achievements
+    • 6 races (Ysera Invitational, Smoldering Sprint, Viridescent Venture,
+      Shoreline Switchback, Canopy Concours, Emerald Amble) × Normal /
+      Advanced / Reverse / Challenge / Reverse Challenge tiers
+    • Emerald Dream meta race (Normal / Advanced / Reverse / Racing
+      Completionist / Challenge / Reverse Challenge / Challenge Racing
+      Completionist)
+    • Exploration: Defenders of the Dream, Tour of Duty, Glyph Hunter,
+      Explore the Emerald Dream, Adventurer, Treasures, Emerald Dream Safari
+
+--------------------------------------------------------------------------------
 v2.5.0 - 2026-5-1
 --------------------------------------------------------------------------------
 
