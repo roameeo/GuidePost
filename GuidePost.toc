@@ -3,7 +3,7 @@
 ## Notes: Step-by-step achievement guidance with TomTom waypoints, progress tracking, and zone suggestions.
 ## IconTexture: Interface/AddOns/GuidePost/Media/Icon.png
 ## Author: Roameeo
-## Version: 2.5.0
+## Version: 2.6.0
 ## Dependencies: TomTom
 ## SavedVariables: GuidePostDB
 ## SavedVariablesPerCharacter: GuidePostCharDB
