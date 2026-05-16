@@ -1,29 +1,8 @@
--- =============================================================================
--- GuidePost.lua — Main entry point
--- =============================================================================
--- This file is loaded LAST (see .toc).  By the time it runs, every other file
--- has already set up its module table inside GuidePostNS.
---
--- Responsibilities:
---   1. Register slash commands
---   2. Provide the GP.Print helper
--- NOTE: GuidePostNS is created in data/Achievements.lua (the first file loaded)
--- =============================================================================
-
--- Namespace was already created in data/Achievements.lua
--- The 'or {}' here is just a safety net
-GuidePostNS = GuidePostNS or {}
-local GP = GuidePostNS
-
--- ─── Utility ─────────────────────────────────────────────────────────────────
-
--- Print a message to chat with the addon prefix
-function GP.Print(msg)
-    print("|cff00ccff[GP]|r " .. tostring(msg))
-end
+local GP = select(2, ...)
 
 -- ─── Slash Commands ──────────────────────────────────────────────────────────
 -- /gp or /guidepost         → toggles the main window
+-- /gp settings              → toggles the settings panel
 -- /gp list                  → prints all known achievements to chat
 -- /gp track <id>            → start tracking achievement by ID
 -- /gp untrack <id>          → stop tracking
@@ -32,6 +11,7 @@ end
 -- /gp mapid                 → print current zone's UiMapID
 -- /gp criteria <id>         → dump criteria IDs for an achievement
 -- /gp scan [zone]           → scan for achievement IDs in current or named zone
+-- /gp dump [zone|todo]      → dump achievement panel results as Lua stubs
 
 SLASH_GUIDEPOST1 = "/gp"
 SLASH_GUIDEPOST2 = "/guidepost"
@@ -41,30 +21,31 @@ SlashCmdList["GUIDEPOST"] = function(input)
     input = input:lower()  -- make all commands case-insensitive
 
     if input == "" then
-        GP.UI.MainFrame.Toggle()
+        GuidePostFrame:Toggle()
 
     elseif input == "settings" then
-        if GP.UI.Settings then GP.UI.Settings.Toggle() end
+        GuidePostSettingsPanel:Toggle()
 
     elseif input == "list" then
         GP.Print("Known achievements:")
-        for _, id in ipairs(GP.AchievementData.GetAll()) do
+        for _, id in ipairs(GP.AchievementData.GetAllAchievementsForPlayer()) do
             local ach = GP.Data.Achievements[id]
-            GP.Print(string.format("  [%d] %s (%s)", id, ach.name, ach.category))
+            print(string.format("  [%d] %s (%s)", id, ach.name, ach.category))
         end
 
     elseif input:match("^track %d+$") then
         local id = tonumber(input:match("%d+"))
-        if GP.Data.Achievements[id] then
-            GP.Progress.Track(id)
-            GP.Print("Tracking: " .. GP.Data.Achievements[id].name)
+        if id and GP.Data.Achievements[id] then
+            GuidePostCharDB.tracked[id] = true
+            GP.TomTom.SetWaypoint(id)
+            GP.Print("Tracking: "..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(GP.Data.Achievements[id].name))
         else
             GP.Print("Unknown achievement ID: " .. id)
         end
 
     elseif input:match("^untrack %d+$") then
         local id = tonumber(input:match("%d+"))
-        GP.Progress.Untrack(id)
+        GP.UntrackAchievement(id)
         GP.Print("Untracked ID: " .. id)
 
     elseif input == "zone" then
@@ -84,8 +65,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
         local mapID   = C_Map.GetBestMapForUnit("player")
         local mapInfo = C_Map.GetMapInfo(mapID)
         local name    = mapInfo and mapInfo.name or "Unknown"
-        GP.Print(string.format("Current zone: |cff00ccff%s|r  mapID = |cffffcc00%d|r", name, mapID))
-        GP.Print("Use this mapID in data/Achievements.lua for steps in this zone.")
+        GP.Print(name, "mapID =", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(mapID))
 
     elseif input:match("^criteria %d+$") then
         local achID = tonumber(input:match("%d+"))
@@ -93,15 +73,13 @@ SlashCmdList["GUIDEPOST"] = function(input)
         if not achName then
             GP.Print("Unknown achievement ID: " .. achID)
         else
-            GP.Print(string.format("Criteria for [%d] %s:", achID, achName))
-            GP.Print("Use the |cffffcc00index number|r as criteriaIndex in Achievements.lua")
+            GP.Print("Criteria for", "["..achID.."]", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(achName))
             local i = 1
             while true do
                 local criteriaStr, _, completed = GetAchievementCriteriaInfo(achID, i)
                 if not criteriaStr then break end
-                local status = completed and "|cff00ff00DONE|r" or "|cffaaaaaa    |r"
-                GP.Print(string.format("  criteriaIndex=|cffffcc00%d|r  %s  %s",
-                    i, status, criteriaStr))
+                local status = completed and GREEN_FONT_COLOR:WrapTextInColorCode("(DONE)") or ""
+                GP.Print("criteriaIndex", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(i), "=", criteriaStr, status)
                 i = i + 1
             end
         end
@@ -156,10 +134,8 @@ SlashCmdList["GUIDEPOST"] = function(input)
         end
         GuidePostDB = GuidePostDB or {}
         GuidePostDB.exportBuffer = table.concat(stubs, "\n")
-        GP.Print(string.format(
-            "Dumped |cff00ccff%d|r new stubs to |cffffcc00GuidePostDB.exportBuffer|r (%d already in DB, skipped).",
-            #stubs, skipped))
-        GP.Print("Find them in your WTF SavedVariables/GuidePost.lua file — search for 'exportBuffer'.")
+        GP.Print("Dumped", HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(#stubs), "new stubs to", DARKYELLOW_FONT_COLOR:WrapTextInColorCode("GuidePostDB.exportBuffer"), string.format("(%d already in DB, skipped)", skipped))
+        print("  Find them in your WTF SavedVariables/GuidePost.lua file (search for 'exportBuffer')")
 
     elseif input == "scan" then
         -- Scan the current zone for achievement IDs
@@ -172,10 +148,10 @@ SlashCmdList["GUIDEPOST"] = function(input)
 
     elseif input == "next" then
         -- Set waypoint for next incomplete step of any tracked achievement
-        local tracked = GP.Progress.GetTrackedList()
+        local tracked = GP.GetTrackedAchievementsList()
         if #tracked == 0 then
-            GP.Print("|cffffcc00No achievements are currently tracked.|r")
-            GP.Print("Use |cff00ccff/gp track <id>|r or click 'Track' in the UI.")
+            GP.Print(DARKYELLOW_FONT_COLOR:WrapTextInColorCode("No achievements are currently tracked"))
+            print("  Use", DARKYELLOW_FONT_COLOR:WrapTextInColorCode("/gp track <id>"), "or begin tracking an achievement from the addon UI")
             return
         end
 
@@ -186,31 +162,32 @@ SlashCmdList["GUIDEPOST"] = function(input)
             if nextStep then
                 local ach = GP.Data.Achievements[id]
                 GP.TomTom.SetWaypoint(id, nextStep)
-                GP.Print(string.format("Next step for |cff00ccff%s|r:", ach.name))
-                GP.Print("  " .. nextStep.desc)
+                GP.Print("Next step for", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(ach.name))
+                print(" ", nextStep.desc)
                 foundStep = true
                 break
             end
         end
 
         if not foundStep then
-            GP.Print("|cff00ff00All tracked achievements are complete!|r")
+            GP.Print(GREEN_FONT_COLOR:WrapTextInColorCode("All tracked achievements are complete!"))
         end
 
     else
         GP.Print("Commands:")
-        GP.Print("  /gp                    - Open / close window")
-        GP.Print("  /gp list               - List all known achievements")
-        GP.Print("  /gp track <id>         - Track an achievement")
-        GP.Print("  /gp untrack <id>       - Stop tracking")
-        GP.Print("  /gp zone               - Suggestions for current zone")
-        GP.Print("  /gp next               - Set waypoint for next tracked step")
-        GP.Print("  /gp mapid              - Print UiMapID for your current zone")
-        GP.Print("  /gp criteria <achID>   - Dump criteria IDs for an achievement")
-        GP.Print("  /gp scan               - Scan current zone for achievement IDs")
-        GP.Print("  /gp scan <zone>        - Scan a specific zone by name")
-        GP.Print("  /gp dump               - Dump achievement panel results as Lua stubs (uses current zone)")
-        GP.Print("  /gp dump todo          - Dump with zone=TODO (for broad/multi-zone searches)")
-        GP.Print("  /gp dump <zone>        - Dump with a specific zone name")
+        print("  /gp                   - Open / close window")
+        print("  /gp settings          - Open / close settings panel")
+        print("  /gp list              - List all known achievements")
+        print("  /gp track <id>        - Track an achievement")
+        print("  /gp untrack <id>      - Stop tracking")
+        print("  /gp zone              - Suggestions for current zone")
+        print("  /gp next              - Set waypoint for next tracked step")
+        print("  /gp mapid             - Print UiMapID for your current zone")
+        print("  /gp criteria <achID>  - Dump criteria IDs for an achievement")
+        print("  /gp scan              - Scan current zone for achievement IDs")
+        print("  /gp scan <zone>       - Scan a specific zone by name")
+        print("  /gp dump              - Dump achievement panel results as Lua stubs (uses current zone)")
+        print("  /gp dump todo         - Dump with zone=TODO (for broad/multi-zone searches)")
+        print("  /gp dump <zone>       - Dump with a specific zone name")
     end
 end

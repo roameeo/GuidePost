@@ -1,0 +1,135 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+    <FontString name="GuidePostListHeaderTemplate" virtual="true" inherits="GameFontNormalSmall" justifyH="CENTER">
+        <Size y="15"/>
+        <Anchors>
+            <Anchor point="LEFT" x="10"/>
+            <Anchor point="RIGHT" x="-10"/>
+        </Anchors>
+    </FontString>
+
+    <Button name="GuidePostListHeaderButtonTemplate" virtual="true" mixin="GuidePostListHeaderButtonMixin">
+        <Size y="15"/>
+        <KeyValues>
+            <KeyValue key="zone" value="" type="string"/>
+        </KeyValues>
+        <Anchors>
+            <Anchor point="LEFT"/>
+            <Anchor point="RIGHT"/>
+        </Anchors>
+        <NormalTexture file="Interface/Buttons/WHITE8x8">
+            <Color r="0.08" g="0.08" b="0.12" a="0.9"/>
+        </NormalTexture>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="ZoneName" inherits="GameFontHighlightSmall" justifyH="CENTER" setAllPoints="true" text="{zone name}"/>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnEnter method="OnEnter"/>
+            <OnLeave method="OnLeave"/>
+            <OnClick method="OnClick"/>
+        </Scripts>
+    </Button>
+
+    <Button name="GuidePostListItemButtonTemplate" virtual="true" mixin="GuidePostListItemButtonMixin">
+        <Size y="35"/>
+        <KeyValues>
+            <KeyValue key="achievementID" value="-1" type="number"/>
+            <KeyValue key="isSelected" value="false" type="boolean"/>
+        </KeyValues>
+        <Anchors>
+            <Anchor point="LEFT"/>
+            <Anchor point="RIGHT"/>
+        </Anchors>
+        <NormalTexture file="Interface/Buttons/WHITE8x8">
+            <Color r="0.15" g="0.15" b="0.15" a="0.6"/>
+        </NormalTexture>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="Name" inherits="GameFontHighlightSmall" wordwrap="true" justifyH="LEFT" justifyV="TOP" text="{name}">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="5" y="-5"/>
+                        <Anchor point="BOTTOMRIGHT" x="-50"/>
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="Progress" inherits="GameFontNormalSmall" justifyH="RIGHT" justifyV="BOTTOM">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeKey="$parent.Name" relativePoint="TOPRIGHT"/>
+                        <Anchor point="BOTTOMRIGHT" x="-2" y="2"/>
+                    </Anchors>
+                    <Color r="0.67" g="0.67" b="0.67"/>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnEnter method="OnEnter"/>
+            <OnLeave method="OnLeave"/>
+            <OnClick method="OnClick"/>
+        </Scripts>
+    </Button>
+    
+    <Frame name="GuidePostDetailsStepTemplate" virtual="true" mixin="GuidePostDetailsStepMixin">
+        <Size y="50"/>
+        <KeyValues>
+            <KeyValue key="criteriaIndex" value="-1" type="number"/>
+        </KeyValues>
+        <Anchors>
+            <Anchor point="LEFT"/>
+            <Anchor point="RIGHT"/>
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Bg" setAllPoints="true">
+                    <Color r="0.15" g="0.15" b="0.15" a="0.6"/>
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <FontString parentKey="StepIndex" inherits="GameFontNormalSmall" justifyH="LEFT" justifyV="TOP">
+                    <Size x="25"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="5" y="-5"/>
+                    </Anchors>
+                    <Color r="0.67" g="0.67" b="0.67"/>
+                </FontString>
+                <FontString parentKey="StepDesc" inherits="GameFontHighlightSmall" wordwrap="true" justifyH="LEFT" justifyV="TOP" text="{name}">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="30" y="-5"/>
+                        <Anchor point="BOTTOMRIGHT" x="-50"/>
+                    </Anchors>
+                </FontString>
+                <FontString parentKey="NpcLabel" inherits="GameFontNormalSmall" justifyH="LEFT" justifyV="BOTTOM">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" x="5" y="5"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Button parentKey="WaypointBtn" hidden="true">
+                <Size x="15" y="15"/>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT" x="-5" y="5"/>
+                </Anchors>
+                <NormalTexture file="Interface/AddOns/TomTom/Images/Modern/Waypoints/WaypointArrowGreen"/>
+                <PushedTexture file="Interface/AddOns/TomTom/Images/Modern/Waypoints/WaypointArrowGreen">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="2" y="-2"/>
+                        <Anchor point="BOTTOMRIGHT" x="2" y="-2"/>
+                    </Anchors>
+                </PushedTexture>
+                <Scripts>
+                    <OnEnter/>
+                    <OnLeave/>
+                    <OnClick/>
+                </Scripts>
+            </Button>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnEnter method="OnEnter"/>
+            <OnLeave method="OnLeave"/>
+        </Scripts>
+    </Frame>
+</Ui>
