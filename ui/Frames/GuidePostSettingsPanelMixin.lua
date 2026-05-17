@@ -29,7 +29,7 @@ function GuidePostSettingsPanelMixin:OnLoad()
     self.AutoCheck:HookScript("OnClick", function()
         GuidePostDB.settings.autoScan = not GuidePostDB.settings.autoScan
     end)
-    
+
 end
 
 function GuidePostSettingsPanelMixin:OnDragStart() self:StartMoving() end

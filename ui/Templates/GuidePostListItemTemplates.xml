@@ -69,7 +69,7 @@ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Bliz
             <OnClick method="OnClick"/>
         </Scripts>
     </Button>
-    
+
     <Frame name="GuidePostDetailsStepTemplate" virtual="true" mixin="GuidePostDetailsStepMixin">
         <Size y="50"/>
         <KeyValues>

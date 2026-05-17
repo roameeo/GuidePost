@@ -6,7 +6,7 @@ function GuidePostListPanelMixin:OnLoad()
     -- Listen for track/untrack events to refresh the achievements list
     EventRegistry:RegisterCallback("GuidePost.ToggleTracking", function() self:PopulateList() end)
     EventRegistry:RegisterCallback("GuidePost.UpdateScope", function() self:PopulateList() end)
-    
+
     self.SearchBox:SetMaxLetters(50)
     self.SearchBox:SetFontObject("GameFontHighlightSmall")
     self.SearchBox.Instructions:SetText("Search by name")
@@ -185,7 +185,7 @@ local function sortListByCompletionDesc(list)
         -- Calculate percentages (avoid division by zero)
         local pctA = (totalA > 0) and (doneA / totalA) or 0
         local pctB = (totalB > 0) and (doneB / totalB) or 0
-        
+
         -- Sort by percentage descending (highest completion first)
         return pctA > pctB
     end)
@@ -194,7 +194,7 @@ end
 local CATEGORY_GAP = 15
 function GuidePostListPanelMixin:BuildListCategory(listContentFrame, itemList, headerData, lastFrame)
     if #itemList == 0 then return lastFrame end
-    
+
     local isCollapsed = (GuidePostDB.collapsedZones or {})[headerData.name] or false
     local header
     if headerData.isZoneHeader then
@@ -219,7 +219,7 @@ function GuidePostListPanelMixin:BuildListCategory(listContentFrame, itemList, h
     end
 
     if isCollapsed then return header end
-    
+
     local lastItem
     for idx, achievementID in ipairs(itemList) do
         local ach = GP.Data.Achievements[achievementID]
@@ -268,7 +268,7 @@ function GuidePostListPanelMixin:PopulateList()
     self:ClearCurrentList()
     local listContent = self.ScrollFrame.ListContent
     local lastListFrame
-    
+
     -- Tracked Section
     local tracked = GuidePostCharDB.tracked
     local filteredTracked = {}

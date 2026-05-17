@@ -29,7 +29,7 @@ function GuidePostMinimapButtonMixin:OnEnter()
     GameTooltip:SetText(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("GuidePost"))
     GameTooltip:AddLine("Click to open/close", 1, 1, 1)
     GameTooltip:AddLine("Drag to reposition", 0.6, 0.6, 0.6)
-    
+
     local tracked = GP.GetTrackedAchievementsList()
     if #tracked > 0 then
         -- GameTooltip:AddLine(" ")

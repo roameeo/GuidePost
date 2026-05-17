@@ -50,7 +50,7 @@ local function printScanResults(zone, results)
         GP.Print("No new achievements found matching", "\""..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(zone).."\"")
         return
     end
-    
+
     GP.Print("Found", #results, "new achievement(s) matching", "\""..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(zone).."\"")
 
     for _, r in ipairs(results) do
@@ -188,8 +188,6 @@ function AD.ScanZone(overrideZone, autoAdd)
         table.insert(searchTerms, zoneLower .. "s")      -- add trailing 's'
     end
 
-    local zoneResults = {}
-    
     if #AD.ScanResults == 0 then
         AD.ScanActive  = true
         local currentID = 1
@@ -203,8 +201,8 @@ function AD.ScanZone(overrideZone, autoAdd)
                 if GP.Data.Achievements[id] == nil then
                     -- GetAchievementInfo returns nil for invalid IDs
                     local _, name, _, completed, _, _, _, desc, _, _, _, isGuild, _, _, isStat = GetAchievementInfo(id)
-    
-                    if name and not isGuild and not isStat then    
+
+                    if name and not isGuild and not isStat then
                         table.insert(AD.ScanResults, {
                             id = id,
                             name = name,
@@ -223,7 +221,8 @@ function AD.ScanZone(overrideZone, autoAdd)
                 AD.ScanActive = false
                 EventRegistry:TriggerEvent("GuidePost.ZoneScanComplete", zone, searchTerms, autoAdd)
             end
-        end)
+        end
+    end)
     else
         EventRegistry:TriggerEvent("GuidePost.ZoneScanComplete", zone, searchTerms, autoAdd)
     end
