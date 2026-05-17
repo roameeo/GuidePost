@@ -1,0 +1,40 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+    <Button name="GuidePostMinimapButton" parent="Minimap" mixin="GuidePostMinimapButtonMixin" frameStrata="MEDIUM" clampedToScreen="false" registerForDrag="LeftButton">
+        <Size x="32" y="32"/>
+        <KeyValues>
+            <KeyValue key="angle" value="225" type="number"/>
+            <KeyValue key="isDragging" value="false" type="boolean"/>
+        </KeyValues>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Bg" file="Interface/Minimap/MiniMap-TrackingBorder" setAllPoints="true">
+                    <Size x="32" y="32"/>
+                </Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+                <Texture parentKey="Icon" file="Interface/AddOns/GuidePost/Media/icon.png">
+                    <Size x="32" y="32"/>
+                    <Anchors>
+                        <Anchor point="CENTER"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+            <!-- TODO: Figure out why this texture never renders in the expected location -->
+            <!-- <Layer level="HIGHLIGHT">
+                <Texture parentKey="Highlight" file="Interface/Minimap/MiniMap-TrackingBorder" setAllPoints="true">
+                    <Size x="32" y="32"/>
+                    <Color r="1" g="1" b="0.5" a="0.6"/>
+                </Texture>
+            </Layer> -->
+        </Layers>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnEnter method="OnEnter"/>
+            <OnLeave method="OnLeave"/>
+            <OnClick method="OnClick"/>
+            <OnDragStart method="OnDragStart"/>
+            <OnDragStop method="OnDragStop"/>
+        </Scripts>
+    </Button>
+</Ui>

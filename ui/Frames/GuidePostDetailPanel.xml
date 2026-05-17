@@ -1,0 +1,65 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+    <Frame name="GuidePostDetailPanel" parent="GuidePostFrame" parentKey="DetailPanel" mixin="GuidePostDetailPanelMixin" inherits="InsetFrameTemplate">
+        <KeyValues>
+            <KeyValue key="selectedAchievementID" value="-1" type="number"/>
+        </KeyValues>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativeKey="$parent.ListPanel" relativePoint="TOPRIGHT" x="2"/>
+            <Anchor point="BOTTOMLEFT" relativeKey="$parent.ListPanel" relativePoint="BOTTOMRIGHT" x="2"/>
+            <Anchor point="RIGHT" relativeKey="$parent.RightBorder" relativePoint="LEFT"/>
+        </Anchors>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="AchName" inherits="GameFontNormal" text="Select an achievement">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" y="-5"/>
+                        <Anchor point="TOPRIGHT" y="-5"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <StatusBar parentKey="ProgressBarBg" inherits="TextStatusBar" minValue="0" maxValue="100" defaultValue="100">
+                <Size y="16"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.AchName" relativePoint="BOTTOMLEFT" x="20" y="-10"/>
+                    <Anchor point="TOPRIGHT" relativeKey="$parent.AchName" relativePoint="BOTTOMRIGHT" x="-20" y="-10"/>
+                </Anchors>
+                <BarTexture atlas="UI-Journeys-progressbar-frame"/>
+            </StatusBar>
+            <StatusBar parentKey="ProgressBar" inherits="TextStatusBar" minValue="0" maxValue="100" defaultValue="0">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.ProgressBarBg"/>
+                    <Anchor point="BOTTOMRIGHT" relativeKey="$parent.ProgressBarBg"/>
+                </Anchors>
+                <BarTexture atlas="UI-Journeys-progressbar-fill"/>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString parentKey="ProgressLabel" inherits="GameFontHighlightSmall" text="0%" justifyH="CENTER" justifyV="MIDDLE">
+                            <Anchors>
+                                <Anchor point="TOP" relativePoint="BOTTOM"/>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </StatusBar>
+            <Button parentKey="ToggleTrackingBtn" inherits="UIPanelButtonTemplate" hidden="true" text="Track + Waypoint">
+                <Size x="120" y="25"/>
+                <Anchors>
+                    <Anchor point="TOP" relativeKey="$parent.ProgressBar" relativePoint="BOTTOM" y="-20"/>
+                </Anchors>
+            </Button>
+            <ScrollFrame parentKey="ScrollFrame" inherits="GuidePostScrollFrameTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.ProgressBar" relativePoint="BOTTOMLEFT" y="-60"/>
+                    <Anchor point="BOTTOMLEFT" x="10" y="10"/>
+                    <Anchor point="BOTTOMRIGHT" x="-30" y="10"/>
+                </Anchors>
+            </ScrollFrame>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+        </Scripts>
+    </Frame>
+</Ui>

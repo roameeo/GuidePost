@@ -63,6 +63,35 @@ All entries use placeholder coords {x=50.0, y=50.0} pending in-game verification
     • Exploration: Defenders of the Dream, Tour of Duty, Glyph Hunter,
       Explore the Emerald Dream, Adventurer, Treasures, Emerald Dream Safari
 
+UI REDESIGN
+-----------
+- Completely redesigned the main window to improve visual consistency and
+  overall responsiveness
+- Added zone suggestions to the title bar summary when the window is minimized
+- Main window can now be closed by pressing ESC
+
+DATA IMPROVEMENTS — DRAGONFLIGHT (DRAGON ISLES)
+------------------------------------------------
+- Expanded Dragon Isles achievement coverage across all primary zones:
+  • The Waking Shores — exploration, questing, and skyriding races
+  • Ohn'ahran Plains — exploration, questing, and skyriding races (incl.
+    Sundapple Copse Circuit, Fen Flythrough, Ravine River Run, and Emerald
+    Gardens Ascent — Normal and Advanced tiers at Bronze, Silver, and Gold)
+  • The Azure Span — exploration and questing
+  • Thaldraszus — exploration and questing
+  • Zaralek Cavern — exploration
+  • Emerald Dream — exploration and skyriding races
+  • The Forbidden Reach — exploration
+  • Valdrakken — city achievements
+
+BUG FIXES
+---------
+- Fixed several issues encountered when loading the addon for the first time on
+  a fresh account with no previously saved data
+- Fixed the minimize/maximize button failing to correctly toggle window state
+- Corrected map IDs and coordinates for some achievement waypoints that referenced
+  incorrect zones
+
 --------------------------------------------------------------------------------
 v2.5.0 - 2026-5-1
 --------------------------------------------------------------------------------
