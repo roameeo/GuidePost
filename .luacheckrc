@@ -67,7 +67,11 @@ read_globals = {
     -- Minimap
     "Minimap",
 
+    -- Special frames (ESC key support)
+    "UISpecialFrames",
+
     -- Misc WoW globals
+    "tinsert",
     "print",
     "pairs",
     "ipairs",
