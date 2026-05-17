@@ -63,6 +63,10 @@ All entries use placeholder coords {x=50.0, y=50.0} pending in-game verification
     • Exploration: Defenders of the Dream, Tour of Duty, Glyph Hunter,
       Explore the Emerald Dream, Adventurer, Treasures, Emerald Dream Safari
 
+--------------------------------------------------------------------------------
+v2.6.0 - 2026-5-16
+--------------------------------------------------------------------------------
+
 UI REDESIGN
 -----------
 - Completely redesigned the main window to improve visual consistency and
