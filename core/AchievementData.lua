@@ -50,7 +50,7 @@ local function printScanResults(zone, results)
         GP.Print("No new achievements found matching", "\""..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(zone).."\"")
         return
     end
-
+    
     GP.Print("Found", #results, "new achievement(s) matching", "\""..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(zone).."\"")
 
     for _, r in ipairs(results) do
@@ -188,6 +188,8 @@ function AD.ScanZone(overrideZone, autoAdd)
         table.insert(searchTerms, zoneLower .. "s")      -- add trailing 's'
     end
 
+    local zoneResults = {}
+    
     if #AD.ScanResults == 0 then
         AD.ScanActive  = true
         local currentID = 1
@@ -201,8 +203,8 @@ function AD.ScanZone(overrideZone, autoAdd)
                 if GP.Data.Achievements[id] == nil then
                     -- GetAchievementInfo returns nil for invalid IDs
                     local _, name, _, completed, _, _, _, desc, _, _, _, isGuild, _, _, isStat = GetAchievementInfo(id)
-
-                    if name and not isGuild and not isStat then
+    
+                    if name and not isGuild and not isStat then    
                         table.insert(AD.ScanResults, {
                             id = id,
                             name = name,
@@ -215,16 +217,50 @@ function AD.ScanZone(overrideZone, autoAdd)
 
             currentID = batchEnd + 1
 
+            -- Scan complete
             if currentID > SCAN_ID_MAX then
-                -- Scan complete
                 ticker:Cancel()
                 AD.ScanActive = false
                 EventRegistry:TriggerEvent("GuidePost.ZoneScanComplete", zone, searchTerms, autoAdd)
             end
-        end
-    end)
+        end)
     else
         EventRegistry:TriggerEvent("GuidePost.ZoneScanComplete", zone, searchTerms, autoAdd)
+    end
+end
+
+
+-- Inserts newly discovered achievements into the runtime data so they appear
+-- in the UI immediately.  Entries are flagged as auto-discovered so the user
+-- knows they lack hand-curated steps/waypoints.
+function AD.AutoAddResults(zone, results)
+    local added = 0
+    for _, r in ipairs(results) do
+        -- Skip anything already tracked or already completed
+        if not r.inDB and not r.completed then
+            GP.Data.Achievements[r.id] = {
+                name      = r.name,
+                zone      = zone,
+                autoFound = true,   -- flag so the UI can show a "needs review" hint
+                steps     = {},     -- no hand-curated steps yet
+            }
+            -- Register in the zone lookup table
+            if not GP.Data.ByZone[zone] then
+                GP.Data.ByZone[zone] = {}
+            end
+            table.insert(GP.Data.ByZone[zone], r.id)
+            added = added + 1
+        end
+    end
+
+    if added > 0 then
+        GP.Print(string.format(
+            "Auto-scan: added |cff00ccff%d|r new achievement(s) for |cff00ccff%s|r.",
+            added, zone))
+        AD.RefreshZoneSuggestions()
+        if GP.UI.MainFrame then
+            GP.UI.MainFrame.RefreshList()
+        end
     end
 end
 

@@ -26,6 +26,8 @@
         "UIDropDownMenu_Initialize",
         "UIDropDownMenu_AddButton",
         "UIDropDownMenu_CreateInfo",
+        "UISpecialFrames",
+        "tinsert"
         "UISpecialFrames"
     ]
 }

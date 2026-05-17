@@ -43,6 +43,9 @@ read_globals = {
     "GetAchievementCriteriaInfoByID",
     "GetAchievementCriteriaInfo",
 
+    -- Event system
+    "EventRegistry",
+
     -- Slash commands
     "SlashCmdList",
     "SLASH_GUIDEPOST1",
@@ -59,6 +62,21 @@ read_globals = {
     "GameFontHighlight",
     "GameFontHighlightSmall",
 
+    -- Font color constants (provided by WoW client)
+    "DARKYELLOW_FONT_COLOR",
+    "GREEN_FONT_COLOR",
+    "HEIRLOOM_BLUE_COLOR",
+    "LIGHTYELLOW_FONT_COLOR",
+
+    -- Dropdown menu API
+    "UIDropDownMenu_Initialize",
+    "UIDropDownMenu_CreateInfo",
+    "UIDropDownMenu_AddButton",
+    "UIDropDownMenu_SetText",
+
+    -- TomTom (external addon dependency)
+    "TomTom",
+
     -- Timer API
     "C_Timer",
     -- Map API (BfA+)
@@ -67,7 +85,11 @@ read_globals = {
     -- Minimap
     "Minimap",
 
+    -- Special frames (ESC key support)
+    "UISpecialFrames",
+
     -- Misc WoW globals
+    "tinsert",
     "print",
     "pairs",
     "ipairs",
