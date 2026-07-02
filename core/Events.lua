@@ -3,6 +3,14 @@ local GP = select(2, ...)
 -- The invisible frame we use just to receive Blizzard events
 local eventFrame = CreateFrame("Frame", "GuidePostEventFrame", UIParent)
 
+local function onCriteriaUpdate()
+    -- Called when ANY achievement criteria changes (kill, collect, explore, etc.)
+    if GP.GuidePostDetailPanel and GP.GuidePostDetailPanel.selectedAchievementID > 0 then
+        if GP.GuidePostListPanel then GP.GuidePostListPanel:PopulateList() end
+        EventRegistry:TriggerEvent("GuidePost.AchievementSelected", GP.GuidePostDetailPanel.selectedAchievementID)
+    end
+end
+
 local handlers = {
     ["ADDON_LOADED"] = function(name)
         -- Called once when the AddOn is loaded, SavedVariables are accessible going forward
@@ -27,7 +35,7 @@ local handlers = {
     ["ZONE_CHANGED_NEW_AREA"] = function()
         -- Called when the player enters a new zone or subzone
         GP.AchievementData.RefreshZoneSuggestions()
-        if GuidePostFrame:IsShown() then GuidePostListPanel:PopulateList() end
+        if GP.GuidePostFrame and GP.GuidePostFrame:IsShown() then GP.GuidePostListPanel:PopulateList() end
         -- Auto-scan if the user has enabled it in settings.
         -- Pass true so new finds are inserted into the runtime DB automatically
         -- rather than printed to chat.
@@ -37,9 +45,9 @@ local handlers = {
     end,
     ["CRITERIA_UPDATE"] = function()
         -- Called when ANY achievement criteria changes (kill, collect, explore, etc.)
-        if GuidePostDetailPanel and GuidePostDetailPanel.selectedAchievementID > 0 then
-            if GuidePostListPanel then GuidePostListPanel:PopulateList() end
-            EventRegistry:TriggerEvent("GuidePost.AchievementSelected", GuidePostDetailPanel.selectedAchievementID)
+        if GP.GuidePostDetailPanel and GP.GuidePostDetailPanel.selectedAchievementID > 0 then
+            if GP.GuidePostListPanel then GP.GuidePostListPanel:PopulateList() end
+            EventRegistry:TriggerEvent("GuidePost.AchievementSelected", GP.GuidePostDetailPanel.selectedAchievementID)
         end
     end,
     ["ACHIEVEMENT_EARNED"] = function(id, alreadyEarned)
@@ -49,7 +57,7 @@ local handlers = {
             GP.UntrackAchievement(id)
             GP.Print(GREEN_FONT_COLOR:WrapTextInColorCode("Achievement complete:"), DARKYELLOW_FONT_COLOR:WrapTextInColorCode(name))
         end
-        handlers["CRITERIA_UPDATE"]()
+        onCriteriaUpdate()
     end
 }
 
