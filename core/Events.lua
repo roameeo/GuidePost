@@ -5,9 +5,9 @@ local eventFrame = CreateFrame("Frame", "GuidePostEventFrame", UIParent)
 
 local function onCriteriaUpdate()
     -- Called when ANY achievement criteria changes (kill, collect, explore, etc.)
-    if GP.GuidePostDetailPanel and GP.GuidePostDetailPanel.selectedAchievementID > 0 then
-        if GP.GuidePostListPanel then GP.GuidePostListPanel:PopulateList() end
-        EventRegistry:TriggerEvent("GuidePost.AchievementSelected", GP.GuidePostDetailPanel.selectedAchievementID)
+    if GP.DetailPanel and GP.DetailPanel.selectedAchievementID > 0 then
+        if GP.ListPanel then GP.ListPanel:PopulateList() end
+        EventRegistry:TriggerEvent("GuidePost.AchievementSelected", GP.DetailPanel.selectedAchievementID)
     end
 end
 
@@ -35,7 +35,7 @@ local handlers = {
     ["ZONE_CHANGED_NEW_AREA"] = function()
         -- Called when the player enters a new zone or subzone
         GP.AchievementData.RefreshZoneSuggestions()
-        if GP.GuidePostFrame and GP.GuidePostFrame:IsShown() then GP.GuidePostListPanel:PopulateList() end
+        if GP.Frame and GP.Frame:IsShown() then GP.ListPanel:PopulateList() end
         -- Auto-scan if the user has enabled it in settings.
         -- Pass true so new finds are inserted into the runtime DB automatically
         -- rather than printed to chat.
@@ -45,9 +45,9 @@ local handlers = {
     end,
     ["CRITERIA_UPDATE"] = function()
         -- Called when ANY achievement criteria changes (kill, collect, explore, etc.)
-        if GP.GuidePostDetailPanel and GP.GuidePostDetailPanel.selectedAchievementID > 0 then
-            if GP.GuidePostListPanel then GP.GuidePostListPanel:PopulateList() end
-            EventRegistry:TriggerEvent("GuidePost.AchievementSelected", GP.GuidePostDetailPanel.selectedAchievementID)
+        if GP.DetailPanel and GP.DetailPanel.selectedAchievementID > 0 then
+            if GP.ListPanel then GP.ListPanel:PopulateList() end
+            EventRegistry:TriggerEvent("GuidePost.AchievementSelected", GP.DetailPanel.selectedAchievementID)
         end
     end,
     ["ACHIEVEMENT_EARNED"] = function(id, alreadyEarned)

@@ -3,6 +3,7 @@ local GP = select(2, ...)
 GuidePostDetailPanelMixin = {}
 
 function GuidePostDetailPanelMixin:OnLoad()
+    GP.DetailPanel = self
     EventRegistry:RegisterCallback("GuidePost.AchievementSelected", function(_, achievementID)
         self.selectedAchievementID = achievementID
         local ach = GP.Data.Achievements[achievementID]

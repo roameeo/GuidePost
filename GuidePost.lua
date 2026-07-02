@@ -21,10 +21,18 @@ SlashCmdList["GUIDEPOST"] = function(input)
     input = input:lower()  -- make all commands case-insensitive
 
     if input == "" then
-        GP.Frame:Toggle()
+        if GP.Frame:IsShown() then
+            GP.Frame:Hide()
+        else
+            GP.Frame:Show()
+        end
 
     elseif input == "settings" then
-        GP.SettingsPanel:Toggle()
+        if GP.SettingsPanel:IsShown() then
+            GP.SettingsPanel:Hide()
+        else
+            GP.SettingsPanel:Show()
+        end
 
     elseif input == "list" then
         GP.Print("Known achievements:")
