@@ -25,8 +25,8 @@ import json
 # Credentials
 # ---------------------------------------------------------------------------
 
-CLIENT_ID     = os.environ.get("BLIZZARD_CLIENT_ID",     "cd3c8ae69c6d4a0c85c73a8380f1b285")
-CLIENT_SECRET = os.environ.get("BLIZZARD_CLIENT_SECRET", "JcZF8ydjMT46k1z10Ns0Ce4T6A9Gr0wd")
+CLIENT_ID     = os.environ.get("BLIZZARD_CLIENT_ID",     "0df580081bba41f8b2bad0a596e745cf")
+CLIENT_SECRET = os.environ.get("BLIZZARD_CLIENT_SECRET", "0kKtu0qd2kQ4uFguKZeLlIyrkLVbvS2S")
 
 REGION    = "us"
 LOCALE    = "en_US"

@@ -8791,3 +8791,43 @@ id,name,expansion_id,expansion,points,criteria_count,criteria
 62814,[PH] JZB Test Achievement 04,-1,Unknown (-1),0,0,
 62832,Abyss Anglers: Reservation for One,-1,Unknown (-1),0,0,
 63097,Midnight Keystone Myth: Season One,-1,Unknown (-1),0,0,
+61335,Flame Keeper of Midnight,-1,Unknown (-1),0,5,[1] Eversong Woods | [2] Harandar | [3] Silvermoon City | [4] Voidstorm | [5] Zul'Aman
+61336,Flame Warden of Midnight,-1,Unknown (-1),0,5,[1] Eversong Woods | [2] Harandar | [3] Silvermoon City | [4] Voidstorm | [5] Zul'Aman
+61442,Lorewalking: The Loa,-1,Unknown (-1),0,0,
+61463,Master of the Turbulent Timeways V,-1,Unknown (-1),0,1,[1] Gain Mastery of Timeways for 5 weeks during Turbulent Timeways V
+62413,The Curse of Ula'tek,-1,Unknown (-1),0,5,[1] Legacy of the Amani | [2] An Island of Fangs | [3] Ghosts of the Past | [4] Original Sin | [5] The Battle for Atal'Utek
+62606,The Sunstrider Omnium,-1,Unknown (-1),0,0,
+62842,A Celestial Pain,-1,Unknown (-1),0,1,[1] Evade 100 lightning strikes in a row.
+62873,A Trip Around the Stars,-1,Unknown (-1),0,6,[1] Into the Stars | [2] Prepared for a Showdown | [3] Frosty Domanaar Politics | [4] Climate Strange: Val | [5] Showdown Slugger: Val | [6] Showdown Success: Val
+62874,A Trip Through the Stars,-1,Unknown (-1),0,6,[1] Into the Stars | [2] Prepared for a Showdown | [3] A Hal'hadar Walks into a Swamp | [4] Climate Strange: Naigtal | [5] Showdown Slugger: Naigtal | [6] Showdown Success: Naigtal
+62880,Showdown Success: Val,-1,Unknown (-1),0,14,[1] Lingering Corruption | [2] Freeze Range Eggs | [3] A Lingering Echo | [4] Ignoble Gas Collector | [5] Junction Dysfunction | [6] Solid Cold | [7] Shadowy Strategies | [8] Dissent and Divide | [9] Cold Reception | [10] Tainted Ritual | [11] Until it is Done | [12] Aberration Liberation | [13] Caver Saviour | [14] One Friend is Plenty
+62881,Showdown Slugger: Val,-1,Unknown (-1),0,10,[1] Sleet-Rune | [2] Atomus | [3] Glacial Broodmother | [4] Mercilus | [5] Xirah | [6] Krilkan | [7] Opprimius | [8] Nelgothar | [9] The Horror Below | [10] Shadowguard Destroyer
+62882,Showdown Success: Naigtal,-1,Unknown (-1),0,12,[1] Mush-Vroom! | [2] Mashing Mushroom Mana Machines | [3] Scrubbing Troubles | [4] Power Overload | [5] Sporadic Power Drain | [6] Marsh Mana Spores | [7] Skiff Joyride | [8] Forest Mana Spores | [9] Crypt Culling | [10] Weaken Their Forces | [11] Capsized Compost | [12] Flying Debris
+62883,Showdown Slugger: Naigtal,-1,Unknown (-1),0,8,[1] Interminable Uarn | [2] Broxion | [3] Swalewing Matriarch | [4] Lomelith | [5] Auredar | [6] Warp Agent Xi'grivr | [7] Indomitable Mk XII | [8] Slaipaan
+62887,Heroic: Worlds Ahead,-1,Unknown (-1),0,25,[1] Mush-Vroom! | [2] Mashing Mushroom Mana Machines | [3] Scrubbing Troubles | [4] Power Overload | [5] Sporadic Power Drain | [6] Marsh Mana Spores | [7] Skiff Joyride | [8] Forest Mana Spores | [9] Crypt Culling | [10] Weaken Their Forces | [11] Lingering Corruption | [12] Freeze Range Eggs | [13] A Lingering Echo | [14] Ignoble Gas Collector | [15] Junction Dysfunction | [16] Solid Cold | [17] Shadowy Strategies | [18] Dissent and Divide | [19] Cold Reception | [20] Tainted Ritual | [21] Until it is Done | [22] Aberration Liberation | [23] Caver Saviour | [24] One Friend is Plenty | [25] Flying Debris
+62901,Heroic: Power Creep,-1,Unknown (-1),0,35,[1] Arcane Presence | [2] Blood Infusion | [3] Brutal Presence | [4] Curse Infusion | [5] Disease Infusion | [6] Enrage Infusion | [7] Magic Infusion | [8] Poison Infusion | [9] Snare Infusion | [10] Swift Presence | [11] Vigorous Presence | [12] Essence Balance | [13] Steam Vents | [14] Bouncy Mushroom | [15] Mana Overload | [16] Cosmic Horror | [17] Glacial Spike | [18] Spiraling Quasar | [19] Thorny Vine | [20] Arcane Sacrifice | [21] Shadow Strikes | [22] Sleeping Gas | [23] Ice Shield | [24] Mycelium Network | [25] Chill Touched | [26] Gravity Shackles | [27] Void Shields | [28] Icy Beam | [29] Phase Stepping | [30] Unraveling | [31] Voidmaw | [32] Cosmic Tethers | [33] Mystery Mushroom | [34] Frozen Core | [35] Infested
+62903,Climate Strange: Val,-1,Unknown (-1),0,0,
+62904,Climate Strange: Naigtal,-1,Unknown (-1),0,0,
+62905,Pain of Command,-1,Unknown (-1),0,2,[1] Imperator Pertinax | [2] Nexus-Captain Leth'ir
+62909,Heroic: Pain of Command,-1,Unknown (-1),0,2,[1] Imperator Pertinax | [2] Nexus-Captain Leth'ir
+62917,Heroic Climate Strange: Val,-1,Unknown (-1),0,0,
+62919,Heroic Climate Strange: Naigtal,-1,Unknown (-1),0,0,
+62940,Ritual Sites 612: Practical Ritual Work,-1,Unknown (-1),0,0,
+62941,Pinnacle Ritual Work,-1,Unknown (-1),0,2,[1] Broken Throne | [2] Daggerspine Point
+63164,Big Prey Hunter (Season 1),-1,Unknown (-1),0,0,
+63182,Advanced Ritual Site Studies,-1,Unknown (-1),0,6,[1] Week 1: Reinforcements | [2] Week 2: Malevolent Boons | [3] Week 3: Embers | [4] Week 4: Reinforcements and Alarm Bells | [5] Week 5: Boons and Patrols | [6] Week 6: Embers and Manifestations
+63237,Rotmire,-1,Unknown (-1),0,0,
+63240,Heroic: Rotmire,-1,Unknown (-1),0,0,
+63241,Mythic: Rotmire,-1,Unknown (-1),0,0,
+63242,Rotmire Guild Run,-1,Unknown (-1),0,0,
+63246,Heroic: Rotmire Guild Run,-1,Unknown (-1),0,0,
+63247,Mythic: Rotmire Guild Run,-1,Unknown (-1),0,0,
+63264,Heroic Showdowns,-1,Unknown (-1),0,6,[1] Heroic: Worlds Ahead | [2] Heroic: Power Creep | [3] Heroic: Pain of Command | [4] Heroic Climate Strange: Val | [5] Heroic Climate Strange: Naigtal | [6] Heroic Slugger
+63325,Omnium Folio Studies,-1,Unknown (-1),0,0,
+63343,Goal!,-1,Unknown (-1),0,1,[1] Goals scored
+63348,Heroic Slugger,-1,Unknown (-1),0,19,[1] Interminable Uarn | [2] Broxion | [3] Swalewing Matriarch | [4] Lomelith | [5] Auredar | [6] Warp Agent Xi'grivr | [7] Indomitable Mk XII | [8] Slaipaan | [9] Nelgothar | [10] Sleet-Rune | [11] Atomus | [12] Glacial Broodmother | [13] Mercilus | [14] Xirah | [15] Krilkan | [16] Opprimius | [17] The Horror Below | [18] Shadowguard Destroyer | [19] Warbringer Thal'kuur
+63349,Ultradon Carnage,-1,Unknown (-1),0,0,
+63383,Into the Stars,-1,Unknown (-1),0,2,[1] A Frigid Welcome to Val | [2] A Swampy Welcome to Naigtal
+63384,Prepared for a Showdown,-1,Unknown (-1),0,7,[1] The Road Not Taken Twice | [2] Spatial Reasoning | [3] Bouncy Mushrooms | [4] Aerospores | [5] The Grappler | [6] Preparing for Threats | [7] Exterior Manaforge Translocator
+63385,A Hal'hadar Walks into a Swamp,-1,Unknown (-1),0,3,[1] Manaforge Reconnaissance | [2] Pilfered Technology | [3] A Cryptic Mystery
+63386,Frosty Domanaar Politics,-1,Unknown (-1),0,3,[1] Victory Within Hindsight | [2] A Shot at the Dark | [3] Umbral Title Bout
