@@ -31,7 +31,7 @@ function GuidePostFrameMixin:OnLoad()
     end)
     self.SettingsButton:SetScript("OnLeave", function() GameTooltip:Hide() end)
     self.SettingsButton:SetScript("OnClick", function()
-        GP.SettingsPanel:Toggle()
+        GP.SettingsPanel:Show()
     end)
     self.ResizeGrip:HookScript("OnMouseDown", function()
         if GuidePostDB.isMinimized then

@@ -43,8 +43,8 @@ function GuidePostMinimapButtonMixin:OnLeave()
 end
 
 function GuidePostMinimapButtonMixin:OnClick(mouseButton)
-    if mouseButton == "LeftButton" and not self.dragging then
-        GP.Frame:Toggle()
+    if mouseButton == "LeftButton" and not self.isDragging then
+        GP.Frame:SetShown(not GP.Frame:IsShown())
     end
 end
 
