@@ -7,6 +7,8 @@
 --   2. Add criteria with verified criteriaIndex  (/gp criteria <id>)
 --   3. Add TomTom waypoint coordinates
 
+local GP_Scaffold = {
+
     -- Level 10
     [6] = {
         name = "Level 10",
@@ -79134,3 +79136,7 @@
             -- /gp criteria 63097
         },
     },
+}
+
+return GP_Scaffold
+

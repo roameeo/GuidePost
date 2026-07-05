@@ -9,6 +9,7 @@ local settingsScopes = {
 GuidePostSettingsPanelMixin = {}
 
 function GuidePostSettingsPanelMixin:OnLoad()
+    GP.SettingsPanel = self
     tinsert(UISpecialFrames, self:GetName())
     self.TitleText:SetText(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("GuidePost").." • Settings")
     self.CloseButton:HookScript("OnClick", function() self:Hide() end)

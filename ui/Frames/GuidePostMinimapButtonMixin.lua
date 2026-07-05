@@ -26,7 +26,7 @@ end
 
 function GuidePostMinimapButtonMixin:OnEnter()
     GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-    GameTooltip:SetText(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("GuidePost"))
+    GameTooltip:SetText("GuidePost", HEIRLOOM_BLUE_COLOR.r, HEIRLOOM_BLUE_COLOR.g, HEIRLOOM_BLUE_COLOR.b)
     GameTooltip:AddLine("Click to open/close", 1, 1, 1)
     GameTooltip:AddLine("Drag to reposition", 0.6, 0.6, 0.6)
 
@@ -43,8 +43,8 @@ function GuidePostMinimapButtonMixin:OnLeave()
 end
 
 function GuidePostMinimapButtonMixin:OnClick(mouseButton)
-    if mouseButton == "LeftButton" and not self.dragging then
-        GuidePostFrame:Toggle()
+    if mouseButton == "LeftButton" and not self.isDragging then
+        GP.Frame:SetShown(not GP.Frame:IsShown())
     end
 end
 

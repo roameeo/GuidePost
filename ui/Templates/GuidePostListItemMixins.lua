@@ -52,7 +52,7 @@ function GuidePostDetailsStepMixin:OnLoad()
         GameTooltip:Hide()
     end)
     self.WaypointBtn:HookScript("OnClick", function()
-        local achievementID = GuidePostDetailPanel.selectedAchievementID
+        local achievementID = GP.DetailPanel and GP.DetailPanel.selectedAchievementID
         if not achievementID then
             -- print some kind of error message to the chat window
             return

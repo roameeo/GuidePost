@@ -3,6 +3,7 @@ local GP = select(2, ...)
 GuidePostListPanelMixin = {}
 
 function GuidePostListPanelMixin:OnLoad()
+    GP.ListPanel = self
     -- Listen for track/untrack events to refresh the achievements list
     EventRegistry:RegisterCallback("GuidePost.ToggleTracking", function() self:PopulateList() end)
     EventRegistry:RegisterCallback("GuidePost.UpdateScope", function() self:PopulateList() end)

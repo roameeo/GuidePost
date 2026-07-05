@@ -3,6 +3,7 @@ local GP = select(2, ...)
 GuidePostFrameMixin = {}
 
 function GuidePostFrameMixin:OnLoad()
+    GP.Frame = self
     -- Allows closing via ESC key
     tinsert(UISpecialFrames, self:GetName())
     self.TitleText:SetText(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("GuidePost"))
@@ -29,6 +30,9 @@ function GuidePostFrameMixin:OnLoad()
         GameTooltip:Show()
     end)
     self.SettingsButton:SetScript("OnLeave", function() GameTooltip:Hide() end)
+    self.SettingsButton:SetScript("OnClick", function()
+        GP.SettingsPanel:Show()
+    end)
     self.ResizeGrip:HookScript("OnMouseDown", function()
         if GuidePostDB.isMinimized then
             -- Maximize window before resizing
@@ -49,9 +53,6 @@ function GuidePostFrameMixin:OnLoad()
         self:Hide()
     end)
     self.MinimizeButton:HookScript("OnClick", function() self:ToggleMinimize() end)
-    self.SettingsButton:SetScript("OnClick", function()
-        GuidePostSettingsPanel:Toggle()
-    end)
 end
 
 function GuidePostFrameMixin:OnDragStart() self:StartMoving() end

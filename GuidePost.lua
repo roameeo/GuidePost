@@ -21,10 +21,18 @@ SlashCmdList["GUIDEPOST"] = function(input)
     input = input:lower()  -- make all commands case-insensitive
 
     if input == "" then
-        GuidePostFrame:Toggle()
+        if GP.Frame:IsShown() then
+            GP.Frame:Hide()
+        else
+            GP.Frame:Show()
+        end
 
     elseif input == "settings" then
-        GuidePostSettingsPanel:Toggle()
+        if GP.SettingsPanel:IsShown() then
+            GP.SettingsPanel:Hide()
+        else
+            GP.SettingsPanel:Show()
+        end
 
     elseif input == "list" then
         GP.Print("Known achievements:")
@@ -63,12 +71,13 @@ SlashCmdList["GUIDEPOST"] = function(input)
     elseif input == "mapid" then
         -- Print the UiMapID for your current zone — use this to fill in mapID fields
         local mapID   = C_Map.GetBestMapForUnit("player")
-        local mapInfo = C_Map.GetMapInfo(mapID)
+        local mapInfo = mapID and C_Map.GetMapInfo(mapID)
         local name    = mapInfo and mapInfo.name or "Unknown"
-        GP.Print(name, "mapID =", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(mapID))
+        GP.Print(name, "mapID =", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(tostring(mapID)))
 
     elseif input:match("^criteria %d+$") then
         local achID = tonumber(input:match("%d+"))
+        if not achID then return end
         local _, achName = GetAchievementInfo(achID)
         if not achName then
             GP.Print("Unknown achievement ID: " .. achID)
@@ -79,7 +88,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
                 local criteriaStr, _, completed = GetAchievementCriteriaInfo(achID, i)
                 if not criteriaStr then break end
                 local status = completed and GREEN_FONT_COLOR:WrapTextInColorCode("(DONE)") or ""
-                GP.Print("criteriaIndex", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(i), "=", criteriaStr, status)
+                GP.Print("criteriaIndex", DARKYELLOW_FONT_COLOR:WrapTextInColorCode(tostring(i)), "=", criteriaStr, status)
                 i = i + 1
             end
         end
@@ -134,7 +143,7 @@ SlashCmdList["GUIDEPOST"] = function(input)
         end
         GuidePostDB = GuidePostDB or {}
         GuidePostDB.exportBuffer = table.concat(stubs, "\n")
-        GP.Print("Dumped", HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(#stubs), "new stubs to", DARKYELLOW_FONT_COLOR:WrapTextInColorCode("GuidePostDB.exportBuffer"), string.format("(%d already in DB, skipped)", skipped))
+        GP.Print("Dumped", HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(tostring(#stubs)), "new stubs to", DARKYELLOW_FONT_COLOR:WrapTextInColorCode("GuidePostDB.exportBuffer"), string.format("(%d already in DB, skipped)", skipped))
         print("  Find them in your WTF SavedVariables/GuidePost.lua file (search for 'exportBuffer')")
 
     elseif input == "scan" then

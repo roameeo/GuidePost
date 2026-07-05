@@ -1,4 +1,4 @@
-## Interface: 120005
+## Interface: 120007
 ## Title: |cff00ccffGuidePost|r
 ## Notes: Step-by-step achievement guidance with TomTom waypoints, progress tracking, and zone suggestions.
 ## IconTexture: Interface/AddOns/GuidePost/Media/Icon.png

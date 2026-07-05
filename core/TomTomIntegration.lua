@@ -41,7 +41,8 @@ function TT.SetWaypoint(achievementID, criteriaIndex)
         GP.Print(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode("No mapID for this step — using your current map. Use /gp mapid to get the correct ID and update Achievements.lua."))
     end
 
-    GP.TomTom.CurrentWaypoint = TomTom:AddWaypoint(mapID, criterion.coords.x / 100, criterion.coords.y / 100, {
+    if not _G["TomTomDB"] or not _G["TomTom"] then return end
+    TT.CurrentWaypoint = _G["TomTom"]:AddWaypoint(mapID, criterion.coords.x / 100, criterion.coords.y / 100, {
         title = ach.name..DARKYELLOW_FONT_COLOR:WrapTextInColorCode(" ["..(criterion.npc or "Objective").."]"),
         from = "GuidePost",
         persistent = false,
@@ -53,7 +54,7 @@ end
 -- Remove the currently set waypoint
 function TT.ClearWaypoint()
     if TT.CurrentWaypoint then
-        TomTom:RemoveWaypoint(TT.CurrentWaypoint)
+        _G["TomTom"]:RemoveWaypoint(TT.CurrentWaypoint)
         TT.CurrentWaypoint = nil
     end
 end
